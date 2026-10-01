@@ -1,0 +1,51 @@
+name: collect
+on:
+  schedule:
+    - cron: "45 6 * * 1-5"    # 15:45 KST 본장 마감
+    - cron: "10 11 * * 1-5"   # 20:10 KST 넥장 마감
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "main 또는 after"
+        default: "main"
+  push:
+    paths: ["collect.py", ".github/workflows/collect.yml"]
+permissions:
+  contents: write
+concurrency:
+  group: collect
+  cancel-in-progress: false
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Pick mode
+        id: m
+        run: |
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            if [ "${{ github.event.schedule }}" = "45 6 * * 1-5" ]; then echo "mode=main" >> $GITHUB_OUTPUT; else echo "mode=after" >> $GITHUB_OUTPUT; fi
+          elif [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "mode=${{ github.event.inputs.mode }}" >> $GITHUB_OUTPUT
+          else
+            echo "mode=test" >> $GITHUB_OUTPUT
+          fi
+      - name: Collect
+        run: |
+          if [ "${{ steps.m.outputs.mode }}" = "test" ]; then
+            TEST=1 python collect.py main && TEST=1 python collect.py after
+          else
+            python collect.py ${{ steps.m.outputs.mode }}
+          fi
+      - name: Commit
+        run: |
+          git config user.name "collector-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data
+          git diff --cached --quiet && exit 0
+          git commit -m "data: $(TZ=Asia/Seoul date +%F) ${{ steps.m.outputs.mode }} [skip ci]"
+          for i in 1 2 3; do git pull --rebase -q && git push -q && break; sleep 5; done
