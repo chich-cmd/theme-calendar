@@ -1,8 +1,11 @@
-naver_polling_005930.json 200 2470 https://polling.finance.naver.com/api/realtime/domestic/stock/005930
-naver_basic_005930.json 200 4026 https://m.stock.naver.com/api/stock/005930/basic
-naver_integration_005930.json 200 9241 https://m.stock.naver.com/api/stock/005930/integration
-naver_up_kosdaq.json 200 8169 https://m.stock.naver.com/api/stocks/up/KOSDAQ?page=1&pageSize=5
-naver_up_nxt.json 200 8169 https://m.stock.naver.com/api/stocks/up/KOSDAQ?page=1&pageSize=5&tradeType=NXT
-naver_overtime_up.json 404 0 https://m.stock.naver.com/api/stocks/overTimeUp/KOSDAQ?page=1&pageSize=5
-nxt_conclusion.html 200 41444 https://www.nextrade.co.kr/menu/transactionStatusConclusion/menuList.do
-nxt_main.html 200 42073 https://www.nextrade.co.kr/menu/transactionStatusMain/menuList.do
+batch5: OK items=5 total=None
+   삼성전자 close=273000 rate=1.68 session=REGULAR_MARKET status=OPEN over=273,000 overRate=1.68
+   SK하이닉스 close=1810000 rate=1.91 session=REGULAR_MARKET status=OPEN over=1,810,000 overRate=1.91
+   NAVER close=191600 rate=-1.08 session=REGULAR_MARKET status=OPEN over=191,700 overRate=-1.03
+   브릴스 close=34550 rate=77.18 session=None status=None over=None overRate=None
+   원일티엔아이 close=10850 rate=29.94 session=None status=None over=None overRate=None
+batch60: OK items=60 total=None
+up_kospi_100: OK items=100 total=1478
+   first=대한제강 26.44 last=한세엠케이 4.18
+up_kosdaq_p2: OK items=100 total=1139
+   first=와이바이오로직스 6.48 last=오로라 4.67
