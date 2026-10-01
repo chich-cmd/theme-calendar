@@ -1,0 +1,32 @@
+name: probe-nxt-sources
+on:
+  push:
+    paths: [".github/workflows/probe.yml"]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch candidate sources
+        run: |
+          mkdir -p probe
+          UA="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/126 Safari/537.36"
+          f() { name=$1; url=$2; code=$(curl -sL -A "$UA" -m 25 -o "probe/$name" -w "%{http_code}" "$url"); echo "$name $code $(wc -c < probe/$name) $url" >> probe/_index.txt; }
+          f naver_polling_005930.json "https://polling.finance.naver.com/api/realtime/domestic/stock/005930"
+          f naver_basic_005930.json "https://m.stock.naver.com/api/stock/005930/basic"
+          f naver_integration_005930.json "https://m.stock.naver.com/api/stock/005930/integration"
+          f naver_up_kosdaq.json "https://m.stock.naver.com/api/stocks/up/KOSDAQ?page=1&pageSize=5"
+          f naver_up_nxt.json "https://m.stock.naver.com/api/stocks/up/KOSDAQ?page=1&pageSize=5&tradeType=NXT"
+          f naver_overtime_up.json "https://m.stock.naver.com/api/stocks/overTimeUp/KOSDAQ?page=1&pageSize=5"
+          f nxt_conclusion.html "https://www.nextrade.co.kr/menu/transactionStatusConclusion/menuList.do"
+          f nxt_main.html "https://www.nextrade.co.kr/menu/transactionStatusMain/menuList.do"
+          for h in probe/nxt_*.html; do grep -oE "['\"][^'\"]*\.(do|json)[^'\"]*['\"]" "$h" | sort -u > "$h.urls.txt" || true; grep -oE '<script[^>]+src="[^"]+"' "$h" >> "$h.urls.txt" || true; done
+          for f in probe/*.json; do head -c 6000 "$f" > "$f.tmp" && mv "$f.tmp" "$f"; done
+          cat probe/_index.txt
+      - name: Commit results
+        run: |
+          git config user.name "probe-bot"; git config user.email "actions@users.noreply.github.com"
+          git add probe && git commit -m "probe results [skip ci]" && git push || echo nothing
