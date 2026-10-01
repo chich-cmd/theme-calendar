@@ -1,0 +1,44 @@
+{
+ "date": "2026-10-01",
+ "status": "open",
+ "source": "naver-finance",
+ "rule": "KRX 종가 대비 NXT 장후 가격 3.0% 이상",
+ "sessions": {
+  "REGULAR_MARKET": 402
+ },
+ "moved_count": 222,
+ "stocks": [],
+ "down": [
+  {
+   "code": "031980",
+   "name": "피에스케이홀딩스",
+   "market": "KOSDAQ",
+   "close": 188500.0,
+   "last": 178600.0,
+   "after_chg": -5.25,
+   "day_chg": 5.54,
+   "nxt_amount_eok": 0
+  },
+  {
+   "code": "319660",
+   "name": "피에스케이",
+   "market": "KOSDAQ",
+   "close": 155300.0,
+   "last": 148500.0,
+   "after_chg": -4.38,
+   "day_chg": 4.58,
+   "nxt_amount_eok": 0
+  },
+  {
+   "code": "078350",
+   "name": "한양디지텍",
+   "market": "KOSDAQ",
+   "close": 33300.0,
+   "last": 31950.0,
+   "after_chg": -4.05,
+   "day_chg": 4.23,
+   "nxt_amount_eok": 0
+  }
+ ],
+ "generatedAt": "2026-10-01T13:44:48+09:00"
+}
