@@ -103,6 +103,24 @@ def save(kind, payload):
     print(f"saved data/{TODAY}/{kind}.json", payload.get("status"), len(payload.get("stocks", [])))
 
 
+def save_krx_snapshot():
+    """본장 마감 직후 전 종목의 KRX 종가·등락률을 저장 (넥장 최종 등락률과 비교하는 기준)."""
+    snap = {}
+    for mk in ("KOSPI", "KOSDAQ"):
+        for kind in ("up", "down", "same"):
+            try:
+                for s in ranked(mk, kind=kind):
+                    if is_common_stock(s) and f(s.get("closePriceRaw")):
+                        snap[s["itemCode"]] = [s["stockName"], f(s.get("closePriceRaw")), f(s.get("fluctuationsRatio")), mk]
+            except Exception as e:
+                print("snapshot fail", mk, kind, e)
+    folder = os.path.join(ROOT, "data", "_test" if os.environ.get("TEST") else TODAY)
+    os.makedirs(folder, exist_ok=True)
+    with open(os.path.join(folder, "krx.json"), "w", encoding="utf-8") as fp:
+        json.dump(snap, fp, ensure_ascii=False, separators=(",", ":"))
+    print("krx snapshot", len(snap))
+
+
 def run_main():
     rows = ranked("KOSPI", stop_below=4) + ranked("KOSDAQ", stop_below=4)
     if not traded_today(rows):
@@ -123,68 +141,78 @@ def run_main():
     picked.sort(key=lambda x: x["chg"], reverse=True)
     strong = [p for p in picked if p["chg"] >= MAIN_MIN_RATE]
     stocks = (strong if len(strong) >= MAIN_MIN_COUNT else picked[:MAIN_MIN_COUNT])[:MAIN_MAX_COUNT]
+    save_krx_snapshot()
     save("main", {"date": TODAY, "status": "open", "source": "naver-finance",
                   "rule": f"KRX 정규장 등락률 {MAIN_MIN_RATE}% 이상(부족하면 상위 {MAIN_MIN_COUNT}개), ETF·ETN·스팩 제외",
                   "strong_count": len(strong), **index_change(), "stocks": stocks})
 
 
-def run_after():
-    rows = [s for s in ranked("KOSPI") + ranked("KOSDAQ") if is_common_stock(s)]
-    if not traded_today(rows):
-        return save("after", {"date": TODAY, "status": "closed", "stocks": []})
-    # 본장에서 내렸거나 보합인 종목도 장후에 급등할 수 있으므로 하락 목록도 함께 본다
-    for mk in ("KOSPI", "KOSDAQ"):
-        for kind in ("down", "same"):
-            try:
-                rows += [s for s in ranked(mk, kind=kind) if is_common_stock(s)]
-            except Exception as e:
-                print("list fail", mk, kind, e)
-    meta = {s["itemCode"]: s for s in rows}
-    # 본장 급등 종목은 목록 조회 결과와 상관없이 반드시 넥장 시세를 확인한다
+def load_json(*parts):
     try:
-        with open(os.path.join(ROOT, "data", TODAY, "main.json"), encoding="utf-8") as fp:
-            for s in json.load(fp).get("stocks", []):
-                meta.setdefault(s["code"], {"itemCode": s["code"], "stockName": s["name"], "_market": s.get("market")})
+        with open(os.path.join(ROOT, *parts), encoding="utf-8") as fp:
+            return json.load(fp)
     except (OSError, ValueError):
-        pass
-    codes = list(meta)
-    moved, sessions, nxt_map, samples, no_nxt = [], {}, {}, {}, []
-    SAMPLE = {"005930", "240810", "425420", "089030"}
+        return None
+
+
+def run_after():
+    """넥장(NXT 20:00) 마감 후: 종목별 최종 등락률(전일 대비)과 KRX 종가 대비 장후 등락률.
+
+    네이버 실시간 시세의 closePriceRaw / fluctuationsRatioRaw 는 20:00 이후 KRX+NXT 통합 최종가 기준이다.
+    KRX 종가는 15:45 수집 때 저장한 data/<오늘>/krx.json (없으면 main.json) 을 쓴다.
+    """
+    krx = load_json("data", TODAY, "krx.json") or {}
+    main = load_json("data", TODAY, "main.json") or {}
+    for s in main.get("stocks", []):
+        krx.setdefault(s["code"], [s["name"], s.get("price"), s.get("chg"), s.get("market")])
+    if not krx:   # 기준 데이터가 없으면 목록에서 종목 코드만이라도 모은다
+        for mk in ("KOSPI", "KOSDAQ"):
+            for kind in ("up", "down", "same"):
+                try:
+                    for s in ranked(mk, kind=kind):
+                        if is_common_stock(s):
+                            krx[s["itemCode"]] = [s["stockName"], None, None, mk]
+                except Exception as e:
+                    print("list fail", mk, kind, e)
+    if main.get("status") == "closed":
+        return save("after", {"date": TODAY, "status": "closed", "stocks": []})
+    codes = list(krx)
+    moved, nxt_map, sessions, traded = [], {}, {}, False
     for i in range(0, len(codes), 60):
         d = get("https://polling.finance.naver.com/api/realtime/domestic/stock/" + ",".join(codes[i:i + 60]))
         for it in d.get("datas", []):
-            if it.get("itemCode") in SAMPLE:
-                samples[it["itemCode"]] = it
-            o = it.get("overMarketPriceInfo")
-            if not o:
-                no_nxt.append(it.get("stockName"))
-                continue   # NXT 거래 대상이 아닌 종목
-            st = o.get("tradingSessionType")
-            sessions[st] = sessions.get(st, 0) + 1
-            close, over = f(it.get("closePriceRaw")), f(o.get("overPrice"))
-            cmp_ = f(it.get("compareToPreviousClosePriceRaw"))
-            prev = close - cmp_ if close and cmp_ is not None else None
-            if over:
-                # 달력 표시용: NXT 최종가와 전일 종가 (넥장 최종 등락률 = over / prev - 1)
-                nxt_map[it["stockName"]] = {"over": over, "close": close, "prev": prev,
-                                            "ratio": f(it.get("fluctuationsRatioRaw")),
-                                            "nxt_eok": round((f(o.get("accumulatedTradingValueRaw")) or 0) / 1e8)}
-            if not close or not over or over == close:
+            code, name = it.get("itemCode"), it.get("stockName")
+            final, ratio = f(it.get("closePriceRaw")), f(it.get("fluctuationsRatioRaw"))
+            if final is None or ratio is None:
                 continue
-            m = meta.get(it["itemCode"], {})
+            o = it.get("overMarketPriceInfo") or {}
+            st = o.get("tradingSessionType")
+            if st:
+                sessions[st] = sessions.get(st, 0) + 1
+            if (o.get("localTradedAt") or "").startswith(TODAY):
+                traded = True
+            k = krx.get(code) or [name, None, None, None]
+            kclose, kchg = k[1], k[2]
+            after_chg = round((final / kclose - 1) * 100, 2) if kclose else None
+            nxt_map[name] = {"final": ratio, "krx": kchg, "after": after_chg,
+                             "nxt_eok": round((f(o.get("accumulatedTradingValueRaw")) or 0) / 1e8)}
+            if after_chg is None or abs(after_chg) < 0.005:
+                continue
             moved.append({
-                "code": it["itemCode"], "name": it["stockName"], "market": m.get("_market"),
-                "close": close, "last": over, "after_chg": round((over / close - 1) * 100, 2),
-                "day_chg": f(it.get("fluctuationsRatioRaw")),
-                "nxt_amount_eok": round((f(o.get("accumulatedTradingValueRaw")) or 0) / 1e8),
+                "code": code, "name": name, "market": k[3],
+                "close": kclose, "last": final, "after_chg": after_chg,
+                "day_chg": kchg, "final_chg": ratio,
+                "nxt_amount_eok": nxt_map[name]["nxt_eok"],
             })
         time.sleep(0.3)
+    if not traded and not main.get("stocks"):
+        return save("after", {"date": TODAY, "status": "closed", "stocks": []})
     up = sorted([m for m in moved if m["after_chg"] >= AFTER_MIN_RATE], key=lambda x: -x["after_chg"])[:AFTER_MAX_COUNT]
     down = sorted([m for m in moved if m["after_chg"] <= -AFTER_MIN_RATE], key=lambda x: x["after_chg"])[:15]
     save("after", {"date": TODAY, "status": "open", "source": "naver-finance",
-                   "rule": f"KRX 종가 대비 NXT 장후 가격 {AFTER_MIN_RATE}% 이상",
-                   "sessions": sessions, "moved_count": len(moved), "stocks": up, "down": down,
-                   "nxt_map": nxt_map, "no_nxt": no_nxt[:200], "debug_samples": samples})
+                   "rule": f"KRX 종가 대비 넥장 최종가 {AFTER_MIN_RATE}% 이상 (최종가 = 20:00 KRX+NXT 통합)",
+                   "sessions": sessions, "nxt_traded_today": traded, "moved_count": len(moved),
+                   "stocks": up, "down": down, "nxt_map": nxt_map})
 
 
 if __name__ == "__main__":

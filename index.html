@@ -278,9 +278,10 @@ function renderMsg() {
 
 const num = (v) => (typeof v === "number" ? v : -Infinity);
 function chgHtml(s) {
-  // 본장 등락률(main.chg 또는 after.day)과 넥장(NXT 장후, 종가 대비) 등락률을 함께 표시
-  const day = typeof s.nxt === "number" || s.nxt === null ? s.chg : s.day;
-  const nxt = typeof s.nxt === "number" || s.nxt === null ? s.nxt : (typeof s.day === "number" ? s.chg : undefined);
+  // 본장 = KRX 정규장 등락률, 넥장 = 20:00 넥장 마감 최종 등락률(전일 대비)
+  let day, nxt;
+  if (typeof s.day === "number") { day = s.day; nxt = typeof s.fin === "number" ? s.fin : undefined; }
+  else if ("nxt" in s) { day = s.chg; nxt = s.nxt; }
   if (nxt === undefined) return `<span class="chg ${chgClass(s.chg)}">${fmtChg(s.chg)}</span>`;
   const row = (lab, v) => `<span class="chg-row"><span class="chg-lab">${lab}</span><span class="${chgClass(v)}">${typeof v === "number" ? fmtChg(v) : "–"}</span></span>`;
   return `<span class="chg chg2">${row("본장", day)}${row("넥장", nxt)}</span>`;
