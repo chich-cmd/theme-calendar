@@ -141,7 +141,7 @@ def run_after():
                 print("list fail", mk, kind, e)
     meta = {s["itemCode"]: s for s in rows}
     codes = list(meta)
-    moved, sessions = [], {}
+    moved, sessions, nxt_map = [], {}, {}
     for i in range(0, len(codes), 60):
         d = get("https://polling.finance.naver.com/api/realtime/domestic/stock/" + ",".join(codes[i:i + 60]))
         for it in d.get("datas", []):
@@ -151,6 +151,9 @@ def run_after():
             st = o.get("tradingSessionType")
             sessions[st] = sessions.get(st, 0) + 1
             close, over = f(it.get("closePriceRaw")), f(o.get("overPrice"))
+            if close and over:
+                # 모든 NXT 종목의 [넥장 등락률(종가 대비), 본장 등락률] — 달력에 "본장 x% · 넥장 y%" 표시용
+                nxt_map[it["stockName"]] = [round((over / close - 1) * 100, 2), f(it.get("fluctuationsRatioRaw"))]
             if not close or not over or over == close:
                 continue
             m = meta.get(it["itemCode"], {})
@@ -165,7 +168,8 @@ def run_after():
     down = sorted([m for m in moved if m["after_chg"] <= -AFTER_MIN_RATE], key=lambda x: x["after_chg"])[:15]
     save("after", {"date": TODAY, "status": "open", "source": "naver-finance",
                    "rule": f"KRX 종가 대비 NXT 장후 가격 {AFTER_MIN_RATE}% 이상",
-                   "sessions": sessions, "moved_count": len(moved), "stocks": up, "down": down})
+                   "sessions": sessions, "moved_count": len(moved), "stocks": up, "down": down,
+                   "nxt_map": nxt_map})
 
 
 if __name__ == "__main__":

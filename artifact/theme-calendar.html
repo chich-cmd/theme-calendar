@@ -120,6 +120,10 @@ h1 span { color: var(--muted); }
 .stk-name { font-weight: 700; font-size: 15px; min-width: 0; }
 .chg { font-family: var(--f-num); font-weight: 500; font-size: 15px; text-align: right; font-variant-numeric: tabular-nums; }
 .chg.up { color: var(--up); } .chg.down { color: var(--down); }
+.chg2 { display: flex; flex-direction: column; align-items: flex-end; gap: 1px; font-size: 14px; }
+.chg-row { display: inline-flex; gap: 6px; align-items: baseline; }
+.chg-lab { font-family: inherit; font-size: 11px; font-weight: 600; color: var(--muted); }
+.chg-row .up { color: var(--up); } .chg-row .down { color: var(--down); }
 .subgrp { margin: 0 0 4px; }
 .sub-h { font-size: 12.5px; font-weight: 700; color: var(--ink); margin: 2px 2px 6px; padding-left: 8px; border-left: 3px solid var(--line); }
 .sub-h span { color: var(--muted); font-weight: 500; margin-left: 2px; }
@@ -259,11 +263,19 @@ function renderMsg() {
 }
 
 const num = (v) => (typeof v === "number" ? v : -Infinity);
+function chgHtml(s) {
+  // 본장 등락률(main.chg 또는 after.day)과 넥장(NXT 장후, 종가 대비) 등락률을 함께 표시
+  const day = typeof s.nxt === "number" || s.nxt === null ? s.chg : s.day;
+  const nxt = typeof s.nxt === "number" || s.nxt === null ? s.nxt : (typeof s.day === "number" ? s.chg : undefined);
+  if (nxt === undefined) return `<span class="chg ${chgClass(s.chg)}">${fmtChg(s.chg)}</span>`;
+  const row = (lab, v) => `<span class="chg-row"><span class="chg-lab">${lab}</span><span class="${chgClass(v)}">${typeof v === "number" ? fmtChg(v) : "–"}</span></span>`;
+  return `<span class="chg chg2">${row("본장", day)}${row("넥장", nxt)}</span>`;
+}
 function stockLi(s) {
   const limit = s.limit || (typeof s.chg === "number" && s.chg >= 29.5);
   const tag = s.tag ? `<span class="chip tag">${esc(s.tag)}</span>` : "";
   return `<li class="stk"><span class="stk-name">${esc(s.name)}${limit ? '<span class="chip limit">상한가</span>' : ""}${tag}</span>
-    <span class="chg ${chgClass(s.chg)}">${fmtChg(s.chg)}</span>
+    ${chgHtml(s)}
     ${s.reason ? `<span class="stk-why">${esc(s.reason)}</span>` : ""}</li>`;
 }
 function stocksHtml(list) {

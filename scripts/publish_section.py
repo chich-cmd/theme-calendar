@@ -77,6 +77,9 @@ def main():
         doc.update({"date": day, "status": "open"})
         doc.pop("note", None)
         doc[kind] = sec
+        sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        import add_nxt
+        add_nxt.apply(doc, add_nxt.nxt_map(day))
     os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, "w", encoding="utf-8") as f:
         json.dump(doc, f, ensure_ascii=False)
