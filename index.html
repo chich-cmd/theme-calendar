@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="평일마다 자동으로 쌓이는 한국 주식 주도 테마 달력">
+<title>테마주 달력</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=IBM+Plex+Sans+KR:wght@400;500;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: 증권사 HTS 달력처럼 월~금 5열 격자, 칸마다 그날의 테마. 테마를 누르면 아래에서 주도주 시트가 올라온다. */
+:root {
+  --bg: #f6f7fa;
+  --paper: #ffffff;
+  --ink: #1d2340;
+  --muted: #6b7190;
+  --line: #d9dce8;
+  --rule: #2a3160;
+  --up: #d6283a;          /* 한국 시장 관례: 상승 = 빨강 */
+  --up-soft: #fde8ea;
+  --down: #1f5fd1;
+  --after: #6d3fc0;       /* 넥장(장후) */
+  --after-soft: #efe8fb;
+  --holiday: #2f7d3a;
+  --today: #fff6d6;
+  --accent: #e08a1e;
+  --shadow: 0 -8px 30px rgba(20, 24, 50, .18);
+  --f-display: "Black Han Sans", "IBM Plex Sans KR", sans-serif;
+  --f-body: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --f-num: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #12141f; --paper: #1a1d2b; --ink: #e6e8f2; --muted: #9399b5; --line: #2e3247; --rule: #8d96d8;
+    --up: #ff5a68; --up-soft: #3a1c24; --down: #6c9dff; --after: #b89bff; --after-soft: #2b2342;
+    --holiday: #6fcf7c; --today: #2c2a1c; --accent: #f0a443; --shadow: 0 -8px 30px rgba(0,0,0,.5);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #12141f; --paper: #1a1d2b; --ink: #e6e8f2; --muted: #9399b5; --line: #2e3247; --rule: #8d96d8;
+  --up: #ff5a68; --up-soft: #3a1c24; --down: #6c9dff; --after: #b89bff; --after-soft: #2b2342;
+  --holiday: #6fcf7c; --today: #2c2a1c; --accent: #f0a443; --shadow: 0 -8px 30px rgba(0,0,0,.5);
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+:root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-body); margin: 0; }
+.wrap { max-width: 1040px; margin: 0 auto; padding: 20px 16px 48px; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+
+header.top { display: flex; align-items: flex-end; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+  border-bottom: 2px solid var(--rule); padding-bottom: 12px; }
+.eyebrow { color: var(--accent); font-weight: 700; font-size: 15px; letter-spacing: .02em; }
+h1 { font-family: var(--f-display); font-weight: 400; font-size: clamp(28px, 6vw, 42px); margin: 2px 0 0; line-height: 1.1; text-wrap: balance; }
+h1 span { color: var(--muted); }
+.months { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin-top: 12px; }
+.months select { font: inherit; font-size: 14px; color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 6px 8px; }
+.mchip { position: relative; min-width: 46px; border: 1px solid var(--line); background: var(--paper); border-radius: 999px; padding: 6px 10px; font-size: 14px; font-variant-numeric: tabular-nums; }
+.mchip:hover:not(:disabled) { border-color: var(--rule); }
+.mchip[aria-selected="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); font-weight: 700; }
+.mchip:disabled { opacity: .35; cursor: default; }
+.mchip.data::after { content: ""; position: absolute; top: 3px; right: 5px; width: 5px; height: 5px; border-radius: 50%; background: var(--up); }
+.legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 12.5px; color: var(--muted); margin: 12px 0 10px; }
+.legend i { display: inline-block; width: 9px; height: 9px; border-radius: 2px; margin-right: 5px; vertical-align: 0; }
+
+.grid-scroll { overflow-x: auto; }
+.cal { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); background: var(--paper); border: 1px solid var(--line); border-top: 2px solid var(--ink); }
+.dow { text-align: center; font-size: 12px; letter-spacing: .1em; color: var(--muted); padding: 8px 0; border-bottom: 1px solid var(--line); background: var(--bg); }
+.cell { min-height: 118px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 5px 6px 7px;
+  display: flex; flex-direction: column; gap: 2px; text-align: left; min-width: 0; }
+.cell:nth-child(5n) { border-right: 0; }
+.cell.has { cursor: pointer; }
+.cell.has:hover { background: color-mix(in srgb, var(--rule) 5%, var(--paper)); }
+.cell.today { background: var(--today); }
+.cell.other .dnum { opacity: .45; }
+.dnum { font-family: var(--f-num); font-size: 12px; color: var(--muted); display: flex; justify-content: space-between; align-items: baseline; }
+.dnum b { font-weight: 500; }
+.idx { font-size: 10px; }
+.t { display: block; width: 100%; text-align: left; font-size: 12.5px; line-height: 1.32; word-break: keep-all; overflow-wrap: anywhere; }
+.t.lead { color: var(--up); font-weight: 700; }
+.t.after { color: var(--after); font-size: 11.5px; }
+.t.after::before { content: "장후 "; font-size: 9.5px; font-weight: 700; background: var(--after-soft); border-radius: 3px; padding: 0 3px; margin-right: 2px; }
+.t:hover { text-decoration: underline; text-underline-offset: 2px; }
+.more { font-size: 11px; color: var(--muted); }
+.hol { color: var(--holiday); font-weight: 700; font-size: 13px; }
+.pending { font-size: 11px; color: var(--muted); }
+
+.status { margin-top: 14px; font-size: 13.5px; color: var(--muted); line-height: 1.6; }
+.empty { margin-top: 14px; background: var(--paper); border: 1px dashed var(--line); border-radius: 10px; padding: 16px; font-size: 14px; line-height: 1.65; }
+.empty b { color: var(--ink); }
+
+/* 주도주 시트 */
+.scrim { position: fixed; inset: 0; background: rgba(10, 12, 30, .4); z-index: 10; }
+.sheet { position: fixed; left: 0; right: 0; bottom: 0; z-index: 11; max-height: 86vh; overflow-y: auto;
+  background: var(--paper); border-radius: 16px 16px 0 0; box-shadow: var(--shadow);
+  padding: 8px 16px calc(24px + env(safe-area-inset-bottom, 0px)); max-width: 640px; margin: 0 auto; }
+.grab { width: 40px; height: 4px; background: var(--line); border-radius: 2px; margin: 4px auto 10px; }
+.sh-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
+.sh-head h2 { font-family: var(--f-display); font-weight: 400; font-size: 24px; margin: 0; }
+.close { font-size: 14px; border: 1px solid var(--line); border-radius: 8px; padding: 5px 10px; }
+.mkt { display: flex; gap: 14px; font-size: 13px; color: var(--muted); margin: 6px 0 2px; font-variant-numeric: tabular-nums; }
+.mkt b { font-family: var(--f-num); font-weight: 500; }
+.summary { font-size: 14px; line-height: 1.6; margin: 8px 0 4px; }
+.sec { margin-top: 18px; }
+.sec h3 { font-size: 13px; letter-spacing: .06em; color: var(--muted); margin: 0 0 6px; padding-bottom: 6px; border-bottom: 1px solid var(--line); font-weight: 700; }
+.sec.after h3 { color: var(--after); }
+.theme { border-bottom: 1px solid var(--line); }
+.th-btn { width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 11px 2px; text-align: left; }
+.th-name { font-weight: 700; font-size: 16px; }
+.theme.lead .th-name { color: var(--up); }
+.sec.after .th-name { color: var(--after); }
+.kind { font-size: 11px; font-weight: 700; border-radius: 4px; padding: 1px 5px; margin-left: 6px; background: var(--after-soft); color: var(--after); vertical-align: 2px; }
+.th-meta { font-size: 12px; color: var(--muted); white-space: nowrap; }
+.th-meta::after { content: " ▾"; }
+.theme.open .th-meta::after { content: " ▴"; }
+.th-reason { font-size: 13.5px; color: var(--muted); line-height: 1.55; margin: -4px 2px 10px; }
+.stocks { list-style: none; margin: 0 0 12px; padding: 0; display: grid; gap: 8px; }
+.stk { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 10px; background: var(--bg); border-radius: 8px; padding: 9px 11px; }
+.stk-name { font-weight: 700; font-size: 15px; min-width: 0; }
+.chg { font-family: var(--f-num); font-weight: 500; font-size: 15px; text-align: right; font-variant-numeric: tabular-nums; }
+.chg.up { color: var(--up); } .chg.down { color: var(--down); }
+.stk-why { grid-column: 1 / -1; font-size: 13px; color: var(--muted); line-height: 1.5; }
+.chip { font-size: 10.5px; font-weight: 700; border-radius: 4px; padding: 1px 5px; margin-left: 5px; vertical-align: 2px; }
+.chip.limit { background: var(--up); color: var(--paper); }
+.chip.tag { border: 1px solid var(--line); color: var(--muted); font-weight: 500; }
+.watch { font-size: 14px; line-height: 1.6; background: var(--after-soft); border-radius: 8px; padding: 10px 12px; margin-top: 10px; }
+.srcs { margin-top: 18px; font-size: 12.5px; line-height: 1.7; }
+.srcs a { color: var(--muted); word-break: break-all; }
+.note { font-size: 11.5px; color: var(--muted); margin-top: 16px; line-height: 1.6; }
+
+@media (max-width: 560px) {
+  .cell { min-height: 96px; padding: 4px 4px 6px; }
+  .t { font-size: 11px; }
+  .t.after { font-size: 10.5px; }
+  .idx { display: none; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .sheet { animation: rise .22s ease-out; }
+  @keyframes rise { from { transform: translateY(24px); opacity: .6; } to { transform: none; opacity: 1; } }
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <div>
+      <div class="eyebrow" id="ym">2026년 10월</div>
+      <h1>주식 테마주 <span>달력</span></h1>
+    </div>
+  </header>
+  <div class="months" id="months" role="tablist" aria-label="월 선택"></div>
+  <div class="legend">
+    <span><i style="background:var(--up)"></i>본장 주도 테마</span>
+    <span><i style="background:var(--ink)"></i>기타 테마</span>
+    <span><i style="background:var(--after)"></i>넥장(장후) 테마</span>
+    <span>테마를 누르면 주도주가 나옵니다</span>
+  </div>
+  <div class="grid-scroll"><div class="cal" id="cal"></div></div>
+  <div id="msg"></div>
+  <footer class="note" style="margin-top:28px">기사·공시와 공개 시세(네이버페이 증권)를 바탕으로 자동 정리한 개인 참고용 기록이며 투자 권유가 아닙니다.</footer>
+</div>
+
+<div class="scrim" id="scrim" hidden></div>
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="shTitle" hidden></div>
+
+<script>
+const DOW = ["MON", "TUE", "WED", "THU", "FRI"];
+const WK = ["일", "월", "화", "수", "목", "금", "토"];
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+function kstToday() {
+  const d = new Date(Date.now() + 9 * 3600e3);
+  return { y: d.getUTCFullYear(), m: d.getUTCMonth(), d: d.getUTCDate() };
+}
+const pad = (n) => String(n).padStart(2, "0");
+const isoOf = (dt) => `${dt.getUTCFullYear()}-${pad(dt.getUTCMonth() + 1)}-${pad(dt.getUTCDate())}`;
+
+const T = kstToday();
+const todayIso = `${T.y}-${pad(T.m + 1)}-${pad(T.d)}`;
+let view = { y: T.y, m: T.m };
+let days = {};
+let loaded = false;
+let dbState = "loading"; // loading | ok | none | error
+let open = null;
+let monthsInfo = {};
+const loadedMonths = new Set(); // { id, sec, idx }
+
+function weekdaysOfMonth(y, m) {
+  const first = new Date(Date.UTC(y, m, 1));
+  const last = new Date(Date.UTC(y, m + 1, 0));
+  const start = new Date(first);
+  const fd = first.getUTCDay();
+  if (fd === 0) start.setUTCDate(start.getUTCDate() + 1);
+  else if (fd === 6) start.setUTCDate(start.getUTCDate() + 2);
+  else start.setUTCDate(start.getUTCDate() - (fd - 1));
+  const end = new Date(last);
+  const ld = last.getUTCDay();
+  if (ld === 0) end.setUTCDate(end.getUTCDate() - 2);
+  else if (ld === 6) end.setUTCDate(end.getUTCDate() - 1);
+  else end.setUTCDate(end.getUTCDate() + (5 - ld));
+  const out = [];
+  for (const d = new Date(start); d <= end; d.setUTCDate(d.getUTCDate() + 1)) {
+    const w = d.getUTCDay();
+    if (w !== 0 && w !== 6) out.push(new Date(d));
+  }
+  return out;
+}
+
+const fmtChg = (v) => (typeof v === "number" ? (v > 0 ? "+" : "") + v.toFixed(1) + "%" : esc(v ?? ""));
+const chgClass = (v) => (typeof v === "number" ? (v > 0 ? "up" : v < 0 ? "down" : "") : "");
+
+function renderCal() {
+  $("ym").textContent = `${view.y}년 ${view.m + 1}월`;
+  renderMonths();
+  if (typeof ensureMonths === "function" && dbState !== "loading") ensureMonths();
+  let html = DOW.map((d) => `<div class="dow">${d}</div>`).join("");
+  for (const dt of weekdaysOfMonth(view.y, view.m)) {
+    const id = isoOf(dt);
+    const doc = days[id];
+    const cls = ["cell"];
+    if (dt.getUTCMonth() !== view.m) cls.push("other");
+    if (id === todayIso) cls.push("today");
+    let body = "";
+    let idxTxt = "";
+    if (doc && doc.status === "holiday") {
+      body = `<span class="hol">${esc(doc.note || "휴장")}</span>`;
+    } else if (doc) {
+      cls.push("has");
+      const main = (doc.main && doc.main.themes) || [];
+      const after = (doc.after && doc.after.themes) || [];
+      const showMain = main.slice(0, 4);
+      body += showMain.map((t, i) => `<button class="t${t.lead ? " lead" : ""}" data-id="${id}" data-sec="main" data-idx="${i}">${esc(t.name)}</button>`).join("");
+      if (main.length > 4) body += `<span class="more">외 ${main.length - 4}개</span>`;
+      body += after.slice(0, 2).map((t, i) => `<button class="t after" data-id="${id}" data-sec="after" data-idx="${i}">${esc(t.name)}</button>`).join("");
+      if (!main.length && !after.length) body = `<span class="pending">집계 중</span>`;
+      if (doc.main && doc.main.kosdaq != null) idxTxt = `<span class="idx">Q ${esc(doc.main.kosdaq)}</span>`;
+    }
+    html += `<div class="${cls.join(" ")}" data-id="${id}"><div class="dnum"><b>${dt.getUTCDate()}</b>${idxTxt}</div>${body}</div>`;
+  }
+  $("cal").innerHTML = html;
+  renderMsg();
+}
+
+function renderMsg() {
+  const count = Object.keys(days).filter((k) => k.startsWith(`${view.y}-${pad(view.m + 1)}`) && days[k].status !== "holiday").length;
+  let m = "";
+  if (dbState === "none") {
+    m = `<div class="empty">기록을 불러오지 못했습니다.</div>`;
+  } else if (dbState === "error") {
+    m = `<div class="empty">기록을 불러오지 못했습니다. 잠시 후 새로고침해 주세요.</div>`;
+  } else if (dbState === "loading") {
+    m = `<div class="status">기록을 불러오는 중…</div>`;
+  } else if (count === 0) {
+    m = `<div class="empty"><b>이 달에는 아직 기록이 없습니다.</b><br>평일 16시 30분 무렵 본장 테마가, 20시 40분 무렵 넥장 테마가 채워집니다.</div>`;
+  } else {
+    m = `<div class="status">이 달 기록 ${count}거래일 · 평일 16시 30분(본장), 20시 40분(넥장) 무렵 자동 갱신</div>`;
+  }
+  $("msg").innerHTML = m;
+}
+
+function stocksHtml(list) {
+  return `<ul class="stocks">${(list || []).map((s) => {
+    const limit = s.limit || (typeof s.chg === "number" && s.chg >= 29.5);
+    const tag = s.tag ? `<span class="chip tag">${esc(s.tag)}</span>` : "";
+    return `<li class="stk"><span class="stk-name">${esc(s.name)}${limit ? '<span class="chip limit">상한가</span>' : ""}${tag}</span>
+      <span class="chg ${chgClass(s.chg)}">${fmtChg(s.chg)}</span>
+      ${s.reason ? `<span class="stk-why">${esc(s.reason)}</span>` : ""}</li>`;
+  }).join("")}</ul>`;
+}
+
+function themesHtml(id, sec, themes) {
+  return themes.map((t, i) => {
+    const isOpen = open && open.id === id && open.sec === sec && open.idx === i;
+    const kind = sec === "after" && t.kind ? `<span class="kind">${esc(t.kind)}</span>` : "";
+    return `<div class="theme${t.lead ? " lead" : ""}${isOpen ? " open" : ""}">
+      <button class="th-btn" data-id="${id}" data-sec="${sec}" data-idx="${i}" aria-expanded="${isOpen}">
+        <span class="th-name">${esc(t.name)}${kind}</span>
+        <span class="th-meta">주도주 ${(t.stocks || []).length}</span>
+      </button>
+      ${isOpen ? `${t.reason ? `<p class="th-reason">${esc(t.reason)}</p>` : ""}${stocksHtml(t.stocks)}` : ""}
+    </div>`;
+  }).join("");
+}
+
+function renderSheet() {
+  if (!open || !days[open.id]) { closeSheet(); return; }
+  const d = days[open.id];
+  const dt = new Date(open.id + "T00:00:00Z");
+  const main = d.main || {}, after = d.after || {};
+  const srcs = [...(main.sources || []), ...(after.sources || [])];
+  let h = `<div class="grab"></div><div class="sh-head"><div>
+      <h2 id="shTitle">${dt.getUTCMonth() + 1}월 ${dt.getUTCDate()}일 (${WK[dt.getUTCDay()]})</h2>
+      ${main.kospi != null || main.kosdaq != null ? `<div class="mkt"><span>코스피 <b>${esc(main.kospi ?? "-")}</b></span><span>코스닥 <b>${esc(main.kosdaq ?? "-")}</b></span></div>` : ""}
+    </div><button class="close" id="closeBtn">닫기</button></div>`;
+  if (main.summary) h += `<p class="summary">${esc(main.summary)}</p>`;
+  if (main.basis) h += `<p class="th-reason" style="margin:0">${esc(main.basis)}</p>`;
+  h += `<div class="sec"><h3>본장 테마</h3>${(main.themes || []).length ? themesHtml(open.id, "main", main.themes) : '<p class="th-reason">아직 집계 전입니다 (16:05 이후).</p>'}</div>`;
+  h += `<div class="sec after"><h3>넥장 · 장후 테마</h3>${(after.themes || []).length ? themesHtml(open.id, "after", after.themes) : `<p class="th-reason">${after.updatedAt ? "장후 특이 움직임이 적었습니다." : "아직 집계 전입니다 (20:20 이후)."}</p>`}
+    ${after.watch ? `<div class="watch"><b>내일 주목</b> · ${esc(after.watch)}</div>` : ""}</div>`;
+  if (srcs.length) h += `<div class="srcs"><b>출처</b><br>${srcs.map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title || s.url)}</a>`).join("<br>")}</div>`;
+  h += `<p class="note">기사·공시를 바탕으로 자동 정리한 기록이며 투자 권유가 아닙니다. 등락률은 출처 기준 근사치일 수 있습니다.</p>`;
+  $("sheet").innerHTML = h;
+  $("sheet").hidden = false;
+  $("scrim").hidden = false;
+  $("closeBtn").onclick = closeSheet;
+}
+function openSheet(id, sec = null, idx = null) {
+  if (!days[id] || days[id].status === "holiday") return;
+  if (sec === null) {
+    const d = days[id];
+    if ((d.main?.themes || []).length) { sec = "main"; idx = 0; }
+    else if ((d.after?.themes || []).length) { sec = "after"; idx = 0; }
+  }
+  open = { id, sec, idx };
+  renderSheet();
+  $("sheet").scrollTop = 0;
+  requestAnimationFrame(() => {
+    const el = $("sheet").querySelector(".theme.open");
+    if (el && el.offsetTop > $("sheet").clientHeight * 0.5) el.scrollIntoView({ block: "start" });
+  });
+}
+function closeSheet() { open = null; $("sheet").hidden = true; $("scrim").hidden = true; }
+
+$("cal").addEventListener("click", (e) => {
+  const t = e.target.closest(".t");
+  if (t) { openSheet(t.dataset.id, t.dataset.sec, +t.dataset.idx); return; }
+  const c = e.target.closest(".cell.has");
+  if (c) openSheet(c.dataset.id);
+});
+$("sheet").addEventListener("click", (e) => {
+  const b = e.target.closest(".th-btn");
+  if (!b) return;
+  const same = open && open.sec === b.dataset.sec && open.idx === +b.dataset.idx;
+  open = { id: b.dataset.id, sec: same ? null : b.dataset.sec, idx: same ? null : +b.dataset.idx };
+  const y = $("sheet").scrollTop;
+  renderSheet();
+  $("sheet").scrollTop = y;
+});
+$("scrim").onclick = closeSheet;
+document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeSheet(); });
+function renderMonths() {
+  const withData = new Set(Object.keys(monthsInfo).filter((k) => monthsInfo[k] > 0));
+  const dataYears = [...withData].map((k) => +k.slice(0, 4));
+  const minY = Math.min(2025, view.y, ...dataYears);
+  const ys = [];
+  for (let y = T.y; y >= minY; y--) ys.push(y);
+  let h = `<select id="yearSel" aria-label="연도">${ys.map((y) => `<option value="${y}"${y === view.y ? " selected" : ""}>${y}년</option>`).join("")}</select>`;
+  for (let m = 0; m < 12; m++) {
+    const key = `${view.y}-${pad(m + 1)}`;
+    const future = view.y > T.y || (view.y === T.y && m > T.m);
+    const sel = m === view.m;
+    h += `<button class="mchip${withData.has(key) ? " data" : ""}" role="tab" aria-selected="${sel}" data-m="${m}"${future ? " disabled" : ""}>${m + 1}월</button>`;
+  }
+  $("months").innerHTML = h;
+  const ysel = $("yearSel");
+  if (ysel) ysel.onchange = () => { view.y = +ysel.value; if (view.y === T.y && view.m > T.m) view.m = T.m; renderCal(); };
+}
+$("months").addEventListener("click", (e) => {
+  const b = e.target.closest(".mchip");
+  if (!b || b.disabled) return;
+  view.m = +b.dataset.m;
+  renderCal();
+});
+
+renderCal();
+
+async function fetchJson(path) {
+  const r = await fetch(path + "?t=" + Math.floor(Date.now() / 300000), { cache: "no-store" });
+  if (r.status === 404) return null;
+  if (!r.ok) throw new Error(r.status);
+  return r.json();
+}
+function monthKey(y, m) { const d = new Date(Date.UTC(y, m, 1)); return `${d.getUTCFullYear()}-${pad(d.getUTCMonth() + 1)}`; }
+async function ensureMonths() {
+  const keys = [monthKey(view.y, view.m - 1), monthKey(view.y, view.m), monthKey(view.y, view.m + 1)]
+    .filter((k) => !loadedMonths.has(k) && (monthsInfo[k] !== undefined || k === monthKey(view.y, view.m)));
+  if (!keys.length) return;
+  keys.forEach((k) => loadedMonths.add(k));
+  try {
+    const docs = await Promise.all(keys.map((k) => fetchJson(`themes/${k}.json`)));
+    docs.forEach((d) => { if (d) Object.assign(days, d); });
+    dbState = "ok";
+  } catch (e) { dbState = "error"; }
+  renderCal();
+  if (open) renderSheet();
+}
+(async () => {
+  try {
+    const info = await fetchJson("themes/months.json");
+    monthsInfo = (info && info.months) || {};
+  } catch (e) { dbState = "error"; renderMsg(); return; }
+  await ensureMonths();
+  if (dbState === "loading") { dbState = "ok"; renderCal(); }
+})();
+</script>
+
+</body>
+</html>

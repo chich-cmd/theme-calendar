@@ -1,0 +1,24 @@
+name: build-themes
+on:
+  push:
+    paths: ["themes/days/**", "scripts/build_themes.py"]
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: build-themes
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 scripts/build_themes.py
+      - name: Commit
+        run: |
+          git config user.name "collector-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add themes
+          git diff --cached --quiet && exit 0
+          git commit -m "themes: rebuild month bundles [skip ci]"
+          for i in 1 2 3; do git pull --rebase -q && git push -q && break; sleep 5; done
