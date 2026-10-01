@@ -53,11 +53,11 @@ def is_common_stock(s):
     return s.get("stockEndType") == "stock" and "스팩" not in name
 
 
-def ranked(market, stop_below=None, max_pages=30):
-    """등락률 내림차순 종목 목록. stop_below 미만 등락률이 나오면 중단."""
+def ranked(market, stop_below=None, max_pages=30, kind="up"):
+    """등락률 순 종목 목록(kind=up: 상승, down: 하락). stop_below 미만 등락률이 나오면 중단."""
     out = []
     for page in range(1, max_pages + 1):
-        d = get(f"https://m.stock.naver.com/api/stocks/up/{market}?page={page}&pageSize=100")
+        d = get(f"https://m.stock.naver.com/api/stocks/{kind}/{market}?page={page}&pageSize=100")
         items = d.get("stocks", [])
         for s in items:
             s["_market"] = market
@@ -132,6 +132,13 @@ def run_after():
     rows = [s for s in ranked("KOSPI") + ranked("KOSDAQ") if is_common_stock(s)]
     if not traded_today(rows):
         return save("after", {"date": TODAY, "status": "closed", "stocks": []})
+    # 본장에서 내렸거나 보합인 종목도 장후에 급등할 수 있으므로 하락 목록도 함께 본다
+    for mk in ("KOSPI", "KOSDAQ"):
+        for kind in ("down", "same"):
+            try:
+                rows += [s for s in ranked(mk, kind=kind) if is_common_stock(s)]
+            except Exception as e:
+                print("list fail", mk, kind, e)
     meta = {s["itemCode"]: s for s in rows}
     codes = list(meta)
     moved, sessions = [], {}
