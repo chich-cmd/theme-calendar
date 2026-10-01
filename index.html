@@ -132,6 +132,7 @@ h1 span { color: var(--muted); }
 .chg-row { display: inline-flex; gap: 6px; align-items: baseline; }
 .chg-lab { font-family: inherit; font-size: 11px; font-weight: 600; color: var(--muted); }
 .chg-row .up { color: var(--up); } .chg-row .down { color: var(--down); }
+.chg-diff { font-size: 12px; margin-left: -2px; } .chg-diff:not(.up):not(.down) { color: var(--muted); }
 .subgrp { margin: 0 0 4px; }
 .sub-h { font-size: 12.5px; font-weight: 700; color: var(--ink); margin: 2px 2px 6px; padding-left: 8px; border-left: 3px solid var(--line); }
 .sub-h span { color: var(--muted); font-weight: 500; margin-left: 2px; }
@@ -283,8 +284,15 @@ function chgHtml(s) {
   if (typeof s.day === "number") { day = s.day; nxt = typeof s.fin === "number" ? s.fin : undefined; }
   else if ("nxt" in s) { day = s.chg; nxt = s.nxt; }
   if (nxt === undefined) return `<span class="chg ${chgClass(s.chg)}">${fmtChg(s.chg)}</span>`;
-  const row = (lab, v) => `<span class="chg-row"><span class="chg-lab">${lab}</span><span class="${chgClass(v)}">${typeof v === "number" ? fmtChg(v) : "–"}</span></span>`;
-  return `<span class="chg chg2">${row("본장", day)}${row("넥장", nxt)}</span>`;
+  const row = (lab, v, extra = "") => `<span class="chg-row"><span class="chg-lab">${lab}</span><span class="${chgClass(v)}">${typeof v === "number" ? fmtChg(v) : "–"}</span>${extra}</span>`;
+  // 넥장 옆 괄호: 본장 종가 대비 넥장에서 더 오르거나 떨어진 폭
+  let diff = "";
+  if (typeof day === "number" && typeof nxt === "number") {
+    const d = Math.round(((1 + nxt / 100) / (1 + day / 100) - 1) * 1000) / 10;
+    const v = Object.is(d, -0) ? 0 : d;
+    diff = `<span class="chg-diff ${chgClass(v)}">(${v > 0 ? "+" : ""}${v.toFixed(1)}%)</span>`;
+  }
+  return `<span class="chg chg2">${row("본장", day)}${row("넥장", nxt, diff)}</span>`;
 }
 function stockLi(s) {
   const limit = s.limit || (typeof s.chg === "number" && s.chg >= 29.5);
