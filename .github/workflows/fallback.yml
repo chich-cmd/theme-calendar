@@ -1,0 +1,39 @@
+name: fallback
+# 안전장치: Claude 분석 기록이 늦거나 실패해도 공개 달력에 그날 수집 결과가 보이게 한다.
+on:
+  schedule:
+    - cron: "50 7 * * 1-5"    # 16:50 KST (본장 분석 16:20 이후)
+    - cron: "10 12 * * 1-5"   # 21:10 KST (넥장 분석 20:35 이후)
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "main 또는 after"
+        default: "main"
+permissions:
+  contents: write
+concurrency:
+  group: themes
+  cancel-in-progress: false
+jobs:
+  fallback:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fill missing sections
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then M="${{ github.event.inputs.mode }}";
+          elif [ "${{ github.event.schedule }}" = "50 7 * * 1-5" ]; then M=main; else M="main after"; fi
+          for k in $M; do python scripts/fallback.py $k; done
+          python scripts/build_themes.py
+      - name: Commit
+        run: |
+          git config user.name "collector-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add themes
+          git diff --cached --quiet && exit 0
+          git commit -m "themes: $(TZ=Asia/Seoul date +%F) fallback [skip ci]"
+          for i in 1 2 3; do git pull --rebase -q && git push -q && break; sleep 5; done
