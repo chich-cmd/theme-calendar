@@ -1,0 +1,133 @@
+{
+  "date": "2026-07-23",
+  "main": {
+    "basis": "KRX 정규장 급등 90종목 분석 (7% 이상 383종목)",
+    "kosdaq": "+5.22%",
+    "kospi": "+4.40%",
+    "sources": [
+      {
+        "title": "7월 23일 마감 시황",
+        "url": "https://firebat.co.kr/stock-blog/20260723-close"
+      }
+    ],
+    "summary": "알파벳이 AI 데이터센터 투자 계획을 재확인하며 데이터센터 건설·전력·신재생에너지로 매수세가 넓게 퍼졌습니다. 코스피 4.4%, 코스닥 5.2% 급등했습니다.",
+    "themes": [
+      {
+        "lead": true,
+        "name": "원전·에너지",
+        "reason": "AI 데이터센터 청정 전력 수요 증가 기대",
+        "stocks": [
+          {
+            "chg": 30,
+            "limit": true,
+            "name": "SK이터닉스",
+            "reason": "신재생에너지 핵심 수혜로 상한가, 거래대금 1조3,596억"
+          },
+          {
+            "chg": 30,
+            "limit": true,
+            "name": "지엔씨에너지",
+            "reason": "AI 전력 인프라 테마로 상한가"
+          },
+          {
+            "chg": 29.7,
+            "limit": true,
+            "name": "HD현대에너지솔루션",
+            "reason": "태양광주 급등"
+          },
+          {
+            "chg": 30,
+            "limit": true,
+            "name": "OCI홀딩스",
+            "reason": "태양광주 상한가",
+            "tag": "동반"
+          },
+          {
+            "chg": 12.6,
+            "name": "씨에스윈드",
+            "reason": "풍력주 강세",
+            "tag": "동반"
+          },
+          {
+            "chg": 19.6,
+            "name": "SK오션플랜트",
+            "reason": "해상풍력주 급등",
+            "tag": "동반"
+          }
+        ]
+      },
+      {
+        "lead": true,
+        "name": "전력기기·전선",
+        "reason": "데이터센터 전력 인프라 수요",
+        "stocks": [
+          {
+            "chg": 17.3,
+            "name": "LS ELECTRIC",
+            "reason": "전력기기주 급등"
+          },
+          {
+            "chg": 16.8,
+            "name": "대원전선",
+            "reason": "전선주 급등, 거래대금 3,912억"
+          },
+          {
+            "chg": 12.9,
+            "name": "대한전선",
+            "reason": "전선주 강세",
+            "tag": "동반"
+          },
+          {
+            "chg": 13,
+            "name": "LS",
+            "reason": "전선 지주 강세",
+            "tag": "동반"
+          }
+        ]
+      },
+      {
+        "lead": true,
+        "name": "건설",
+        "reason": "데이터센터 건설 수요 기대에 건설업종 10% 넘게 급등",
+        "stocks": [
+          {
+            "chg": 12.9,
+            "name": "삼성E&A",
+            "reason": "플랜트주 급등"
+          },
+          {
+            "chg": 18.2,
+            "name": "GS건설",
+            "reason": "건설주 급등"
+          }
+        ]
+      },
+      {
+        "name": "기타(개별)",
+        "reason": "개별 종목",
+        "stocks": [
+          {
+            "chg": 14.4,
+            "name": "알테오젠",
+            "reason": "바이오 대형주 강세"
+          },
+          {
+            "chg": 17.9,
+            "name": "다날",
+            "reason": "결제주 강세",
+            "tag": "동반"
+          },
+          {
+            "chg": 30,
+            "limit": true,
+            "name": "해성옵틱스",
+            "reason": "광학부품주 상한가",
+            "tag": "동반"
+          }
+        ]
+      }
+    ],
+    "updatedAt": "2026-10-01T15:00:00+09:00"
+  },
+  "status": "open"
+}

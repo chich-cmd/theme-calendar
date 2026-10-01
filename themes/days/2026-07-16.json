@@ -1,0 +1,140 @@
+{
+  "date": "2026-07-16",
+  "main": {
+    "basis": "KRX 정규장 급등 68종목 분석 (7% 이상 68종목)",
+    "kosdaq": "-4.53%",
+    "kospi": "-6.37%",
+    "sources": [
+      {
+        "title": "7월 16일 마감 시황",
+        "url": "https://firebat.co.kr/stock-blog/20260716-close"
+      }
+    ],
+    "summary": "반도체 대형주가 다시 급락하며 코스피가 6.4% 내렸습니다. 반도체와 무관한 내수·의류 중소형주로 개인 자금이 몰리는 리스크오프 흐름이었습니다.",
+    "themes": [
+      {
+        "lead": true,
+        "name": "패션·의류",
+        "reason": "반도체와 무관한 의류·내수주로 개인 자금 쏠림",
+        "stocks": [
+          {
+            "chg": 29.9,
+            "limit": true,
+            "name": "좋은사람들",
+            "reason": "의류주 상한가"
+          },
+          {
+            "chg": 29.9,
+            "limit": true,
+            "name": "형지I&C",
+            "reason": "의류주 상한가",
+            "tag": "동반"
+          },
+          {
+            "chg": 29.9,
+            "limit": true,
+            "name": "형지글로벌",
+            "reason": "의류주 상한가",
+            "tag": "동반"
+          },
+          {
+            "chg": 29.9,
+            "limit": true,
+            "name": "형지엘리트",
+            "reason": "의류주 상한가",
+            "tag": "동반"
+          },
+          {
+            "chg": 21,
+            "name": "인디에프",
+            "reason": "의류주 급등",
+            "tag": "동반"
+          }
+        ]
+      },
+      {
+        "lead": true,
+        "name": "애국테마",
+        "reason": "애국 매수 지속",
+        "stocks": [
+          {
+            "chg": 29.9,
+            "limit": true,
+            "name": "비비안",
+            "reason": "애국 매수에 상한가"
+          },
+          {
+            "chg": 29.9,
+            "limit": true,
+            "name": "에넥스",
+            "reason": "애국 매수 강세",
+            "tag": "동반"
+          },
+          {
+            "chg": 29.9,
+            "limit": true,
+            "name": "모나리자",
+            "reason": "생활용품주 상한가",
+            "tag": "동반"
+          },
+          {
+            "chg": 26.5,
+            "name": "깨끗한나라",
+            "reason": "생활용품주 급등",
+            "tag": "동반"
+          }
+        ]
+      },
+      {
+        "lead": true,
+        "name": "제약·바이오",
+        "reason": "제약주 강세",
+        "stocks": [
+          {
+            "chg": 13.3,
+            "name": "현대약품",
+            "reason": "제약주 급등, 거래대금 1,864억"
+          },
+          {
+            "chg": 29.8,
+            "limit": true,
+            "name": "삼익제약",
+            "reason": "제약주 상한가",
+            "tag": "동반"
+          },
+          {
+            "chg": 20.3,
+            "name": "온코닉테라퓨틱스",
+            "reason": "제약주 급등",
+            "tag": "동반"
+          }
+        ]
+      },
+      {
+        "name": "기타(개별)",
+        "reason": "개별 종목",
+        "stocks": [
+          {
+            "chg": 11.1,
+            "name": "케이뱅크",
+            "reason": "금리 인상 수혜 기대"
+          },
+          {
+            "chg": 30,
+            "limit": true,
+            "name": "동일스틸럭스",
+            "reason": "상한가, 이유 미확인"
+          },
+          {
+            "chg": 30,
+            "limit": true,
+            "name": "주연테크",
+            "reason": "상한가, 이유 미확인"
+          }
+        ]
+      }
+    ],
+    "updatedAt": "2026-10-01T15:00:00+09:00"
+  },
+  "status": "open"
+}

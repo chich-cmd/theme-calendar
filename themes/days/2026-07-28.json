@@ -1,0 +1,101 @@
+{
+  "date": "2026-07-28",
+  "main": {
+    "basis": "KRX 정규장 급등 50종목 분석 (7% 이상 33종목)",
+    "kosdaq": "-7.72%",
+    "kospi": "-10.84%",
+    "sources": [
+      {
+        "title": "이투데이 · 초소형 우선주 급등·실적 개선주 강세, 상·하한가 18개",
+        "url": "https://m.news.nate.com/view/20260728n26892"
+      }
+    ],
+    "summary": "코스피가 10.8% 폭락한 극단적 하락장이었습니다. 상승 종목이 적은 가운데 초소형 우선주와 실적 개선 소형주, 일부 AI 소프트웨어주만 상한가였습니다.",
+    "themes": [
+      {
+        "lead": true,
+        "name": "AI 소프트웨어",
+        "reason": "폭락장 속 AI 소프트웨어주 역행",
+        "stocks": [
+          {
+            "chg": 29.9,
+            "limit": true,
+            "name": "뉴엔AI",
+            "reason": "AI주 상한가"
+          },
+          {
+            "chg": 11.9,
+            "name": "셀바스AI",
+            "reason": "AI주 급등",
+            "tag": "동반"
+          },
+          {
+            "chg": 19.6,
+            "name": "마음AI",
+            "reason": "AI주 급등",
+            "tag": "동반"
+          },
+          {
+            "chg": 7.9,
+            "name": "폴라리스AI",
+            "reason": "AI주 강세",
+            "tag": "동반"
+          },
+          {
+            "chg": 8.6,
+            "name": "오브젠",
+            "reason": "AI 마케팅주 강세",
+            "tag": "동반"
+          }
+        ]
+      },
+      {
+        "lead": true,
+        "name": "제약·바이오",
+        "reason": "바이오 소형주 상한가",
+        "stocks": [
+          {
+            "chg": 30,
+            "limit": true,
+            "name": "셀리드",
+            "reason": "백신주 상한가",
+            "tag": "동반"
+          },
+          {
+            "chg": 29.9,
+            "limit": true,
+            "name": "메드팩토",
+            "reason": "항암제주 상한가",
+            "tag": "동반"
+          }
+        ]
+      },
+      {
+        "name": "기타(개별)",
+        "reason": "실적 개선·개별 재료 소형주",
+        "stocks": [
+          {
+            "chg": 23.3,
+            "name": "케이엔알시스템",
+            "reason": "로봇 구동장치주 급등",
+            "tag": "동반"
+          },
+          {
+            "chg": 30,
+            "limit": true,
+            "name": "포톤",
+            "reason": "상한가, 이유 미확인"
+          },
+          {
+            "chg": 30,
+            "limit": true,
+            "name": "앤씨앤",
+            "reason": "상한가, 이유 미확인"
+          }
+        ]
+      }
+    ],
+    "updatedAt": "2026-10-01T15:00:00+09:00"
+  },
+  "status": "open"
+}

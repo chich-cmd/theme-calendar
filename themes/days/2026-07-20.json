@@ -1,0 +1,115 @@
+{
+  "date": "2026-07-20",
+  "main": {
+    "basis": "KRX 정규장 급등 53종목 분석 (7% 이상 53종목)",
+    "kosdaq": "-5.33%",
+    "kospi": "-4.46%",
+    "sources": [
+      {
+        "title": "이투데이 · 삼천당·가비아 급등 속 애국테마주 하한가 추락",
+        "url": "https://m.news.nate.com/view/20260720n27819"
+      }
+    ],
+    "summary": "코스피가 4.5% 급락한 가운데 '애국테마주'는 하한가로 꺾였고, AI 인프라·디지털헬스케어 등 개별 재료 소형주만 상한가였습니다.",
+    "themes": [
+      {
+        "lead": true,
+        "name": "헬스케어",
+        "reason": "디지털헬스케어·제약 개별주 강세",
+        "stocks": [
+          {
+            "chg": 29.9,
+            "limit": true,
+            "name": "레몬헬스케어",
+            "reason": "디지털헬스케어주 상한가"
+          },
+          {
+            "chg": 29.8,
+            "limit": true,
+            "name": "삼천당제약",
+            "reason": "제약주 상한가"
+          },
+          {
+            "chg": 27,
+            "name": "로킷헬스케어",
+            "reason": "재생의료주 급등",
+            "tag": "동반"
+          }
+        ]
+      },
+      {
+        "lead": true,
+        "name": "AI 인프라",
+        "reason": "도메인·AI 인프라 기업 상한가",
+        "stocks": [
+          {
+            "chg": 29.9,
+            "limit": true,
+            "name": "가비아",
+            "reason": "AI 인프라 기대에 상한가"
+          }
+        ]
+      },
+      {
+        "lead": true,
+        "name": "에너지",
+        "reason": "에너지주 강세",
+        "stocks": [
+          {
+            "chg": 7.5,
+            "name": "SK이터닉스",
+            "reason": "에너지주 강세, 거래대금 4,168억",
+            "tag": "동반"
+          },
+          {
+            "chg": 11.9,
+            "name": "흥구석유",
+            "reason": "석유주 강세",
+            "tag": "동반"
+          }
+        ]
+      },
+      {
+        "name": "기타(개별)",
+        "reason": "개별 재료 소형주",
+        "stocks": [
+          {
+            "chg": 30,
+            "limit": true,
+            "name": "고려산업",
+            "reason": "사료·소재주 상한가, 이유 미확인"
+          },
+          {
+            "chg": 29.8,
+            "limit": true,
+            "name": "미래생명자원",
+            "reason": "사료주 상한가",
+            "tag": "동반"
+          },
+          {
+            "chg": 14.9,
+            "name": "한일사료",
+            "reason": "사료주 급등",
+            "tag": "동반"
+          },
+          {
+            "chg": 30,
+            "limit": true,
+            "name": "STX그린로지스",
+            "reason": "물류주 상한가",
+            "tag": "동반"
+          },
+          {
+            "chg": 30,
+            "limit": true,
+            "name": "손오공",
+            "reason": "완구주 상한가",
+            "tag": "동반"
+          }
+        ]
+      }
+    ],
+    "updatedAt": "2026-10-01T15:00:00+09:00"
+  },
+  "status": "open"
+}

@@ -1,0 +1,128 @@
+{
+  "date": "2026-07-30",
+  "main": {
+    "basis": "KRX 정규장 급등 87종목 분석 (7% 이상 87종목)",
+    "kosdaq": "-2.70%",
+    "kospi": "-1.23%",
+    "sources": [
+      {
+        "title": "이투데이 · 금호건설·씨메스로보틱스 등 9개 종목 상한가",
+        "url": "https://www.etoday.co.kr/news/view/2609447"
+      },
+      {
+        "title": "뉴스핌 · 건설株 강세, 금호건설 상한가",
+        "url": "https://www.newspim.com/news/view/20260730000276"
+      }
+    ],
+    "summary": "조정장 속에서 호남 클러스터 기대에 건설주가 다시 상한가였고, 실적 호조에 화장품·식품주가 강했습니다.",
+    "themes": [
+      {
+        "lead": true,
+        "name": "호남 반도체 클러스터",
+        "reason": "건설주 재차 강세",
+        "stocks": [
+          {
+            "chg": 30,
+            "limit": true,
+            "name": "금호건설",
+            "reason": "건설주 상한가"
+          },
+          {
+            "chg": 30,
+            "limit": true,
+            "name": "금호건설우",
+            "reason": "보통주와 함께 상한가",
+            "tag": "동반"
+          },
+          {
+            "chg": 30,
+            "limit": true,
+            "name": "서산",
+            "reason": "건설자재주 상한가",
+            "tag": "동반"
+          },
+          {
+            "chg": 26.3,
+            "name": "남화토건",
+            "reason": "지역 건설주 급등",
+            "tag": "동반"
+          },
+          {
+            "chg": 8.6,
+            "name": "금호타이어",
+            "reason": "금호그룹주 강세",
+            "tag": "동반"
+          }
+        ]
+      },
+      {
+        "lead": true,
+        "name": "화장품",
+        "reason": "2분기 실적 기대에 화장품 대형주 강세",
+        "stocks": [
+          {
+            "chg": 9.9,
+            "name": "아모레퍼시픽",
+            "reason": "화장품 대형주 급등"
+          },
+          {
+            "chg": 11,
+            "name": "LG생활건강",
+            "reason": "화장품 대형주 급등"
+          }
+        ]
+      },
+      {
+        "lead": true,
+        "name": "조선",
+        "reason": "조선주 강세",
+        "stocks": [
+          {
+            "chg": 10,
+            "name": "HD한국조선해양",
+            "reason": "조선 대형주 10% 강세"
+          }
+        ]
+      },
+      {
+        "name": "기타(개별)",
+        "reason": "개별 종목",
+        "stocks": [
+          {
+            "chg": 29.9,
+            "limit": true,
+            "name": "레몬헬스케어",
+            "reason": "헬스케어주 상한가",
+            "tag": "동반"
+          },
+          {
+            "chg": 15.6,
+            "name": "JW신약",
+            "reason": "제약주 급등",
+            "tag": "동반"
+          },
+          {
+            "chg": 11.5,
+            "name": "매드업",
+            "reason": "급등, 이유 미확인"
+          },
+          {
+            "chg": 30,
+            "limit": true,
+            "name": "야스",
+            "reason": "상한가, 이유 미확인"
+          },
+          {
+            "chg": 29.9,
+            "limit": true,
+            "name": "씨메스로보틱스",
+            "reason": "로봇주 상한가",
+            "tag": "동반"
+          }
+        ]
+      }
+    ],
+    "updatedAt": "2026-10-01T15:00:00+09:00"
+  },
+  "status": "open"
+}

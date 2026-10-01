@@ -1,0 +1,106 @@
+{
+  "date": "2026-07-08",
+  "main": {
+    "basis": "KRX 정규장 급등 50종목 분석 (7% 이상 44종목)",
+    "kosdaq": "-5.56%",
+    "kospi": "-5.35%",
+    "sources": [
+      {
+        "title": "7월 8일 마감 시황",
+        "url": "https://firebat.co.kr/stock-blog/20260708-close"
+      }
+    ],
+    "summary": "코스피가 5% 넘게 급락한 가운데 대형 수주·계약 같은 개별 호재 종목만 상한가로 올랐습니다.",
+    "themes": [
+      {
+        "lead": true,
+        "name": "개별 호재",
+        "reason": "대규모 수주·계약 공시 종목 상한가",
+        "stocks": [
+          {
+            "chg": 30,
+            "limit": true,
+            "name": "다스코",
+            "reason": "태양광 발전 관련 대규모 수주 공시에 상한가"
+          },
+          {
+            "chg": 30,
+            "limit": true,
+            "name": "씨이랩",
+            "reason": "삼성SDS와 3,151억원 AI 계약 체결에 상한가"
+          }
+        ]
+      },
+      {
+        "lead": true,
+        "name": "호남 반도체 클러스터",
+        "reason": "금호그룹 재편 기대 지속",
+        "stocks": [
+          {
+            "chg": 29.9,
+            "limit": true,
+            "name": "금호전기",
+            "reason": "그룹 재편 기대에 상한가"
+          },
+          {
+            "chg": 30,
+            "limit": true,
+            "name": "데이타솔루션",
+            "reason": "호남 클러스터 수혜 기대에 상한가",
+            "tag": "동반"
+          },
+          {
+            "chg": 12.7,
+            "name": "서산",
+            "reason": "건설자재주 강세",
+            "tag": "동반"
+          },
+          {
+            "chg": 18,
+            "name": "동양파일",
+            "reason": "건설자재주 강세",
+            "tag": "동반"
+          }
+        ]
+      },
+      {
+        "lead": true,
+        "name": "화장품",
+        "reason": "K뷰티 수출 호재",
+        "stocks": [
+          {
+            "chg": 29.9,
+            "limit": true,
+            "name": "뷰티스킨",
+            "reason": "K뷰티 수출 기대에 상한가"
+          },
+          {
+            "chg": 18.4,
+            "name": "마녀공장",
+            "reason": "화장품주 급등",
+            "tag": "동반"
+          }
+        ]
+      },
+      {
+        "name": "기타(개별)",
+        "reason": "개별 종목",
+        "stocks": [
+          {
+            "chg": 14.7,
+            "name": "흥구석유",
+            "reason": "석유주 급등, 이유 미확인"
+          },
+          {
+            "chg": 12.9,
+            "name": "PS일렉트로닉스",
+            "reason": "전자부품주 강세",
+            "tag": "동반"
+          }
+        ]
+      }
+    ],
+    "updatedAt": "2026-10-01T15:00:00+09:00"
+  },
+  "status": "open"
+}
