@@ -117,6 +117,11 @@ h1 span { color: var(--muted); }
 .th-meta { font-size: 12px; color: var(--muted); white-space: nowrap; }
 .th-meta::after { content: " ▾"; }
 .theme.open .th-meta::after { content: " ▴"; }
+.streak { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 10px; font-size: 13px; color: var(--muted); background: var(--up-soft); border-radius: 8px; padding: 8px 11px; margin: 0 0 10px; font-variant-numeric: tabular-nums; }
+.streak b { color: var(--up); font-size: 17px; font-family: var(--f-num); font-weight: 500; }
+.sec.after .streak { background: var(--after-soft); }
+.sec.after .streak b { color: var(--after); }
+.th-badge { font-size: 11px; font-weight: 700; color: var(--up); border: 1px solid currentColor; border-radius: 999px; padding: 0 6px; margin-left: 6px; vertical-align: 2px; white-space: nowrap; }
 .th-reason { font-size: 13.5px; color: var(--muted); line-height: 1.55; margin: -4px 2px 10px; }
 .stocks { list-style: none; margin: 0 0 12px; padding: 0; display: grid; gap: 8px; }
 .stk { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 10px; background: var(--bg); border-radius: 8px; padding: 9px 11px; }
@@ -274,16 +279,36 @@ function stocksHtml(list) {
   }).join("")}</ul>`;
 }
 
+function threeMonthStart(dayId) {
+  const d = new Date(dayId + "T00:00:00Z");
+  d.setUTCMonth(d.getUTCMonth() - 3);
+  return isoOf(d);
+}
+// 최근 3개월(해당 날짜 포함) 동안 이 테마가 본장 주도 테마(lead)였던 횟수와 등장 횟수
+function themeStats(name, dayId) {
+  const start = threeMonthStart(dayId);
+  let lead = 0, seen = 0, base = 0;
+  for (const [id, d] of Object.entries(days)) {
+    if (id <= start || id > dayId || !d || d.status === "holiday") continue;
+    const ts = (d.main && d.main.themes) || [];
+    if (ts.length) base++;
+    const t = ts.find((x) => x.name === name);
+    if (t) { seen++; if (t.lead) lead++; }
+  }
+  return { lead, seen, base };
+}
+
 function themesHtml(id, sec, themes) {
   return themes.map((t, i) => {
     const isOpen = open && open.id === id && open.sec === sec && open.idx === i;
     const kind = sec === "after" && t.kind ? `<span class="kind">${esc(t.kind)}</span>` : "";
+    const st = themeStats(t.name, id);
     return `<div class="theme${t.lead ? " lead" : ""}${isOpen ? " open" : ""}">
       <button class="th-btn" data-id="${id}" data-sec="${sec}" data-idx="${i}" aria-expanded="${isOpen}">
-        <span class="th-name">${esc(t.name)}${kind}</span>
+        <span class="th-name">${esc(t.name)}${kind}${st.lead > 1 ? `<span class="th-badge">3개월 주도 ${st.lead}회</span>` : ""}</span>
         <span class="th-meta">주도주 ${(t.stocks || []).length}</span>
       </button>
-      ${isOpen ? `${t.reason ? `<p class="th-reason">${esc(t.reason)}</p>` : ""}${stocksHtml(t.stocks)}` : ""}
+      ${isOpen ? `<div class="streak"><span>최근 3개월 주도 테마 <b>${st.lead}</b>회</span><span>테마 등장 ${st.seen}회</span><span>기록 ${st.base}거래일 기준</span></div>${t.reason ? `<p class="th-reason">${esc(t.reason)}</p>` : ""}${stocksHtml(t.stocks)}` : ""}
     </div>`;
   }).join("");
 }
@@ -310,7 +335,20 @@ function renderSheet() {
   $("scrim").hidden = false;
   $("closeBtn").onclick = closeSheet;
 }
+async function ensureRange(dayId) {
+  const start = threeMonthStart(dayId);
+  const keys = Object.keys(monthsInfo).filter((k) => k >= start.slice(0, 7) && k <= dayId.slice(0, 7) && !loadedMonths.has(k));
+  if (!keys.length) return;
+  keys.forEach((k) => loadedMonths.add(k));
+  try {
+    const docs = await Promise.all(keys.map((k) => fetchJson(`themes/${k}.json`)));
+    docs.forEach((d) => { if (d) Object.assign(days, d); });
+  } catch (e) {}
+  renderCal();
+  if (open) { const y = $("sheet").scrollTop; renderSheet(); $("sheet").scrollTop = y; }
+}
 function openSheet(id, sec = null, idx = null) {
+  ensureRange(id);
   if (!days[id] || days[id].status === "holiday") return;
   if (sec === null) {
     const d = days[id];
