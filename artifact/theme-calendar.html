@@ -1,9 +1,3 @@
-<!doctype html>
-<html lang="ko">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="평일마다 자동으로 쌓이는 한국 주식 주도 테마 달력">
 <title>테마주 달력</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,8 +39,6 @@
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
-:root { padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
 body { background: var(--bg); color: var(--ink); font-family: var(--f-body); margin: 0; }
 .wrap { max-width: 1040px; margin: 0 auto; padding: 20px 16px 48px; }
 button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
@@ -151,8 +143,6 @@ h1 span { color: var(--muted); }
   @keyframes rise { from { transform: translateY(24px); opacity: .6; } to { transform: none; opacity: 1; } }
 }
 </style>
-</head>
-<body>
 
 <div class="wrap">
   <header class="top">
@@ -170,7 +160,6 @@ h1 span { color: var(--muted); }
   </div>
   <div class="grid-scroll"><div class="cal" id="cal"></div></div>
   <div id="msg"></div>
-  <footer class="note" style="margin-top:28px">기사·공시와 공개 시세(네이버페이 증권)를 바탕으로 자동 정리한 개인 참고용 기록이며 투자 권유가 아닙니다.</footer>
 </div>
 
 <div class="scrim" id="scrim" hidden></div>
@@ -195,9 +184,7 @@ let view = { y: T.y, m: T.m };
 let days = {};
 let loaded = false;
 let dbState = "loading"; // loading | ok | none | error
-let open = null;
-let monthsInfo = {};
-const loadedMonths = new Set(); // { id, sec, idx }
+let open = null; // { id, sec, idx }
 
 function weekdaysOfMonth(y, m) {
   const first = new Date(Date.UTC(y, m, 1));
@@ -226,7 +213,6 @@ const chgClass = (v) => (typeof v === "number" ? (v > 0 ? "up" : v < 0 ? "down" 
 function renderCal() {
   $("ym").textContent = `${view.y}년 ${view.m + 1}월`;
   renderMonths();
-  if (typeof ensureMonths === "function" && dbState !== "loading") ensureMonths();
   let html = DOW.map((d) => `<div class="dow">${d}</div>`).join("");
   for (const dt of weekdaysOfMonth(view.y, view.m)) {
     const id = isoOf(dt);
@@ -256,18 +242,18 @@ function renderCal() {
 }
 
 function renderMsg() {
-  const count = Object.keys(days).filter((k) => k.startsWith(`${view.y}-${pad(view.m + 1)}`) && days[k].status !== "holiday").length;
+  const count = Object.values(days).filter((d) => d.status !== "holiday").length;
   let m = "";
   if (dbState === "none") {
-    m = `<div class="empty">기록을 불러오지 못했습니다.</div>`;
+    m = `<div class="empty">이 화면에서는 저장된 기록을 불러올 수 없습니다. claude.ai에 로그인한 상태로 이 페이지를 열어 주세요.</div>`;
   } else if (dbState === "error") {
     m = `<div class="empty">기록을 불러오지 못했습니다. 잠시 후 새로고침해 주세요.</div>`;
   } else if (dbState === "loading") {
     m = `<div class="status">기록을 불러오는 중…</div>`;
   } else if (count === 0) {
-    m = `<div class="empty"><b>이 달에는 아직 기록이 없습니다.</b><br>평일 16시 30분 무렵 본장 테마가, 20시 40분 무렵 넥장 테마가 채워집니다.</div>`;
+    m = `<div class="empty"><b>아직 기록된 거래일이 없습니다.</b><br>평일 16:05에 본장 마감 테마가, 20:20에 넥장 마감 테마가 자동으로 채워집니다. 휴장일은 '휴장'으로 표시됩니다.</div>`;
   } else {
-    m = `<div class="status">이 달 기록 ${count}거래일 · 평일 16시 30분(본장), 20시 40분(넥장) 무렵 자동 갱신</div>`;
+    m = `<div class="status">기록된 거래일 ${count}일 · 본장은 16:05, 넥장은 20:20 이후 자동 갱신</div>`;
   }
   $("msg").innerHTML = m;
 }
@@ -352,20 +338,7 @@ function renderSheet() {
   $("scrim").hidden = false;
   $("closeBtn").onclick = closeSheet;
 }
-async function ensureRange(dayId) {
-  const start = threeMonthStart(dayId);
-  const keys = Object.keys(monthsInfo).filter((k) => k >= start.slice(0, 7) && k <= dayId.slice(0, 7) && !loadedMonths.has(k));
-  if (!keys.length) return;
-  keys.forEach((k) => loadedMonths.add(k));
-  try {
-    const docs = await Promise.all(keys.map((k) => fetchJson(`themes/${k}.json`)));
-    docs.forEach((d) => { if (d) Object.assign(days, d); });
-  } catch (e) {}
-  renderCal();
-  if (open) { const y = $("sheet").scrollTop; renderSheet(); $("sheet").scrollTop = y; }
-}
 function openSheet(id, sec = null, idx = null) {
-  ensureRange(id);
   if (!days[id] || days[id].status === "holiday") return;
   if (sec === null) {
     const d = days[id];
@@ -400,7 +373,7 @@ $("sheet").addEventListener("click", (e) => {
 $("scrim").onclick = closeSheet;
 document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeSheet(); });
 function renderMonths() {
-  const withData = new Set(Object.keys(monthsInfo).filter((k) => monthsInfo[k] > 0));
+  const withData = new Set(Object.keys(days).filter((k) => days[k].status !== "holiday").map((k) => k.slice(0, 7)));
   const dataYears = [...withData].map((k) => +k.slice(0, 4));
   const minY = Math.min(2025, view.y, ...dataYears);
   const ys = [];
@@ -425,35 +398,16 @@ $("months").addEventListener("click", (e) => {
 
 renderCal();
 
-async function fetchJson(path) {
-  const r = await fetch(path + "?t=" + Math.floor(Date.now() / 300000), { cache: "no-store" });
-  if (r.status === 404) return null;
-  if (!r.ok) throw new Error(r.status);
-  return r.json();
-}
-function monthKey(y, m) { const d = new Date(Date.UTC(y, m, 1)); return `${d.getUTCFullYear()}-${pad(d.getUTCMonth() + 1)}`; }
-async function ensureMonths() {
-  const keys = [monthKey(view.y, view.m - 1), monthKey(view.y, view.m), monthKey(view.y, view.m + 1)]
-    .filter((k) => !loadedMonths.has(k) && (monthsInfo[k] !== undefined || k === monthKey(view.y, view.m)));
-  if (!keys.length) return;
-  keys.forEach((k) => loadedMonths.add(k));
-  try {
-    const docs = await Promise.all(keys.map((k) => fetchJson(`themes/${k}.json`)));
-    docs.forEach((d) => { if (d) Object.assign(days, d); });
-    dbState = "ok";
-  } catch (e) { dbState = "error"; }
-  renderCal();
-  if (open) renderSheet();
-}
 (async () => {
-  try {
-    const info = await fetchJson("themes/months.json");
-    monthsInfo = (info && info.months) || {};
-  } catch (e) { dbState = "error"; renderMsg(); return; }
-  await ensureMonths();
-  if (dbState === "loading") { dbState = "ok"; renderCal(); }
+  const db = window.claude && window.claude.use ? await window.claude.use("db") : null;
+  if (!db) { dbState = "none"; renderMsg(); return; }
+  db.collection("days").onSnapshot((snap) => {
+    const next = {};
+    snap.docs.forEach((d) => { if (d.exists) next[d.id] = d.data(); });
+    days = next;
+    dbState = "ok";
+    renderCal();
+    if (open) renderSheet();
+  }, () => { dbState = "error"; renderMsg(); });
 })();
 </script>
-
-</body>
-</html>
