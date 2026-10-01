@@ -1,0 +1,4 @@
+collector/settings.json
+collector/state/
+collector/logs/
+collector/out/
