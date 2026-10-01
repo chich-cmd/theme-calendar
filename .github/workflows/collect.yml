@@ -32,7 +32,7 @@ jobs:
           elif [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             echo "mode=${{ github.event.inputs.mode }}" >> $GITHUB_OUTPUT
           else
-            echo "mode=after" >> $GITHUB_OUTPUT  # TEMP rerun
+            echo "mode=test" >> $GITHUB_OUTPUT
           fi
       - name: Collect
         run: |
