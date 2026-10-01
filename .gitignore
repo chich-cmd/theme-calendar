@@ -1,4 +1,1 @@
-collector/settings.json
-collector/state/
-collector/logs/
-collector/out/
+data/_test/
