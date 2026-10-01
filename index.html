@@ -583,6 +583,19 @@ async function ensureAll() {
   } catch (e) { keys.forEach((k) => loadedMonths.delete(k)); }
   renderCal();
 }
+// 페이지가 브라우저에 예전 버전으로 남아 있으면 최신 버전으로 한 번 새로고침
+const BUILD = "2026-10-02a";
+(async () => {
+  try {
+    const r = await fetch("index.html?b=" + Date.now(), { cache: "no-store" });
+    const m = (await r.text()).match(/const BUILD = "([^"]+)"/);
+    if (m && m[1] !== BUILD) {
+      let tried = null;
+      try { tried = sessionStorage.getItem("reloadFor"); sessionStorage.setItem("reloadFor", m[1]); } catch (e) {}
+      if (tried !== m[1]) location.reload();
+    }
+  } catch (e) {}
+})();
 (async () => {
   try {
     const info = await fetchJson("themes/months.json");
