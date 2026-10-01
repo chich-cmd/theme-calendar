@@ -270,7 +270,9 @@ function renderMsg() {
 }
 
 function stocksHtml(list) {
-  return `<ul class="stocks">${(list || []).map((s) => {
+  // 주도주는 등락률 높은 순 (숫자가 아닌 값은 맨 뒤)
+  const sorted = [...(list || [])].sort((a, b) => (typeof b.chg === "number" ? b.chg : -Infinity) - (typeof a.chg === "number" ? a.chg : -Infinity));
+  return `<ul class="stocks">${sorted.map((s) => {
     const limit = s.limit || (typeof s.chg === "number" && s.chg >= 29.5);
     const tag = s.tag ? `<span class="chip tag">${esc(s.tag)}</span>` : "";
     return `<li class="stk"><span class="stk-name">${esc(s.name)}${limit ? '<span class="chip limit">상한가</span>' : ""}${tag}</span>
