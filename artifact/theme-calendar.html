@@ -137,6 +137,26 @@ h1 span { color: var(--muted); }
 .srcs a { color: var(--muted); word-break: break-all; }
 .note { font-size: 11.5px; color: var(--muted); margin-top: 16px; line-height: 1.6; }
 
+.search { position: relative; margin: 2px 0 12px; }
+.search input { width: 100%; font: inherit; font-size: 15px; padding: 10px 36px 10px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--paper); color: var(--ink); }
+.search input:focus { outline: 2px solid var(--ink); outline-offset: -1px; }
+.search .clr { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); font-size: 18px; color: var(--muted); padding: 4px 8px; }
+.sres { margin: 0 0 16px; display: grid; gap: 10px; }
+.sres .hint { font-size: 13px; color: var(--muted); }
+.scard { border: 1px solid var(--line); border-radius: 10px; padding: 11px 12px; background: var(--paper); }
+.scard h4 { margin: 0; font-size: 16px; display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
+.scard h4 small { font-size: 11px; font-weight: 700; color: var(--muted); border: 1px solid var(--line); border-radius: 4px; padding: 0 5px; }
+.scount { display: flex; flex-wrap: wrap; gap: 4px 14px; font-size: 13px; color: var(--muted); margin: 6px 0 8px; font-variant-numeric: tabular-nums; }
+.scount b { color: var(--up); font-family: var(--f-num); font-weight: 500; font-size: 17px; }
+.scount .af b { color: var(--after); }
+.smon { display: grid; grid-template-columns: 44px 1fr; gap: 4px 6px; align-items: start; margin-top: 4px; }
+.smon > span { font-size: 12.5px; font-weight: 700; color: var(--muted); padding-top: 5px; }
+.sdays { display: flex; flex-wrap: wrap; gap: 5px; }
+.sday { font-size: 12.5px; border: 1px solid var(--line); border-radius: 6px; padding: 3px 7px; background: var(--bg); font-variant-numeric: tabular-nums; text-align: left; }
+.sday.lead { border-color: var(--up); color: var(--up); font-weight: 700; }
+.sday.af { border-color: var(--after); color: var(--after); }
+.sday em { font-style: normal; font-size: 11px; opacity: .8; margin-left: 3px; }
+
 @media (max-width: 560px) {
   .cell { min-height: 96px; padding: 4px 4px 6px; }
   .t { font-size: 11px; }
@@ -156,6 +176,11 @@ h1 span { color: var(--muted); }
       <h1>주식 테마주 <span>달력</span></h1>
     </div>
   </header>
+  <div class="search">
+    <input id="q" type="text" enterkeyhint="search" placeholder="테마·종목 검색 (예: 원익IPS, 로봇)" autocomplete="off" aria-label="테마 또는 종목 검색">
+    <button class="clr" id="qclr" aria-label="검색어 지우기" hidden>×</button>
+  </div>
+  <div class="sres" id="sres" hidden></div>
   <div class="months" id="months" role="tablist" aria-label="월 선택"></div>
   <div class="legend">
     <span><i style="background:var(--up)"></i>본장 주도 테마</span>
@@ -415,6 +440,86 @@ $("months").addEventListener("click", (e) => {
   if (!b || b.disabled) return;
   view.m = +b.dataset.m;
   renderCal();
+});
+
+// ---------- 검색: 테마/종목이 언제, 몇 번 올랐는지 ----------
+const norm = (s) => String(s || "").toLowerCase().replace(/[\s·.,()\-_/]/g, "");
+function searchIndex() {
+  const themes = new Map(), stocks = new Map();
+  const add = (map, name, rec) => { if (!map.has(name)) map.set(name, []); map.get(name).push(rec); };
+  for (const [id, d] of Object.entries(days)) {
+    if (!d || d.status === "holiday") continue;
+    for (const sec of ["main", "after"]) {
+      (d[sec]?.themes || []).forEach((t, idx) => {
+        add(themes, t.name, { id, sec, idx, lead: !!t.lead, n: (t.stocks || []).length });
+        for (const s of t.stocks || []) add(stocks, s.name, { id, sec, idx, theme: t.name, chg: s.chg, nxt: s.nxt, lead: !!t.lead });
+      });
+    }
+  }
+  return { themes, stocks };
+}
+function groupByMonth(recs) {
+  const m = new Map();
+  for (const r of [...recs].sort((a, b) => (a.id < b.id ? 1 : a.id > b.id ? -1 : a.sec === "main" ? -1 : 1))) {
+    const k = r.id.slice(0, 7);
+    if (!m.has(k)) m.set(k, []);
+    m.get(k).push(r);
+  }
+  return m;
+}
+function monthsHtml(recs, chipFn) {
+  return [...groupByMonth(recs)].map(([k, arr]) => `<div class="smon"><span>${+k.slice(5)}월</span><div class="sdays">${arr.map(chipFn).join("")}</div></div>`).join("");
+}
+function themeCard(name, recs) {
+  const mainDays = new Set(recs.filter((r) => r.sec === "main").map((r) => r.id));
+  const leadDays = new Set(recs.filter((r) => r.sec === "main" && r.lead).map((r) => r.id));
+  const afDays = new Set(recs.filter((r) => r.sec === "after").map((r) => r.id));
+  const chip = (r) => `<button class="sday${r.sec === "after" ? " af" : r.lead ? " lead" : ""}" data-id="${r.id}" data-sec="${r.sec}" data-idx="${r.idx}">${+r.id.slice(8)}일<em>${r.sec === "after" ? "넥장" : r.lead ? "주도" : ""} ${r.n}종목</em></button>`;
+  return `<div class="scard"><h4>${esc(name)} <small>테마</small></h4>
+    <div class="scount"><span>본장 등장 <b>${mainDays.size}</b>회</span><span>그중 주도 <b>${leadDays.size}</b>회</span>${afDays.size ? `<span class="af">넥장 <b>${afDays.size}</b>회</span>` : ""}</div>
+    ${monthsHtml(recs, chip)}</div>`;
+}
+function stockCard(name, recs) {
+  const dayIds = new Set(recs.map((r) => r.id));
+  const mainDays = new Set(recs.filter((r) => r.sec === "main").map((r) => r.id));
+  const afDays = new Set(recs.filter((r) => r.sec === "after").map((r) => r.id));
+  const themeCnt = {};
+  recs.forEach((r) => { themeCnt[r.theme] = (themeCnt[r.theme] || 0) + 1; });
+  const topThemes = Object.entries(themeCnt).sort((a, b) => b[1] - a[1]).slice(0, 4).map(([t, c]) => `${esc(t)} ${c}`).join(" · ");
+  const chip = (r) => `<button class="sday${r.sec === "after" ? " af" : r.lead ? " lead" : ""}" data-id="${r.id}" data-sec="${r.sec}" data-idx="${r.idx}" title="${esc(r.theme)}">${+r.id.slice(8)}일 ${r.sec === "after" ? "넥장 " : ""}${typeof r.chg === "number" ? fmtChg(r.chg) : ""}<em>${esc(r.theme)}</em></button>`;
+  return `<div class="scard"><h4>${esc(name)} <small>종목</small></h4>
+    <div class="scount"><span>상승 기록 <b>${dayIds.size}</b>일</span><span>본장 <b>${mainDays.size}</b>회</span>${afDays.size ? `<span class="af">넥장 <b>${afDays.size}</b>회</span>` : ""}</div>
+    <div class="th-reason" style="margin:0 0 6px">테마: ${topThemes}</div>
+    ${monthsHtml(recs, chip)}</div>`;
+}
+let searchTimer = null;
+async function runSearch() {
+  const raw = $("q").value.trim();
+  $("qclr").hidden = !raw;
+  const box = $("sres");
+  if (!raw) { box.hidden = true; box.innerHTML = ""; return; }
+  box.hidden = false;
+  if (typeof ensureAll === "function" && !allLoaded) { box.innerHTML = '<p class="hint">전체 기록을 불러오는 중…</p>'; await ensureAll(); }
+  const q = norm(raw);
+  const { themes, stocks } = searchIndex();
+  const score = (name) => { const n = norm(name); return n === q ? 0 : n.startsWith(q) ? 1 : n.includes(q) ? 2 : -1; };
+  const hits = [];
+  for (const [name, recs] of themes) { const s = score(name); if (s >= 0) hits.push({ s, kind: 0, name, recs }); }
+  for (const [name, recs] of stocks) { const s = score(name); if (s >= 0) hits.push({ s, kind: 1, name, recs }); }
+  hits.sort((a, b) => a.s - b.s || b.recs.length - a.recs.length || a.kind - b.kind);
+  const ids = Object.keys(days).filter((k) => days[k]?.status !== "holiday").sort();
+  const range = ids.length ? `${+ids[0].slice(5, 7)}월 ${+ids[0].slice(8)}일 ~ ${+ids.at(-1).slice(5, 7)}월 ${+ids.at(-1).slice(8)}일 기록 ${ids.length}거래일 기준` : "";
+  if (!hits.length) { box.innerHTML = `<p class="hint">“${esc(raw)}” 기록이 없습니다. ${range}</p>`; return; }
+  const shown = hits.slice(0, 6);
+  box.innerHTML = `<p class="hint">${range} · 날짜를 누르면 그날 기록이 열립니다</p>` +
+    shown.map((h) => (h.kind === 0 ? themeCard(h.name, h.recs) : stockCard(h.name, h.recs))).join("") +
+    (hits.length > shown.length ? `<p class="hint">외 ${hits.length - shown.length}개 — 검색어를 더 구체적으로 입력해 보세요</p>` : "");
+}
+$("q").addEventListener("input", () => { clearTimeout(searchTimer); searchTimer = setTimeout(runSearch, 200); });
+$("qclr").onclick = () => { $("q").value = ""; runSearch(); $("q").focus(); };
+$("sres").addEventListener("click", (e) => {
+  const b = e.target.closest(".sday");
+  if (b) openSheet(b.dataset.id, b.dataset.sec, +b.dataset.idx);
 });
 
 renderCal();
