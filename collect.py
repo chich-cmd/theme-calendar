@@ -140,20 +140,35 @@ def run_after():
             except Exception as e:
                 print("list fail", mk, kind, e)
     meta = {s["itemCode"]: s for s in rows}
+    # 본장 급등 종목은 목록 조회 결과와 상관없이 반드시 넥장 시세를 확인한다
+    try:
+        with open(os.path.join(ROOT, "data", TODAY, "main.json"), encoding="utf-8") as fp:
+            for s in json.load(fp).get("stocks", []):
+                meta.setdefault(s["code"], {"itemCode": s["code"], "stockName": s["name"], "_market": s.get("market")})
+    except (OSError, ValueError):
+        pass
     codes = list(meta)
-    moved, sessions, nxt_map = [], {}, {}
+    moved, sessions, nxt_map, samples, no_nxt = [], {}, {}, {}, []
+    SAMPLE = {"005930", "240810", "425420", "089030"}
     for i in range(0, len(codes), 60):
         d = get("https://polling.finance.naver.com/api/realtime/domestic/stock/" + ",".join(codes[i:i + 60]))
         for it in d.get("datas", []):
+            if it.get("itemCode") in SAMPLE:
+                samples[it["itemCode"]] = it
             o = it.get("overMarketPriceInfo")
             if not o:
+                no_nxt.append(it.get("stockName"))
                 continue   # NXT 거래 대상이 아닌 종목
             st = o.get("tradingSessionType")
             sessions[st] = sessions.get(st, 0) + 1
             close, over = f(it.get("closePriceRaw")), f(o.get("overPrice"))
-            if close and over:
-                # 모든 NXT 종목의 [넥장 등락률(종가 대비), 본장 등락률] — 달력에 "본장 x% · 넥장 y%" 표시용
-                nxt_map[it["stockName"]] = [round((over / close - 1) * 100, 2), f(it.get("fluctuationsRatioRaw"))]
+            cmp_ = f(it.get("compareToPreviousClosePriceRaw"))
+            prev = close - cmp_ if close and cmp_ is not None else None
+            if over:
+                # 달력 표시용: NXT 최종가와 전일 종가 (넥장 최종 등락률 = over / prev - 1)
+                nxt_map[it["stockName"]] = {"over": over, "close": close, "prev": prev,
+                                            "ratio": f(it.get("fluctuationsRatioRaw")),
+                                            "nxt_eok": round((f(o.get("accumulatedTradingValueRaw")) or 0) / 1e8)}
             if not close or not over or over == close:
                 continue
             m = meta.get(it["itemCode"], {})
@@ -169,7 +184,7 @@ def run_after():
     save("after", {"date": TODAY, "status": "open", "source": "naver-finance",
                    "rule": f"KRX 종가 대비 NXT 장후 가격 {AFTER_MIN_RATE}% 이상",
                    "sessions": sessions, "moved_count": len(moved), "stocks": up, "down": down,
-                   "nxt_map": nxt_map})
+                   "nxt_map": nxt_map, "no_nxt": no_nxt[:200], "debug_samples": samples})
 
 
 if __name__ == "__main__":
