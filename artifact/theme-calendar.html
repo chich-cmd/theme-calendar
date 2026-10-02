@@ -18,6 +18,7 @@
   --after-soft: #efe8fb;
   --holiday: #2f7d3a;
   --today: #fff6d6;
+  --hl: #ffe45c;
   --accent: #e08a1e;
   --shadow: 0 -8px 30px rgba(20, 24, 50, .18);
   --f-display: "Black Han Sans", "IBM Plex Sans KR", sans-serif;
@@ -28,14 +29,14 @@
   :root:not([data-theme="light"]) {
     --bg: #12141f; --paper: #1a1d2b; --ink: #e6e8f2; --muted: #9399b5; --line: #2e3247; --rule: #8d96d8;
     --up: #ff5a68; --up-soft: #3a1c24; --down: #6c9dff; --after: #b89bff; --after-soft: #2b2342;
-    --holiday: #6fcf7c; --today: #2c2a1c; --accent: #f0a443; --shadow: 0 -8px 30px rgba(0,0,0,.5);
+    --holiday: #6fcf7c; --hl: rgba(255, 214, 0, .38); --today: #2c2a1c; --accent: #f0a443; --shadow: 0 -8px 30px rgba(0,0,0,.5);
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --bg: #12141f; --paper: #1a1d2b; --ink: #e6e8f2; --muted: #9399b5; --line: #2e3247; --rule: #8d96d8;
   --up: #ff5a68; --up-soft: #3a1c24; --down: #6c9dff; --after: #b89bff; --after-soft: #2b2342;
-  --holiday: #6fcf7c; --today: #2c2a1c; --accent: #f0a443; --shadow: 0 -8px 30px rgba(0,0,0,.5);
+  --holiday: #6fcf7c; --hl: rgba(255, 214, 0, .38); --today: #2c2a1c; --accent: #f0a443; --shadow: 0 -8px 30px rgba(0,0,0,.5);
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
@@ -117,6 +118,8 @@ h1 span { color: var(--muted); }
 .cycle { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 12.5px; color: var(--muted); margin: -4px 0 10px; padding: 0 2px; font-variant-numeric: tabular-nums; }
 .cycle b { color: var(--ink); font-family: var(--f-num); font-weight: 500; font-size: 14px; }
 .cycle-note { font-size: 11px; opacity: .8; }
+mark.hl { -webkit-box-decoration-break: clone; box-decoration-break: clone; background: linear-gradient(transparent 52%, var(--hl) 52%, var(--hl) 92%, transparent 92%); color: inherit; }
+mark.hl { padding: 0 1px; }
 .th-reason { font-size: 13.5px; color: var(--muted); line-height: 1.55; margin: -4px 2px 10px; }
 .stocks { list-style: none; margin: 0 0 12px; padding: 0; display: grid; gap: 8px; }
 .stk { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 10px; background: var(--bg); border-radius: 8px; padding: 9px 11px; }
@@ -189,6 +192,7 @@ h1 span { color: var(--muted); }
     <span><i style="background:var(--up)"></i>본장 주도 테마</span>
     <span><i style="background:var(--ink)"></i>기타 테마</span>
     <span><i style="background:var(--after)"></i>넥장(장후) 테마</span>
+    <span><mark class="hl">형광펜</mark> 그날 주도주가 가장 많은 테마</span>
     <span>테마를 누르면 주도주가 나옵니다</span>
   </div>
   <div class="grid-scroll"><div class="cal" id="cal"></div></div>
@@ -262,7 +266,8 @@ function renderCal() {
       const main = (doc.main && doc.main.themes) || [];
       const after = (doc.after && doc.after.themes) || [];
       const showMain = main.slice(0, 4);
-      body += showMain.map((t, i) => `<button class="t${t.lead ? " lead" : ""}" data-id="${id}" data-sec="main" data-idx="${i}">${esc(t.name)}</button>`).join("");
+      const top = topThemeIdx(main);
+      body += showMain.map((t, i) => `<button class="t${t.lead ? " lead" : ""}${i === top ? " top" : ""}" data-id="${id}" data-sec="main" data-idx="${i}">${i === top ? `<mark class="hl">${esc(t.name)}</mark>` : esc(t.name)}</button>`).join("");
       if (main.length > 4) body += `<span class="more">외 ${main.length - 4}개</span>`;
       body += after.slice(0, 2).map((t, i) => `<button class="t after" data-id="${id}" data-sec="after" data-idx="${i}">${esc(t.name)}</button>`).join("");
       if (!main.length && !after.length) body = `<span class="pending">집계 중</span>`;
@@ -351,6 +356,16 @@ function themeStats(name, dayId) {
 }
 
 // 최근 3개월(해당 날짜 포함) 안의 기록만으로 주도 테마 순환 주기를 계산한다. 3개월 이전 기록은 쓰지 않는다.
+// 그날 주도주(종목 수)가 가장 많은 본장 테마 1개 (기타·개별 묶음은 제외, 같으면 앞 순위)
+function topThemeIdx(themes) {
+  let best = -1, n = 0;
+  (themes || []).forEach((t, i) => {
+    if (/^기타/.test(t.name) || /개별/.test(t.name)) return;
+    const c = (t.stocks || []).length;
+    if (c > n) { n = c; best = i; }
+  });
+  return best;
+}
 function cycleStats(name, dayId) {
   const start = threeMonthStart(dayId);
   const ids = Object.keys(days).filter((id) => id > start && id <= dayId && days[id] && days[id].status !== "holiday" && ((days[id].main && days[id].main.themes) || []).length).sort();
@@ -383,7 +398,7 @@ function themesHtml(id, sec, themes) {
     const st = themeStats(t.name, id);
     return `<div class="theme${t.lead ? " lead" : ""}${isOpen ? " open" : ""}">
       <button class="th-btn" data-id="${id}" data-sec="${sec}" data-idx="${i}" aria-expanded="${isOpen}">
-        <span class="th-name">${esc(t.name)}${kind}${st.lead > 1 ? `<span class="th-badge">3개월 주도 ${st.lead}회</span>` : ""}</span>
+        <span class="th-name">${sec === "main" && i === topThemeIdx(themes) ? `<mark class="hl">${esc(t.name)}</mark>` : esc(t.name)}${kind}${st.lead > 1 ? `<span class="th-badge">3개월 주도 ${st.lead}회</span>` : ""}</span>
         <span class="th-meta">주도주 ${(t.stocks || []).length}</span>
       </button>
       ${isOpen ? `<div class="streak"><span>최근 3개월 주도 테마 <b>${st.lead}</b>회</span><span>테마 등장 ${st.seen}회</span><span>기록 ${st.base}거래일 기준</span></div>${sec === "main" ? cycleHtml(t.name, id) : ""}${t.reason ? `<p class="th-reason">${esc(t.reason)}</p>` : ""}${stocksHtml(t.stocks)}` : ""}
