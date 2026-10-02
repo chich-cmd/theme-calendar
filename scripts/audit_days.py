@@ -196,12 +196,17 @@ def audit(day, doc, lst, ref, amount_of):
             continue
         amt = sum(amount_of.get(s["name"], 0) for s in t["stocks"])
         scored.append((len(t["stocks"]), amt, t["name"]))
-    rank_n = {n: i for i, (_, _, n) in enumerate(sorted(scored, key=lambda x: -x[0]))}
-    rank_a = {n: i for i, (_, _, n) in enumerate(sorted(scored, key=lambda x: -x[1]))}
-    top = sorted(scored, key=lambda x: (rank_n[x[2]] + rank_a[x[2]], -x[0]))
-    # 주도 테마는 기사로 확인한 기존 판단을 유지한다(종목 수가 늘어도 바꾸지 않음)
+    # 주도 테마: 종목 수 비중 + 거래대금 비중 합계 상위 3개 (2종목 이상, 기타·신규상장 제외)
+    tot_n = sum(c for c, _, _ in scored) or 1
+    tot_a = sum(a for _, a, _ in scored) or 1
+    top = sorted(scored, key=lambda x: -(x[0] / tot_n + x[1] / tot_a))
     old_leads = {t["name"] for t in themes if t.get("lead")}
-    leads = old_leads
+    leads = set([n for c, a, n in top if c >= 2][:3])
+    for t in themes:
+        if t["name"] in leads:
+            t["lead"] = True
+        else:
+            t.pop("lead", None)
     key = {n: i for i, (_, _, n) in enumerate(top)}
     themes.sort(key=lambda t: (0 if t.get("lead") else 1, 2 if is_etc(t["name"]) else (1 if t["name"] == "신규상장주" else 0),
                                key.get(t["name"], 99), -len(t["stocks"])))
