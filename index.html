@@ -122,6 +122,9 @@ h1 span { color: var(--muted); }
 .sec.after .streak { background: var(--after-soft); }
 .sec.after .streak b { color: var(--after); }
 .th-badge { font-size: 11px; font-weight: 700; color: var(--up); border: 1px solid currentColor; border-radius: 999px; padding: 0 6px; margin-left: 6px; vertical-align: 2px; white-space: nowrap; }
+.cycle { display: flex; flex-wrap: wrap; gap: 4px 12px; font-size: 12.5px; color: var(--muted); margin: -4px 0 10px; padding: 0 2px; font-variant-numeric: tabular-nums; }
+.cycle b { color: var(--ink); font-family: var(--f-num); font-weight: 500; font-size: 14px; }
+.cycle-note { font-size: 11px; opacity: .8; }
 .th-reason { font-size: 13.5px; color: var(--muted); line-height: 1.55; margin: -4px 2px 10px; }
 .stocks { list-style: none; margin: 0 0 12px; padding: 0; display: grid; gap: 8px; }
 .stk { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 10px; background: var(--bg); border-radius: 8px; padding: 9px 11px; }
@@ -361,6 +364,32 @@ function themeStats(name, dayId) {
   return { lead, seen, base };
 }
 
+// 최근 3개월(해당 날짜 포함) 안의 기록만으로 주도 테마 순환 주기를 계산한다. 3개월 이전 기록은 쓰지 않는다.
+function cycleStats(name, dayId) {
+  const start = threeMonthStart(dayId);
+  const ids = Object.keys(days).filter((id) => id > start && id <= dayId && days[id] && days[id].status !== "holiday" && ((days[id].main && days[id].main.themes) || []).length).sort();
+  const leadIdx = [];
+  ids.forEach((id, i) => { if (days[id].main.themes.some((t) => t.name === name && t.lead)) leadIdx.push(i); });
+  if (leadIdx.length < 3) return null;
+  const gaps = leadIdx.slice(1).map((v, i) => v - leadIdx[i]);
+  const avg = (a) => a.reduce((s, x) => s + x, 0) / a.length;
+  const runs = [];
+  let r = 1;
+  for (const g of gaps) { if (g === 1) r++; else { runs.push(r); r = 1; } }
+  runs.push(r);
+  const back = gaps.filter((g) => g > 1);
+  const since = ids.length - 1 - leadIdx[leadIdx.length - 1];
+  return { every: avg(gaps), back: back.length ? avg(back) : null, run: avg(runs), since };
+}
+function cycleHtml(name, dayId) {
+  const c = cycleStats(name, dayId);
+  if (!c) return "";
+  const f = (v) => (Math.round(v * 10) / 10).toString();
+  const parts = [`평균 <b>${f(c.every)}</b>거래일마다 주도`, `한 번에 ${f(c.run)}일 지속`];
+  if (c.back !== null) parts.push(`쉬었다 다시 오기까지 ${f(c.back)}일`);
+  parts.push(c.since === 0 ? "오늘 주도" : `마지막 주도 후 ${c.since}거래일째`);
+  return `<div class="cycle">${parts.map((p) => `<span>${p}</span>`).join("")}<span class="cycle-note">최근 3개월 기록만 계산</span></div>`;
+}
 function themesHtml(id, sec, themes) {
   return themes.map((t, i) => {
     const isOpen = open && open.id === id && open.sec === sec && open.idx === i;
@@ -371,7 +400,7 @@ function themesHtml(id, sec, themes) {
         <span class="th-name">${esc(t.name)}${kind}${st.lead > 1 ? `<span class="th-badge">3개월 주도 ${st.lead}회</span>` : ""}</span>
         <span class="th-meta">주도주 ${(t.stocks || []).length}</span>
       </button>
-      ${isOpen ? `<div class="streak"><span>최근 3개월 주도 테마 <b>${st.lead}</b>회</span><span>테마 등장 ${st.seen}회</span><span>기록 ${st.base}거래일 기준</span></div>${t.reason ? `<p class="th-reason">${esc(t.reason)}</p>` : ""}${stocksHtml(t.stocks)}` : ""}
+      ${isOpen ? `<div class="streak"><span>최근 3개월 주도 테마 <b>${st.lead}</b>회</span><span>테마 등장 ${st.seen}회</span><span>기록 ${st.base}거래일 기준</span></div>${sec === "main" ? cycleHtml(t.name, id) : ""}${t.reason ? `<p class="th-reason">${esc(t.reason)}</p>` : ""}${stocksHtml(t.stocks)}` : ""}
     </div>`;
   }).join("");
 }
@@ -584,7 +613,7 @@ async function ensureAll() {
   renderCal();
 }
 // 페이지가 브라우저에 예전 버전으로 남아 있으면 최신 버전으로 한 번 새로고침
-const BUILD = "2026-10-02a";
+const BUILD = "2026-10-02b";
 (async () => {
   try {
     const r = await fetch("index.html?b=" + Date.now(), { cache: "no-store" });
