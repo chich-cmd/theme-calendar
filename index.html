@@ -25,6 +25,7 @@
   --holiday: #2f7d3a;
   --today: #fff6d6;
   --hl: #ffe45c;
+  --hl2: #b8f07a;
   --accent: #e08a1e;
   --shadow: 0 -8px 30px rgba(20, 24, 50, .18);
   --f-display: "Black Han Sans", "IBM Plex Sans KR", sans-serif;
@@ -35,14 +36,14 @@
   :root:not([data-theme="light"]) {
     --bg: #12141f; --paper: #1a1d2b; --ink: #e6e8f2; --muted: #9399b5; --line: #2e3247; --rule: #8d96d8;
     --up: #ff5a68; --up-soft: #3a1c24; --down: #6c9dff; --after: #b89bff; --after-soft: #2b2342;
-    --holiday: #6fcf7c; --hl: rgba(255, 214, 0, .38); --today: #2c2a1c; --accent: #f0a443; --shadow: 0 -8px 30px rgba(0,0,0,.5);
+    --holiday: #6fcf7c; --hl: rgba(255, 214, 0, .38); --hl2: rgba(140, 230, 80, .38); --today: #2c2a1c; --accent: #f0a443; --shadow: 0 -8px 30px rgba(0,0,0,.5);
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --bg: #12141f; --paper: #1a1d2b; --ink: #e6e8f2; --muted: #9399b5; --line: #2e3247; --rule: #8d96d8;
   --up: #ff5a68; --up-soft: #3a1c24; --down: #6c9dff; --after: #b89bff; --after-soft: #2b2342;
-  --holiday: #6fcf7c; --hl: rgba(255, 214, 0, .38); --today: #2c2a1c; --accent: #f0a443; --shadow: 0 -8px 30px rgba(0,0,0,.5);
+  --holiday: #6fcf7c; --hl: rgba(255, 214, 0, .38); --hl2: rgba(140, 230, 80, .38); --today: #2c2a1c; --accent: #f0a443; --shadow: 0 -8px 30px rgba(0,0,0,.5);
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
@@ -128,6 +129,8 @@ h1 span { color: var(--muted); }
 .cycle-note { font-size: 11px; opacity: .8; }
 mark.hl { -webkit-box-decoration-break: clone; box-decoration-break: clone; background: linear-gradient(transparent 52%, var(--hl) 52%, var(--hl) 92%, transparent 92%); color: inherit; }
 mark.hl { padding: 0 1px; }
+mark.hl.lim { background: linear-gradient(transparent 52%, var(--hl2) 52%, var(--hl2) 92%, transparent 92%); }
+mark.hl.both { background: linear-gradient(transparent 52%, var(--hl) 52%, var(--hl) 74%, var(--hl2) 74%, var(--hl2) 96%, transparent 96%); }
 .th-reason { font-size: 13.5px; color: var(--muted); line-height: 1.55; margin: -4px 2px 10px; }
 .stocks { list-style: none; margin: 0 0 12px; padding: 0; display: grid; gap: 8px; }
 .stk { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 10px; background: var(--bg); border-radius: 8px; padding: 9px 11px; }
@@ -278,10 +281,11 @@ function renderCal() {
       cls.push("has");
       const main = (doc.main && doc.main.themes) || [];
       const after = (doc.after && doc.after.themes) || [];
-      const showMain = main.slice(0, 4);
-      const top = topThemeIdx(main);
-      body += showMain.map((t, i) => `<button class="t${t.lead ? " lead" : ""}${i === top ? " top" : ""}" data-id="${id}" data-sec="main" data-idx="${i}">${i === top ? `<mark class="hl">${esc(t.name)}</mark>` : esc(t.name)}</button>`).join("");
-      if (main.length > 4) body += `<span class="more">외 ${main.length - 4}개</span>`;
+      const top = topThemeIdx(main), lim = limitThemeIdx(main);
+      // 처음 4개 테마 + (형광펜 테마가 뒤에 있으면 함께 표시)
+      const showIdx = main.map((_, i) => i).filter((i) => i < 4 || i === top || i === lim);
+      body += showIdx.map((i) => { const t = main[i]; return `<button class="t${t.lead ? " lead" : ""}${i === top ? " top" : ""}" data-id="${id}" data-sec="main" data-idx="${i}">${hlName(t.name, i, top, lim)}</button>`; }).join("");
+      if (main.length > showIdx.length) body += `<span class="more">외 ${main.length - showIdx.length}개</span>`;
       body += after.slice(0, 2).map((t, i) => `<button class="t after" data-id="${id}" data-sec="after" data-idx="${i}">${esc(t.name)}</button>`).join("");
       if (!main.length && !after.length) body = `<span class="pending">집계 중</span>`;
       if (doc.main && doc.main.kosdaq != null) idxTxt = `<span class="idx">Q ${esc(doc.main.kosdaq)}</span>`;
@@ -379,6 +383,22 @@ function topThemeIdx(themes) {
   });
   return best;
 }
+// 그날 상한가 종목이 가장 많은 본장 테마 1개 (기타·개별 제외, 같으면 종목 수 많은 쪽 → 앞 순위)
+function limitThemeIdx(themes) {
+  let best = -1, n = 0, size = 0;
+  (themes || []).forEach((t, i) => {
+    if (/^기타/.test(t.name) || /개별/.test(t.name)) return;
+    const c = (t.stocks || []).filter((s) => s.limit || (typeof s.chg === "number" && s.chg >= 29.5)).length;
+    const z = (t.stocks || []).length;
+    if (c > n || (c === n && c > 0 && z > size)) { n = c; best = i; size = z; }
+  });
+  return best;
+}
+function hlName(name, i, top, lim) {
+  if (i !== top && i !== lim) return esc(name);
+  const cls = i === top && i === lim ? "hl both" : i === lim ? "hl lim" : "hl";
+  return `<mark class="${cls}">${esc(name)}</mark>`;
+}
 function cycleStats(name, dayId) {
   const start = threeMonthStart(dayId);
   const ids = Object.keys(days).filter((id) => id > start && id <= dayId && days[id] && days[id].status !== "holiday" && ((days[id].main && days[id].main.themes) || []).length).sort();
@@ -411,7 +431,7 @@ function themesHtml(id, sec, themes) {
     const st = themeStats(t.name, id);
     return `<div class="theme${t.lead ? " lead" : ""}${isOpen ? " open" : ""}">
       <button class="th-btn" data-id="${id}" data-sec="${sec}" data-idx="${i}" aria-expanded="${isOpen}">
-        <span class="th-name">${sec === "main" && i === topThemeIdx(themes) ? `<mark class="hl">${esc(t.name)}</mark>` : esc(t.name)}${kind}${st.lead > 1 ? `<span class="th-badge">3개월 주도 ${st.lead}회</span>` : ""}</span>
+        <span class="th-name">${sec === "main" ? hlName(t.name, i, topThemeIdx(themes), limitThemeIdx(themes)) : esc(t.name)}${kind}${st.lead > 1 ? `<span class="th-badge">3개월 주도 ${st.lead}회</span>` : ""}</span>
         <span class="th-meta">주도주 ${(t.stocks || []).length}</span>
       </button>
       ${isOpen ? `<div class="streak"><span>최근 3개월 주도 테마 <b>${st.lead}</b>회</span><span>테마 등장 ${st.seen}회</span><span>기록 ${st.base}거래일 기준</span></div>${sec === "main" ? cycleHtml(t.name, id) : ""}${t.reason ? `<p class="th-reason">${esc(t.reason)}</p>` : ""}${stocksHtml(t.stocks)}` : ""}
@@ -627,7 +647,7 @@ async function ensureAll() {
   renderCal();
 }
 // 페이지가 브라우저에 예전 버전으로 남아 있으면 최신 버전으로 한 번 새로고침
-const BUILD = "2026-10-02d";
+const BUILD = "2026-10-02e";
 (async () => {
   try {
     const r = await fetch("index.html?b=" + Date.now(), { cache: "no-store" });
