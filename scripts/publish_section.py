@@ -78,6 +78,19 @@ def main():
         doc.pop("note", None)
         doc[kind] = sec
         sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+        if kind == "main":
+            # 그날 급등 목록의 모든 종목이 테마에 들어가도록 빠진 종목을 네이버 테마 분류로 채운다
+            try:
+                import audit_days
+                from theme_map import Ref
+                with open(os.path.join(ROOT, "data", day, "main.json"), encoding="utf-8") as f:
+                    src = json.load(f).get("stocks", [])
+                lst = [{"name": s["name"], "code": s.get("code"), "chg": s["chg"], "amount_eok": s.get("amount_eok", 0),
+                        "new": s["chg"] > 30.5} for s in src]
+                if lst:
+                    audit_days.audit(day, doc, lst, Ref(), {x["name"]: x["amount_eok"] for x in lst})
+            except Exception as e:
+                print("audit skipped:", e)
         import add_nxt
         add_nxt.apply(doc, add_nxt.nxt_map(day))
     os.makedirs(os.path.dirname(path), exist_ok=True)
