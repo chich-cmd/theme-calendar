@@ -1,0 +1,31 @@
+name: ref
+# 네이버 테마 분류(테마 → 종목) 기준 데이터 갱신: 매주 월요일 08:00 KST, 스크립트 변경 시
+on:
+  schedule:
+    - cron: "0 23 * * 0"
+  workflow_dispatch:
+  push:
+    paths: ["scripts/naver_themes.py", ".github/workflows/ref.yml"]
+permissions:
+  contents: write
+concurrency:
+  group: ref
+  cancel-in-progress: false
+jobs:
+  ref:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python scripts/naver_themes.py
+      - name: Commit
+        run: |
+          git config user.name "collector-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/ref
+          git diff --cached --quiet && exit 0
+          git commit -m "ref: naver themes $(TZ=Asia/Seoul date +%F) [skip ci]"
+          for i in 1 2 3; do git pull --rebase -q && git push -q && break; sleep 5; done
