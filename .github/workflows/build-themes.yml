@@ -13,7 +13,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: python3 scripts/build_themes.py
+        with:
+          ref: main
+      - name: Build from the latest main
+        run: |
+          git pull -q origin main || true
+          python3 scripts/build_themes.py
       - name: Commit
         run: |
           git config user.name "collector-bot"
@@ -21,4 +26,8 @@ jobs:
           git add themes
           git diff --cached --quiet && exit 0
           git commit -m "themes: rebuild month bundles [skip ci]"
-          for i in 1 2 3; do git pull --rebase -q && git push -q && break; sleep 5; done
+          for i in 1 2 3; do
+            git pull --rebase -q -X theirs || true
+            python3 scripts/build_themes.py && git add themes && (git diff --cached --quiet || git commit -q --amend --no-edit)
+            git push -q && break; sleep 5
+          done
