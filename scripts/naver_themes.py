@@ -37,6 +37,10 @@ def main():
         html = fetch(f"https://finance.naver.com/sise/theme.naver?&page={page}")
         found = re.findall(r'href="/sise/sise_group_detail\.naver\?type=theme&no=(\d+)"[^>]*>([^<]+)</a>', html)
         new = [(no, name.strip()) for no, name in found if name.strip() not in themes]
+        if page == 1:
+            print("page1 len", len(html), "found", len(found))
+            i = html.find("group_detail")
+            print(html[max(0, i - 200):i + 300])
         if not new:
             break
         for no, name in new:
