@@ -190,6 +190,12 @@ def audit(day, doc, lst, ref, amount_of):
         t["stocks"].sort(key=lambda s: -(s["chg"] if isinstance(s.get("chg"), (int, float)) else -1e9))
         if not t.get("reason"):
             t["reason"] = f"{t['name']} 관련주 동반 강세"
+    # 종목별 본장 거래대금(억원)
+    for t in themes:
+        for s in t["stocks"]:
+            v = amount_of.get(s["name"])
+            if isinstance(v, (int, float)):
+                s["amt"] = int(round(v))
     scored = []
     for t in themes:
         if t["name"] in SKIP_LEAD or is_etc(t["name"]):
