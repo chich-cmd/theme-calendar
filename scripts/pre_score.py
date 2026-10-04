@@ -82,7 +82,7 @@ def persistence(days, lead, exclude=None):
     return {t: (rep[t] + 0.3 * 2) / (cnt[t] + 2) for t in cnt}
 
 
-SIM_EXCLUDE = {("광통신", "엔터·미디어")}  # 업종 관계 없는 우연 묶음
+SIM_EXCLUDE = {("광통신", "엔터·미디어"), ("광통신", "2차전지")}  # 업종 관계 없는 우연 묶음
 
 
 def similar(days, seen, upto, window=60, min_together=4, min_lift=1.5):

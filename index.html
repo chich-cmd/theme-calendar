@@ -297,7 +297,7 @@ const chgClass = (v) => (typeof v === "number" ? (v > 0 ? "up" : v < 0 ? "down" 
 // 우연히 겹칠 때보다 1.5배 이상 많고, 3번 이상 함께 오른 테마 (상위 3개)
 const _simCache = {};
 // 통계로는 함께 올랐지만 업종 관계가 없어 우연으로 보는 묶음
-const SIM_EXCLUDE = new Set(["광통신|엔터·미디어"]);
+const SIM_EXCLUDE = new Set(["광통신|엔터·미디어", "광통신|2차전지", "2차전지|광통신"]);
 function similarThemes(name, dayId) {
   // 3개월치 기록이 다 불러와지기 전에 계산하면 표본이 작아 엉뚱한 묶음이 나오므로, 불러온 기록 수를 캐시 키에 넣고 40거래일 미만이면 표시하지 않는다
   const key = dayId + ":" + Object.keys(days).length;
@@ -790,7 +790,7 @@ async function ensureAll() {
   renderCal();
 }
 // 페이지가 브라우저에 예전 버전으로 남아 있으면 최신 버전으로 한 번 새로고침
-const BUILD = "2026-10-04g";
+const BUILD = "2026-10-04h";
 (async () => {
   try {
     const r = await fetch("index.html?b=" + Date.now(), { cache: "no-store" });
