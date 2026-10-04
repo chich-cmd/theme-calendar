@@ -1,6 +1,8 @@
 name: hist
-# 과거 달력 복원용 일봉 수집 (수동 실행)
+# 과거 달력 복원(규칙 크기 측정용): 매주 토 07:00 KST + 수동 실행
 on:
+  schedule:
+    - cron: "0 22 * * 5"
   workflow_dispatch:
 permissions:
   contents: write
@@ -13,12 +15,12 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: python scripts/hist_fetch.py
+      - run: python scripts/hist_fetch.py && python scripts/hist_build.py
       - name: Commit
         run: |
           git config user.name "collector-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add data/hist
+          git add data/hist data/ref/hist_leads.json
           git diff --cached --quiet && exit 0
           git commit -m "hist: daily movers for backtests [skip ci]"
           for i in 1 2 3; do git pull --rebase -q && git push -q && break; sleep 5; done
