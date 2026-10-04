@@ -2,6 +2,7 @@
 
   python3 scripts/publish_section.py main /tmp/main_section.json [YYYY-MM-DD]
   python3 scripts/publish_section.py after /tmp/after_section.json
+  python3 scripts/publish_section.py pre /tmp/pre.json            # 장전 테마 예측
   python3 scripts/publish_section.py holiday "휴장 사유"
   python3 scripts/publish_section.py log "메시지"          # 실행 기록만 남김
 
@@ -72,7 +73,9 @@ def main():
             sec = json.load(f)
         if isinstance(sec, dict) and kind in sec and isinstance(sec[kind], dict):
             sec = sec[kind]   # 문서 전체를 넘긴 경우
-        for t in sec.get("themes", []):
+        if kind == "pre" and doc.get("status") == "holiday":
+            print("OK (holiday, prediction skipped)"); return
+        for t in (sec.get("themes", []) if kind in ("main", "after") else []):
             t["stocks"] = sorted(t.get("stocks", []), key=lambda s: -(s["chg"] if isinstance(s.get("chg"), (int, float)) else -1e9))
         doc.update({"date": day, "status": "open"})
         doc.pop("note", None)
