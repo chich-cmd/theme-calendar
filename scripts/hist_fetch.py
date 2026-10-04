@@ -1,6 +1,6 @@
 """과거 달력 복원용: 전 종목 일봉(약 2년)을 받아 날짜별 급등 종목(+5% 이상)만 남긴다. GitHub Actions에서 실행.
 
-결과: data/hist/movers.json
+결과: data/hist/movers.json, data/hist/theme_ret.json (테마별 하루 평균 등락률 — 눌림 검증용)
   {"days": {"2024-10-07": {"n": 2400, "up": [[code, name, chg, amt_eok], ...]}}, "src": "naver fchart", ...}
 한계: 지금 상장된 종목만 있다(상장폐지 종목 빠짐). 거래대금은 종가×거래량 근사.
 """
@@ -39,6 +39,11 @@ def main():
     krx = json.load(open(snap, encoding="utf-8"))
     days = defaultdict(lambda: {"n": 0, "up": []})
     ok = 0
+    import sys
+    sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+    from theme_map import Ref
+    ref = Ref()
+    tret = defaultdict(lambda: defaultdict(lambda: [0.0, 0, 0]))   # day → theme → [합계, 종목 수, 상승 수]
     with ThreadPoolExecutor(8) as ex:
         for code, rows in ex.map(fetch, list(krx)):
             if not rows:
@@ -51,12 +56,19 @@ def main():
                 day = f"{d1[:4]}-{d1[4:6]}-{d1[6:]}"
                 chg = (c1 / c0 - 1) * 100
                 days[day]["n"] += 1
+                if -31 < chg < 31:
+                    for th in ref.by_code.get(code, {}):
+                        a = tret[day][th]; a[0] += chg; a[1] += 1; a[2] += chg > 0
                 if chg >= 5:
                     days[day]["up"].append([code, name, round(chg, 2), round(c1 * vol / 1e8)])
     out = {"src": "naver fchart (수정주가)", "base_list": os.path.basename(os.path.dirname(snap)), "stocks_ok": ok,
            "days": {d: days[d] for d in sorted(days)}}
     os.makedirs(os.path.join(ROOT, "data", "hist"), exist_ok=True)
     json.dump(out, open(os.path.join(ROOT, "data", "hist", "movers.json"), "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
+    tr = {d: {t: [round(v[0] / v[1], 2), v[1], round(v[2] / v[1], 2)] for t, v in tret[d].items() if v[1] >= 3}
+          for d in sorted(tret) if days[d]["n"] >= 1500}
+    json.dump({"note": "테마(달력 이름)별 구성 종목 단순 평균 등락률·종목 수·상승 비율", "days": tr},
+              open(os.path.join(ROOT, "data", "hist", "theme_ret.json"), "w", encoding="utf-8"), ensure_ascii=False, separators=(",", ":"))
     print("stocks", ok, "days", len(days))
 
 
