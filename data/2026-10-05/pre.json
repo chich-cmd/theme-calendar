@@ -2,7 +2,7 @@
  "date": "2026-10-05",
  "status": "closed",
  "source": "naver-finance",
- "time": "08:32",
+ "time": "08:48",
  "base_day": "2026-10-02",
  "rule": "NXT 프리마켓 가격이 전 거래일 KRX 종가 대비 3.0% 이상",
  "sessions": {
@@ -12,5 +12,5 @@
  "stocks": [],
  "down": [],
  "sample": null,
- "generatedAt": "2026-10-05T08:32:25+09:00"
+ "generatedAt": "2026-10-05T08:48:48+09:00"
 }
