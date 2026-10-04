@@ -99,8 +99,14 @@ def main():
     os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, "w", encoding="utf-8") as f:
         json.dump(doc, f, ensure_ascii=False)
+    extra = []
+    if kind == "main":
+        # 장전 예측 채점(근거별 성적) 갱신
+        r = sh(sys.executable, os.path.join("scripts", "pre_eval.py"))
+        if r.returncode == 0:
+            extra.append(os.path.join(ROOT, "data", "ref", "pre_eval.json"))
     lp = log(day, f"{kind} published ({len(doc.get(kind, {}).get('themes', [])) if kind != 'holiday' else 0} themes)")
-    e = push(f"themes: {day} {kind}", [path, lp])
+    e = push(f"themes: {day} {kind}", [path, lp] + extra)
     print("OK" if not e or e == "nothing to commit" else "FAIL: " + e)
 
 

@@ -1,0 +1,8 @@
+{
+ "note": "장전 예측용 예정 일정. date = 영향이 나타날 한국 거래일. themes = 달력 테마 이름. 07:00 예측 작업이 매일 새 일정을 찾아 추가한다.",
+ "events": [
+  {"date": "2026-10-07", "themes": ["반도체"], "kind": "실적 기대", "what": "내일(10/8) 삼성전자 3분기 잠정실적 발표 앞둔 기대 매수", "weight": 0.5, "src": "https://firebat.co.kr/stock-blog/20261001-monthly"},
+  {"date": "2026-10-08", "themes": ["반도체", "반도체 소부장"], "kind": "실적", "what": "삼성전자 3분기 잠정실적 발표(장 시작 전후)", "weight": 1.0, "src": "https://firebat.co.kr/stock-blog/20261001-monthly"},
+  {"date": "2026-10-07", "themes": ["AI 소프트웨어"], "kind": "공모", "what": "엘리스그룹(AI 교육·클라우드, 10월 최대어) 일반청약 10/7~8", "weight": 0.3, "src": "https://news.bizwatch.co.kr/article/market/2026/10/02/0030"}
+ ]
+}

@@ -5,8 +5,12 @@
 
 점수 = 기본(최근 20거래일 주도 비율)
      + 미국 신호(전날 밤 미국 짝 종목 평균 ±2% 이상일 때, 지난 기록에서 주도 비율이 얼마나 달라졌는지)
-     - 피로도(전날 주도했고, 다음 날 잘 이어지지 않는 테마)
-기사·사건 뉴스(발사, 수주, 정책 등)는 사람이(또는 분석 작업이) 따로 더한다.
+     + 예정 일정(data/ref/events.json: 실적·공모주·지표 발표 — 5일 검증에서 가장 효과가 컸던 방법)
+     - 피로도(전날 주도했고, 다음 날 잘 이어지지 않는 테마, 기본 0)
+넥장 흐름은 표본이 쌓일 때까지 점수에 넣지 않고 근거에만 적는다(NXT_W=0).
+테마마다 '관련주 묶음'(최근 3번 등장에서 자주 오른 5종목)과 '대장 유지율'을 함께 낸다.
+대장주 하나는 다음번에도 대장일 확률이 8%뿐이라, 종목은 항상 묶음으로 본다.
+기사·사건 뉴스(발사, 수주, 정책 등)는 분석 작업이 따로 더한다.
 """
 import glob
 import itertools
@@ -106,6 +110,65 @@ def similar(days, seen, upto, window=60, min_together=4, min_lift=1.5):
 
 US_W = float(os.environ.get('US_W', '1.0'))
 FADE_W = float(os.environ.get('FADE_W', '0'))
+EVENT_W = float(os.environ.get('EVENT_W', '0.3'))
+NXT_W = float(os.environ.get('NXT_W', '0'))
+
+
+def events(day):
+    try:
+        ev = json.load(open(os.path.join(ROOT, "data", "ref", "events.json"), encoding="utf-8"))["events"]
+    except (OSError, ValueError, KeyError):
+        return []
+    return [e for e in ev if e.get("date") == day]
+
+
+def appearances(docs, days, upto):
+    app = defaultdict(list)
+    for d in days:
+        if d >= upto:
+            continue
+        for t in docs[d]["main"]["themes"]:
+            if ETC(t["name"]) or len(t["stocks"]) < 2:
+                continue
+            st = t["stocks"]
+            top = max(st, key=lambda s: s.get("amt") or 0)["name"]
+            app[t["name"]].append((d, top, st))
+    return app
+
+
+def basket(app, theme, k=3, n=5):
+    """최근 k번 등장에서 자주(같으면 거래대금 큰 순) 오른 n종목."""
+    cnt, amt = Counter(), Counter()
+    for _, _, st in app.get(theme, [])[-k:]:
+        for s in st:
+            cnt[s["name"]] += 1
+            amt[s["name"]] += s.get("amt") or 0
+    return [x for x in sorted(cnt, key=lambda x: (-cnt[x], -amt[x]))[:n]]
+
+
+def leader_keep(app, theme):
+    a = app.get(theme, [])
+    if len(a) < 5:
+        return None
+    return round(sum(x[1] == y[1] for x, y in zip(a, a[1:])) / (len(a) - 1), 2)
+
+
+def nxt_flow(docs, days, day):
+    """전 거래일 본장 테마별 넥장 평균 추가 등락(통합 최종가 vs KRX 종가)."""
+    prev = [d for d in days if d < day]
+    if not prev:
+        return {}
+    p = prev[-1]
+    try:
+        nm = json.load(open(os.path.join(ROOT, "data", p, "after.json"), encoding="utf-8")).get("nxt_map") or {}
+    except (OSError, ValueError):
+        return {}
+    out = {}
+    for t in docs[p]["main"]["themes"]:
+        v = [nm[s["name"]]["after"] for s in t["stocks"] if s["name"] in nm and isinstance(nm[s["name"]].get("after"), (int, float))]
+        if len(v) >= 2:
+            out[t["name"]] = round(sum(v) / len(v), 2)
+    return out
 
 
 def score(day, data, loo=False):
@@ -117,7 +180,13 @@ def score(day, data, loo=False):
     pers = persistence(days, lead, exclude=day if loo else None)
     sig, u = us_signal(day, ret, groups, us_dates)
     yday = lead[hist[-1]] if hist else set()
-    cands = set(base) | set(sig) | yday
+    ev = events(day)
+    evt = defaultdict(list)
+    for e in ev:
+        for t in e.get("themes", []):
+            evt[t].append(e)
+    nflow = nxt_flow(docs, days, day)
+    cands = set(base) | set(sig) | yday | set(evt)
     rows = []
     for t in cands:
         if ETC(t):
@@ -135,6 +204,10 @@ def score(day, data, loo=False):
                 s += US_W * (r["down"] - r["base"]); reason.append(f"미국 짝 {sig[t]:+.1f}% (과거 -2%↓ 주도율 {r['down']:.0%})")
             else:
                 reason.append(f"미국 짝 {sig[t]:+.1f}%")
+        for e in evt.get(t, []):
+            s += EVENT_W * e.get("weight", 1.0); reason.append(f"일정: {e['what']}")
+        if t in nflow and abs(nflow[t]) >= 1:
+            s += NXT_W * nflow[t] / 10; reason.append(f"전날 넥장 {nflow[t]:+.1f}%")
         if t in yday:
             p = pers.get(t, 0.3)
             s -= max(0, 0.35 - p) * FADE_W; reason.append(f"전날 주도(다음날 이어짐 {p:.0%})")
@@ -169,12 +242,16 @@ def main():
     data = load()
     rows, sig, u = score(day, data)
     sim = similar(data[1], data[3], day)
+    app = appearances(data[0], data[1], day)
     out = {"day": day, "us_date": u, "us_signal": {k: round(v, 2) for k, v in sig.items()},
-           "ranking": [{"theme": t, "score": s, "why": w, "similar": sim.get(t, [])} for s, t, w in rows[:10]]}
+           "events": events(day), "nxt_flow": nxt_flow(data[0], data[1], day),
+           "ranking": [{"theme": t, "score": s, "why": w, "similar": sim.get(t, []),
+                        "basket": basket(app, t), "leader_keep": leader_keep(app, t)} for s, t, w in rows[:10]]}
     json.dump(out, open(os.path.join(ROOT, "data", "ref", "pre_score.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     print(f"{day} (미국 {u})")
     for r in out["ranking"]:
         print(f"{r['score']:6.3f} {r['theme']:10s} {r['why']}  유사: {', '.join(r['similar'])}")
+        print(f"        묶음: {', '.join(r['basket'])}  (대장 유지율 {r['leader_keep'] if r['leader_keep'] is not None else '-'})")
 
 
 if __name__ == "__main__":
