@@ -27,7 +27,7 @@ def main():
     kr = sorted(d for d, x in docs.items() if (x.get("main") or {}).get("themes"))
     out = {}
     for g, syms in groups.items():
-        if g in ("시장", "금리", "환율"):
+        if g in ("시장", "금리", "환율", "아시아"):
             continue
         rows = []
         for d in kr:

@@ -31,7 +31,7 @@ def load():
         ret[sym] = {d: (t["close"][d] / t["close"][p] - 1) * 100 for p, d in zip(ds, ds[1:]) if t["close"][p]}
     groups = defaultdict(list)
     for sym, t in us.items():
-        if t["group"] not in ("시장", "금리", "환율"):
+        if t["group"] not in ("시장", "금리", "환율", "아시아"):
             groups[t["group"]].append(sym)
     us_dates = sorted(ret.get("^GSPC", {}))   # 미국 증시 거래일 기준(비트코인 주말 제외)
     return docs, days, lead, seen, ret, groups, us_dates
