@@ -197,8 +197,8 @@ mark.hl.both { background: linear-gradient(transparent 52%, var(--hl) 52%, var(-
 .pred .tw em, .sec.pre .tw em { font-style: normal; color: var(--ink); }
 .pred .warn { margin-top: 9px; font-size: 12.5px; background: var(--up-soft); border-radius: 8px; padding: 7px 10px; line-height: 1.5; }
 .pred .foot { margin-top: 8px; font-size: 11px; color: var(--muted); line-height: 1.5; }
-.hitmark { font-size: 12px; font-weight: 700; margin-left: 6px; }
-.hitmark.ok { color: var(--up); } .hitmark.mid { color: var(--accent); } .hitmark.no { color: var(--muted); }
+.hitmark { font-size: 12px; font-weight: 700; margin-left: 6px; white-space: nowrap; font-family: var(--f-body); }
+.hitmark.hit-ok { color: var(--up); } .hitmark.hit-mid { color: var(--accent); } .hitmark.hit-no { color: var(--muted); }
 .sec.pre h3 { color: var(--accent); }
 
 @media (max-width: 560px) {
@@ -304,30 +304,32 @@ function preHit(d) {
   });
   return { marks, hit: marks.filter((m) => m.mark === "ok").length, total: marks.length };
 }
-const HIT_TXT = { ok: "✓ 주도", mid: "△ 등장", no: "✗" };
+const HIT_TXT = { ok: "✓ 주도", mid: "△ 등장", no: "× 없음" };
 function preListHtml(pre, hit) {
   const mk = (name) => {
     if (!hit) return "";
     const m = hit.marks.find((x) => x.name === name);
-    return m ? `<span class="hitmark ${m.mark}">${HIT_TXT[m.mark]}</span>` : "";
+    return m ? `<span class="hitmark hit-${m.mark}">${HIT_TXT[m.mark]}</span>` : "";
   };
   return `<ol>${(pre.themes || []).map((p, i) => `<li><span class="no">${i + 1}</span><span class="tn">${esc(p.name)}${mk(p.name)}</span>${p.why || p.note ? `<span class="tw">${esc(p.why || "")}${p.note ? ` · <em>${esc(p.note)}</em>` : ""}</span>` : ""}</li>`).join("")}</ol>`;
 }
 function renderPred() {
   const box = $("pred");
   if (!box) return;
-  const d = days[todayIso];
-  const pre = d && d.status !== "holiday" && d.pre;
-  if (!pre || !(pre.themes || []).length) { box.hidden = true; return; }
+  // 오늘 예측이 없으면(주말·장 시작 전) 가장 최근 예측을 결과와 함께 보여 준다
+  const pid = Object.keys(days).filter((k) => k <= todayIso && days[k] && days[k].pre && (days[k].pre.themes || []).length).sort().pop();
+  const d = pid && days[pid];
+  const pre = d && d.pre;
+  if (!pre) { box.hidden = true; return; }
   const hit = preHit(d);
-  const dt = new Date(todayIso + "T00:00:00Z");
+  const dt = new Date(pid + "T00:00:00Z");
   const names = pre.themes.map((p) => p.name).join(" · ");
   const mid = hit ? hit.marks.filter((m) => m.mark === "mid").length : 0;
   const sum = hit ? `결과: 주도 적중 ${hit.hit}/${hit.total}${mid ? ` · 등장 ${mid}` : ""} · ${names}` : names;
   const mkt = (pre.market || []).map((m) => `<span>${esc(m.label)} <b class="${m.dir === "up" ? "up" : m.dir === "down" ? "down" : ""}">${esc(m.value)}</b></span>`).join("");
   const wasOpen = box.open;
   box.innerHTML = `<summary class="pred-h"><b>☀️ 장전 예측</b><span class="pred-sum">${esc(sum)}</span><span class="pred-tg"></span></summary>
-    <div class="pred-sub">${dt.getUTCMonth() + 1}/${dt.getUTCDate()}(${WK[dt.getUTCDay()]}) ${esc(pre.time || "")} 기준 · 자동 분석${hit ? " · 장 마감 결과 반영" : ""}</div>
+    <div class="pred-sub">${dt.getUTCMonth() + 1}/${dt.getUTCDate()}(${WK[dt.getUTCDay()]}) ${esc(pre.time || "")} 기준 · ${pre.sample ? "샘플(당일 아침 채팅 답변)" : "자동 분석"}${hit ? " · 장 마감 결과 반영" : ""}</div>
     ${mkt ? `<div class="pred-us">${mkt}</div>` : ""}
     ${preListHtml(pre, hit)}
     ${pre.warn ? `<div class="warn">⚠ ${esc(pre.warn)}</div>` : ""}
@@ -731,7 +733,7 @@ async function ensureAll() {
   renderCal();
 }
 // 페이지가 브라우저에 예전 버전으로 남아 있으면 최신 버전으로 한 번 새로고침
-const BUILD = "2026-10-04a";
+const BUILD = "2026-10-04b";
 (async () => {
   try {
     const r = await fetch("index.html?b=" + Date.now(), { cache: "no-store" });
