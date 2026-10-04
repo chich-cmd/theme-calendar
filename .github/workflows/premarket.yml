@@ -1,0 +1,40 @@
+name: premarket
+# 넥장 프리마켓 점검: 평일 08:20, 08:35 KST — 프리마켓 급등 종목을 테마로 묶어 장전 예측에 붙인다
+on:
+  schedule:
+    - cron: "20 23 * * 0-4"
+    - cron: "35 23 * * 0-4"
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: premarket
+  cancel-in-progress: false
+jobs:
+  pm:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Collect and check
+        run: |
+          python collect.py pre
+          python scripts/pm_check.py
+          python scripts/build_themes.py
+      - name: Commit
+        run: |
+          git config user.name "collector-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data themes
+          git diff --cached --quiet && exit 0
+          git commit -m "data: $(TZ=Asia/Seoul date +%F) premarket [skip ci]"
+          for i in 1 2 3; do
+            git pull --rebase -q -X theirs || true
+            python scripts/build_themes.py && git add themes && (git diff --cached --quiet || git commit -q --amend --no-edit)
+            git push -q && break; sleep 5
+          done

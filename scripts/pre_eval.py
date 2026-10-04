@@ -4,6 +4,7 @@
 
 예측 json 의 각 테마에 src 를 적어 둔다 (docs/pre_method.md 7단계):
   base(달력 순환) · us(미국 짝) · event(예정 일정) · article(장전 기사) · nxt(넥장 흐름) · news(밤사이 사건)
+08:35 프리마켓 점검(pm)의 '예측 확인'(pm_confirm)·'새로 뜬 테마'(pm_new)도 따로 채점한다.
 20거래일쯤 쌓이면 어떤 근거를 더 믿을지 정한다.
 """
 import glob
@@ -32,6 +33,13 @@ def main():
                 by[s][0] += 1; by[s][1] += lead; by[s][2] += seen
             rank[i + 1][0] += 1; rank[i + 1][1] += lead
             tot[0] += 1; tot[1] += lead; tot[2] += seen
+        pm = docs[d]["pre"].get("pm") or {}
+        for n in pm.get("new", []):
+            t = th.get(n)
+            by["pm_new"][0] += 1; by["pm_new"][1] += bool(t and t.get("lead")); by["pm_new"][2] += t is not None
+        for n in pm.get("confirm", []):
+            t = th.get(n)
+            by["pm_confirm"][0] += 1; by["pm_confirm"][1] += bool(t and t.get("lead")); by["pm_confirm"][2] += t is not None
         per_day.append((d, hit, len(docs[d]["pre"].get("themes", []))))
     out = {"days": len(days), "total": tot,
            "by_src": {k: {"n": v[0], "lead": v[1], "seen": v[2]} for k, v in by.items()},

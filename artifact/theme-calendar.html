@@ -189,6 +189,9 @@ mark.hl.both { background: linear-gradient(transparent 52%, var(--hl) 52%, var(-
 .pred .tw em, .sec.pre .tw em { font-style: normal; color: var(--ink); }
 .pred .warn { margin-top: 9px; font-size: 12.5px; background: var(--up-soft); border-radius: 8px; padding: 7px 10px; line-height: 1.5; }
 .pred .foot { margin-top: 8px; font-size: 11px; color: var(--muted); line-height: 1.5; }
+.pm { margin-top: 10px; border-top: 1px dashed var(--line, #ddd); padding-top: 8px; font-size: 12.5px; line-height: 1.55; }
+.pm-h { font-weight: 700; margin-bottom: 2px; } .pm-c, .pm-new { color: var(--muted); } .pm-new b { color: inherit; }
+.pred .pm-l, .sheet .pm-l { margin: 4px 0 0; padding-left: 16px; list-style: disc; } .pm .pm-l li { display: list-item; margin: 2px 0; padding: 0; border: 0; grid-template-columns: none; }
 .hitmark { font-size: 12px; font-weight: 700; margin-left: 6px; white-space: nowrap; font-family: var(--f-body); }
 .hitmark.hit-ok { color: var(--up); } .hitmark.hit-mid { color: var(--accent); } .hitmark.hit-no { color: var(--muted); }
 .sec.pre h3 { color: var(--accent); }
@@ -342,6 +345,21 @@ function preListHtml(pre, hit, dayId) {
   };
   return `<ol>${(pre.themes || []).map((p, i) => `<li><span class="no">${i + 1}</span><span class="tn">${esc(p.name)}${mk(p.name)}</span>${p.why || p.note ? `<span class="tw">${esc(p.why || "")}${p.note ? ` · <em>${esc(p.note)}</em>` : ""}</span>` : ""}${dayId && similarThemes(p.name, dayId).length ? `<span class="tw">유사 테마 · ${similarThemes(p.name, dayId).map(esc).join(" · ")}</span>` : ""}</li>`).join("")}</ol>`;
 }
+function pmHtml(pre, d) {
+  const pm = pre && pre.pm;
+  if (!pm || !(pm.themes || []).length) return "";
+  const ths = (d && d.main && d.main.themes) || [];
+  const mk = (n) => {
+    if (!ths.length) return "";
+    const t = ths.find((x) => x.name === n);
+    const m = t ? (t.lead ? "ok" : "mid") : "no";
+    return `<span class="hitmark hit-${m}">${HIT_TXT[m]}</span>`;
+  };
+  const conf = (pm.confirm || []).length ? `예측 확인 · ${pm.confirm.map(esc).join(" · ")}` : "예측 테마 중 프리마켓에서 2종목 이상 오른 테마 없음";
+  const nw = (pm.new || []).length ? `<div class="pm-new">새로 뜬 테마 · ${pm.new.map((n) => `<b>${esc(n)}</b>${mk(n)}`).join(" · ")}</div>` : "";
+  const list = pm.themes.map((t) => `<li><b>${esc(t.name)}</b> ${t.stocks.map((s) => `${esc(s.name)} <span class="up">+${Number(s.chg).toFixed(1)}%</span>`).join(", ")}</li>`).join("");
+  return `<div class="pm"><div class="pm-h">🌅 ${esc(pm.time || "")} 넥장 프리마켓 점검</div><div class="pm-c">${conf}</div>${nw}<ul class="pm-l">${list}</ul></div>`;
+}
 function baseHtml(dayId, d) {
   const b = baselineOf(dayId);
   if (!b.length) return "";
@@ -368,7 +386,7 @@ function renderPred() {
   const dt = new Date(pid + "T00:00:00Z");
   const names = pre.themes.map((p) => p.name).join(" · ");
   const mid = hit ? hit.marks.filter((m) => m.mark === "mid").length : 0;
-  const sum = hit ? `결과: 주도 적중 ${hit.hit}/${hit.total}${mid ? ` · 등장 ${mid}` : ""} · ${names}` : names;
+  const sum = hit ? `결과: 주도 ${hit.hit}/${hit.total} · 급등 테마 포함 ${hit.hit + mid}/${hit.total} · ${names}` : names;
   const mkt = (pre.market || []).map((m) => `<span>${esc(m.label)} <b class="${m.dir === "up" ? "up" : m.dir === "down" ? "down" : ""}">${esc(m.value)}</b></span>`).join("");
   const wasOpen = box.open;
   box.innerHTML = `<summary class="pred-h"><b>☀️ 장전 예측</b><span class="pred-sum">${esc(sum)}</span><span class="pred-tg"></span></summary>
@@ -376,8 +394,9 @@ function renderPred() {
     ${mkt ? `<div class="pred-us">${mkt}</div>` : ""}
     ${preListHtml(pre, hit, pid)}
     ${pre.warn ? `<div class="warn">⚠ ${esc(pre.warn)}</div>` : ""}
+    ${pmHtml(pre, d)}
     ${pre.first ? `<div class="pred-sub">처음 예측: ${esc((pre.first.themes || []).join(" · "))} — ${esc(pre.first.note || "")}</div>` : ""}
-    <div class="foot">미국장·국제 시황·넥장 흐름·테마 달력 순환 주기를 바탕으로 한 참고용 예측이며 투자 권유가 아닙니다.${hit ? "" : " 장 마감 후 적중 여부가 표시됩니다."}</div>`;
+    <div class="foot">미국장·국제 시황·예정 일정·넥장 흐름·테마 달력 순환 주기를 바탕으로 한 참고용 예측이며 투자 권유가 아닙니다.${hit ? "" : " 장 마감 후 적중 여부가 표시됩니다."}</div>`;
   box.open = wasOpen;
   box.hidden = false;
 }
@@ -578,7 +597,7 @@ function renderSheet() {
   if (main.basis) h += `<p class="th-reason" style="margin:0">${esc(main.basis)}</p>`;
   if (d.pre && (d.pre.themes || []).length) {
     const hit = preHit(d);
-    h += `<div class="sec pre"><h3>장전 예측 ${esc(d.pre.time || "")}${hit ? ` · ${hit.total}개 중 ${hit.hit}개 주도 적중` : ""}</h3>${preListHtml(d.pre, hit, open.id)}</div>`;
+    h += `<div class="sec pre"><h3>장전 예측 ${esc(d.pre.time || "")}${hit ? ` · ${hit.total}개 중 주도 ${hit.hit} · 급등 테마 포함 ${hit.hit + hit.marks.filter((m) => m.mark === "mid").length}` : ""}</h3>${preListHtml(d.pre, hit, open.id)}${pmHtml(d.pre, d)}</div>`;
   }
   h += `<div class="sec"><h3>본장 테마</h3>${(main.themes || []).length ? themesHtml(open.id, "main", main.themes) : '<p class="th-reason">아직 집계 전입니다 (16:40 무렵).</p>'}</div>`;
   h += `<div class="sec after"><h3>넥장 · 장후 테마</h3>${(after.themes || []).length ? themesHtml(open.id, "after", after.themes) : `<p class="th-reason">${after.updatedAt ? "장후 특이 움직임이 적었습니다." : "아직 집계 전입니다 (20:50 무렵)."}</p>`}

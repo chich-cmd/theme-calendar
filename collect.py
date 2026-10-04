@@ -3,6 +3,7 @@
 
   python collect.py main   → 15:45 본장 마감: 오늘 급등 종목 50~90개
   python collect.py after  → 20:10 넥장 마감: 본장 종가 대비 장후(NXT 애프터마켓) 급등 종목
+  python collect.py pre    → 08:20/08:35 넥장 프리마켓: 전 거래일 종가 대비 급등 종목 (장전 예측 보정용)
 
 결과: data/YYYY-MM-DD/main.json, after.json
 데이터 출처: 네이버페이 증권 공개 시세 (개인 참고용)
@@ -215,6 +216,51 @@ def run_after():
                    "stocks": up, "down": down, "nxt_map": nxt_map})
 
 
+PRE_MIN_RATE = 3.0
+
+
+def run_pre():
+    """NXT 프리마켓(08:00~08:50) 중: 전 거래일 KRX 종가 대비 등락. 기준 종가는 가장 최근 data/<날짜>/krx.json."""
+    prev = sorted(d for d in os.listdir(os.path.join(ROOT, "data"))
+                  if d[:2] == "20" and d < TODAY and os.path.exists(os.path.join(ROOT, "data", d, "krx.json")))
+    krx = load_json("data", prev[-1], "krx.json") if prev else {}
+    if not krx:
+        return save("pre", {"date": TODAY, "status": "error", "note": "기준 종가 없음", "stocks": []})
+    codes = list(krx)
+    moved, sessions, traded, sample = [], {}, 0, None
+    for i in range(0, len(codes), 60):
+        try:
+            d = get("https://polling.finance.naver.com/api/realtime/domestic/stock/" + ",".join(codes[i:i + 60]))
+        except Exception as e:
+            print("poll fail", e); continue
+        for it in d.get("datas", []):
+            o = it.get("overMarketPriceInfo") or {}
+            st = o.get("tradingSessionType")
+            if st:
+                sessions[st] = sessions.get(st, 0) + 1
+            if not (o.get("localTradedAt") or "").startswith(TODAY):
+                continue
+            if sample is None:
+                sample = o
+            traded += 1
+            code = it.get("itemCode")
+            k = krx.get(code) or [it.get("stockName"), None, None, None]
+            price = f(o.get("overPrice"))
+            chg = round((price / k[1] - 1) * 100, 2) if price and k[1] else f(o.get("fluctuationsRatio"))
+            if chg is None:
+                continue
+            moved.append({"code": code, "name": it.get("stockName") or k[0], "market": k[3], "base": k[1], "price": price,
+                          "chg": chg, "eok": round((f(o.get("accumulatedTradingValueRaw")) or 0) / 1e8, 1),
+                          "vol": f(o.get("accumulatedTradingVolumeRaw") or o.get("accumulatedTradingVolume"))})
+        time.sleep(0.25)
+    up = sorted([m for m in moved if m["chg"] >= PRE_MIN_RATE], key=lambda x: -x["chg"])[:80]
+    down = sorted([m for m in moved if m["chg"] <= -PRE_MIN_RATE], key=lambda x: x["chg"])[:20]
+    save("pre", {"date": TODAY, "status": "open" if traded else "closed", "source": "naver-finance",
+                 "time": now().strftime("%H:%M"), "base_day": prev[-1],
+                 "rule": f"NXT 프리마켓 가격이 전 거래일 KRX 종가 대비 {PRE_MIN_RATE}% 이상",
+                 "sessions": sessions, "traded": traded, "stocks": up, "down": down, "sample": sample})
+
+
 if __name__ == "__main__":
     mode = sys.argv[1] if len(sys.argv) > 1 else "main"
-    {"main": run_main, "after": run_after}[mode]()
+    {"main": run_main, "after": run_after, "pre": run_pre}[mode]()
