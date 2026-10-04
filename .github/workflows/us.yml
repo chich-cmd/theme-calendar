@@ -22,12 +22,12 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - run: python scripts/us_fetch.py
+      - run: python scripts/us_fetch.py && python scripts/us_link.py
       - name: Commit
         run: |
           git config user.name "collector-bot"
           git config user.email "actions@users.noreply.github.com"
-          git add data/ref/us_daily.json
+          git add data/ref/us_daily.json data/ref/us_link.json
           git diff --cached --quiet && exit 0
           git commit -m "ref: us daily $(TZ=Asia/Seoul date +%F) [skip ci]"
           for i in 1 2 3; do git pull --rebase -q && git push -q && break; sleep 5; done

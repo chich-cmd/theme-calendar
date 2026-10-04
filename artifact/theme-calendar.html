@@ -192,6 +192,7 @@ mark.hl.both { background: linear-gradient(transparent 52%, var(--hl) 52%, var(-
 .hitmark { font-size: 12px; font-weight: 700; margin-left: 6px; white-space: nowrap; font-family: var(--f-body); }
 .hitmark.hit-ok { color: var(--up); } .hitmark.hit-mid { color: var(--accent); } .hitmark.hit-no { color: var(--muted); }
 .sec.pre h3 { color: var(--accent); }
+.sim { font-size: 12.5px; color: var(--muted); margin: -4px 2px 10px; }
 
 @media (max-width: 560px) {
   .cell { min-height: 96px; padding: 4px 4px 6px; }
@@ -279,6 +280,43 @@ const fmtChg = (v) => (typeof v === "number" ? (v > 0 ? "+" : "") + v.toFixed(1)
 const chgClass = (v) => (typeof v === "number" ? (v > 0 ? "up" : v < 0 ? "down" : "") : "");
 
 
+// 같이 움직이는 테마(유사테마): 그날 이전 최근 60거래일(3개월 안) 동안 같은 날 함께 3종목 이상 오른 횟수가
+// 우연히 겹칠 때보다 1.5배 이상 많고, 3번 이상 함께 오른 테마 (상위 3개)
+const _simCache = {};
+function similarThemes(name, dayId) {
+  const key = dayId;
+  if (!_simCache[key]) {
+    const start = threeMonthStart(dayId);
+    const ids = Object.keys(days).filter((k) => k > start && k < dayId && days[k] && days[k].main && (days[k].main.themes || []).length).sort().slice(-60);
+    const etc = (n) => /^기타/.test(n) || /개별/.test(n) || n === "신규상장주";
+    const cnt = {}, pair = {};
+    for (const k of ids) {
+      const s = [...new Set(days[k].main.themes.filter((x) => (x.stocks || []).length >= 3 && !etc(x.name)).map((x) => x.name))].sort();
+      s.forEach((a) => (cnt[a] = (cnt[a] || 0) + 1));
+      for (let i = 0; i < s.length; i++) for (let j = i + 1; j < s.length; j++) { const pk = s[i] + "|" + s[j]; pair[pk] = (pair[pk] || 0) + 1; }
+    }
+    const n = ids.length || 1, out = {};
+    for (const [pk, k] of Object.entries(pair)) {
+      const [a, b] = pk.split("|");
+      const lift = (k * n) / (cnt[a] * cnt[b]);
+      if (k >= 3 && lift >= 1.5) { (out[a] = out[a] || []).push([lift, b]); (out[b] = out[b] || []).push([lift, a]); }
+    }
+    for (const a in out) out[a] = out[a].sort((x, y) => y[0] - x[0]).slice(0, 3).map((x) => x[1]);
+    _simCache[key] = out;
+  }
+  return _simCache[key][name] || [];
+}
+function simHtml(name, dayId) {
+  const s = similarThemes(name, dayId);
+  return s.length ? `<div class="sim">같이 움직이는 테마 · ${s.map(esc).join(" · ")}</div>` : "";
+}
+// 기준선: 그날 이전 최근 20거래일 주도 횟수 상위 3개 (미국장을 보지 않은 단순 예측)
+function baselineOf(dayId) {
+  const ids = Object.keys(days).filter((k) => k < dayId && days[k] && days[k].main && (days[k].main.themes || []).length).sort().slice(-20);
+  const c = {};
+  ids.forEach((k) => days[k].main.themes.forEach((t) => { if (t.lead) c[t.name] = (c[t.name] || 0) + 1; }));
+  return Object.entries(c).sort((a, b) => b[1] - a[1]).slice(0, 3).map((x) => x[0]);
+}
 // ---------- 장전 테마 예측 ----------
 // 예측 테마가 그날 본장 주도 테마면 ✓, 주도는 아니지만 등장했으면 △, 없으면 ✗
 function preHit(d) {
@@ -292,13 +330,20 @@ function preHit(d) {
   return { marks, hit: marks.filter((m) => m.mark === "ok").length, total: marks.length };
 }
 const HIT_TXT = { ok: "✓ 주도", mid: "△ 등장", no: "× 없음" };
-function preListHtml(pre, hit) {
+function preListHtml(pre, hit, dayId) {
   const mk = (name) => {
     if (!hit) return "";
     const m = hit.marks.find((x) => x.name === name);
     return m ? `<span class="hitmark hit-${m.mark}">${HIT_TXT[m.mark]}</span>` : "";
   };
-  return `<ol>${(pre.themes || []).map((p, i) => `<li><span class="no">${i + 1}</span><span class="tn">${esc(p.name)}${mk(p.name)}</span>${p.why || p.note ? `<span class="tw">${esc(p.why || "")}${p.note ? ` · <em>${esc(p.note)}</em>` : ""}</span>` : ""}</li>`).join("")}</ol>`;
+  return `<ol>${(pre.themes || []).map((p, i) => `<li><span class="no">${i + 1}</span><span class="tn">${esc(p.name)}${mk(p.name)}</span>${p.why || p.note ? `<span class="tw">${esc(p.why || "")}${p.note ? ` · <em>${esc(p.note)}</em>` : ""}</span>` : ""}${dayId && similarThemes(p.name, dayId).length ? `<span class="tw">유사 테마 · ${similarThemes(p.name, dayId).map(esc).join(" · ")}</span>` : ""}</li>`).join("")}</ol>`;
+}
+function baseHtml(dayId, d) {
+  const b = baselineOf(dayId);
+  if (!b.length) return "";
+  const leads = new Set((d.main.themes || []).filter((t) => t.lead).map((t) => t.name));
+  const h = b.filter((x) => leads.has(x)).length;
+  return `<div class="pred-sub">비교 · 기준선(최근 20거래일 주도 상위 3: ${b.map(esc).join(" · ")}) 주도 적중 ${h}/3</div>`;
 }
 function renderPred() {
   const box = $("pred");
@@ -318,7 +363,7 @@ function renderPred() {
   box.innerHTML = `<summary class="pred-h"><b>☀️ 장전 예측</b><span class="pred-sum">${esc(sum)}</span><span class="pred-tg"></span></summary>
     <div class="pred-sub">${dt.getUTCMonth() + 1}/${dt.getUTCDate()}(${WK[dt.getUTCDay()]}) ${esc(pre.time || "")} 기준 · ${pre.redo ? "샘플 · 개선 방식으로 다시 작성(당일 07:30까지 나온 정보만 사용)" : pre.sample ? "샘플(당일 아침 채팅 답변)" : "자동 분석"}${hit ? " · 장 마감 결과 반영" : ""}</div>
     ${mkt ? `<div class="pred-us">${mkt}</div>` : ""}
-    ${preListHtml(pre, hit)}
+    ${preListHtml(pre, hit, pid)}${hit ? baseHtml(pid, d) : ""}
     ${pre.warn ? `<div class="warn">⚠ ${esc(pre.warn)}</div>` : ""}
     ${pre.first ? `<div class="pred-sub">처음 예측: ${esc((pre.first.themes || []).join(" · "))} — ${esc(pre.first.note || "")}</div>` : ""}
     <div class="foot">미국장·국제 시황·넥장 흐름·테마 달력 순환 주기를 바탕으로 한 참고용 예측이며 투자 권유가 아닙니다.${hit ? "" : " 장 마감 후 적중 여부가 표시됩니다."}</div>`;
@@ -503,7 +548,7 @@ function themesHtml(id, sec, themes) {
         <span class="th-name">${sec === "main" ? hlName(t.name, i, topThemeIdx(themes), limitThemeIdx(themes)) : esc(t.name)}${kind}${st.lead > 1 ? `<span class="th-badge">3개월 주도 ${st.lead}회</span>` : ""}</span>
         <span class="th-meta">주도주 ${(t.stocks || []).length}</span>
       </button>
-      ${isOpen ? `<div class="streak"><span>최근 3개월 주도 테마 <b>${st.lead}</b>회</span><span>테마 등장 ${st.seen}회</span><span>기록 ${st.base}거래일 기준</span></div>${sec === "main" ? cycleHtml(t.name, id) : ""}${t.reason ? `<p class="th-reason">${esc(t.reason)}</p>` : ""}${stocksHtml(t.stocks)}` : ""}
+      ${isOpen ? `<div class="streak"><span>최근 3개월 주도 테마 <b>${st.lead}</b>회</span><span>테마 등장 ${st.seen}회</span><span>기록 ${st.base}거래일 기준</span></div>${sec === "main" ? cycleHtml(t.name, id) : ""}${sec === "main" ? simHtml(t.name, id) : ""}${t.reason ? `<p class="th-reason">${esc(t.reason)}</p>` : ""}${stocksHtml(t.stocks)}` : ""}
     </div>`;
   }).join("");
 }
@@ -522,7 +567,7 @@ function renderSheet() {
   if (main.basis) h += `<p class="th-reason" style="margin:0">${esc(main.basis)}</p>`;
   if (d.pre && (d.pre.themes || []).length) {
     const hit = preHit(d);
-    h += `<div class="sec pre"><h3>장전 예측 ${esc(d.pre.time || "")}${hit ? ` · ${hit.total}개 중 ${hit.hit}개 주도 적중` : ""}</h3>${preListHtml(d.pre, hit)}</div>`;
+    h += `<div class="sec pre"><h3>장전 예측 ${esc(d.pre.time || "")}${hit ? ` · ${hit.total}개 중 ${hit.hit}개 주도 적중` : ""}</h3>${preListHtml(d.pre, hit, open.id)}${hit ? baseHtml(open.id, d) : ""}</div>`;
   }
   h += `<div class="sec"><h3>본장 테마</h3>${(main.themes || []).length ? themesHtml(open.id, "main", main.themes) : '<p class="th-reason">아직 집계 전입니다 (16:40 무렵).</p>'}</div>`;
   h += `<div class="sec after"><h3>넥장 · 장후 테마</h3>${(after.themes || []).length ? themesHtml(open.id, "after", after.themes) : `<p class="th-reason">${after.updatedAt ? "장후 특이 움직임이 적었습니다." : "아직 집계 전입니다 (20:50 무렵)."}</p>`}
