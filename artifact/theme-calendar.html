@@ -356,7 +356,13 @@ function renderPred() {
   const pid = Object.keys(days).filter((k) => k <= todayIso && days[k] && days[k].pre && (days[k].pre.themes || []).length).sort().pop();
   const d = pid && days[pid];
   const pre = d && d.pre;
-  if (!pre) { box.hidden = true; return; }
+  if (!pre) {
+    // 아직 예측이 하나도 없을 때 안내만 보여 준다
+    box.innerHTML = `<summary class="pred-h" onclick="return false"><b>☀️ 장전 예측</b><span class="pred-sum" style="color:var(--muted);font-weight:500">10월 6일부터 제공됩니다.</span></summary>`;
+    box.open = false;
+    box.hidden = false;
+    return;
+  }
   if (typeof ensureRange === "function") ensureRange(pid);
   const hit = preHit(d);
   const dt = new Date(pid + "T00:00:00Z");
