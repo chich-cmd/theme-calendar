@@ -1,0 +1,33 @@
+name: us
+# 미국 업종 대표주·지수 일별 종가 수집: 화~토 06:30 KST (미국장 마감 후), 스크립트 변경 시
+on:
+  schedule:
+    - cron: "30 21 * * 1-5"
+  workflow_dispatch:
+  push:
+    paths: ["scripts/us_fetch.py", ".github/workflows/us.yml"]
+permissions:
+  contents: write
+concurrency:
+  group: us
+  cancel-in-progress: false
+jobs:
+  us:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python scripts/us_fetch.py
+      - name: Commit
+        run: |
+          git config user.name "collector-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add data/ref/us_daily.json
+          git diff --cached --quiet && exit 0
+          git commit -m "ref: us daily $(TZ=Asia/Seoul date +%F) [skip ci]"
+          for i in 1 2 3; do git pull --rebase -q && git push -q && break; sleep 5; done
