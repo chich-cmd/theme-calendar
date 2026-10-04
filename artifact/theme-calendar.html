@@ -284,10 +284,12 @@ const chgClass = (v) => (typeof v === "number" ? (v > 0 ? "up" : v < 0 ? "down" 
 // 우연히 겹칠 때보다 1.5배 이상 많고, 3번 이상 함께 오른 테마 (상위 3개)
 const _simCache = {};
 function similarThemes(name, dayId) {
-  const key = dayId;
+  // 3개월치 기록이 다 불러와지기 전에 계산하면 표본이 작아 엉뚱한 묶음이 나오므로, 불러온 기록 수를 캐시 키에 넣고 40거래일 미만이면 표시하지 않는다
+  const key = dayId + ":" + Object.keys(days).length;
   if (!_simCache[key]) {
     const start = threeMonthStart(dayId);
     const ids = Object.keys(days).filter((k) => k > start && k < dayId && days[k] && days[k].main && (days[k].main.themes || []).length).sort().slice(-60);
+    if (ids.length < 40) return [];
     const etc = (n) => /^기타/.test(n) || /개별/.test(n) || n === "신규상장주";
     const cnt = {}, pair = {};
     for (const k of ids) {
@@ -299,7 +301,7 @@ function similarThemes(name, dayId) {
     for (const [pk, k] of Object.entries(pair)) {
       const [a, b] = pk.split("|");
       const lift = (k * n) / (cnt[a] * cnt[b]);
-      if (k >= 3 && lift >= 1.5) { (out[a] = out[a] || []).push([lift, b]); (out[b] = out[b] || []).push([lift, a]); }
+      if (k >= 4 && lift >= 1.5) { (out[a] = out[a] || []).push([lift, b]); (out[b] = out[b] || []).push([lift, a]); }
     }
     for (const a in out) out[a] = out[a].sort((x, y) => y[0] - x[0]).slice(0, 3).map((x) => x[1]);
     _simCache[key] = out;
@@ -353,6 +355,7 @@ function renderPred() {
   const d = pid && days[pid];
   const pre = d && d.pre;
   if (!pre) { box.hidden = true; return; }
+  if (typeof ensureRange === "function") ensureRange(pid);
   const hit = preHit(d);
   const dt = new Date(pid + "T00:00:00Z");
   const names = pre.themes.map((p) => p.name).join(" · ");

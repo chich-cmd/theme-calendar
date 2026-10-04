@@ -82,8 +82,10 @@ def persistence(days, lead, exclude=None):
     return {t: (rep[t] + 0.3 * 2) / (cnt[t] + 2) for t in cnt}
 
 
-def similar(days, seen, upto, window=60, min_together=3, min_lift=1.5):
+def similar(days, seen, upto, window=60, min_together=4, min_lift=1.5):
     ds = [d for d in days if d < upto][-window:]
+    if len(ds) < 40:
+        return {}
     n = len(ds) or 1
     c, pair = Counter(), Counter()
     for d in ds:
