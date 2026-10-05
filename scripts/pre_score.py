@@ -376,6 +376,37 @@ def main():
         print(f"{r['score']:6.3f} {r['theme']:10s} {r['why']}  유사: {', '.join(r['similar'])}")
         rel = ", ".join("%s(%+.0f%%)" % (b["name"], b["ret60"]) for b in r["basket_detail"])
         print(f"        관련주(3개월 추세 상위): {rel}  (대장 유지율 {r['leader_keep'] if r['leader_keep'] is not None else '-'})")
+    if "--emit" in sys.argv:
+        emit(sys.argv[sys.argv.index("--emit") + 1], day, out, sig, data)
+
+
+def emit(path, day, out, sig, data):
+    """데이터대로만: 점수 순 상위 5개를 그대로 예측으로 쓴다(순서를 판단으로 바꾸지 않는다).
+    뉴스·일정은 미리 data/ref/events.json 에 고정 가중치로 넣어 점수에 반영한 뒤 이 명령을 돌린다."""
+    from datetime import datetime, timedelta, timezone
+    ret = data[4]
+    def last(sym):
+        r = ret.get(sym) or {}
+        ds = sorted(r)
+        return (ds[-1], r[ds[-1]]) if ds else (None, None)
+    market = []
+    for sym, label in (("^IXIC", "나스닥"), ("^GSPC", "S&P500"), ("^SOX", "美 반도체"), ("CL=F", "WTI"), ("KRW=X", "원/달러")):
+        d, v = last(sym)
+        if v is not None:
+            market.append({"label": label, "value": f"{v:+.2f}%", "dir": "up" if v > 0 else "down" if v < 0 else ""})
+    themes = []
+    for r in out["ranking"][:5]:
+        rel = "·".join(b["name"] for b in r["basket_detail"])
+        themes.append({"name": r["theme"], "why": r["why"], "note": f"관련주 {rel}" if rel else "",
+                       "src": ["base"] + (["us"] if "미국 짝" in r["why"] and "연관 약함" not in r["why"] else [])
+                              + (["event"] if "일정:" in r["why"] else [])})
+    # 조심 테마: 미국 짝이 -2% 이하인 테마(연관 확인된 테마 우선). 없으면 비운다.
+    neg = sorted((v, t) for t, v in sig.items() if v <= -2)
+    warn = f"{neg[0][1]} — 미국 짝 종목 평균 {neg[0][0]:+.1f}%" if neg else ""
+    pre = {"time": datetime.now(timezone(timedelta(hours=9))).strftime("%H:%M"), "market": market,
+           "themes": themes, "warn": warn, "method": "data-only v2026-10-06"}
+    json.dump(pre, open(path, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
+    print("emit →", path, [t["name"] for t in themes], "| 조심:", warn or "없음")
 
 
 if __name__ == "__main__":
