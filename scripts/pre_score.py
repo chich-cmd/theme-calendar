@@ -206,6 +206,25 @@ def basket(app, theme, k=3, n=5):
     return [x for x in sorted(cnt, key=lambda x: (-cnt[x], -amt[x]))[:n]]
 
 
+def trend_basket(docs, days, theme, upto, n=5, window=60):
+    """관련주 5종목: 최근 약 3개월(60거래일) 달력에서 이 테마로 급등했던 종목 중 그 기간 주가 추세가 가장 좋았던 순.
+    (대장주 하나는 다음번에도 대장일 확률 8% → 묶음으로 본다)"""
+    import trend
+    ds = [d for d in days if d < upto][-window:]
+    cnt = Counter()
+    for d in ds:
+        for t in docs[d]["main"]["themes"]:
+            if t["name"] == theme:
+                cnt.update(s["name"] for s in t["stocks"])
+    rows = []
+    for name, k in cnt.items():
+        r = trend.ret(name, upto, window)
+        if r is not None:
+            rows.append((r, k, name))
+    rows.sort(reverse=True)
+    return [{"name": nm, "ret60": r, "times": k} for r, k, nm in rows[:n]]
+
+
 def leader_keep(app, theme):
     a = app.get(theme, [])
     if len(a) < 5:
@@ -344,15 +363,19 @@ def main():
     app = appearances(data[0], data[1], day)
     out = {"day": day, "us_date": u, "us_signal": {k: round(v, 2) for k, v in sig.items()},
            "events": events(day), "nxt_flow": nxt_flow(data[0], data[1], day), "regime": regime(data[7], day),
+           "baskets": {t: trend_basket(data[0], data[1], t, day) for t in
+                       {x["name"] for d in [x for x in data[1] if x < day][-60:] for x in data[0][d]["main"]["themes"] if not ETC(x["name"])}},
            "ranking": [{"theme": t, "score": s, "why": w, "similar": sim.get(t, []),
-                        "basket": basket(app, t), "leader_keep": leader_keep(app, t)} for s, t, w in rows[:10]]}
+                        "basket": [b["name"] for b in trend_basket(data[0], data[1], t, day)],
+                        "basket_detail": trend_basket(data[0], data[1], t, day), "leader_keep": leader_keep(app, t)} for s, t, w in rows[:10]]}
     json.dump(out, open(os.path.join(ROOT, "data", "ref", "pre_score.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     rg = out["regime"]
     print(f"{day} (미국 {u})  전날 주도 테마가 다음날도 주도한 비율: 최근60일 {rg['recent']} / 긴 기록 {rg['long']}"
           f" → 급등 종목 수 가점 {'켜짐' if (rg['recent'] or 0) >= REGIME_ON else '꺼짐(순환이 빠른 장세)'}")
     for r in out["ranking"]:
         print(f"{r['score']:6.3f} {r['theme']:10s} {r['why']}  유사: {', '.join(r['similar'])}")
-        print(f"        묶음: {', '.join(r['basket'])}  (대장 유지율 {r['leader_keep'] if r['leader_keep'] is not None else '-'})")
+        rel = ", ".join("%s(%+.0f%%)" % (b["name"], b["ret60"]) for b in r["basket_detail"])
+        print(f"        관련주(3개월 추세 상위): {rel}  (대장 유지율 {r['leader_keep'] if r['leader_keep'] is not None else '-'})")
 
 
 if __name__ == "__main__":
