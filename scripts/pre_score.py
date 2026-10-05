@@ -59,26 +59,35 @@ def load_long(docs, days, lead):
     return {"days": sorted(L), "L": L, "P": P}
 
 
-def us_signal(day, ret, groups, us_dates):
+def us_signal(day, ret, groups, us_dates, prev_kr=None):
+    """직전 한국 거래일 장 마감 이후 열린 미국장(들)의 누적 등락. 연휴로 미국장이 2번 이상 열렸으면 합쳐서 본다
+    (예: 10/2 금 → 10/6 화: 미국 10/2·10/5 두 거래일)."""
     prev = [u for u in us_dates if u < day]
     if not prev:
         return {}, None
-    u = prev[-1]
+    us = [u for u in prev if prev_kr and u >= prev_kr] or prev[-1:]
     sig = {}
     for g, syms in groups.items():
-        v = [ret[s][u] for s in syms if u in ret[s]]
+        v = []
+        for sym in syms:
+            r = [ret[sym][u] for u in us if u in ret[sym]]
+            if r:
+                acc = 1.0
+                for x in r:
+                    acc *= 1 + x / 100
+                v.append((acc - 1) * 100)
         if v:
             sig[g] = sum(v) / len(v)
-    return sig, u
+    return sig, (us[0] + "~" + us[-1]) if len(us) > 1 else us[-1]
 
 
 def link_rates(days, lead, ret, groups, us_dates, exclude=None):
     """테마별 미국 신호 구간(+2%↑, -2%↓, 그 밖)의 주도 비율. exclude 날짜는 빼고 계산(검증용)."""
     acc = defaultdict(lambda: {"up": [0, 0], "down": [0, 0], "all": [0, 0]})
-    for d in days:
+    for i, d in enumerate(days):
         if d == exclude:
             continue
-        sig, _ = us_signal(d, ret, groups, us_dates)
+        sig, _ = us_signal(d, ret, groups, us_dates, days[i - 1] if i else None)
         for g, s in sig.items():
             k = "up" if s >= 2 else "down" if s <= -2 else None
             hit = g in lead[d]
@@ -265,7 +274,7 @@ def score(day, data, loo=False):
         if cover[t] < 20:
             rates[t] = short[t]
     mom = momentum(long, day, exclude=day if loo else None)
-    sig, u = us_signal(day, ret, groups, us_dates)
+    sig, u = us_signal(day, ret, groups, us_dates, hist[-1] if hist else None)
     yday = long["L"][hist[-1]] if hist else set()
     ypres = long["P"][hist[-1]] if hist else {}
     rg = regime(long, day)
@@ -307,7 +316,8 @@ def score(day, data, loo=False):
         elif ypres.get(t, 0) >= 5 and t not in yday:
             reason.append(f"전날 {ypres[t]}종목 급등")
         rows.append((round(s, 3), t, " · ".join(reason)))
-    rows.sort(reverse=True)
+    # 동점이면 최근 20일 주도 횟수 → 미국 짝 등락이 큰 순 (테마 이름 순서로 정해지지 않게)
+    rows.sort(key=lambda r: (r[0], base[r[1]], sig.get(r[1], -99)), reverse=True)
     return rows, sig, u
 
 
@@ -385,10 +395,19 @@ def emit(path, day, out, sig, data):
     뉴스·일정은 미리 data/ref/events.json 에 고정 가중치로 넣어 점수에 반영한 뒤 이 명령을 돌린다."""
     from datetime import datetime, timedelta, timezone
     ret = data[4]
+    long = data[7]
+    prev_kr = ([d for d in long["days"] if d < day] or [None])[-1]
     def last(sym):
+        """직전 한국 거래일 이후 미국 거래일(들) 누적 등락"""
         r = ret.get(sym) or {}
-        ds = sorted(r)
-        return (ds[-1], r[ds[-1]]) if ds else (None, None)
+        ds = [d for d in sorted(r) if d < day]
+        us = [d for d in ds if prev_kr and d >= prev_kr] or ds[-1:]
+        if not us:
+            return None, None
+        acc = 1.0
+        for d in us:
+            acc *= 1 + r[d] / 100
+        return us[-1], (acc - 1) * 100
     market = []
     for sym, label in (("^IXIC", "나스닥"), ("^GSPC", "S&P500"), ("^SOX", "美 반도체"), ("CL=F", "WTI"), ("KRW=X", "원/달러")):
         d, v = last(sym)
