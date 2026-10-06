@@ -17,9 +17,10 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from theme_map import Ref  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-RENAME = {"2차전지 소재": "2차전지", "헬스케어": "의료AI·의료기기", "정유": "정유·화학",
+RENAME = {"HLB그룹": "제약·바이오", "HLB그룹주": "제약·바이오", "2차전지 소재": "2차전지", "헬스케어": "의료AI·의료기기", "정유": "정유·화학",
           "고유가 수혜": "정유·화학", "AI 반도체": "반도체"}
 SKIP_LEAD = ("기타(개별)", "신규상장주")
+GROUP_PARENT = {"HLB": "제약·바이오"}   # 한 업종에 몰린 그룹은 그룹주 대신 그 업종에 넣는다
 GENERIC_PREFIX = {"한국", "대한", "동양", "우리", "신성", "대성", "삼성", "현대", "한일", "대동", "동국", "세아", "서울", "대원",
                   "한국", "아이", "에스", "케이", "디에", "엘에", "티에", "제이", "코리", "유니", "에이", "엔에", "비에",
                   "와이", "오리", "글로", "인터", "디지", "바이", "메디", "파워", "그린", "뉴로", "에코", "하이", "세종",
@@ -163,6 +164,27 @@ def audit(day, doc, lst, ref, amount_of):
                 t["stocks"].append(s)
                 added.append((gname, x["name"]))
             rest = [x for x in rest if x not in xs]
+    # 3-2) 그룹주 중 한 업종 그룹은 그 업종으로 (HLB는 바이오 그룹 → 제약·바이오). 2종목 이상 같이 오르면 흩어진 계열사도 모은다
+    for pre, parent in GROUP_PARENT.items():
+        hits = [(t, st) for t in themes for st in t["stocks"] if st["name"].startswith(pre) and t["name"] != parent]
+        gname = [t["name"] for t in themes if t["name"].startswith(pre)]
+        total = len(hits) + sum(1 for t in themes if t["name"] == parent for st in t["stocks"] if st["name"].startswith(pre))
+        if total >= 2:
+            dst = by_name.get(parent)
+            if not dst:
+                dst = {"name": parent, "reason": f"{pre} 그룹주 동반 강세", "stocks": []}
+                themes.append(dst)
+                by_name[parent] = dst
+            for t, st in hits:
+                t["stocks"].remove(st)
+                st["sub"] = f"{pre}그룹"
+                dst["stocks"].append(st)
+            for st in dst["stocks"]:
+                if st["name"].startswith(pre):
+                    st["sub"] = f"{pre}그룹"
+            themes[:] = [t for t in themes if t["stocks"]]
+            for g in gname:
+                by_name.pop(g, None)
     # 4) 나머지는 기타(개별)
     for x in rest:
         t = by_name.get("기타(개별)")
