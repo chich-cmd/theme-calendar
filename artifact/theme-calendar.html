@@ -546,11 +546,19 @@ function limitThemeIdx(themes) {
 const THEME_PAL = {"반도체 소부장":"#7fb0ef","반도체":"#a9c8f4","반도체 후공정":"#a9c8f4","제약·바이오":"#f4a0b4","의료AI·의료기기":"#f8cad6",
   "2차전지":"#8fd19e","로봇":"#f8b46a","전력기기·전선":"#f3dd6b","광통신":"#7bd6cd","화장품":"#e3b0e6","건설":"#d6bb94",
   "호남 반도체 클러스터":"#e6d3b3","자동차 부품":"#c3c9d2","AI 소프트웨어":"#b7a5f0","스마트폰 부품":"#dcdcdc","원전·에너지":"#c4e47a",
-  "우주항공":"#c79bdb","방산":"#c9c27a","보안":"#9fb3bb","전자부품":"#f6cfae","디스플레이":"#e9e2c9","엔터·미디어":"#f1c0e6","디지털자산":"#ffd9a3"};
+  "우주항공":"#c79bdb","방산":"#c9c27a","보안":"#9fb3bb","전자부품":"#f6cfae","디스플레이":"#e9e2c9","엔터·미디어":"#f1c0e6","디지털자산":"#ffd9a3",
+  "유리기판":"#a8e0c9","정유·화학":"#e8a98f","철강·강관":"#b9b9b9","조선":"#9ec5e8","음식료":"#f7e6a6","패션·의류":"#f3c6c6",
+  "태양광":"#fff09a","통신장비":"#b2e0e8","게임":"#d7c4f0"};
+// 표에 없는 테마도 2개월에 2번 이상 나오면 이름으로 정한 연한 색을 준다
+function autoColor(name) {
+  let h = 0;
+  for (const ch of name) h = (h * 31 + ch.charCodeAt(0)) % 360;
+  return `hsl(${h}, 60%, 82%)`;
+}
 // 테마 색: 최근 2개월(그 날짜까지) 안에 2번 이상 등장한 테마만 칠한다
 function themeColor(name, dayId) {
-  const c = THEME_PAL[name];
-  if (!c) return null;
+  if (name.startsWith("기타") || name === "신규상장주") return null;
+  const c = THEME_PAL[name] || autoColor(name);
   const d = new Date(dayId + "T00:00:00Z"); d.setUTCMonth(d.getUTCMonth() - 2);
   const from = d.toISOString().slice(0, 10);
   let n = 0;
