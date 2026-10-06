@@ -176,7 +176,7 @@ def similar(days, seen, upto, window=60, min_together=4, min_lift=1.5):
 
 US_W = float(os.environ.get('US_W', '1.0'))
 FADE_W = float(os.environ.get('FADE_W', '0'))
-EVENT_W = float(os.environ.get('EVENT_W', '0.3'))
+EVENT_W = float(os.environ.get('EVENT_W', '1.0'))  # 10/7: 사건·뉴스 가중을 20일 주도 횟수보다 크게 (사용자 지시)
 MOM_W = float(os.environ.get('MOM_W', '0'))        # 테마별 이어짐 효과(근거 표시용, 점수엔 안 넣음: 2년 검증에서 효과 없음)
 BREADTH_W = float(os.environ.get('BREADTH_W', '0.2'))  # 전날 급등 종목 수 가점 — 최근 60일 이어짐 비율이 높을 때만
 REGIME_ON = float(os.environ.get('REGIME_ON', '0.28'))  # 2년 검증: 이 기준일 때 상위3 38.4%→39.5%, 앞·뒤 1년 모두 기준 이상
