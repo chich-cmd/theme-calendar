@@ -86,6 +86,8 @@ h1 span { color: var(--muted); }
 .t.lead { color: var(--ink); font-weight: 800; }
 .theme-legend { display: flex; flex-wrap: wrap; gap: 5px 6px; margin: 8px 0 8px; font-size: 12px; }
 .theme-legend span { color: #111; border-radius: 4px; padding: 1px 7px; }
+.star { color: #9a6200; font-size: .82em; margin-left: 3px; letter-spacing: -1px; }
+.star-note { font-size: 11.5px; color: var(--muted); margin: 0 0 6px; }
 .t.thc { background: var(--thc); color: #111; border-radius: 4px; padding: 0 4px; margin: 2px 0; }
 .t.after { color: var(--after); font-size: 11.5px; }
 .t.after::before { content: "장후 "; font-size: 9.5px; font-weight: 700; background: var(--after-soft); border-radius: 3px; padding: 0 3px; margin-right: 2px; }
@@ -237,6 +239,7 @@ mark.hl.both { background: linear-gradient(transparent 52%, var(--hl) 52%, var(-
   <details class="pred" id="pred" hidden></details>
   <div class="months" id="months" role="tablist" aria-label="월 선택"></div>
   <div class="theme-legend" id="themeLegend"></div>
+  <p class="star-note"><span class="star">★</span> 그날 주도주가 가장 많은 테마 · <span class="star">★★</span> 그날 상한가가 가장 많은 테마 (둘 다면 ★★★)</p>
   <div class="grid-scroll"><div class="cal" id="cal"></div></div>
   <div id="msg"></div>
   <footer class="note" style="margin-top:28px">기사·공시와 공개 시세(네이버페이 증권)를 바탕으로 자동 정리한 개인 참고용 기록이며 투자 권유가 아닙니다.</footer>
@@ -593,7 +596,9 @@ function renderThemeLegend() {
   el.innerHTML = [...seen].map(([c, ns]) => `<span style="background:${c}">${esc(ns.length > 1 && ns[0] === "반도체" ? "반도체·후공정" : ns.join("·"))}</span>`).join("");
 }
 function hlName(name, i, top, lim) {
-  return esc(name);   // 노란·연두 형광펜(종목 수·상한가 1등)은 테마 색으로 바꾸면서 뺐다
+  // ★ 그날 주도주(종목 수)가 가장 많은 테마 · ★★ 상한가가 가장 많은 테마 (둘 다면 ★★★)
+  const n = (i === top ? 1 : 0) + (i === lim ? 2 : 0);
+  return esc(name) + (n ? `<span class="star">${"★".repeat(n)}</span>` : "");
 }
 function cycleStats(name, dayId) {
   const start = threeMonthStart(dayId);
@@ -847,7 +852,7 @@ async function ensureAll() {
   renderCal();
 }
 // 페이지가 브라우저에 예전 버전으로 남아 있으면 최신 버전으로 한 번 새로고침
-const BUILD = "2026-10-06e";
+const BUILD = "2026-10-06f";
 (async () => {
   try {
     const r = await fetch("index.html?b=" + Date.now(), { cache: "no-store" });
