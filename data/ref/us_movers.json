@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-06T06:42:12+09:00",
+ "updated": "2026-10-06T09:09:35+09:00",
  "gainers": [
   {
    "sym": "PTC",
@@ -185,7 +185,7 @@
    "sym": "SPCX",
    "name": "Space Exploration Technologies ",
    "chg": 7.63,
-   "cap_b": 2254.0
+   "cap_b": 2255.3
   },
   {
    "sym": "ILMN",
@@ -239,7 +239,7 @@
    "sym": "CRL",
    "name": "Charles River Laboratories Inte",
    "chg": 7.09,
-   "cap_b": 14.8
+   "cap_b": 15.0
   }
  ],
  "losers": [
