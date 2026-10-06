@@ -216,22 +216,39 @@ def basket(app, theme, k=3, n=5):
 
 
 def trend_basket(docs, days, theme, upto, n=5, window=60):
-    """관련주 5종목: 최근 약 3개월(60거래일) 달력에서 이 테마로 급등했던 종목 중 그 기간 주가 추세가 가장 좋았던 순.
-    (대장주 하나는 다음번에도 대장일 확률 8% → 묶음으로 본다)"""
+    """관련주 5종목 (10/6 개정 — 3개월 추세만 보면 스피어·센서뷰 같은 핵심 우주주가 빠지는 문제).
+    1) 최근 3개월(60거래일) 달력에서 이 테마로 2번 이상 급등한 종목
+    2) 네이버 테마 분류상 이 테마가 그 종목의 '주 테마'인 종목 우선 (예: RF머트리얼즈는 광통신이 주 테마라 방산에서 뒤로)
+    3) 최근일수록 무게를 둔 등장 횟수(반감기 20거래일) 순, 같으면 3개월 주가 추세 순"""
     import trend
+    from theme_map import Ref
+    ref = _REF.setdefault("r", Ref())
     ds = [d for d in days if d < upto][-window:]
-    cnt = Counter()
-    for d in ds:
+    w, k = Counter(), Counter()
+    for i, d in enumerate(ds):
+        wt = 0.5 ** ((len(ds) - 1 - i) / 20)
         for t in docs[d]["main"]["themes"]:
             if t["name"] == theme:
-                cnt.update(s["name"] for s in t["stocks"])
+                for st in t["stocks"]:
+                    w[st["name"]] += wt; k[st["name"]] += 1
     rows = []
-    for name, k in cnt.items():
+    for name in w:
+        if k[name] < 2:
+            continue
+        c = ref.canons(name=name)
+        primary = not c or theme not in c or c[theme] >= max(c.values()) - 1e-9 if c else True
+        if c and theme in c and c[theme] < max(c.values()) - 1e-9:
+            primary = False
         r = trend.ret(name, upto, window)
-        if r is not None:
-            rows.append((r, k, name))
+        rows.append((primary, round(w[name], 2), r if r is not None else -999, k[name], name))
     rows.sort(reverse=True)
-    return [{"name": nm, "ret60": r, "times": k} for r, k, nm in rows[:n]]
+    if len(rows) < n:   # 2번 이상 등장 종목이 모자라면 1번 등장 종목으로 채운다
+        extra = sorted(((w[x], x) for x in w if k[x] == 1), reverse=True)
+        rows += [(False, round(a, 2), trend.ret(x, upto, window) or -999, 1, x) for a, x in extra[: n - len(rows)]]
+    return [{"name": nm, "ret60": (r if r != -999 else None), "times": kk, "primary": pr} for pr, _, r, kk, nm in rows[:n]]
+
+
+_REF = {}
 
 
 def leader_keep(app, theme):
@@ -384,8 +401,8 @@ def main():
           f" → 급등 종목 수 가점 {'켜짐' if (rg['recent'] or 0) >= REGIME_ON else '꺼짐(순환이 빠른 장세)'}")
     for r in out["ranking"]:
         print(f"{r['score']:6.3f} {r['theme']:10s} {r['why']}  유사: {', '.join(r['similar'])}")
-        rel = ", ".join("%s(%+.0f%%)" % (b["name"], b["ret60"]) for b in r["basket_detail"])
-        print(f"        관련주(3개월 추세 상위): {rel}  (대장 유지율 {r['leader_keep'] if r['leader_keep'] is not None else '-'})")
+        rel = ", ".join("%s(%s회, %s)" % (b["name"], b["times"], "-" if b["ret60"] is None else "%+.0f%%" % b["ret60"]) for b in r["basket_detail"])
+        print(f"        관련주(3개월 핵심 종목): {rel}  (대장 유지율 {r['leader_keep'] if r['leader_keep'] is not None else '-'})")
     if "--emit" in sys.argv:
         emit(sys.argv[sys.argv.index("--emit") + 1], day, out, sig, data)
 

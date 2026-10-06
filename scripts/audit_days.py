@@ -17,7 +17,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from theme_map import Ref  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-RENAME = {"방산": "방산·우주항공", "2차전지 소재": "2차전지", "헬스케어": "의료AI·의료기기", "정유": "정유·화학",
+RENAME = {"2차전지 소재": "2차전지", "헬스케어": "의료AI·의료기기", "정유": "정유·화학",
           "고유가 수혜": "정유·화학", "AI 반도체": "반도체"}
 SKIP_LEAD = ("기타(개별)", "신규상장주")
 GENERIC_PREFIX = {"한국", "대한", "동양", "우리", "신성", "대성", "삼성", "현대", "한일", "대동", "동국", "세아", "서울", "대원",
