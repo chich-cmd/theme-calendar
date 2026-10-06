@@ -18,6 +18,9 @@ from datetime import datetime, timedelta, timezone
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 ETC = lambda n: n.startswith("기타") or "개별" in n or n == "신규상장주"
+# 네이버 분류가 다른 테마와 겹쳐 엉뚱하게 묶이는 대표주는 테마를 고정한다 (10/6 안랩·한컴이 AI 소프트웨어로 묶인 사례)
+FIXED = {n: "보안" for n in ("안랩", "한컴", "지니언스", "파수", "라온시큐어", "드림시큐리티", "이글루", "윈스", "샌즈랩",
+                             "시큐레터", "SGA솔루션즈", "한컴위드", "엑스게이트", "모니터랩", "케이사인", "에스투더블유", "싸이버원")}
 
 
 def history_map(day, window=60):
@@ -65,7 +68,9 @@ def main():
     groups = defaultdict(list)
     for s in stocks:
         c = hm.get(s["name"])
-        if c:
+        if s["name"] in FIXED:
+            t = FIXED[s["name"]]
+        elif c:
             t = c.most_common(1)[0][0]
         elif ref:
             cs = ref.canons(code=s.get("code"), name=s["name"])
