@@ -69,13 +69,14 @@ h1 span { color: var(--muted); }
 .cell:nth-child(5n) { border-right: 0; }
 .cell.has { cursor: pointer; }
 .cell.has:hover { background: color-mix(in srgb, var(--rule) 5%, var(--paper)); }
-.cell.today { background: var(--today); }
+.cell.today { }
 .cell.other .dnum { opacity: .45; }
 .dnum { font-family: var(--f-num); font-size: 12px; color: var(--muted); display: flex; justify-content: space-between; align-items: baseline; }
 .dnum b { font-weight: 500; }
 .idx { font-size: 10px; }
 .t { display: block; width: 100%; text-align: left; font-size: 12.5px; line-height: 1.32; word-break: keep-all; overflow-wrap: anywhere; }
-.t.lead { color: var(--up); font-weight: 700; }
+.t.lead { color: var(--ink); font-weight: 800; }
+.t.thc { background: var(--thc); color: #111; border-radius: 4px; padding: 0 4px; margin: 2px 0; }
 .t.after { color: var(--after); font-size: 11.5px; }
 .t.after::before { content: "장후 "; font-size: 9.5px; font-weight: 700; background: var(--after-soft); border-radius: 3px; padding: 0 3px; margin-right: 2px; }
 .t:hover { text-decoration: underline; text-underline-offset: 2px; }
@@ -223,15 +224,8 @@ mark.hl.both { background: linear-gradient(transparent 52%, var(--hl) 52%, var(-
   <div class="sres" id="sres" hidden></div>
   <details class="pred" id="pred" hidden></details>
   <div class="months" id="months" role="tablist" aria-label="월 선택"></div>
-  <div class="legend">
-    <span><i style="background:var(--up)"></i>본장 주도 테마</span>
-    <span><i style="background:var(--ink)"></i>기타 테마</span>
-    <span><i style="background:var(--after)"></i>넥장(장후) 테마</span>
-    <span>테마를 누르면 주도주가 나옵니다</span>
-  </div>
   <div class="grid-scroll"><div class="cal" id="cal"></div></div>
   <div id="msg"></div>
-  <p class="hl-note"><mark class="hl">노란색</mark> 그날 주도주(종목 수)가 가장 많은 테마 · <mark class="hl lim">연두색</mark> 그날 상한가가 가장 많은 테마</p>
 </div>
 
 <div class="scrim" id="scrim" hidden></div>
@@ -428,7 +422,7 @@ function renderCal() {
       const top = topThemeIdx(main), lim = limitThemeIdx(main);
       // 처음 4개 테마 + (형광펜 테마가 뒤에 있으면 함께 표시)
       const showIdx = main.map((_, i) => i).filter((i) => i < 4 || i === top || i === lim);
-      body += showIdx.map((i) => { const t = main[i]; return `<button class="t${t.lead ? " lead" : ""}${i === top ? " top" : ""}" data-id="${id}" data-sec="main" data-idx="${i}">${hlName(t.name, i, top, lim)}</button>`; }).join("");
+      body += showIdx.map((i) => { const t = main[i]; const c = themeColor(t.name, id); return `<button class="t${t.lead ? " lead" : ""}${i === top ? " top" : ""}${c ? " thc" : ""}"${c ? ` style="--thc:${c}"` : ""} data-id="${id}" data-sec="main" data-idx="${i}">${hlName(t.name, i, top, lim)}</button>`; }).join("");
       if (main.length > showIdx.length) body += `<span class="more">외 ${main.length - showIdx.length}개</span>`;
       body += after.slice(0, 2).map((t, i) => `<button class="t after" data-id="${id}" data-sec="after" data-idx="${i}">${esc(t.name)}</button>`).join("");
       if (!main.length && !after.length) body = `<span class="pending">집계 중</span>`;
@@ -545,10 +539,25 @@ function limitThemeIdx(themes) {
   });
   return best;
 }
+const THEME_PAL = {"반도체 소부장":"#7fb0ef","반도체":"#a9c8f4","반도체 후공정":"#a9c8f4","제약·바이오":"#f4a0b4","의료AI·의료기기":"#f8cad6",
+  "2차전지":"#8fd19e","로봇":"#f8b46a","전력기기·전선":"#f3dd6b","광통신":"#7bd6cd","화장품":"#e3b0e6","건설":"#d6bb94",
+  "호남 반도체 클러스터":"#e6d3b3","자동차 부품":"#c3c9d2","AI 소프트웨어":"#b7a5f0","스마트폰 부품":"#dcdcdc","원전·에너지":"#c4e47a",
+  "우주항공":"#c79bdb","방산":"#c9c27a","보안":"#9fb3bb","전자부품":"#f6cfae","디스플레이":"#e9e2c9","엔터·미디어":"#f1c0e6","디지털자산":"#ffd9a3"};
+// 테마 색: 최근 2개월(그 날짜까지) 안에 2번 이상 등장한 테마만 칠한다
+function themeColor(name, dayId) {
+  const c = THEME_PAL[name];
+  if (!c) return null;
+  const d = new Date(dayId + "T00:00:00Z"); d.setUTCMonth(d.getUTCMonth() - 2);
+  const from = d.toISOString().slice(0, 10);
+  let n = 0;
+  for (const [id, doc] of Object.entries(days)) {
+    if (id <= from || id > dayId || !doc || !doc.main) continue;
+    if ((doc.main.themes || []).some((t) => t.name === name) && ++n >= 2) return c;
+  }
+  return null;
+}
 function hlName(name, i, top, lim) {
-  if (i !== top && i !== lim) return esc(name);
-  const cls = i === top && i === lim ? "hl both" : i === lim ? "hl lim" : "hl";
-  return `<mark class="${cls}">${esc(name)}</mark>`;
+  return esc(name);   // 노란·연두 형광펜(종목 수·상한가 1등)은 테마 색으로 바꾸면서 뺐다
 }
 function cycleStats(name, dayId) {
   const start = threeMonthStart(dayId);
