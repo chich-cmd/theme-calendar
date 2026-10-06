@@ -76,6 +76,8 @@ h1 span { color: var(--muted); }
 .idx { font-size: 10px; }
 .t { display: block; width: 100%; text-align: left; font-size: 12.5px; line-height: 1.32; word-break: keep-all; overflow-wrap: anywhere; }
 .t.lead { color: var(--ink); font-weight: 800; }
+.theme-legend { display: flex; flex-wrap: wrap; gap: 5px 6px; margin: 8px 0 8px; font-size: 12px; }
+.theme-legend span { color: #111; border-radius: 4px; padding: 1px 7px; }
 .t.thc { background: var(--thc); color: #111; border-radius: 4px; padding: 0 4px; margin: 2px 0; }
 .t.after { color: var(--after); font-size: 11.5px; }
 .t.after::before { content: "장후 "; font-size: 9.5px; font-weight: 700; background: var(--after-soft); border-radius: 3px; padding: 0 3px; margin-right: 2px; }
@@ -224,6 +226,7 @@ mark.hl.both { background: linear-gradient(transparent 52%, var(--hl) 52%, var(-
   <div class="sres" id="sres" hidden></div>
   <details class="pred" id="pred" hidden></details>
   <div class="months" id="months" role="tablist" aria-label="월 선택"></div>
+  <div class="theme-legend" id="themeLegend"></div>
   <div class="grid-scroll"><div class="cal" id="cal"></div></div>
   <div id="msg"></div>
 </div>
@@ -402,6 +405,7 @@ function renderPred() {
   box.hidden = false;
 }
 function renderCal() {
+  renderThemeLegend();
   $("ym").textContent = `${view.y}년 ${view.m + 1}월`;
   renderMonths();
   let html = DOW.map((d) => `<div class="dow">${d}</div>`).join("");
@@ -555,6 +559,16 @@ function themeColor(name, dayId) {
     if ((doc.main.themes || []).some((t) => t.name === name) && ++n >= 2) return c;
   }
   return null;
+}
+function renderThemeLegend() {
+  const el = document.getElementById("themeLegend");
+  if (!el) return;
+  const seen = new Map();
+  for (const [n, c] of Object.entries(THEME_PAL)) {
+    if (seen.has(c)) { seen.get(c).push(n); continue; }
+    seen.set(c, [n]);
+  }
+  el.innerHTML = [...seen].map(([c, ns]) => `<span style="background:${c}">${esc(ns.length > 1 && ns[0] === "반도체" ? "반도체·후공정" : ns.join("·"))}</span>`).join("");
 }
 function hlName(name, i, top, lim) {
   return esc(name);   // 노란·연두 형광펜(종목 수·상한가 1등)은 테마 색으로 바꾸면서 뺐다
