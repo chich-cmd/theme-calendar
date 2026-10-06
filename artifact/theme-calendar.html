@@ -429,7 +429,7 @@ function renderCal() {
       const top = topThemeIdx(main), lim = limitThemeIdx(main);
       // 처음 4개 테마 + (형광펜 테마가 뒤에 있으면 함께 표시)
       const showIdx = main.map((_, i) => i).filter((i) => i < 4 || i === top || i === lim);
-      body += showIdx.map((i) => { const t = main[i]; const c = themeColor(t.name, id); return `<button class="t${t.lead ? " lead" : ""}${i === top ? " top" : ""}${c ? " thc" : ""}"${c ? ` style="--thc:${c}"` : ""} data-id="${id}" data-sec="main" data-idx="${i}">${hlName(t.name, i, top, lim)}</button>`; }).join("");
+      body += showIdx.map((i) => { const t = main[i]; const c = themeColor(t.name); return `<button class="t${t.lead ? " lead" : ""}${i === top ? " top" : ""}${c ? " thc" : ""}"${c ? ` style="--thc:${c}"` : ""} data-id="${id}" data-sec="main" data-idx="${i}">${hlName(t.name, i, top, lim)}</button>`; }).join("");
       if (main.length > showIdx.length) body += `<span class="more">외 ${main.length - showIdx.length}개</span>`;
       body += after.slice(0, 2).map((t, i) => `<button class="t after" data-id="${id}" data-sec="after" data-idx="${i}">${esc(t.name)}</button>`).join("");
       if (!main.length && !after.length) body = `<span class="pending">집계 중</span>`;
@@ -559,27 +559,39 @@ function autoColor(name) {
   return `hsl(${h}, 60%, 82%)`;
 }
 // 테마 색: 최근 2개월(그 날짜까지) 안에 2번 이상 등장한 테마만 칠한다
-function themeColor(name, dayId) {
-  if (name.startsWith("기타") || name === "신규상장주") return null;
-  const c = THEME_PAL[name] || autoColor(name);
-  const d = new Date(dayId + "T00:00:00Z"); d.setUTCMonth(d.getUTCMonth() - 2);
+// 색: 항상 오늘 기준 "최근 2개월" 동안 주도 테마(lead)였던 날이 3번 이상인 테마만 칠한다 (색상 칩도 같은 테마만)
+let _activeKey = "", _active = new Map();
+function activeThemes() {
+  const ids = Object.keys(days);
+  const key = todayIso + ":" + ids.length;
+  if (key === _activeKey) return _active;
+  const d = new Date(todayIso + "T00:00:00Z"); d.setUTCMonth(d.getUTCMonth() - 2);
   const from = d.toISOString().slice(0, 10);
-  let n = 0;
-  for (const [id, doc] of Object.entries(days)) {
-    if (id <= from || id > dayId || !doc || !doc.main) continue;
-    if ((doc.main.themes || []).some((t) => t.name === name) && ++n >= 2) return c;
+  const cnt = {};
+  for (const id of ids) {
+    const doc = days[id];
+    if (id <= from || id > todayIso || !doc || !doc.main) continue;
+    for (const t of doc.main.themes || []) if (t.lead && !t.name.startsWith("기타") && t.name !== "신규상장주") cnt[t.name] = (cnt[t.name] || 0) + 1;
   }
-  return null;
+  const order = Object.keys(THEME_PAL);
+  const names = Object.keys(cnt).filter((n) => cnt[n] >= 2)
+    .sort((a, b) => (order.indexOf(a) < 0 ? 999 : order.indexOf(a)) - (order.indexOf(b) < 0 ? 999 : order.indexOf(b)) || cnt[b] - cnt[a]);
+  _active = new Map(names.map((n) => [n, THEME_PAL[n] || autoColor(n)]));
+  _activeKey = key;
+  return _active;
+}
+function themeColor(name) {
+  return activeThemes().get(name) || null;
 }
 function renderThemeLegend() {
   const el = document.getElementById("themeLegend");
   if (!el) return;
   const seen = new Map();
-  for (const [n, c] of Object.entries(THEME_PAL)) {
+  for (const [n, c] of activeThemes()) {
     if (seen.has(c)) { seen.get(c).push(n); continue; }
     seen.set(c, [n]);
   }
-  el.innerHTML = [...seen].map(([c, ns]) => `<span style="background:${c}">${esc(ns.length > 1 && ns[0] === "반도체" ? "반도체·후공정" : ns.join("·"))}</span>`).join("");
+  el.innerHTML = [...seen].map(([c, ns]) => `<span style="background:${c}">${esc(ns.join("·"))}</span>`).join("");
 }
 function hlName(name, i, top, lim) {
   // ★ 그날 주도주(종목 수)가 가장 많은 테마 · ★★ 상한가가 가장 많은 테마 (둘 다면 ★★★)
