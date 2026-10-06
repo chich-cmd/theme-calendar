@@ -231,14 +231,20 @@ def trend_basket(docs, days, theme, upto, n=5, window=60):
             if t["name"] == theme:
                 for st in t["stocks"]:
                     w[st["name"]] += wt; k[st["name"]] += 1
+    core = core_members(theme)
     rows = []
     for name in w:
-        if k[name] < 2:
+        if core is not None:
+            if name not in core:     # 핵심 네이버 테마에 없는 종목은 제외 (예: 보안 → CCTV·지문인식·AI데이터 제외)
+                continue
+        elif k[name] < 2:
             continue
         c = ref.canons(name=name)
         primary = not c or theme not in c or c[theme] >= max(c.values()) - 1e-9 if c else True
         if c and theme in c and c[theme] < max(c.values()) - 1e-9:
             primary = False
+        if core is not None:
+            primary = True       # 핵심 테마 소속이면 주 테마 여부는 따지지 않는다
         r = trend.ret(name, upto, window)
         rows.append((primary, round(w[name], 2), r if r is not None else -999, k[name], name))
     rows.sort(reverse=True)
@@ -249,6 +255,31 @@ def trend_basket(docs, days, theme, upto, n=5, window=60):
 
 
 _REF = {}
+# 테마별 '핵심' 네이버 테마와 사업 설명 키워드 — 여기에 맞는 종목만 관련주로 쓴다
+#   (보안: CCTV·지문인식·보안인쇄·AI데이터 같은 주변 종목이 섞이는 문제, 우주항공: 알루미늄 등 주변 종목)
+CORE = {"보안": (["보안주(정보)"], r"정보보안|보안 ?솔루션|보안 ?소프트웨어|사이버|해킹|관제|인증|암호|백신|위협|네트워크 보안|PKI|보안·인증|보안 플랫폼", r"인쇄|CCTV|지문"),
+        "우주항공": (["스페이스X(SpaceX)", "우주항공산업(누리호/인공위성 등)"], r"우주|위성|스페이스|발사|항공|누리호", r"알루미늄 ?압출"),
+        "방산": (["방위산업/전쟁 및 테러"], r"방산|방위|국방|군|무기|미사일|탄약|레이더|전차|함정|드론", None)}
+
+
+def core_members(theme):
+    import re
+    if theme not in CORE:
+        return None
+    if "nt" not in _REF:
+        _REF["nt"] = json.load(open(os.path.join(ROOT, "data", "ref", "naver_themes.json"), encoding="utf-8"))
+    nt = _REF["nt"]
+    tns, inc, exc = CORE[theme]
+    out = set()
+    for tn in tns:
+        t = nt["themes"].get(tn)
+        if not t:
+            continue
+        for c in t["codes"]:
+            r = nt["reasons"].get(f"{t['no']}:{c}") or ""
+            if re.search(inc, r) and not (exc and re.search(exc, r)):
+                out.add(nt["names"].get(c))
+    return out
 
 
 def leader_keep(app, theme):
