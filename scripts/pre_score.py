@@ -462,9 +462,30 @@ def emit(path, day, out, sig, data):
         d, v = last(sym)
         if v is not None:
             market.append({"label": label, "value": f"{v:+.2f}%", "dir": "up" if v > 0 else "down" if v < 0 else ""})
+    # 밤사이 이슈(catalyst)가 걸린 테마는 관련주를 밸류체인 목록으로 (예: 스페이스X → 스피어·에이치브이엠·이녹스첨단소재)
+    try:
+        cats = json.load(open(os.path.join(ROOT, "data", "ref", "catalyst_map.json"), encoding="utf-8"))["catalysts"]
+    except (OSError, ValueError, KeyError):
+        cats = {}
+    cat_stocks = defaultdict(list)
+    news = []
+    for e in events(day):
+        c = cats.get(e.get("catalyst") or "")
+        stocks = e.get("stocks") or (c["stocks"] if c else [])
+        for t in e.get("themes", []):
+            for nm in stocks:
+                if nm not in cat_stocks[t]:
+                    cat_stocks[t].append(nm)
+        if c and c.get("also"):
+            for t2, extra in c["also"].items():
+                for nm in extra:
+                    if nm not in cat_stocks[t2]:
+                        cat_stocks[t2].append(nm)
+        news.append({"what": e["what"], "themes": e.get("themes", []), "stocks": stocks[:8],
+                     "note": (c or {}).get("note", ""), "src": e.get("src", "")})
     themes = []
     for r in out["ranking"][:5]:
-        rel = "·".join(b["name"] for b in r["basket_detail"])
+        rel = "·".join(cat_stocks[r["theme"]][:6]) if cat_stocks.get(r["theme"]) else "·".join(b["name"] for b in r["basket_detail"])
         themes.append({"name": r["theme"], "why": r["why"], "note": f"관련주 {rel}" if rel else "",
                        "src": ["base"] + (["us"] if "미국 짝" in r["why"] and "연관 약함" not in r["why"] else [])
                               + (["event"] if "일정:" in r["why"] else [])})
@@ -472,7 +493,7 @@ def emit(path, day, out, sig, data):
     neg = sorted((v, t) for t, v in sig.items() if v <= -2)
     warn = f"{neg[0][1]} — 미국 짝 종목 평균 {neg[0][0]:+.1f}%" if neg else ""
     pre = {"time": datetime.now(timezone(timedelta(hours=9))).strftime("%H:%M"), "market": market,
-           "themes": themes, "warn": warn, "method": "data-only v2026-10-06"}
+           "themes": themes, "warn": warn, "news": news, "method": "data-only v2026-10-06"}
     json.dump(pre, open(path, "w", encoding="utf-8"), ensure_ascii=False, indent=1)
     print("emit →", path, [t["name"] for t in themes], "| 조심:", warn or "없음")
 

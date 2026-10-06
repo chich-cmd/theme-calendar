@@ -20,7 +20,8 @@
    "kind": "실적",
    "what": "삼성전자 3분기 잠정실적 발표(장 시작 전후)",
    "weight": 1.0,
-   "src": "https://firebat.co.kr/stock-blog/20261001-monthly"
+   "src": "https://firebat.co.kr/stock-blog/20261001-monthly",
+   "catalyst": "hbm_memory"
   },
   {
    "date": "2026-10-07",
@@ -40,7 +41,8 @@
    "kind": "정책",
    "what": "美 정부 비스트라 원전 3곳 40억달러 연방 대출 · 비스트라 +3.5%·콘스텔레이션 +3.9%(10/5)",
    "weight": 0.6,
-   "src": "https://www.benzinga.com/trading-ideas/movers/26/10/62155488/why-is-vistra-stock-soaring-monday"
+   "src": "https://www.benzinga.com/trading-ideas/movers/26/10/62155488/why-is-vistra-stock-soaring-monday",
+   "catalyst": "nuclear"
   },
   {
    "date": "2026-10-06",
@@ -50,7 +52,8 @@
    "kind": "해외 사건",
    "what": "스페이스X 3연속 발사 성공·290억달러 AI 계약 (10/2 +7.35%, 10/5 +7.63%)",
    "weight": 0.6,
-   "src": "https://www.g-enews.com/article/Securities/2026/10/202610030553135785e250e8e188_1"
+   "src": "https://www.g-enews.com/article/Securities/2026/10/202610030553135785e250e8e188_1",
+   "catalyst": "spacex"
   }
  ]
 }
