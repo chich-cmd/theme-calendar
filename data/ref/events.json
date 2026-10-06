@@ -54,6 +54,61 @@
    "weight": 0.6,
    "src": "https://www.g-enews.com/article/Securities/2026/10/202610030553135785e250e8e188_1",
    "catalyst": "spacex"
+  },
+  {
+   "date": "2026-10-07",
+   "themes": [
+    "원전·에너지"
+   ],
+   "kind": "계약",
+   "what": "구글-콘스텔레이션 20년 원전 전력계약(신규 890MW·총 3.6GW) · CEG +12%·VST +10.8%·TLN +12%·OKLO +7% (10/6)",
+   "weight": 0.6,
+   "src": "https://www.cnbc.com/2026/10/06/google-constellation-energy-ceg-nuclear-power-data-center.html",
+   "catalyst": "nuclear"
+  },
+  {
+   "date": "2026-10-07",
+   "themes": [
+    "보안"
+   ],
+   "kind": "정책",
+   "what": "금융권 AI 해킹 후 정부 공공·산업계 보안체계 전면 재점검·총리 긴급 점검 (10/6) · 美 보안주 ZS +5%·FTNT +4%·CRWD +3.8%",
+   "weight": 0.6,
+   "src": "https://kr.investing.com/news/stock-market-news/article-2117055",
+   "catalyst": "cybersecurity"
+  },
+  {
+   "date": "2026-10-07",
+   "themes": [
+    "우주항공"
+   ],
+   "kind": "대형 사건",
+   "what": "누리호 5차 발사 오늘 12:23~13:23 (위성 15기, 민간 이전) · ASTS +8% (10/6)",
+   "weight": 0.6,
+   "src": "https://andxo.com/nuri-5th-launch-october-7-2026-time-live-satellites",
+   "catalyst": "space_launch"
+  },
+  {
+   "date": "2026-10-07",
+   "themes": [
+    "광통신"
+   ],
+   "kind": "동종 기업",
+   "what": "시에나 +14%·마벨 인베스터데이 목표 상향 +7%·노키아 +7.5%·코닝 +6% (10/6)",
+   "weight": 0.3,
+   "src": "https://www.investing.com/news/analyst-ratings/ciena-stock-jumps-on-positive-industry-commentary-from-marvell-nokia-93CH-4935013",
+   "catalyst": "optical"
+  },
+  {
+   "date": "2026-10-07",
+   "themes": [
+    "전력기기·전선"
+   ],
+   "kind": "동종 기업",
+   "what": "INNIO(데이터센터 가스엔진) +12.5%·Argan +8%·GE버노바 +4% (10/6)",
+   "weight": 0.3,
+   "src": "https://finance.yahoo.com/markets/stocks/articles/stock-market-midday-oct-6-163808006.html",
+   "catalyst": "dc_power"
   }
  ]
 }
