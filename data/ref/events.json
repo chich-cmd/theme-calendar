@@ -109,6 +109,17 @@
    "weight": 0.3,
    "src": "https://finance.yahoo.com/markets/stocks/articles/stock-market-midday-oct-6-163808006.html",
    "catalyst": "dc_power"
+  },
+  {
+   "date": "2026-10-08",
+   "themes": [
+    "제약·바이오"
+   ],
+   "kind": "허가",
+   "what": "한미약품 GLP-1 비만신약 '에페' 식약처 품목허가(국산 1호) · 한미사이언스 장후 +13.9% / 펩트론 릴리 기술평가 종료로 장후 -25.6% (10/7)",
+   "weight": 0.6,
+   "src": "https://www.etoday.co.kr/news/view/2633571",
+   "catalyst": "obesity"
   }
  ]
 }
