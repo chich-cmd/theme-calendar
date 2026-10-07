@@ -120,6 +120,39 @@
    "weight": 0.6,
    "src": "https://www.etoday.co.kr/news/view/2633571",
    "catalyst": "obesity"
+  },
+  {
+   "date": "2026-10-08",
+   "themes": [
+    "정유·화학"
+   ],
+   "kind": "대형 사건",
+   "what": "호르무즈 해협 공격·후티의 사우디 공항 공격 → 브렌트유 100~102달러, 美 IRGC 연계 유조선 타격 (10/7)",
+   "weight": 0.6,
+   "src": "https://finance.yahoo.com/markets/live/stock-market-today-wednesday-october-7-dow-sp-500-nasdaq-080241833.html",
+   "catalyst": "oil_mideast"
+  },
+  {
+   "date": "2026-10-08",
+   "themes": [
+    "제약·바이오"
+   ],
+   "kind": "기사 2곳 이상",
+   "what": "러시아 페스트 의심 사망 후속: 美 정부 러시아에 정보 요구, WHO 위험 낮음·검사 진행 / 모더나 +4.8% (10/7)",
+   "weight": 0.3,
+   "src": "https://www.washingtonpost.com/national-security/2026/10/06/us-preparing-formal-request-russia-information-plague-death/",
+   "catalyst": "epidemic"
+  },
+  {
+   "date": "2026-10-08",
+   "themes": [
+    "화장품"
+   ],
+   "kind": "기사 2곳 이상",
+   "what": "中 국경절 연휴 방한객 29% 급증·유커 14.3만 명, 전날 화장품주 6종목 급등",
+   "weight": 0.3,
+   "src": "https://www.news1.kr/industry/hotel-tourism/6307595",
+   "catalyst": "china_tourism"
   }
  ]
 }
