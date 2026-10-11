@@ -153,6 +153,39 @@
    "weight": 0.3,
    "src": "https://www.news1.kr/industry/hotel-tourism/6307595",
    "catalyst": "china_tourism"
+  },
+  {
+   "date": "2026-10-12",
+   "themes": [
+    "제약·바이오"
+   ],
+   "kind": "정책",
+   "what": "美 NIH 민관 '암 백신' 가속 이니셔티브(12월 출범) → 모더나 +14%·노바백스 +16%·백스사이트 +9.8% (10/9)",
+   "weight": 0.6,
+   "src": "https://www.benzinga.com/news/health-care/26/10/62283036/a-new-war-on-cancer-nihs-vaccine-initiative-sparks-biotech-stock-rally",
+   "catalyst": "mrna"
+  },
+  {
+   "date": "2026-10-12",
+   "themes": [
+    "우주항공"
+   ],
+   "kind": "M&A",
+   "what": "스페이스X, 美 전국 저대역 주파수 인수(약 11조) → 스타링크 이동통신 진출, 美 통신 3사 -9~13% (10/9)",
+   "weight": 0.6,
+   "src": "https://www.news1.kr/world/usa-canada/6315824",
+   "catalyst": "spacex"
+  },
+  {
+   "date": "2026-10-12",
+   "themes": [
+    "보안"
+   ],
+   "kind": "기사 2곳 이상",
+   "what": "美 보안주 랠리(지스케일러 +7.8%·팰로알토 +5%·크라우드스트라이크 +4.6%) · 국감: 국책은행 해킹 시도 올해 100만건 돌파",
+   "weight": 0.3,
+   "src": "https://newspim.com/news/view/20261011000047",
+   "catalyst": "cybersecurity"
   }
  ]
 }
