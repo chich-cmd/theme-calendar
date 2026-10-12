@@ -186,6 +186,39 @@
    "weight": 0.3,
    "src": "https://newspim.com/news/view/20261011000047",
    "catalyst": "cybersecurity"
+  },
+  {
+   "date": "2026-10-13",
+   "themes": [
+    "호남 반도체 클러스터"
+   ],
+   "kind": "정책",
+   "what": "김정관 산업장관 '호남 반도체 2029년 첫 팹 완공·2030년 초 양산' 목표 발표 (10/12 현장 점검), 최태원 방문 이틀째 재료",
+   "weight": 0.6,
+   "src": "https://g-enews.com/article/Industry/2026/10/202610122030086746139bf6e4b2_1",
+   "catalyst": "honam_semi"
+  },
+  {
+   "date": "2026-10-13",
+   "themes": [
+    "정유·화학"
+   ],
+   "kind": "기사 2곳 이상",
+   "what": "국제유가 106달러 돌파(호르무즈 긴장) (10/12)",
+   "weight": 0.3,
+   "src": "https://newspim.com/news/view/20261012001529",
+   "catalyst": "oil_mideast"
+  },
+  {
+   "date": "2026-10-13",
+   "themes": [
+    "해운"
+   ],
+   "kind": "동종 기업",
+   "what": "유조선 운임 하루 130만달러 기록, 美 유조선주 DHT +6.4%·프론트라인 +5.5% (10/12)",
+   "weight": 0.3,
+   "src": "https://www.benzinga.com/markets/commodities/26/10/62274386/tanker-rates-hit-1-3m-a-day-as-9-shipping-stocks-double-in-2026",
+   "catalyst": "tanker"
   }
  ]
 }
