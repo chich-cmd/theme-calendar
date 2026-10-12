@@ -1,453 +1,460 @@
 {
- "updated": "2026-10-10T06:42:21+09:00",
+ "updated": "2026-10-13T06:43:38+09:00",
  "gainers": [
   {
-   "sym": "FSLY",
-   "name": "Fastly, Inc.",
-   "chg": 15.86,
-   "cap_b": 4.7
-  },
-  {
-   "sym": "NVAX",
-   "name": "Novavax, Inc.",
-   "chg": 15.8,
-   "cap_b": 2.1
-  },
-  {
-   "sym": "CCI",
-   "name": "Crown Castle Inc.",
-   "chg": 15.6,
-   "cap_b": 33.9
-  },
-  {
-   "sym": "MRNA",
-   "name": "Moderna, Inc.",
-   "chg": 14.21,
-   "cap_b": 89.8
-  },
-  {
-   "sym": "HUM",
-   "name": "Humana Inc.",
-   "chg": 11.56,
-   "cap_b": 51.9
-  },
-  {
-   "sym": "AUGO",
-   "name": "Aura Minerals Inc.",
-   "chg": 10.63,
-   "cap_b": 7.7
-  },
-  {
-   "sym": "HIMS",
-   "name": "Hims & Hers Health, Inc.",
-   "chg": 10.19,
-   "cap_b": 7.2
-  },
-  {
-   "sym": "IOVA",
-   "name": "Iovance Biotherapeutics, Inc.",
-   "chg": 9.84,
-   "cap_b": 6.6
-  },
-  {
-   "sym": "PCVX",
-   "name": "Vaxcyte, Inc.",
-   "chg": 9.79,
-   "cap_b": 10.6
-  },
-  {
-   "sym": "SEZL",
-   "name": "Sezzle Inc.",
-   "chg": 9.74,
-   "cap_b": 4.3
-  },
-  {
-   "sym": "AMT",
-   "name": "American Tower Corporation (REI",
-   "chg": 9.3,
-   "cap_b": 84.9
-  },
-  {
-   "sym": "SECZ",
-   "name": "Securitize Corp.",
-   "chg": 9.16,
-   "cap_b": 2.3
-  },
-  {
-   "sym": "PLNT",
-   "name": "Planet Fitness, Inc.",
-   "chg": 8.97,
-   "cap_b": 3.6
-  },
-  {
-   "sym": "DOCN",
-   "name": "DigitalOcean Holdings, Inc.",
-   "chg": 8.81,
-   "cap_b": 15.8
-  },
-  {
-   "sym": "ARQT",
-   "name": "Arcutis Biotherapeutics, Inc.",
-   "chg": 8.53,
-   "cap_b": 3.3
-  },
-  {
-   "sym": "CAI",
-   "name": "Caris Life Sciences, Inc.",
-   "chg": 8.0,
-   "cap_b": 8.4
-  },
-  {
-   "sym": "DFTX",
-   "name": "Definium Therapeutics, Inc.",
-   "chg": 7.96,
-   "cap_b": 5.0
-  },
-  {
-   "sym": "ZS",
-   "name": "Zscaler, Inc.",
-   "chg": 7.8,
-   "cap_b": 38.1
-  },
-  {
-   "sym": "PLSE",
-   "name": "Pulse Biosciences, Inc",
-   "chg": 7.66,
-   "cap_b": 3.8
-  },
-  {
-   "sym": "SNOW",
-   "name": "Snowflake Inc.",
-   "chg": 7.42,
-   "cap_b": 130.1
-  },
-  {
-   "sym": "STNE",
-   "name": "StoneCo Ltd.",
-   "chg": 7.41,
+   "sym": "FIGS",
+   "name": "FIGS, Inc.",
+   "chg": 12.42,
    "cap_b": 2.9
-  },
-  {
-   "sym": "SBAC",
-   "name": "SBA Communications Corporation",
-   "chg": 7.34,
-   "cap_b": 19.4
-  },
-  {
-   "sym": "SYRE",
-   "name": "Spyre Therapeutics, Inc.",
-   "chg": 7.25,
-   "cap_b": 7.9
-  },
-  {
-   "sym": "AMBA",
-   "name": "Ambarella, Inc.",
-   "chg": 7.22,
-   "cap_b": 3.0
-  },
-  {
-   "sym": "DDOG",
-   "name": "Datadog, Inc.",
-   "chg": 7.11,
-   "cap_b": 105.3
-  },
-  {
-   "sym": "CCC",
-   "name": "CCC Intelligent Solutions Holdi",
-   "chg": 6.85,
-   "cap_b": 4.1
-  },
-  {
-   "sym": "NG",
-   "name": "Novagold Resources Inc.",
-   "chg": 6.85,
-   "cap_b": 2.9
-  },
-  {
-   "sym": "VSAT",
-   "name": "ViaSat, Inc.",
-   "chg": 6.82,
-   "cap_b": 9.9
-  },
-  {
-   "sym": "ACCV",
-   "name": "Accelevation Holdings Corp.",
-   "chg": 6.77,
-   "cap_b": 3.7
-  },
-  {
-   "sym": "DAO",
-   "name": "Youdao, Inc.",
-   "chg": 6.68,
-   "cap_b": 2.1
-  },
-  {
-   "sym": "XP",
-   "name": "XP Inc.",
-   "chg": 6.67,
-   "cap_b": 16.3
-  },
-  {
-   "sym": "TENB",
-   "name": "Tenable Holdings, Inc.",
-   "chg": 6.61,
-   "cap_b": 4.6
-  },
-  {
-   "sym": "PENG",
-   "name": "Penguin Solutions, Inc.",
-   "chg": 6.58,
-   "cap_b": 3.9
-  },
-  {
-   "sym": "TGB",
-   "name": "Trekor Metals Limited",
-   "chg": 6.5,
-   "cap_b": 3.2
-  },
-  {
-   "sym": "CLF",
-   "name": "Cleveland-Cliffs Inc.",
-   "chg": 6.48,
-   "cap_b": 7.4
-  },
-  {
-   "sym": "NN",
-   "name": "NextNav Inc.",
-   "chg": 6.47,
-   "cap_b": 2.1
-  },
-  {
-   "sym": "SNAP",
-   "name": "Snap Inc.",
-   "chg": 6.31,
-   "cap_b": 10.5
-  },
-  {
-   "sym": "ORKA",
-   "name": "Oruka Therapeutics, Inc.",
-   "chg": 6.25,
-   "cap_b": 5.4
-  },
-  {
-   "sym": "RGEN",
-   "name": "Repligen Corporation",
-   "chg": 6.13,
-   "cap_b": 11.0
-  },
-  {
-   "sym": "INTR",
-   "name": "Inter & Co. Inc.",
-   "chg": 6.08,
-   "cap_b": 3.4
-  }
- ],
- "losers": [
-  {
-   "sym": "TMUS",
-   "name": "T-Mobile US, Inc.",
-   "chg": -13.27,
-   "cap_b": 159.4
-  },
-  {
-   "sym": "ASTS",
-   "name": "AST SpaceMobile, Inc.",
-   "chg": -10.48,
-   "cap_b": 19.8
-  },
-  {
-   "sym": "T",
-   "name": "AT&T Inc.",
-   "chg": -9.81,
-   "cap_b": 152.0
-  },
-  {
-   "sym": "TIGO",
-   "name": "Millicom International Cellular",
-   "chg": -9.63,
-   "cap_b": 13.3
-  },
-  {
-   "sym": "VZ",
-   "name": "Verizon Communications Inc.",
-   "chg": -8.75,
-   "cap_b": 173.0
-  },
-  {
-   "sym": "AVNT",
-   "name": "Avient Corporation",
-   "chg": -7.78,
-   "cap_b": 3.5
-  },
-  {
-   "sym": "BKD",
-   "name": "Brookdale Senior Living Inc.",
-   "chg": -7.07,
-   "cap_b": 2.4
-  },
-  {
-   "sym": "HPQ",
-   "name": "HP Inc.",
-   "chg": -6.91,
-   "cap_b": 27.2
-  },
-  {
-   "sym": "PARR",
-   "name": "Par Pacific Holdings, Inc. Comm",
-   "chg": -6.57,
-   "cap_b": 4.1
-  },
-  {
-   "sym": "BVC",
-   "name": "BitVentures Limited",
-   "chg": -6.5,
-   "cap_b": 2.0
-  },
-  {
-   "sym": "CNH",
-   "name": "CNH Industrial N.V.",
-   "chg": -6.1,
-   "cap_b": 18.3
-  },
-  {
-   "sym": "MAAS",
-   "name": "Maase Inc.",
-   "chg": -5.94,
-   "cap_b": 5.1
-  },
-  {
-   "sym": "BCE",
-   "name": "BCE, Inc.",
-   "chg": -5.91,
-   "cap_b": 17.5
-  },
-  {
-   "sym": "CHTR",
-   "name": "Charter Communications, Inc.",
-   "chg": -5.74,
-   "cap_b": 13.4
-  },
-  {
-   "sym": "PBF",
-   "name": "PBF Energy Inc.",
-   "chg": -5.67,
-   "cap_b": 10.0
   },
   {
    "sym": "FICO",
    "name": "Fair Isaac Corporation",
-   "chg": -5.63,
-   "cap_b": 14.4
+   "chg": 10.85,
+   "cap_b": 16.0
   },
   {
-   "sym": "CRUS",
-   "name": "Cirrus Logic, Inc.",
-   "chg": -5.59,
-   "cap_b": 5.4
+   "sym": "CCC",
+   "name": "CCC Intelligent Solutions Holdi",
+   "chg": 8.12,
+   "cap_b": 4.5
   },
   {
-   "sym": "VOD",
-   "name": "Vodafone Group Plc",
-   "chg": -5.58,
-   "cap_b": 36.0
+   "sym": "VSXY",
+   "name": "Victorias Secret & Co.",
+   "chg": 6.9,
+   "cap_b": 7.1
   },
   {
-   "sym": "SWKS",
-   "name": "Skyworks Solutions, Inc.",
-   "chg": -5.45,
-   "cap_b": 18.0
+   "sym": "DHT",
+   "name": "DHT Holdings, Inc.",
+   "chg": 6.41,
+   "cap_b": 4.2
   },
   {
-   "sym": "JOBY",
-   "name": "Joby Aviation, Inc.",
-   "chg": -5.39,
+   "sym": "CHA",
+   "name": "Chagee Holdings Limited",
+   "chg": 6.4,
+   "cap_b": 2.3
+  },
+  {
+   "sym": "MANH",
+   "name": "Manhattan Associates, Inc.",
+   "chg": 6.34,
+   "cap_b": 12.7
+  },
+  {
+   "sym": "ECO",
+   "name": "Okeanis Eco Tankers Corp.",
+   "chg": 5.93,
+   "cap_b": 3.9
+  },
+  {
+   "sym": "FRO",
+   "name": "Frontline Plc",
+   "chg": 5.51,
+   "cap_b": 13.2
+  },
+  {
+   "sym": "PBLS",
+   "name": "Parabilis Medicines, Inc.",
+   "chg": 5.35,
+   "cap_b": 3.6
+  },
+  {
+   "sym": "FIZZ",
+   "name": "National Beverage Corp.",
+   "chg": 5.34,
+   "cap_b": 3.0
+  },
+  {
+   "sym": "VFC",
+   "name": "V.F. Corporation",
+   "chg": 5.27,
+   "cap_b": 6.2
+  },
+  {
+   "sym": "VEON",
+   "name": "VEON Ltd.",
+   "chg": 5.21,
+   "cap_b": 5.6
+  },
+  {
+   "sym": "SHOP",
+   "name": "Shopify Inc.",
+   "chg": 4.9,
+   "cap_b": 232.6
+  },
+  {
+   "sym": "LW",
+   "name": "Lamb Weston Holdings, Inc.",
+   "chg": 4.83,
+   "cap_b": 6.9
+  },
+  {
+   "sym": "SNAP",
+   "name": "Snap Inc.",
+   "chg": 4.82,
+   "cap_b": 11.0
+  },
+  {
+   "sym": "VIST",
+   "name": "Vista Energy S.A.B. de C.V.",
+   "chg": 4.77,
+   "cap_b": 7.7
+  },
+  {
+   "sym": "KSPI",
+   "name": "Joint Stock Company Kaspi.kz - ",
+   "chg": 4.5,
+   "cap_b": 18.5
+  },
+  {
+   "sym": "KSS",
+   "name": "Kohl's Corporation",
+   "chg": 4.03,
+   "cap_b": 2.4
+  },
+  {
+   "sym": "MDT",
+   "name": "Medtronic plc.",
+   "chg": 3.9,
+   "cap_b": 117.6
+  },
+  {
+   "sym": "YPF",
+   "name": "YPF Sociedad Anonima",
+   "chg": 3.86,
+   "cap_b": 20.4
+  },
+  {
+   "sym": "DK",
+   "name": "Delek US Holdings, Inc.",
+   "chg": 3.78,
+   "cap_b": 4.7
+  },
+  {
+   "sym": "INSP",
+   "name": "Inspire Medical Systems, Inc.",
+   "chg": 3.77,
+   "cap_b": 2.1
+  },
+  {
+   "sym": "MOH",
+   "name": "Molina Healthcare Inc",
+   "chg": 3.77,
+   "cap_b": 10.7
+  },
+  {
+   "sym": "SEI",
+   "name": "Solaris Energy Infrastructure, ",
+   "chg": 3.77,
+   "cap_b": 8.0
+  },
+  {
+   "sym": "PENG",
+   "name": "Penguin Solutions, Inc.",
+   "chg": 3.77,
+   "cap_b": 4.1
+  },
+  {
+   "sym": "TDS",
+   "name": "Telephone and Data Systems, Inc",
+   "chg": 3.76,
+   "cap_b": 4.0
+  },
+  {
+   "sym": "VYLR",
+   "name": "Vylor Inc.",
+   "chg": 3.75,
+   "cap_b": 50.6
+  },
+  {
+   "sym": "HURN",
+   "name": "Huron Consulting Group Inc.",
+   "chg": 3.7,
+   "cap_b": 2.8
+  },
+  {
+   "sym": "INSW",
+   "name": "International Seaways, Inc.",
+   "chg": 3.67,
+   "cap_b": 6.2
+  },
+  {
+   "sym": "SHAK",
+   "name": "Shake Shack, Inc.",
+   "chg": 3.65,
+   "cap_b": 3.0
+  },
+  {
+   "sym": "BFLY",
+   "name": "Butterfly Network, Inc.",
+   "chg": 3.64,
+   "cap_b": 2.3
+  },
+  {
+   "sym": "CNR",
+   "name": "Core Natural Resources, Inc.",
+   "chg": 3.57,
+   "cap_b": 4.5
+  },
+  {
+   "sym": "NMM",
+   "name": "Navios Maritime Partners LP",
+   "chg": 3.42,
+   "cap_b": 2.8
+  },
+  {
+   "sym": "ZBH",
+   "name": "Zimmer Biomet Holdings, Inc.",
+   "chg": 3.4,
+   "cap_b": 17.6
+  },
+  {
+   "sym": "AHR",
+   "name": "American Healthcare REIT, Inc.",
+   "chg": 3.39,
+   "cap_b": 11.4
+  },
+  {
+   "sym": "WLY",
+   "name": "John Wiley & Sons, Inc.",
+   "chg": 3.38,
+   "cap_b": 2.6
+  },
+  {
+   "sym": "META",
+   "name": "Meta Platforms, Inc.",
+   "chg": 3.38,
+   "cap_b": 1892.7
+  },
+  {
+   "sym": "PODD",
+   "name": "Insulet Corporation",
+   "chg": 3.35,
+   "cap_b": 9.7
+  },
+  {
+   "sym": "TALO",
+   "name": "Talos Energy, Inc.",
+   "chg": 3.21,
+   "cap_b": 2.9
+  }
+ ],
+ "losers": [
+  {
+   "sym": "CBRS",
+   "name": "Cerebras Systems Inc.",
+   "chg": -10.69,
+   "cap_b": 34.8
+  },
+  {
+   "sym": "SMTC",
+   "name": "Semtech Corporation",
+   "chg": -10.15,
+   "cap_b": 15.7
+  },
+  {
+   "sym": "CIEN",
+   "name": "Ciena Corporation",
+   "chg": -9.95,
+   "cap_b": 57.4
+  },
+  {
+   "sym": "FSLY",
+   "name": "Fastly, Inc.",
+   "chg": -9.8,
+   "cap_b": 4.2
+  },
+  {
+   "sym": "LITE",
+   "name": "Lumentum Holdings Inc.",
+   "chg": -9.78,
+   "cap_b": 90.2
+  },
+  {
+   "sym": "AXTI",
+   "name": "AXT Inc",
+   "chg": -9.47,
+   "cap_b": 4.1
+  },
+  {
+   "sym": "ICHR",
+   "name": "Ichor Holdings",
+   "chg": -9.23,
+   "cap_b": 2.0
+  },
+  {
+   "sym": "IONQ",
+   "name": "IonQ, Inc.",
+   "chg": -9.07,
+   "cap_b": 14.7
+  },
+  {
+   "sym": "TTMI",
+   "name": "TTM Technologies, Inc.",
+   "chg": -8.83,
+   "cap_b": 11.6
+  },
+  {
+   "sym": "NESR",
+   "name": "National Energy Services Reunit",
+   "chg": -8.25,
+   "cap_b": 2.1
+  },
+  {
+   "sym": "AAOI",
+   "name": "Applied Optoelectronics, Inc.",
+   "chg": -8.17,
+   "cap_b": 8.5
+  },
+  {
+   "sym": "VIAV",
+   "name": "Viavi Solutions Inc.",
+   "chg": -8.16,
+   "cap_b": 10.3
+  },
+  {
+   "sym": "COHR",
+   "name": "Coherent Corp.",
+   "chg": -7.87,
+   "cap_b": 56.7
+  },
+  {
+   "sym": "AEHR",
+   "name": "Aehr Test Systems",
+   "chg": -7.63,
+   "cap_b": 2.6
+  },
+  {
+   "sym": "VRNS",
+   "name": "Varonis Systems, Inc.",
+   "chg": -7.48,
+   "cap_b": 5.3
+  },
+  {
+   "sym": "MXL",
+   "name": "MaxLinear, Inc",
+   "chg": -7.46,
+   "cap_b": 8.1
+  },
+  {
+   "sym": "UCTT",
+   "name": "Ultra Clean Holdings, Inc.",
+   "chg": -7.41,
+   "cap_b": 2.9
+  },
+  {
+   "sym": "FPS",
+   "name": "Forgent Power Solutions, Inc.",
+   "chg": -7.34,
+   "cap_b": 11.8
+  },
+  {
+   "sym": "NVTS",
+   "name": "Navitas Semiconductor Corporati",
+   "chg": -7.33,
+   "cap_b": 2.6
+  },
+  {
+   "sym": "DPC",
+   "name": "DPC Holdings PLC",
+   "chg": -7.28,
    "cap_b": 5.4
   }
  ],
  "watch": [
   {
-   "sym": "ASTS",
-   "name": "AST스페이스모바일",
-   "group": "우주항공",
-   "date": "2026-10-09",
-   "chg": -10.48
-  },
-  {
-   "sym": "ZS",
-   "name": "지스케일러",
-   "group": "보안",
-   "date": "2026-10-09",
-   "chg": 7.8
-  },
-  {
    "sym": "CIEN",
    "name": "시에나",
    "group": "광통신",
-   "date": "2026-10-09",
-   "chg": 5.6
+   "date": "2026-10-12",
+   "chg": -9.95
   },
   {
    "sym": "LITE",
    "name": "루멘텀",
    "group": "광통신",
-   "date": "2026-10-09",
-   "chg": 5.22
-  },
-  {
-   "sym": "PANW",
-   "name": "팰로알토",
-   "group": "보안",
-   "date": "2026-10-09",
-   "chg": 5.09
-  },
-  {
-   "sym": "CRWD",
-   "name": "크라우드스트라이크",
-   "group": "보안",
-   "date": "2026-10-09",
-   "chg": 4.57
-  },
-  {
-   "sym": "CEG",
-   "name": "콘스텔레이션",
-   "group": "원전·에너지",
-   "date": "2026-10-09",
-   "chg": 4.56
-  },
-  {
-   "sym": "COIN",
-   "name": "코인베이스",
-   "group": "디지털자산",
-   "date": "2026-10-09",
-   "chg": 4.3
-  },
-  {
-   "sym": "CIBR",
-   "name": "사이버보안 ETF",
-   "group": "보안",
-   "date": "2026-10-09",
-   "chg": 3.58
-  },
-  {
-   "sym": "VST",
-   "name": "비스트라",
-   "group": "원전·에너지",
-   "date": "2026-10-09",
-   "chg": 3.42
+   "date": "2026-10-12",
+   "chg": -9.78
   },
   {
    "sym": "COHR",
    "name": "코히런트",
    "group": "광통신",
-   "date": "2026-10-09",
-   "chg": 3.4
+   "date": "2026-10-12",
+   "chg": -7.87
   },
   {
-   "sym": "XBI",
-   "name": "바이오 ETF",
-   "group": "제약·바이오",
-   "date": "2026-10-09",
-   "chg": 3.0
+   "sym": "OKLO",
+   "name": "오클로",
+   "group": "원전·에너지",
+   "date": "2026-10-12",
+   "chg": -7.18
+  },
+  {
+   "sym": "SMR",
+   "name": "뉴스케일",
+   "group": "원전·에너지",
+   "date": "2026-10-12",
+   "chg": -6.94
+  },
+  {
+   "sym": "GLW",
+   "name": "코닝",
+   "group": "광통신",
+   "date": "2026-10-12",
+   "chg": -6.0
+  },
+  {
+   "sym": "CRWD",
+   "name": "크라우드스트라이크",
+   "group": "보안",
+   "date": "2026-10-12",
+   "chg": -4.37
+  },
+  {
+   "sym": "MU",
+   "name": "마이크론",
+   "group": "반도체",
+   "date": "2026-10-12",
+   "chg": -3.88
+  },
+  {
+   "sym": "RKLB",
+   "name": "로켓랩",
+   "group": "우주항공",
+   "date": "2026-10-12",
+   "chg": -3.67
+  },
+  {
+   "sym": "PANW",
+   "name": "팰로알토",
+   "group": "보안",
+   "date": "2026-10-12",
+   "chg": -3.57
+  },
+  {
+   "sym": "ZS",
+   "name": "지스케일러",
+   "group": "보안",
+   "date": "2026-10-12",
+   "chg": -3.4
+  },
+  {
+   "sym": "NLR",
+   "name": "원전 ETF",
+   "group": "원전·에너지",
+   "date": "2026-10-12",
+   "chg": -3.05
+  },
+  {
+   "sym": "URA",
+   "name": "우라늄 ETF",
+   "group": "원전·에너지",
+   "date": "2026-10-12",
+   "chg": -3.03
   }
  ]
 }
