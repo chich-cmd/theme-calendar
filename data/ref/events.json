@@ -219,6 +219,39 @@
    "weight": 0.3,
    "src": "https://www.benzinga.com/markets/commodities/26/10/62274386/tanker-rates-hit-1-3m-a-day-as-9-shipping-stocks-double-in-2026",
    "catalyst": "tanker"
+  },
+  {
+   "date": "2026-10-14",
+   "themes": [
+    "호남 반도체 클러스터"
+   ],
+   "kind": "정책",
+   "what": "산업부 '반도체혁신성장지원단(메가프로젝트 전담국)' 신설, 서남권 반도체 클러스터 추진 지원 강화(20일 출범) (10/13)",
+   "weight": 0.6,
+   "src": "https://www.joongangenews.com/news/articleView.html?idxno=554504",
+   "catalyst": "honam_semi"
+  },
+  {
+   "date": "2026-10-14",
+   "themes": [
+    "정유·화학"
+   ],
+   "kind": "동종 기업",
+   "what": "美 정유주 랠리(크랙 스프레드 배럴당 70달러 근접) — PBF +7%·CVR +7%·발레로 +4.7% (10/13)",
+   "weight": 0.3,
+   "src": "https://seekingalpha.com/news/4652678-pbf-energy-climbs-7-percent-amid-broad-refining-sector-rally",
+   "catalyst": "oil_mideast"
+  },
+  {
+   "date": "2026-10-14",
+   "themes": [
+    "보안"
+   ],
+   "kind": "기사 2곳 이상",
+   "what": "국감: KT 해킹 정황 알고도 '안전' 홍보 의혹, 개인정보 유출 신고 급증 (10/13)",
+   "weight": 0.3,
+   "src": "https://www.hankooki.com/news/articleView.html?idxno=345706",
+   "catalyst": "cybersecurity"
   }
  ]
 }
