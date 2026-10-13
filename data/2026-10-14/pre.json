@@ -2,7 +2,7 @@
  "date": "2026-10-14",
  "status": "open",
  "source": "naver-finance",
- "time": "08:45",
+ "time": "08:58",
  "base_day": "2026-10-13",
  "rule": "NXT 프리마켓 가격이 전 거래일 KRX 종가 대비 3.0% 이상",
  "sessions": {
@@ -15,90 +15,60 @@
    "name": "대한제강",
    "market": "KOSPI",
    "base": 8750.0,
-   "price": 10140.0,
-   "chg": 15.89,
-   "eok": 267.3,
-   "vol": 2644699.0
+   "price": 10170.0,
+   "chg": 16.23,
+   "eok": 275.9,
+   "vol": 2729398.0
   },
   {
    "code": "002710",
    "name": "TCC스틸",
    "market": "KOSPI",
    "base": 13170.0,
-   "price": 14240.0,
-   "chg": 8.12,
-   "eok": 166.7,
-   "vol": 1163528.0
-  },
-  {
-   "code": "475830",
-   "name": "오름테라퓨틱",
-   "market": "KOSDAQ",
-   "base": 16910.0,
-   "price": 17920.0,
-   "chg": 5.97,
-   "eok": 51.1,
-   "vol": 278153.0
+   "price": 14200.0,
+   "chg": 7.82,
+   "eok": 170.9,
+   "vol": 1192839.0
   },
   {
    "code": "087010",
    "name": "펩트론",
    "market": "KOSDAQ",
    "base": 82300.0,
-   "price": 87000.0,
-   "chg": 5.71,
-   "eok": 77.6,
-   "vol": 88477.0
+   "price": 87200.0,
+   "chg": 5.95,
+   "eok": 80.3,
+   "vol": 91485.0
   },
   {
-   "code": "199430",
-   "name": "케이엔알시스템",
+   "code": "475830",
+   "name": "오름테라퓨틱",
    "market": "KOSDAQ",
-   "base": 14250.0,
-   "price": 15020.0,
-   "chg": 5.4,
-   "eok": 19.6,
-   "vol": 125666.0
+   "base": 16910.0,
+   "price": 17880.0,
+   "chg": 5.74,
+   "eok": 52.3,
+   "vol": 285072.0
   },
   {
    "code": "115180",
    "name": "큐리언트",
    "market": "KOSDAQ",
    "base": 19600.0,
-   "price": 20650.0,
-   "chg": 5.36,
-   "eok": 5.2,
-   "vol": 25355.0
-  },
-  {
-   "code": "059090",
-   "name": "미코",
-   "market": "KOSDAQ",
-   "base": 24450.0,
-   "price": 25750.0,
-   "chg": 5.32,
-   "eok": 29.8,
-   "vol": 117485.0
+   "price": 20550.0,
+   "chg": 4.85,
+   "eok": 5.8,
+   "vol": 27903.0
   },
   {
    "code": "382900",
    "name": "범한퓨얼셀",
    "market": "KOSDAQ",
    "base": 20900.0,
-   "price": 22000.0,
-   "chg": 5.26,
-   "eok": 108.2,
-   "vol": 472186.0
-  },
-  {
-   "code": "001430",
-   "name": "세아베스틸지주",
-   "market": "KOSPI",
-   "base": 43100.0,
-   "price": 45250.0,
-   "chg": 4.99,
-   "eok": 8.4,
-   "vol": 18745.0
+   "price": 21900.0,
+   "chg": 4.78,
+   "eok": 110.7,
+   "vol": 483226.0
   },
   {
    "code": "033270",
@@ -111,104 +81,134 @@
    "vol": 6.0
   },
   {
+   "code": "199430",
+   "name": "케이엔알시스템",
+   "market": "KOSDAQ",
+   "base": 14250.0,
+   "price": 14910.0,
+   "chg": 4.63,
+   "eok": 20.1,
+   "vol": 128916.0
+  },
+  {
+   "code": "059090",
+   "name": "미코",
+   "market": "KOSDAQ",
+   "base": 24450.0,
+   "price": 25550.0,
+   "chg": 4.5,
+   "eok": 33.3,
+   "vol": 131121.0
+  },
+  {
    "code": "460860",
    "name": "동국제강",
    "market": "KOSPI",
    "base": 8930.0,
-   "price": 9340.0,
-   "chg": 4.59,
-   "eok": 53.7,
-   "vol": 564973.0
+   "price": 9330.0,
+   "chg": 4.48,
+   "eok": 54.7,
+   "vol": 575744.0
   },
   {
-   "code": "017670",
-   "name": "SK텔레콤",
+   "code": "001430",
+   "name": "세아베스틸지주",
    "market": "KOSPI",
-   "base": 79500.0,
-   "price": 83000.0,
-   "chg": 4.4,
-   "eok": 155.4,
-   "vol": 187238.0
-  },
-  {
-   "code": "010950",
-   "name": "S-Oil",
-   "market": "KOSPI",
-   "base": 158300.0,
-   "price": 165100.0,
-   "chg": 4.3,
-   "eok": 42.9,
-   "vol": 26330.0
-  },
-  {
-   "code": "336260",
-   "name": "두산퓨얼셀",
-   "market": "KOSPI",
-   "base": 38100.0,
-   "price": 39650.0,
-   "chg": 4.07,
-   "eok": 68.5,
-   "vol": 171065.0
+   "base": 43100.0,
+   "price": 45000.0,
+   "chg": 4.41,
+   "eok": 9.0,
+   "vol": 20153.0
   },
   {
    "code": "078600",
    "name": "대주전자재료",
    "market": "KOSDAQ",
    "base": 108800.0,
-   "price": 112800.0,
-   "chg": 3.68,
-   "eok": 67.4,
-   "vol": 60163.0
+   "price": 113500.0,
+   "chg": 4.32,
+   "eok": 75.5,
+   "vol": 67334.0
   },
   {
-   "code": "000500",
-   "name": "가온전선",
+   "code": "017670",
+   "name": "SK텔레콤",
    "market": "KOSPI",
-   "base": 277000.0,
-   "price": 287000.0,
-   "chg": 3.61,
-   "eok": 124.8,
-   "vol": 43570.0
+   "base": 79500.0,
+   "price": 82900.0,
+   "chg": 4.28,
+   "eok": 164.2,
+   "vol": 197853.0
   },
   {
-   "code": "034310",
-   "name": "NICE",
+   "code": "336260",
+   "name": "두산퓨얼셀",
    "market": "KOSPI",
-   "base": 11360.0,
-   "price": 11770.0,
-   "chg": 3.61,
-   "eok": 0.0,
-   "vol": 2.0
+   "base": 38100.0,
+   "price": 39700.0,
+   "chg": 4.2,
+   "eok": 70.8,
+   "vol": 176662.0
   },
   {
-   "code": "271940",
-   "name": "일진하이솔루스",
+   "code": "010950",
+   "name": "S-Oil",
    "market": "KOSPI",
-   "base": 10710.0,
-   "price": 11090.0,
-   "chg": 3.55,
-   "eok": 17.7,
-   "vol": 152927.0
-  },
-  {
-   "code": "096770",
-   "name": "SK이노베이션",
-   "market": "KOSPI",
-   "base": 155500.0,
-   "price": 161000.0,
-   "chg": 3.54,
-   "eok": 272.5,
-   "vol": 168730.0
+   "base": 158300.0,
+   "price": 164900.0,
+   "chg": 4.17,
+   "eok": 45.1,
+   "vol": 27635.0
   },
   {
    "code": "192080",
    "name": "더블유게임즈",
    "market": "KOSPI",
    "base": 55400.0,
-   "price": 57300.0,
-   "chg": 3.43,
+   "price": 57700.0,
+   "chg": 4.15,
    "eok": 0.1,
-   "vol": 193.0
+   "vol": 225.0
+  },
+  {
+   "code": "096770",
+   "name": "SK이노베이션",
+   "market": "KOSPI",
+   "base": 155500.0,
+   "price": 161800.0,
+   "chg": 4.05,
+   "eok": 284.5,
+   "vol": 176196.0
+  },
+  {
+   "code": "000500",
+   "name": "가온전선",
+   "market": "KOSPI",
+   "base": 277000.0,
+   "price": 288000.0,
+   "chg": 3.97,
+   "eok": 128.6,
+   "vol": 44880.0
+  },
+  {
+   "code": "034310",
+   "name": "NICE",
+   "market": "KOSPI",
+   "base": 11360.0,
+   "price": 11760.0,
+   "chg": 3.52,
+   "eok": 0.0,
+   "vol": 3.0
+  },
+  {
+   "code": "271940",
+   "name": "일진하이솔루스",
+   "market": "KOSPI",
+   "base": 10710.0,
+   "price": 11040.0,
+   "chg": 3.08,
+   "eok": 17.8,
+   "vol": 153561.0
   }
  ],
  "down": [
@@ -220,54 +220,54 @@
    "price": 6250.0,
    "chg": -25.24,
    "eok": 0.1,
-   "vol": 917.0
+   "vol": 918.0
   },
   {
    "code": "358570",
    "name": "지아이이노베이션",
    "market": "KOSDAQ",
    "base": 8730.0,
-   "price": 7700.0,
-   "chg": -11.8,
+   "price": 7660.0,
+   "chg": -12.26,
    "eok": 0.7,
-   "vol": 8783.0
-  },
-  {
-   "code": "010060",
-   "name": "OCI홀딩스",
-   "market": "KOSPI",
-   "base": 221000.0,
-   "price": 210000.0,
-   "chg": -4.98,
-   "eok": 247.9,
-   "vol": 117014.0
+   "vol": 9164.0
   },
   {
    "code": "338220",
    "name": "뷰노",
    "market": "KOSDAQ",
    "base": 7140.0,
-   "price": 6830.0,
-   "chg": -4.34,
-   "eok": 9.6,
-   "vol": 134381.0
+   "price": 6760.0,
+   "chg": -5.32,
+   "eok": 11.2,
+   "vol": 157008.0
+  },
+  {
+   "code": "010060",
+   "name": "OCI홀딩스",
+   "market": "KOSPI",
+   "base": 221000.0,
+   "price": 209500.0,
+   "chg": -5.2,
+   "eok": 262.8,
+   "vol": 124144.0
   }
  ],
  "sample": {
   "tradingSessionType": "PRE_MARKET",
   "overMarketStatus": "OPEN",
-  "overPrice": "163,200",
+  "overPrice": "163,600",
   "openPrice": "162,200",
   "highPrice": "164,000",
   "lowPrice": "160,100",
   "compareToPreviousPrice": {
-   "code": "5",
-   "text": "하락",
-   "name": "FALLING"
+   "code": "2",
+   "text": "상승",
+   "name": "RISING"
   },
-  "compareToPreviousClosePrice": "-200",
-  "fluctuationsRatio": "-0.12",
-  "localTradedAt": "2026-10-14T08:44:27.361523+09:00",
+  "compareToPreviousClosePrice": "200",
+  "fluctuationsRatio": "0.12",
+  "localTradedAt": "2026-10-14T08:50:00.000000+09:00",
   "tradeStopType": {
    "code": "1",
    "text": "운영.Trading",
@@ -276,10 +276,10 @@
   "tradableStatus": "tradable",
   "tradableStatusCode": "ok",
   "tradableStatusUpdatedAt": "2026-10-14T07:10:19.54+09:00",
-  "accumulatedTradingVolume": "8,413",
-  "accumulatedTradingValue": "13.6억",
-  "accumulatedTradingVolumeRaw": "8413",
-  "accumulatedTradingValueRaw": "1364000000"
+  "accumulatedTradingVolume": "9,144",
+  "accumulatedTradingValue": "14.8억",
+  "accumulatedTradingVolumeRaw": "9144",
+  "accumulatedTradingValueRaw": "1484000000"
  },
- "generatedAt": "2026-10-14T08:45:08+09:00"
+ "generatedAt": "2026-10-14T08:58:33+09:00"
 }
