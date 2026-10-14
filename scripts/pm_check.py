@@ -86,6 +86,10 @@ def main():
                      for n, v in themes[:6]],
           "confirm": [p for p in preds if p in groups and len(groups[p]) >= 2],
           "new": [n for n, v in themes if n not in preds and len(v) >= 3][:3]}
+    # 08:45 수정 예측 (10/14 복기: 프리마켓 새 테마 주도 적중 67% vs 07시 예측 30%) — 07시 예측은 그대로 두고 따로 채점
+    conf = [n for n in preds if n in groups and len(groups[n]) >= 2]
+    fresh = [n for n, v in themes if n not in preds and (len(v) >= 2 or any(x["chg"] >= 10 for x in v))]
+    pm["revised"] = (conf + fresh + [n for n in preds if n not in conf])[:5]
     doc["pre"]["pm"] = pm
     json.dump(doc, open(path, "w", encoding="utf-8"), ensure_ascii=False)
     print(json.dumps(pm, ensure_ascii=False))

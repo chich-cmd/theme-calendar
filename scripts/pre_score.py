@@ -180,7 +180,7 @@ EVENT_W = float(os.environ.get('EVENT_W', '1.0'))  # 10/7: 사건·뉴스 가중
 MOM_W = float(os.environ.get('MOM_W', '0'))        # 테마별 이어짐 효과(근거 표시용, 점수엔 안 넣음: 2년 검증에서 효과 없음)
 BREADTH_W = float(os.environ.get('BREADTH_W', '0.2'))  # 전날 급등 종목 수 가점 — 최근 60일 이어짐 비율이 높을 때만
 REGIME_ON = float(os.environ.get('REGIME_ON', '0.28'))  # 2년 검증: 이 기준일 때 상위3 38.4%→39.5%, 앞·뒤 1년 모두 기준 이상
-NXT_W = float(os.environ.get('NXT_W', '0'))
+NXT_W = float(os.environ.get('NXT_W', '2.5'))  # 10/14 복기: 넥장 흐름 반영(±0.5 상한)
 
 
 def events(day):
@@ -291,7 +291,8 @@ def leader_keep(app, theme):
 
 
 def nxt_flow(docs, days, day):
-    """전 거래일 본장 테마별 넥장 평균 추가 등락(통합 최종가 vs KRX 종가)."""
+    """전 거래일 넥장 테마 흐름(거래대금 가중 평균): 본장 급등 종목 + 넥장 거래대금 300억 이상 대형주.
+    10/14 복기: 전날 넥장에서 삼성SDI·LG엔솔이 큰 거래대금으로 오른 2차전지를 놓쳤다."""
     prev = [d for d in days if d < day]
     if not prev:
         return {}
@@ -300,12 +301,55 @@ def nxt_flow(docs, days, day):
         nm = json.load(open(os.path.join(ROOT, "data", p, "after.json"), encoding="utf-8")).get("nxt_map") or {}
     except (OSError, ValueError):
         return {}
-    out = {}
+    vals = defaultdict(dict)
     for t in docs[p]["main"]["themes"]:
-        v = [nm[s["name"]]["after"] for s in t["stocks"] if s["name"] in nm and isinstance(nm[s["name"]].get("after"), (int, float))]
-        if len(v) >= 2:
-            out[t["name"]] = round(sum(v) / len(v), 2)
+        for x in t["stocks"]:
+            v = nm.get(x["name"])
+            if v and isinstance(v.get("after"), (int, float)):
+                vals[t["name"]][x["name"]] = (v["after"], v.get("nxt_eok") or 0)
+    try:
+        from pm_check import history_map, FIXED
+        from theme_map import Ref
+        hm, ref = history_map(day), Ref()
+    except Exception:
+        hm, ref, FIXED = {}, None, {}
+    for n, v in nm.items():
+        if (v.get("nxt_eok") or 0) < 300 or not isinstance(v.get("after"), (int, float)):
+            continue
+        if n in FIXED:
+            t = FIXED[n]
+        elif hm.get(n):
+            t = hm[n].most_common(1)[0][0]
+        elif ref:
+            cs = ref.canons(name=n)
+            t = max(cs, key=cs.get) if cs else None
+        else:
+            t = None
+        if t and not ETC(t):
+            vals[t][n] = (v["after"], v["nxt_eok"])
+    out = {}
+    for t, d in vals.items():
+        w = {n: max(e, 30) for n, (_, e) in d.items()}
+        if len(d) >= 2 or sum(e for _, e in d.values()) >= 1000:
+            out[t] = round(sum(a * w[n] for n, (a, _) in d.items()) / sum(w.values()), 2)
     return out
+
+
+def stale(e, theme, hist):
+    """같은 재료(catalyst, 없으면 같은 테마·종류)가 직전 거래일부터 며칠 연속 이어졌나. 10/14 복기: 호남 클러스터 사흘째를 1위로 올렸다."""
+    try:
+        ev = json.load(open(os.path.join(ROOT, "data", "ref", "events.json"), encoding="utf-8"))["events"]
+    except (OSError, ValueError, KeyError):
+        return 0
+    key = e.get("catalyst")
+    k = 0
+    for d in reversed(hist[-2:]):
+        hit = any(x.get("date") == d and theme in x.get("themes", []) and
+                  ((key and x.get("catalyst") == key) or (not key and x.get("kind") == e.get("kind"))) for x in ev)
+        if not hit:
+            break
+        k += 1
+    return k
 
 
 def score(day, data, loo=False):
@@ -353,9 +397,12 @@ def score(day, data, loo=False):
             else:
                 reason.append(f"미국 짝 {sig[t]:+.1f}%")
         for e in evt.get(t, []):
-            s += EVENT_W * e.get("weight", 1.0); reason.append(f"일정: {e['what']}")
+            k = stale(e, t, hist)
+            f = (1.0, 0.5, 0.0)[min(k, 2)]
+            s += EVENT_W * e.get("weight", 1.0) * f
+            reason.append(f"일정: {e['what']}" + (f" (같은 재료 {k + 1}일째 ×{f})" if k else ""))
         if t in nflow and abs(nflow[t]) >= 1:
-            s += NXT_W * nflow[t] / 10; reason.append(f"전날 넥장 {nflow[t]:+.1f}%")
+            s += max(-0.5, min(0.5, NXT_W * nflow[t] / 10)); reason.append(f"전날 넥장 {nflow[t]:+.1f}%")
         m = mom.get(t)
         if t in yday:
             e = max(0, m["led"]) if m else 0

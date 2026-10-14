@@ -40,6 +40,9 @@ def main():
         for n in pm.get("confirm", []):
             t = th.get(n)
             by["pm_confirm"][0] += 1; by["pm_confirm"][1] += bool(t and t.get("lead")); by["pm_confirm"][2] += t is not None
+        for n in pm.get("revised", []):
+            t = th.get(n)
+            by["pm_revised"][0] += 1; by["pm_revised"][1] += bool(t and t.get("lead")); by["pm_revised"][2] += t is not None
         per_day.append((d, hit, len(docs[d]["pre"].get("themes", []))))
     out = {"days": len(days), "total": tot,
            "by_src": {k: {"n": v[0], "lead": v[1], "seen": v[2]} for k, v in by.items()},

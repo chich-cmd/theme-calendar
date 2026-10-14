@@ -362,9 +362,10 @@ function pmHtml(pre, d) {
     return `<span class="hitmark hit-${m}">${HIT_TXT[m]}</span>`;
   };
   const conf = (pm.confirm || []).length ? `예측 확인 · ${pm.confirm.map(esc).join(" · ")}` : "예측 테마 중 프리마켓에서 2종목 이상 오른 테마 없음";
+  const rv = (pm.revised || []).length ? `<div class="pm-new">08:45 수정 예측 · ${pm.revised.map((n) => `<b>${esc(n)}</b>${mk(n)}`).join(" · ")}</div>` : "";
   const nw = (pm.new || []).length ? `<div class="pm-new">새로 뜬 테마 · ${pm.new.map((n) => `<b>${esc(n)}</b>${mk(n)}`).join(" · ")}</div>` : "";
   const list = pm.themes.map((t) => `<li><b>${esc(t.name)}</b> ${t.stocks.map((s) => `${esc(s.name)} <span class="up">+${Number(s.chg).toFixed(1)}%</span>`).join(", ")}</li>`).join("");
-  return `<div class="pm"><div class="pm-h">🌅 ${esc(pm.time || "")} 넥장 프리마켓 점검</div><div class="pm-c">${conf}</div>${nw}<ul class="pm-l">${list}</ul></div>`;
+  return `<div class="pm"><div class="pm-h">🌅 ${esc(pm.time || "")} 넥장 프리마켓 점검</div><div class="pm-c">${conf}</div>${nw}${rv}<ul class="pm-l">${list}</ul></div>`;
 }
 function baseHtml(dayId, d) {
   const b = baselineOf(dayId);
