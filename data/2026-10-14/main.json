@@ -1,0 +1,822 @@
+{
+ "date": "2026-10-14",
+ "status": "open",
+ "source": "naver-finance",
+ "rule": "KRX 정규장 등락률 7.0% 이상(부족하면 상위 50개), ETF·ETN·스팩 제외",
+ "strong_count": 99,
+ "kospi": "-0.44%",
+ "kosdaq": "-1.57%",
+ "stocks": [
+  {
+   "code": "900120",
+   "name": "씨엑스아이",
+   "market": "KOSDAQ",
+   "chg": 29.99,
+   "price": 4595.0,
+   "amount_eok": 6,
+   "limit": true
+  },
+  {
+   "code": "199730",
+   "name": "바이오인프라",
+   "market": "KOSDAQ",
+   "chg": 29.99,
+   "price": 1981.0,
+   "amount_eok": 10,
+   "limit": true
+  },
+  {
+   "code": "377220",
+   "name": "프롬바이오",
+   "market": "KOSDAQ",
+   "chg": 29.96,
+   "price": 2455.0,
+   "amount_eok": 52,
+   "limit": true
+  },
+  {
+   "code": "010580",
+   "name": "에스엠벡셀",
+   "market": "KOSPI",
+   "chg": 29.93,
+   "price": 2670.0,
+   "amount_eok": 363,
+   "limit": true
+  },
+  {
+   "code": "012340",
+   "name": "뉴인텍",
+   "market": "KOSDAQ",
+   "chg": 29.87,
+   "price": 600.0,
+   "amount_eok": 49,
+   "limit": true
+  },
+  {
+   "code": "065650",
+   "name": "하이퍼코퍼레이션",
+   "market": "KOSDAQ",
+   "chg": 29.84,
+   "price": 2515.0,
+   "amount_eok": 1,
+   "limit": true
+  },
+  {
+   "code": "015260",
+   "name": "에이엔피",
+   "market": "KOSPI",
+   "chg": 29.78,
+   "price": 292.0,
+   "amount_eok": 39,
+   "limit": true
+  },
+  {
+   "code": "000650",
+   "name": "천일고속",
+   "market": "KOSPI",
+   "chg": 29.78,
+   "price": 224000.0,
+   "amount_eok": 204,
+   "limit": true
+  },
+  {
+   "code": "011330",
+   "name": "유니켐",
+   "market": "KOSPI",
+   "chg": 29.59,
+   "price": 6350.0,
+   "amount_eok": 80,
+   "limit": false
+  },
+  {
+   "code": "452280",
+   "name": "한선엔지니어링",
+   "market": "KOSDAQ",
+   "chg": 28.05,
+   "price": 16070.0,
+   "amount_eok": 817,
+   "limit": false
+  },
+  {
+   "code": "089590",
+   "name": "제주항공",
+   "market": "KOSPI",
+   "chg": 22.65,
+   "price": 5470.0,
+   "amount_eok": 231,
+   "limit": false
+  },
+  {
+   "code": "084670",
+   "name": "동양고속",
+   "market": "KOSPI",
+   "chg": 22.13,
+   "price": 41950.0,
+   "amount_eok": 612,
+   "limit": false
+  },
+  {
+   "code": "003830",
+   "name": "대한화섬",
+   "market": "KOSPI",
+   "chg": 20.77,
+   "price": 127900.0,
+   "amount_eok": 0,
+   "limit": false
+  },
+  {
+   "code": "128820",
+   "name": "대성산업",
+   "market": "KOSPI",
+   "chg": 19.05,
+   "price": 5000.0,
+   "amount_eok": 519,
+   "limit": false
+  },
+  {
+   "code": "33626L",
+   "name": "두산퓨얼셀2우B",
+   "market": "KOSPI",
+   "chg": 18.94,
+   "price": 8290.0,
+   "amount_eok": 0,
+   "limit": false
+  },
+  {
+   "code": "009190",
+   "name": "대양금속",
+   "market": "KOSPI",
+   "chg": 18.65,
+   "price": 789.0,
+   "amount_eok": 137,
+   "limit": false
+  },
+  {
+   "code": "263700",
+   "name": "케어랩스",
+   "market": "KOSDAQ",
+   "chg": 18.36,
+   "price": 2385.0,
+   "amount_eok": 0,
+   "limit": false
+  },
+  {
+   "code": "219750",
+   "name": "한국비티비",
+   "market": "KOSDAQ",
+   "chg": 18.2,
+   "price": 2260.0,
+   "amount_eok": 1,
+   "limit": false
+  },
+  {
+   "code": "039610",
+   "name": "화성밸브",
+   "market": "KOSDAQ",
+   "chg": 16.58,
+   "price": 6960.0,
+   "amount_eok": 326,
+   "limit": false
+  },
+  {
+   "code": "099390",
+   "name": "브레인즈컴퍼니",
+   "market": "KOSDAQ",
+   "chg": 16.24,
+   "price": 3900.0,
+   "amount_eok": 0,
+   "limit": false
+  },
+  {
+   "code": "396300",
+   "name": "HT로보틱스",
+   "market": "KOSDAQ",
+   "chg": 15.61,
+   "price": 7260.0,
+   "amount_eok": 747,
+   "limit": false
+  },
+  {
+   "code": "037950",
+   "name": "엘컴텍",
+   "market": "KOSDAQ",
+   "chg": 14.57,
+   "price": 2870.0,
+   "amount_eok": 4,
+   "limit": false
+  },
+  {
+   "code": "389470",
+   "name": "인벤티지랩",
+   "market": "KOSDAQ",
+   "chg": 14.35,
+   "price": 26700.0,
+   "amount_eok": 36,
+   "limit": false
+  },
+  {
+   "code": "001525",
+   "name": "동양우",
+   "market": "KOSPI",
+   "chg": 14.13,
+   "price": 7190.0,
+   "amount_eok": 0,
+   "limit": false
+  },
+  {
+   "code": "398120",
+   "name": "에스지헬스케어",
+   "market": "KOSDAQ",
+   "chg": 13.92,
+   "price": 2660.0,
+   "amount_eok": 1,
+   "limit": false
+  },
+  {
+   "code": "084010",
+   "name": "대한제강",
+   "market": "KOSPI",
+   "chg": 13.2,
+   "price": 9950.0,
+   "amount_eok": 287,
+   "limit": false
+  },
+  {
+   "code": "130740",
+   "name": "티피씨글로벌",
+   "market": "KOSDAQ",
+   "chg": 13.01,
+   "price": 1937.0,
+   "amount_eok": 11,
+   "limit": false
+  },
+  {
+   "code": "484120",
+   "name": "도우인시스",
+   "market": "KOSDAQ",
+   "chg": 12.68,
+   "price": 23550.0,
+   "amount_eok": 36,
+   "limit": false
+  },
+  {
+   "code": "139670",
+   "name": "키네마스터",
+   "market": "KOSDAQ",
+   "chg": 12.5,
+   "price": 2070.0,
+   "amount_eok": 0,
+   "limit": false
+  },
+  {
+   "code": "448280",
+   "name": "에코아이",
+   "market": "KOSDAQ",
+   "chg": 12.49,
+   "price": 10000.0,
+   "amount_eok": 0,
+   "limit": false
+  },
+  {
+   "code": "121890",
+   "name": "에스디시스템",
+   "market": "KOSDAQ",
+   "chg": 12.09,
+   "price": 2875.0,
+   "amount_eok": 1,
+   "limit": false
+  },
+  {
+   "code": "044480",
+   "name": "빌리언스",
+   "market": "KOSDAQ",
+   "chg": 11.93,
+   "price": 3425.0,
+   "amount_eok": 0,
+   "limit": false
+  },
+  {
+   "code": "088280",
+   "name": "쏘닉스",
+   "market": "KOSDAQ",
+   "chg": 11.71,
+   "price": 3530.0,
+   "amount_eok": 11,
+   "limit": false
+  },
+  {
+   "code": "090470",
+   "name": "제이스로보틱스",
+   "market": "KOSDAQ",
+   "chg": 11.28,
+   "price": 4340.0,
+   "amount_eok": 1,
+   "limit": false
+  },
+  {
+   "code": "288980",
+   "name": "모아데이타",
+   "market": "KOSDAQ",
+   "chg": 10.86,
+   "price": 296.0,
+   "amount_eok": 75,
+   "limit": false
+  },
+  {
+   "code": "134580",
+   "name": "엔키AX",
+   "market": "KOSDAQ",
+   "chg": 10.56,
+   "price": 2115.0,
+   "amount_eok": 11,
+   "limit": false
+  },
+  {
+   "code": "006840",
+   "name": "AK홀딩스",
+   "market": "KOSPI",
+   "chg": 10.47,
+   "price": 7280.0,
+   "amount_eok": 2,
+   "limit": false
+  },
+  {
+   "code": "028670",
+   "name": "팬오션",
+   "market": "KOSPI",
+   "chg": 10.38,
+   "price": 7230.0,
+   "amount_eok": 1200,
+   "limit": false
+  },
+  {
+   "code": "405000",
+   "name": "플라즈맵",
+   "market": "KOSDAQ",
+   "chg": 10.37,
+   "price": 4150.0,
+   "amount_eok": 0,
+   "limit": false
+  },
+  {
+   "code": "486510",
+   "name": "글로벌테크놀로지",
+   "market": "KOSDAQ",
+   "chg": 10.34,
+   "price": 10350.0,
+   "amount_eok": 1161,
+   "limit": false
+  },
+  {
+   "code": "432430",
+   "name": "와이랩",
+   "market": "KOSDAQ",
+   "chg": 10.24,
+   "price": 1937.0,
+   "amount_eok": 1,
+   "limit": false
+  },
+  {
+   "code": "288180",
+   "name": "케이피항공산업",
+   "market": "KOSDAQ",
+   "chg": 10.22,
+   "price": 7870.0,
+   "amount_eok": 1,
+   "limit": false
+  },
+  {
+   "code": "054930",
+   "name": "유신",
+   "market": "KOSDAQ",
+   "chg": 10.21,
+   "price": 23750.0,
+   "amount_eok": 283,
+   "limit": false
+  },
+  {
+   "code": "256150",
+   "name": "한독크린텍",
+   "market": "KOSDAQ",
+   "chg": 10.09,
+   "price": 5400.0,
+   "amount_eok": 0,
+   "limit": false
+  },
+  {
+   "code": "048830",
+   "name": "엔피케이",
+   "market": "KOSDAQ",
+   "chg": 10.08,
+   "price": 1059.0,
+   "amount_eok": 0,
+   "limit": false
+  },
+  {
+   "code": "059100",
+   "name": "아이컴포넌트",
+   "market": "KOSDAQ",
+   "chg": 10.03,
+   "price": 7350.0,
+   "amount_eok": 11,
+   "limit": false
+  },
+  {
+   "code": "056090",
+   "name": "시지메드텍",
+   "market": "KOSDAQ",
+   "chg": 9.96,
+   "price": 5740.0,
+   "amount_eok": 4,
+   "limit": false
+  },
+  {
+   "code": "033340",
+   "name": "좋은사람들",
+   "market": "KOSDAQ",
+   "chg": 9.79,
+   "price": 2635.0,
+   "amount_eok": 157,
+   "limit": false
+  },
+  {
+   "code": "376980",
+   "name": "원티드랩",
+   "market": "KOSDAQ",
+   "chg": 9.72,
+   "price": 3330.0,
+   "amount_eok": 0,
+   "limit": false
+  },
+  {
+   "code": "342870",
+   "name": "오아",
+   "market": "KOSDAQ",
+   "chg": 9.71,
+   "price": 3840.0,
+   "amount_eok": 0,
+   "limit": false
+  },
+  {
+   "code": "457190",
+   "name": "이수스페셜티케미컬",
+   "market": "KOSPI",
+   "chg": 9.65,
+   "price": 90900.0,
+   "amount_eok": 740,
+   "limit": false
+  },
+  {
+   "code": "196450",
+   "name": "코아시아씨엠",
+   "market": "KOSDAQ",
+   "chg": 9.62,
+   "price": 3590.0,
+   "amount_eok": 0,
+   "limit": false
+  },
+  {
+   "code": "383930",
+   "name": "디티앤씨알오",
+   "market": "KOSDAQ",
+   "chg": 9.56,
+   "price": 2750.0,
+   "amount_eok": 3,
+   "limit": false
+  },
+  {
+   "code": "126340",
+   "name": "비나텍",
+   "market": "KOSDAQ",
+   "chg": 9.54,
+   "price": 86100.0,
+   "amount_eok": 157,
+   "limit": false
+  },
+  {
+   "code": "107640",
+   "name": "한중엔시에스",
+   "market": "KOSDAQ",
+   "chg": 9.47,
+   "price": 47950.0,
+   "amount_eok": 113,
+   "limit": false
+  },
+  {
+   "code": "101360",
+   "name": "에코앤드림",
+   "market": "KOSDAQ",
+   "chg": 9.39,
+   "price": 9200.0,
+   "amount_eok": 16,
+   "limit": false
+  },
+  {
+   "code": "102370",
+   "name": "케이옥션",
+   "market": "KOSDAQ",
+   "chg": 9.27,
+   "price": 3065.0,
+   "amount_eok": 1,
+   "limit": false
+  },
+  {
+   "code": "115180",
+   "name": "큐리언트",
+   "market": "KOSDAQ",
+   "chg": 9.18,
+   "price": 21400.0,
+   "amount_eok": 74,
+   "limit": false
+  },
+  {
+   "code": "026910",
+   "name": "광진실업",
+   "market": "KOSDAQ",
+   "chg": 9.15,
+   "price": 2325.0,
+   "amount_eok": 1,
+   "limit": false
+  },
+  {
+   "code": "001070",
+   "name": "대한방직",
+   "market": "KOSPI",
+   "chg": 8.97,
+   "price": 5950.0,
+   "amount_eok": 0,
+   "limit": false
+  },
+  {
+   "code": "229640",
+   "name": "LS에코에너지",
+   "market": "KOSPI",
+   "chg": 8.92,
+   "price": 69600.0,
+   "amount_eok": 198,
+   "limit": false
+  },
+  {
+   "code": "464580",
+   "name": "닷밀",
+   "market": "KOSDAQ",
+   "chg": 8.88,
+   "price": 1754.0,
+   "amount_eok": 0,
+   "limit": false
+  },
+  {
+   "code": "042600",
+   "name": "새로닉스",
+   "market": "KOSDAQ",
+   "chg": 8.72,
+   "price": 11850.0,
+   "amount_eok": 3,
+   "limit": false
+  },
+  {
+   "code": "118000",
+   "name": "메타케어",
+   "market": "KOSPI",
+   "chg": 8.71,
+   "price": 1261.0,
+   "amount_eok": 0,
+   "limit": false
+  },
+  {
+   "code": "051780",
+   "name": "큐로홀딩스",
+   "market": "KOSDAQ",
+   "chg": 8.67,
+   "price": 2445.0,
+   "amount_eok": 0,
+   "limit": false
+  },
+  {
+   "code": "459100",
+   "name": "위츠",
+   "market": "KOSDAQ",
+   "chg": 8.54,
+   "price": 4320.0,
+   "amount_eok": 0,
+   "limit": false
+  },
+  {
+   "code": "131180",
+   "name": "딜리",
+   "market": "KOSDAQ",
+   "chg": 8.54,
+   "price": 4450.0,
+   "amount_eok": 0,
+   "limit": false
+  },
+  {
+   "code": "033540",
+   "name": "파라텍",
+   "market": "KOSDAQ",
+   "chg": 8.4,
+   "price": 2840.0,
+   "amount_eok": 1,
+   "limit": false
+  },
+  {
+   "code": "198940",
+   "name": "한주라이트메탈",
+   "market": "KOSDAQ",
+   "chg": 8.32,
+   "price": 1380.0,
+   "amount_eok": 0,
+   "limit": false
+  },
+  {
+   "code": "246710",
+   "name": "티앤알바이오팹",
+   "market": "KOSDAQ",
+   "chg": 8.29,
+   "price": 2220.0,
+   "amount_eok": 2,
+   "limit": false
+  },
+  {
+   "code": "079190",
+   "name": "케스피온",
+   "market": "KOSDAQ",
+   "chg": 8.19,
+   "price": 1743.0,
+   "amount_eok": 3,
+   "limit": false
+  },
+  {
+   "code": "239340",
+   "name": "이스트에이드",
+   "market": "KOSDAQ",
+   "chg": 8.07,
+   "price": 2050.0,
+   "amount_eok": 0,
+   "limit": false
+  },
+  {
+   "code": "393890",
+   "name": "더블유씨피",
+   "market": "KOSDAQ",
+   "chg": 8.06,
+   "price": 11400.0,
+   "amount_eok": 67,
+   "limit": false
+  },
+  {
+   "code": "317690",
+   "name": "퀀타매트릭스",
+   "market": "KOSDAQ",
+   "chg": 8.05,
+   "price": 2350.0,
+   "amount_eok": 1,
+   "limit": false
+  },
+  {
+   "code": "458650",
+   "name": "성우",
+   "market": "KOSDAQ",
+   "chg": 7.99,
+   "price": 8240.0,
+   "amount_eok": 4,
+   "limit": false
+  },
+  {
+   "code": "080470",
+   "name": "성창오토텍",
+   "market": "KOSDAQ",
+   "chg": 7.99,
+   "price": 2975.0,
+   "amount_eok": 0,
+   "limit": false
+  },
+  {
+   "code": "002420",
+   "name": "우양피앤엘",
+   "market": "KOSPI",
+   "chg": 7.93,
+   "price": 5990.0,
+   "amount_eok": 0,
+   "limit": false
+  },
+  {
+   "code": "182360",
+   "name": "큐브엔터",
+   "market": "KOSDAQ",
+   "chg": 7.93,
+   "price": 6670.0,
+   "amount_eok": 1,
+   "limit": false
+  },
+  {
+   "code": "469750",
+   "name": "아이비젼웍스",
+   "market": "KOSDAQ",
+   "chg": 7.89,
+   "price": 6150.0,
+   "amount_eok": 4,
+   "limit": false
+  },
+  {
+   "code": "317240",
+   "name": "TS트릴리온",
+   "market": "KOSDAQ",
+   "chg": 7.68,
+   "price": 1024.0,
+   "amount_eok": 4,
+   "limit": false
+  },
+  {
+   "code": "281740",
+   "name": "레이크머티리얼즈",
+   "market": "KOSDAQ",
+   "chg": 7.62,
+   "price": 13140.0,
+   "amount_eok": 169,
+   "limit": false
+  },
+  {
+   "code": "020150",
+   "name": "롯데에너지머티리얼즈",
+   "market": "KOSPI",
+   "chg": 7.6,
+   "price": 55200.0,
+   "amount_eok": 278,
+   "limit": false
+  },
+  {
+   "code": "441270",
+   "name": "파인엠텍",
+   "market": "KOSDAQ",
+   "chg": 7.6,
+   "price": 9490.0,
+   "amount_eok": 87,
+   "limit": false
+  },
+  {
+   "code": "241690",
+   "name": "유니테크노",
+   "market": "KOSDAQ",
+   "chg": 7.6,
+   "price": 2620.0,
+   "amount_eok": 1,
+   "limit": false
+  },
+  {
+   "code": "357230",
+   "name": "에이치피오",
+   "market": "KOSDAQ",
+   "chg": 7.58,
+   "price": 2200.0,
+   "amount_eok": 1,
+   "limit": false
+  },
+  {
+   "code": "020400",
+   "name": "대동금속",
+   "market": "KOSDAQ",
+   "chg": 7.53,
+   "price": 2500.0,
+   "amount_eok": 1,
+   "limit": false
+  },
+  {
+   "code": "002710",
+   "name": "TCC스틸",
+   "market": "KOSPI",
+   "chg": 7.52,
+   "price": 14160.0,
+   "amount_eok": 234,
+   "limit": false
+  },
+  {
+   "code": "087010",
+   "name": "펩트론",
+   "market": "KOSDAQ",
+   "chg": 7.48,
+   "price": 89100.0,
+   "amount_eok": 346,
+   "limit": false
+  },
+  {
+   "code": "011690",
+   "name": "와이투솔루션",
+   "market": "KOSPI",
+   "chg": 7.45,
+   "price": 3680.0,
+   "amount_eok": 22,
+   "limit": false
+  },
+  {
+   "code": "086820",
+   "name": "바이오솔루션",
+   "market": "KOSDAQ",
+   "chg": 7.43,
+   "price": 6220.0,
+   "amount_eok": 3,
+   "limit": false
+  }
+ ],
+ "generatedAt": "2026-10-14T16:25:25+09:00"
+}
