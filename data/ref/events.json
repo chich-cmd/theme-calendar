@@ -252,6 +252,28 @@
    "weight": 0.3,
    "src": "https://www.hankooki.com/news/articleView.html?idxno=345706",
    "catalyst": "cybersecurity"
+  },
+  {
+   "date": "2026-10-15",
+   "themes": [
+    "철강·강관"
+   ],
+   "kind": "정책",
+   "what": "트럼프 알래스카 방문 \"한국, 알래스카 LNG 프로젝트 착수 합의·500억달러 투자\" (10/15 새벽) — 백악관 브리핑 이틀째",
+   "weight": 0.6,
+   "src": "https://fnnews.com/news/202610150234599135",
+   "catalyst": "alaska_lng"
+  },
+  {
+   "date": "2026-10-15",
+   "themes": [
+    "방산"
+   ],
+   "kind": "동종 기업",
+   "what": "美 방산주 강세 — 록히드마틴 +3.6%(美 육군 계약)·엘빗 +5% (10/14)",
+   "weight": 0.3,
+   "src": "https://finance.yahoo.com/markets/stocks/articles/why-lockheed-martin-stock-popped-185219947.html",
+   "catalyst": "defense_war"
   }
  ]
 }
