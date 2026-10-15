@@ -274,6 +274,38 @@
    "weight": 0.3,
    "src": "https://finance.yahoo.com/markets/stocks/articles/why-lockheed-martin-stock-popped-185219947.html",
    "catalyst": "defense_war"
+  },
+  {
+   "date": "2026-10-16",
+   "themes": [
+    "통신장비"
+   ],
+   "kind": "해외 실적 서프라이즈",
+   "what": "에릭슨 3분기 매출 서프라이즈·AI 수요에 장비 가격 인상 계획 → +12% (10/15)",
+   "weight": 0.6,
+   "src": "https://www.gurufocus.com/news/9125165/ericsson-eric-shares-surge-12-on-q3-revenue-beat-and-strategic-updates",
+   "catalyst": "telecom_equip"
+  },
+  {
+   "date": "2026-10-16",
+   "themes": [
+    "디지털자산"
+   ],
+   "kind": "동종 기업",
+   "what": "코인베이스 +6.3%·서클 +9.3% 가상자산주 반등 (10/15)",
+   "weight": 0.3,
+   "src": "https://www.morningstar.com/markets/movers"
+  },
+  {
+   "date": "2026-10-16",
+   "themes": [
+    "철강·강관"
+   ],
+   "kind": "정책",
+   "what": "알래스카 LNG 기대 사흘째 — 대한제강 10/15 장후 +9.7%(639억)",
+   "weight": 0.6,
+   "src": "https://biz.sbs.co.kr/article/20000340036",
+   "catalyst": "alaska_lng"
   }
  ]
 }
