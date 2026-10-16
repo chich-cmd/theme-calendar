@@ -89,7 +89,11 @@ def main():
     # 08:45 수정 예측 (10/14 복기: 프리마켓 새 테마 주도 적중 67% vs 07시 예측 30%) — 07시 예측은 그대로 두고 따로 채점
     conf = [n for n in preds if n in groups and len(groups[n]) >= 2]
     fresh = [n for n, v in themes if n not in preds and (len(v) >= 2 or any(x["chg"] >= 10 for x in v))]
-    pm["revised"] = (conf + fresh + [n for n in preds if n not in conf])[:5]
+    # 10/16 복기: 확인 테마를 무조건 앞에 두면 2종목 확인 테마가 5종목 새 테마보다 앞선다 → 프리마켓 종목 수 순(같으면 07시 순위 우선)
+    cand = conf + fresh
+    rank = {n: i for i, n in enumerate(preds)}
+    cand.sort(key=lambda n: (-len(groups[n]), rank.get(n, 99)))
+    pm["revised"] = (cand + [n for n in preds if n not in cand])[:5]
     doc["pre"]["pm"] = pm
     json.dump(doc, open(path, "w", encoding="utf-8"), ensure_ascii=False)
     print(json.dumps(pm, ensure_ascii=False))
