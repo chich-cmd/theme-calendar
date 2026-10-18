@@ -306,6 +306,39 @@
    "weight": 0.6,
    "src": "https://biz.sbs.co.kr/article/20000340036",
    "catalyst": "alaska_lng"
+  },
+  {
+   "date": "2026-10-19",
+   "themes": [
+    "정유·화학"
+   ],
+   "kind": "대형 사건",
+   "what": "중동 확전 — 후티 사우디 공항 공격·이란 '호르무즈 불법 항로 차단' 예고, 브렌트 +3.7% $109.9 (10/16~18)",
+   "weight": 0.6,
+   "src": "https://gulfnews.com/uae/us-israel-iran-war-what-uae-residents-need-to-know-today-oct-18-2026-1.500715111",
+   "catalyst": "oil_mideast"
+  },
+  {
+   "date": "2026-10-19",
+   "themes": [
+    "해운"
+   ],
+   "kind": "대형 사건",
+   "what": "IRGC 선박 공격 지속·호르무즈 통항 하루 10척 수준 → 유조선 운임 기대",
+   "weight": 0.6,
+   "src": "https://invezz.com/news/2026/10/18/crude-oil-forecast-why-brent-could-reach-120-as-irgc-shipping-attacks-persist/",
+   "catalyst": "tanker"
+  },
+  {
+   "date": "2026-10-19",
+   "themes": [
+    "방산"
+   ],
+   "kind": "동종 기업",
+   "what": "美 방산주 강세 — 록히드 +3.65%(미사일 증산 투자)·노스롭 +4.1%·RTX +3.7% (10/16)",
+   "weight": 0.3,
+   "src": "https://www.tradingkey.com/news/market-movers/262221781-market-movers-lmt-20261016",
+   "catalyst": "defense_war"
   }
  ]
 }
