@@ -383,6 +383,38 @@
    "weight": 0.5,
    "src": "https://www.basenor.com/blogs/news/spacex-and-tesla-both-report-q3-2026-earnings-this-week",
    "catalyst": "battery_ev"
+  },
+  {
+   "date": "2026-10-21",
+   "themes": [
+    "우주항공"
+   ],
+   "kind": "해외 실적 서프라이즈",
+   "what": "스페이스X 3분기 매출 146억달러(+161%, 예상 127억)·EPS 0.35달러(예상 0.14) → 시간외 +1.5% (10/20)",
+   "weight": 0.3,
+   "src": "https://www.tipranks.com/news/spacex-stock-rises-after-smashing-q3-earnings-estimates",
+   "catalyst": "spacex"
+  },
+  {
+   "date": "2026-10-21",
+   "themes": [
+    "제약·바이오"
+   ],
+   "kind": "동종 기업",
+   "what": "美 헬스케어 사상 최고 — 일라이릴리 +3.5%(옴보 소아 3상 성공)·바이오 ETF +3.6% (10/20)",
+   "weight": 0.3,
+   "src": "https://www.investing.com/news/stock-market-news/why-is-eli-lilly-stock-rallying-today-93CH-4960364"
+  },
+  {
+   "date": "2026-10-21",
+   "themes": [
+    "로봇"
+   ],
+   "kind": "동종 기업",
+   "what": "中 휴머노이드 로봇주 연일 강세 (10/20 중국증시)",
+   "weight": 0.3,
+   "src": "https://www.newspim.com/news/view/20261020000989",
+   "catalyst": "robot"
   }
  ]
 }
