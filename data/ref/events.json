@@ -282,7 +282,7 @@
    ],
    "kind": "해외 실적 서프라이즈",
    "what": "에릭슨 3분기 매출 서프라이즈·AI 수요에 장비 가격 인상 계획 → +12% (10/15)",
-   "weight": 0.6,
+   "weight": 0.3,
    "src": "https://www.gurufocus.com/news/9125165/ericsson-eric-shares-surge-12-on-q3-revenue-beat-and-strategic-updates",
    "catalyst": "telecom_equip"
   },
@@ -358,7 +358,7 @@
    ],
    "kind": "해외 실적 서프라이즈",
    "what": "클리블랜드클리프스 3분기 실적 서프라이즈(3년 만에 최고 분기) → +16% (10/19)",
-   "weight": 0.6,
+   "weight": 0.3,
    "src": "https://seekingalpha.com/news/4654397-cleveland-cliffs-surges-16-after-upbeat-q3-results",
    "catalyst": "us_steel"
   },
