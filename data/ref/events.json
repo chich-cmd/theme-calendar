@@ -441,14 +441,24 @@
   {
    "date": "2026-10-22",
    "themes": [
-    "로봇",
-    "2차전지"
+    "로봇"
    ],
    "kind": "해외 실적 서프라이즈",
    "what": "테슬라 3분기 EPS 0.48달러(예상 0.45)·자동차 마진 18.1% → 정규장 +3.4%, 시간외 소폭 상승 (10/21)",
    "weight": 0.3,
    "src": "https://www.gurufocus.com/news/9135034/tesla-tsla-posts-steady-q3-revenue-eps-beats-consensus-shares-rise-slightly-after-hours",
    "catalyst": "robot"
+  },
+  {
+   "date": "2026-10-22",
+   "themes": [
+    "2차전지"
+   ],
+   "kind": "해외 실적 서프라이즈",
+   "what": "테슬라 3분기 EPS 0.48달러(예상 0.45)·자동차 마진 18.1% → 정규장 +3.4%, 시간외 소폭 상승 (10/21)",
+   "weight": 0.3,
+   "src": "https://www.gurufocus.com/news/9135034/tesla-tsla-posts-steady-q3-revenue-eps-beats-consensus-shares-rise-slightly-after-hours",
+   "catalyst": "battery_ev"
   }
  ]
 }
