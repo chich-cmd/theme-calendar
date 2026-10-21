@@ -415,6 +415,40 @@
    "weight": 0.3,
    "src": "https://www.newspim.com/news/view/20261020000989",
    "catalyst": "robot"
+  },
+  {
+   "date": "2026-10-22",
+   "themes": [
+    "광통신"
+   ],
+   "kind": "인프라",
+   "what": "메타 3분기 사상 최대 매출·AI 설비투자 전망 상향(시간외 +3.6%), 슈퍼마이크로 +9.5% → AI 인프라 반등(시에나 +5.7%·루멘텀 +3.4%) (10/21)",
+   "weight": 0.6,
+   "src": "https://www.newspim.com/news/view/20261022000016",
+   "catalyst": "optical"
+  },
+  {
+   "date": "2026-10-22",
+   "themes": [
+    "전력기기·전선"
+   ],
+   "kind": "인프라",
+   "what": "메타 AI 설비투자 상향 → 데이터센터 전력(GE버노바 +4%·버티브 +4.2%·이튼 +3.1%) (10/21)",
+   "weight": 0.6,
+   "src": "https://www.newspim.com/news/view/20261022000016",
+   "catalyst": "dc_power"
+  },
+  {
+   "date": "2026-10-22",
+   "themes": [
+    "로봇",
+    "2차전지"
+   ],
+   "kind": "해외 실적 서프라이즈",
+   "what": "테슬라 3분기 EPS 0.48달러(예상 0.45)·자동차 마진 18.1% → 정규장 +3.4%, 시간외 소폭 상승 (10/21)",
+   "weight": 0.3,
+   "src": "https://www.gurufocus.com/news/9135034/tesla-tsla-posts-steady-q3-revenue-eps-beats-consensus-shares-rise-slightly-after-hours",
+   "catalyst": "robot"
   }
  ]
 }
