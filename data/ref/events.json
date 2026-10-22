@@ -589,6 +589,28 @@
    "what": "LG씨엔에스 3분기 실적 발표(10/30) — 결과 나오면 서프라이즈는 실적 1.0으로 바꿈",
    "weight": 0.5,
    "src": "https://www.cbci.co.kr/news/articleView.html?idxno=617798"
+  },
+  {
+   "date": "2026-10-23",
+   "themes": [
+    "정유·화학"
+   ],
+   "kind": "대형 사건",
+   "what": "美·이스라엘 이란 재공격 계획 보도(NYT)·사우디 아람코 유전·담맘 공항 피격 → 브렌트 $113, 5월 이후 최고 (10/22)",
+   "weight": 0.6,
+   "src": "https://finance.yahoo.com/markets/live/stock-market-today-thursday-october-22-dow-sp-500-nasdaq-tesla-meta-112217857.html",
+   "catalyst": "oil_mideast"
+  },
+  {
+   "date": "2026-10-23",
+   "themes": [
+    "방산"
+   ],
+   "kind": "동종 기업",
+   "what": "美 방산주 강세 — 록히드마틴 +7%·노스롭 +2.4% (10/22, 이란 재공격 계획 보도)",
+   "weight": 0.3,
+   "src": "https://www.quiverquant.com/news/Lockheed+Martin+Rises+as+Investors+Reassess+Recent+Defense+Production+Wins",
+   "catalyst": "defense_war"
   }
  ]
 }
