@@ -1,0 +1,335 @@
+{
+ "date": "2026-10-23",
+ "status": "open",
+ "source": "naver-finance",
+ "time": "08:24",
+ "base_day": "2026-10-22",
+ "rule": "NXT 프리마켓 가격이 전 거래일 KRX 종가 대비 3.0% 이상",
+ "sessions": {
+  "PRE_MARKET": 585
+ },
+ "traded": 585,
+ "stocks": [
+  {
+   "code": "114840",
+   "name": "아이패밀리에스씨",
+   "market": "KOSDAQ",
+   "base": 8450.0,
+   "price": 10940.0,
+   "chg": 29.47,
+   "eok": 26.9,
+   "vol": 245942.0
+  },
+  {
+   "code": "019170",
+   "name": "신풍제약",
+   "market": "KOSPI",
+   "base": 8660.0,
+   "price": 9610.0,
+   "chg": 10.97,
+   "eok": 173.0,
+   "vol": 1778384.0
+  },
+  {
+   "code": "064550",
+   "name": "바이오니아",
+   "market": "KOSDAQ",
+   "base": 7430.0,
+   "price": 8040.0,
+   "chg": 8.21,
+   "eok": 73.3,
+   "vol": 900203.0
+  },
+  {
+   "code": "053800",
+   "name": "안랩",
+   "market": "KOSDAQ",
+   "base": 87300.0,
+   "price": 91400.0,
+   "chg": 4.7,
+   "eok": 232.2,
+   "vol": 252309.0
+  },
+  {
+   "code": "481070",
+   "name": "에이유브랜즈",
+   "market": "KOSDAQ",
+   "base": 13350.0,
+   "price": 13940.0,
+   "chg": 4.42,
+   "eok": 0.0,
+   "vol": 30.0
+  },
+  {
+   "code": "101360",
+   "name": "에코앤드림",
+   "market": "KOSDAQ",
+   "base": 10340.0,
+   "price": 10750.0,
+   "chg": 3.97,
+   "eok": 65.7,
+   "vol": 615134.0
+  },
+  {
+   "code": "304100",
+   "name": "솔트룩스",
+   "market": "KOSDAQ",
+   "base": 13380.0,
+   "price": 13900.0,
+   "chg": 3.89,
+   "eok": 59.7,
+   "vol": 420390.0
+  },
+  {
+   "code": "439090",
+   "name": "마녀공장",
+   "market": "KOSDAQ",
+   "base": 14750.0,
+   "price": 15280.0,
+   "chg": 3.59,
+   "eok": 83.7,
+   "vol": 531806.0
+  },
+  {
+   "code": "016800",
+   "name": "퍼시스",
+   "market": "KOSPI",
+   "base": 23750.0,
+   "price": 24500.0,
+   "chg": 3.16,
+   "eok": 0.0,
+   "vol": 26.0
+  }
+ ],
+ "down": [
+  {
+   "code": "228760",
+   "name": "지노믹트리",
+   "market": "KOSDAQ",
+   "base": 10470.0,
+   "price": 9110.0,
+   "chg": -12.99,
+   "eok": 0.2,
+   "vol": 1728.0
+  },
+  {
+   "code": "358570",
+   "name": "지아이이노베이션",
+   "market": "KOSDAQ",
+   "base": 8680.0,
+   "price": 7640.0,
+   "chg": -11.98,
+   "eok": 2.0,
+   "vol": 25820.0
+  },
+  {
+   "code": "119850",
+   "name": "지엔씨에너지",
+   "market": "KOSDAQ",
+   "base": 42800.0,
+   "price": 39950.0,
+   "chg": -6.66,
+   "eok": 15.7,
+   "vol": 39223.0
+  },
+  {
+   "code": "336260",
+   "name": "두산퓨얼셀",
+   "market": "KOSPI",
+   "base": 33450.0,
+   "price": 31450.0,
+   "chg": -5.98,
+   "eok": 20.1,
+   "vol": 63957.0
+  },
+  {
+   "code": "382900",
+   "name": "범한퓨얼셀",
+   "market": "KOSDAQ",
+   "base": 20100.0,
+   "price": 18900.0,
+   "chg": -5.97,
+   "eok": 6.1,
+   "vol": 32264.0
+  },
+  {
+   "code": "319660",
+   "name": "피에스케이",
+   "market": "KOSDAQ",
+   "base": 116800.0,
+   "price": 110000.0,
+   "chg": -5.82,
+   "eok": 15.6,
+   "vol": 14231.0
+  },
+  {
+   "code": "376900",
+   "name": "로킷헬스케어",
+   "market": "KOSDAQ",
+   "base": 18010.0,
+   "price": 16970.0,
+   "chg": -5.77,
+   "eok": 11.8,
+   "vol": 69504.0
+  },
+  {
+   "code": "031430",
+   "name": "신세계인터내셔날",
+   "market": "KOSPI",
+   "base": 11130.0,
+   "price": 10500.0,
+   "chg": -5.66,
+   "eok": 0.8,
+   "vol": 7135.0
+  },
+  {
+   "code": "089970",
+   "name": "브이엠",
+   "market": "KOSDAQ",
+   "base": 41750.0,
+   "price": 39400.0,
+   "chg": -5.63,
+   "eok": 27.1,
+   "vol": 68786.0
+  },
+  {
+   "code": "039440",
+   "name": "에스티아이",
+   "market": "KOSDAQ",
+   "base": 27700.0,
+   "price": 26200.0,
+   "chg": -5.42,
+   "eok": 9.1,
+   "vol": 34526.0
+  },
+  {
+   "code": "030610",
+   "name": "교보증권",
+   "market": "KOSPI",
+   "base": 8750.0,
+   "price": 8280.0,
+   "chg": -5.37,
+   "eok": 1.6,
+   "vol": 18735.0
+  },
+  {
+   "code": "486990",
+   "name": "노타",
+   "market": "KOSDAQ",
+   "base": 16100.0,
+   "price": 15240.0,
+   "chg": -5.34,
+   "eok": 7.6,
+   "vol": 49135.0
+  },
+  {
+   "code": "095610",
+   "name": "테스",
+   "market": "KOSDAQ",
+   "base": 108900.0,
+   "price": 103200.0,
+   "chg": -5.23,
+   "eok": 17.6,
+   "vol": 17088.0
+  },
+  {
+   "code": "131290",
+   "name": "티에스이",
+   "market": "KOSDAQ",
+   "base": 253500.0,
+   "price": 240500.0,
+   "chg": -5.13,
+   "eok": 15.6,
+   "vol": 6482.0
+  },
+  {
+   "code": "356860",
+   "name": "티엘비",
+   "market": "KOSDAQ",
+   "base": 37350.0,
+   "price": 35450.0,
+   "chg": -5.09,
+   "eok": 29.9,
+   "vol": 84389.0
+  },
+  {
+   "code": "033640",
+   "name": "네패스",
+   "market": "KOSDAQ",
+   "base": 23600.0,
+   "price": 22400.0,
+   "chg": -5.08,
+   "eok": 5.6,
+   "vol": 25302.0
+  },
+  {
+   "code": "095340",
+   "name": "ISC",
+   "market": "KOSDAQ",
+   "base": 153900.0,
+   "price": 146100.0,
+   "chg": -5.07,
+   "eok": 5.7,
+   "vol": 3866.0
+  },
+  {
+   "code": "420770",
+   "name": "기가비스",
+   "market": "KOSDAQ",
+   "base": 104500.0,
+   "price": 99200.0,
+   "chg": -5.07,
+   "eok": 4.5,
+   "vol": 4510.0
+  },
+  {
+   "code": "075580",
+   "name": "세진중공업",
+   "market": "KOSPI",
+   "base": 7730.0,
+   "price": 7340.0,
+   "chg": -5.05,
+   "eok": 2.7,
+   "vol": 36893.0
+  },
+  {
+   "code": "089890",
+   "name": "코세스",
+   "market": "KOSDAQ",
+   "base": 37600.0,
+   "price": 35700.0,
+   "chg": -5.05,
+   "eok": 33.7,
+   "vol": 93075.0
+  }
+ ],
+ "sample": {
+  "tradingSessionType": "PRE_MARKET",
+  "overMarketStatus": "OPEN",
+  "overPrice": "56,200",
+  "openPrice": "58,000",
+  "highPrice": "58,000",
+  "lowPrice": "55,800",
+  "compareToPreviousPrice": {
+   "code": "5",
+   "text": "하락",
+   "name": "FALLING"
+  },
+  "compareToPreviousClosePrice": "-2,300",
+  "fluctuationsRatio": "-3.93",
+  "localTradedAt": "2026-10-23T08:23:36.912273+09:00",
+  "tradeStopType": {
+   "code": "1",
+   "text": "운영.Trading",
+   "name": "TRADING"
+  },
+  "tradableStatus": "tradable",
+  "tradableStatusCode": "ok",
+  "tradableStatusUpdatedAt": "2026-10-23T07:10:18.427+09:00",
+  "accumulatedTradingVolume": "29,570",
+  "accumulatedTradingValue": "16.7억",
+  "accumulatedTradingValueRaw": "1668000000",
+  "accumulatedTradingVolumeRaw": "29570"
+ },
+ "generatedAt": "2026-10-23T08:24:35+09:00"
+}
