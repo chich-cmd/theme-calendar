@@ -459,6 +459,136 @@
    "weight": 0.3,
    "src": "https://www.gurufocus.com/news/9135034/tesla-tsla-posts-steady-q3-revenue-eps-beats-consensus-shares-rise-slightly-after-hours",
    "catalyst": "battery_ev"
+  },
+  {
+   "date": "2026-10-23",
+   "themes": [
+    "자동차 부품"
+   ],
+   "kind": "국내 실적 발표 당일",
+   "what": "기아 3분기 실적 발표(10/23) — 결과 나오면 서프라이즈는 실적 1.0으로 바꿈",
+   "weight": 0.5,
+   "src": "https://www.topstarnews.net/news/articleView.html?idxno=16254483"
+  },
+  {
+   "date": "2026-10-23",
+   "themes": [
+    "방산"
+   ],
+   "kind": "국내 실적 발표 당일",
+   "what": "현대로템 3분기 실적 발표(10/23) — 결과 나오면 서프라이즈는 실적 1.0으로 바꿈",
+   "weight": 0.5,
+   "src": "https://www.topstarnews.net/news/articleView.html?idxno=16254483"
+  },
+  {
+   "date": "2026-10-27",
+   "themes": [
+    "전자부품"
+   ],
+   "kind": "국내 실적 발표 당일",
+   "what": "LG이노텍 3분기 실적 발표(10/27) — 결과 나오면 서프라이즈는 실적 1.0으로 바꿈",
+   "weight": 0.5,
+   "src": "https://www.cbci.co.kr/news/articleView.html?idxno=617798"
+  },
+  {
+   "date": "2026-10-27",
+   "themes": [
+    "제약·바이오"
+   ],
+   "kind": "국내 실적 발표 당일",
+   "what": "한미약품 3분기 실적 발표(10/27) — 결과 나오면 서프라이즈는 실적 1.0으로 바꿈",
+   "weight": 0.5,
+   "src": "https://www.cbci.co.kr/news/articleView.html?idxno=617798"
+  },
+  {
+   "date": "2026-10-27",
+   "themes": [
+    "조선"
+   ],
+   "kind": "국내 실적 발표 당일",
+   "what": "한화오션 3분기 실적 발표(10/27) — 결과 나오면 서프라이즈는 실적 1.0으로 바꿈",
+   "weight": 0.5,
+   "src": "https://www.cbci.co.kr/news/articleView.html?idxno=617798"
+  },
+  {
+   "date": "2026-10-28",
+   "themes": [
+    "반도체"
+   ],
+   "kind": "국내 실적 발표 당일",
+   "what": "SK하이닉스 3분기 실적 발표(10/28 09:00) — 결과 나오면 서프라이즈는 실적 1.0으로 바꿈",
+   "weight": 0.5,
+   "src": "https://bamsise.co.kr/guide/sk-hynix-q3-2026-earnings-date"
+  },
+  {
+   "date": "2026-10-28",
+   "themes": [
+    "전자부품"
+   ],
+   "kind": "국내 실적 발표 당일",
+   "what": "삼성전기 3분기 실적 발표(10/28) — 결과 나오면 서프라이즈는 실적 1.0으로 바꿈",
+   "weight": 0.5,
+   "src": "https://www.cbci.co.kr/news/articleView.html?idxno=617798"
+  },
+  {
+   "date": "2026-10-28",
+   "themes": [
+    "수소"
+   ],
+   "kind": "국내 실적 발표 당일",
+   "what": "두산퓨얼셀 3분기 실적 발표(10/28) — 결과 나오면 서프라이즈는 실적 1.0으로 바꿈",
+   "weight": 0.5,
+   "src": "https://www.cbci.co.kr/news/articleView.html?idxno=617798"
+  },
+  {
+   "date": "2026-10-29",
+   "themes": [
+    "전력기기·전선"
+   ],
+   "kind": "국내 실적 발표 당일",
+   "what": "대한전선 3분기 실적 발표(10/29) — 결과 나오면 서프라이즈는 실적 1.0으로 바꿈",
+   "weight": 0.5,
+   "src": "https://www.cbci.co.kr/news/articleView.html?idxno=617798"
+  },
+  {
+   "date": "2026-10-29",
+   "themes": [
+    "로봇"
+   ],
+   "kind": "국내 실적 발표 당일",
+   "what": "두산로보틱스 3분기 실적 발표(10/29) — 결과 나오면 서프라이즈는 실적 1.0으로 바꿈",
+   "weight": 0.5,
+   "src": "https://www.cbci.co.kr/news/articleView.html?idxno=617798"
+  },
+  {
+   "date": "2026-10-29",
+   "themes": [
+    "방산"
+   ],
+   "kind": "국내 실적 발표 당일",
+   "what": "한화에어로스페이스 3분기 실적 발표(10/29) — 결과 나오면 서프라이즈는 실적 1.0으로 바꿈",
+   "weight": 0.5,
+   "src": "https://www.cbci.co.kr/news/articleView.html?idxno=617798"
+  },
+  {
+   "date": "2026-10-30",
+   "themes": [
+    "화장품"
+   ],
+   "kind": "국내 실적 발표 당일",
+   "what": "에이피알 3분기 실적 발표(10/30) — 결과 나오면 서프라이즈는 실적 1.0으로 바꿈",
+   "weight": 0.5,
+   "src": "https://www.cbci.co.kr/news/articleView.html?idxno=617798"
+  },
+  {
+   "date": "2026-10-30",
+   "themes": [
+    "AI 소프트웨어"
+   ],
+   "kind": "국내 실적 발표 당일",
+   "what": "LG씨엔에스 3분기 실적 발표(10/30) — 결과 나오면 서프라이즈는 실적 1.0으로 바꿈",
+   "weight": 0.5,
+   "src": "https://www.cbci.co.kr/news/articleView.html?idxno=617798"
   }
  ]
 }

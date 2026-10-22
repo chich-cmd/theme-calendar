@@ -342,13 +342,16 @@ def stale(e, theme, hist):
     except (OSError, ValueError, KeyError):
         return 0
     key = e.get("catalyst")
+    hit = lambda d: any(x.get("date") == d and theme in x.get("themes", []) and
+                        ((key and x.get("catalyst") == key) or (not key and x.get("kind") == e.get("kind"))) for x in ev)
     k = 0
     for d in reversed(hist[-2:]):
-        hit = any(x.get("date") == d and theme in x.get("themes", []) and
-                  ((key and x.get("catalyst") == key) or (not key and x.get("kind") == e.get("kind"))) for x in ev)
-        if not hit:
+        if not hit(d):
             break
         k += 1
+    # 10/22 사용자 승인: 연속이 아니어도 최근 5거래일에 이미 2번 이상 나온 재료면 ×0.5 (10/19 중동·유가는 10/13·14에 나왔다)
+    if k == 0 and sum(hit(d) for d in hist[-5:]) >= 2:
+        return -1
     return k
 
 
@@ -398,9 +401,9 @@ def score(day, data, loo=False):
                 reason.append(f"미국 짝 {sig[t]:+.1f}%")
         for e in evt.get(t, []):
             k = stale(e, t, hist)
-            f = (1.0, 0.5, 0.0)[min(k, 2)]
+            f = 0.5 if k < 0 else (1.0, 0.5, 0.0)[min(k, 2)]
             s += EVENT_W * e.get("weight", 1.0) * f
-            reason.append(f"일정: {e['what']}" + (f" (같은 재료 {k + 1}일째 ×{f})" if k else ""))
+            reason.append(f"일정: {e['what']}" + (" (최근 5거래일 2번 이상 나온 재료 ×0.5)" if k < 0 else (f" (같은 재료 {k + 1}일째 ×{f})" if k else "")))
         if t in nflow and abs(nflow[t]) >= 1:
             s += max(-0.5, min(0.5, NXT_W * nflow[t] / 10)); reason.append(f"전날 넥장 {nflow[t]:+.1f}%")
         m = mom.get(t)

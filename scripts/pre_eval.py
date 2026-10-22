@@ -43,6 +43,12 @@ def main():
         for n in pm.get("revised", []):
             t = th.get(n)
             by["pm_revised"][0] += 1; by["pm_revised"][1] += bool(t and t.get("lead")); by["pm_revised"][2] += t is not None
+        # 10/22: 사이트 메인 = 08:45 수정 예측 상위 3개(없으면 07시 상위 3개). 07시 상위 3개도 따로
+        main3 = (pm.get("revised") or [p["name"] for p in docs[d]["pre"].get("themes", [])])[:3]
+        for key, names in (("main3", main3), ("pre07_top3", [p["name"] for p in docs[d]["pre"].get("themes", [])][:3])):
+            for n in names:
+                t = th.get(n)
+                by[key][0] += 1; by[key][1] += bool(t and t.get("lead")); by[key][2] += t is not None
         per_day.append((d, hit, len(docs[d]["pre"].get("themes", []))))
     out = {"days": len(days), "total": tot,
            "by_src": {k: {"n": v[0], "lead": v[1], "seen": v[2]} for k, v in by.items()},

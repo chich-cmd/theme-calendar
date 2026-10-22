@@ -339,24 +339,34 @@ function baselineOf(dayId) {
 }
 // ---------- 장전 테마 예측 ----------
 // 예측 테마가 그날 본장 주도 테마면 ✓, 주도는 아니지만 등장했으면 △, 없으면 ✗
+// 10/22 사용자 지시: 메인 예측 = 08:45 수정 예측(없으면 07시), 상위 3개만 예측으로 채점하고 4·5위는 '후보'로 따로 표시
+function predOf(pre) {
+  const rv = (pre && pre.pm && pre.pm.revised) || [];
+  if (!rv.length) return { label: "07시 예측", revised: false, list: (pre && pre.themes) || [] };
+  const by = Object.fromEntries(((pre.themes) || []).map((p) => [p.name, p]));
+  const pmt = Object.fromEntries(((pre.pm.themes) || []).map((t) => [t.name, t]));
+  return { label: "08:45 수정 예측", revised: true, list: rv.map((n) => {
+    const p = by[n] || {}, t = pmt[n];
+    const pmTxt = t ? `프리마켓 ${t.stocks.slice(0, 3).map((x) => `${x.name} +${Number(x.chg).toFixed(1)}%`).join(", ")}` : "";
+    return { name: n, why: [pmTxt, p.why].filter(Boolean).join(" · "), note: p.note || "" };
+  }) };
+}
 function preHit(d) {
   const pre = d && d.pre;
   const themes = (d && d.main && d.main.themes) || [];
   if (!pre || !themes.length) return null;
-  const marks = (pre.themes || []).map((p) => {
-    const t = themes.find((x) => x.name === p.name);
-    return { name: p.name, mark: t ? (t.lead ? "ok" : "mid") : "no" };
-  });
-  return { marks, hit: marks.filter((m) => m.mark === "ok").length, total: marks.length };
+  const markOf = (n) => { const t = themes.find((x) => x.name === n); return t ? (t.lead ? "ok" : "mid") : "no"; };
+  const marks = predOf(pre).list.slice(0, 3).map((p) => ({ name: p.name, mark: markOf(p.name) }));
+  return { marks, markOf, hit: marks.filter((m) => m.mark === "ok").length, total: marks.length };
 }
 const HIT_TXT = { ok: "✓ 주도", mid: "△ 등장", no: "× 없음" };
 function preListHtml(pre, hit, dayId) {
-  const mk = (name) => {
-    if (!hit) return "";
-    const m = hit.marks.find((x) => x.name === name);
-    return m ? `<span class="hitmark hit-${m.mark}">${HIT_TXT[m.mark]}</span>` : "";
-  };
-  return `<ol>${(pre.themes || []).map((p, i) => `<li><span class="no">${i + 1}</span><span class="tn">${esc(p.name)}${mk(p.name)}</span>${p.why || p.note ? `<span class="tw">${esc(p.why || "")}${p.note ? ` · <em>${esc(p.note)}</em>` : ""}</span>` : ""}${dayId && similarThemes(p.name, dayId).length ? `<span class="tw">유사 테마 · ${similarThemes(p.name, dayId).map(esc).join(" · ")}</span>` : ""}</li>`).join("")}</ol>`;
+  const mk = (name) => hit ? `<span class="hitmark hit-${hit.markOf(name)}">${HIT_TXT[hit.markOf(name)]}</span>` : "";
+  const P = predOf(pre), top = P.list.slice(0, 3), cand = P.list.slice(3, 5);
+  const li = top.map((p, i) => `<li><span class="no">${i + 1}</span><span class="tn">${esc(p.name)}${mk(p.name)}</span>${p.why || p.note ? `<span class="tw">${esc(p.why || "")}${p.note ? ` · <em>${esc(p.note)}</em>` : ""}</span>` : ""}${dayId && similarThemes(p.name, dayId).length ? `<span class="tw">유사 테마 · ${similarThemes(p.name, dayId).map(esc).join(" · ")}</span>` : ""}</li>`).join("");
+  const cd = cand.length ? `<div class="pred-sub">후보 · ${cand.map((p) => `<b>${esc(p.name)}</b>${mk(p.name)}`).join(" · ")}</div>` : "";
+  const early = P.revised ? `<div class="pred-sub">07시 예측 · ${(pre.themes || []).map((p, i) => `${i === 3 ? "(후보) " : ""}${esc(p.name)}${mk(p.name)}`).join(" · ")}</div>` : "";
+  return `<div class="pred-sub"><b>${P.label}</b>${P.revised ? "" : " · 08:45 프리마켓 점검 뒤 수정 예측으로 바뀝니다"}</div><ol>${li}</ol>${cd}${early}`;
 }
 function newsHtml(pre) {
   const ns = (pre && pre.news) || [];
@@ -378,7 +388,7 @@ function pmHtml(pre, d) {
   const rv = (pm.revised || []).length ? `<div class="pm-new">08:45 수정 예측 · ${pm.revised.map((n) => `<b>${esc(n)}</b>${mk(n)}`).join(" · ")}</div>` : "";
   const nw = (pm.new || []).length ? `<div class="pm-new">새로 뜬 테마 · ${pm.new.map((n) => `<b>${esc(n)}</b>${mk(n)}`).join(" · ")}</div>` : "";
   const list = pm.themes.map((t) => `<li><b>${esc(t.name)}</b> ${t.stocks.map((s) => `${esc(s.name)} <span class="up">+${Number(s.chg).toFixed(1)}%</span>`).join(", ")}</li>`).join("");
-  return `<div class="pm"><div class="pm-h">🌅 ${esc(pm.time || "")} 넥장 프리마켓 점검</div><div class="pm-c">${conf}</div>${nw}${rv}<ul class="pm-l">${list}</ul></div>`;
+  return `<div class="pm"><div class="pm-h">🌅 ${esc(pm.time || "")} 넥장 프리마켓 점검</div><div class="pm-c">${conf}</div>${nw}<ul class="pm-l">${list}</ul></div>`;
 }
 function baseHtml(dayId, d) {
   const b = baselineOf(dayId);
@@ -404,7 +414,7 @@ function renderPred() {
   if (typeof ensureRange === "function") ensureRange(pid);
   const hit = preHit(d);
   const dt = new Date(pid + "T00:00:00Z");
-  const names = pre.themes.map((p) => p.name).join(" · ");
+  const names = predOf(pre).list.slice(0, 3).map((p) => p.name).join(" · ");
   const mid = hit ? hit.marks.filter((m) => m.mark === "mid").length : 0;
   const sum = hit ? `결과: 주도 ${hit.hit}/${hit.total} · 급등 테마 포함 ${hit.hit + mid}/${hit.total} · ${names}` : names;
   const mkt = (pre.market || []).map((m) => `<span>${esc(m.label)} <b class="${m.dir === "up" ? "up" : m.dir === "down" ? "down" : ""}">${esc(m.value)}</b></span>`).join("");
@@ -866,7 +876,7 @@ async function ensureAll() {
   renderCal();
 }
 // 페이지가 브라우저에 예전 버전으로 남아 있으면 최신 버전으로 한 번 새로고침
-const BUILD = "2026-10-14a";
+const BUILD = "2026-10-22a";
 (async () => {
   try {
     const r = await fetch("index.html?b=" + Date.now(), { cache: "no-store" });
