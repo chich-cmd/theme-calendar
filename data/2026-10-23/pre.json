@@ -2,7 +2,7 @@
  "date": "2026-10-23",
  "status": "open",
  "source": "naver-finance",
- "time": "08:46",
+ "time": "09:00",
  "base_day": "2026-10-22",
  "rule": "NXT 프리마켓 가격이 전 거래일 KRX 종가 대비 3.0% 이상",
  "sessions": {
@@ -17,68 +17,48 @@
    "base": 8450.0,
    "price": 10940.0,
    "chg": 29.47,
-   "eok": 34.5,
-   "vol": 315157.0
+   "eok": 34.9,
+   "vol": 319155.0
   },
   {
    "code": "019170",
    "name": "신풍제약",
    "market": "KOSPI",
    "base": 8660.0,
-   "price": 9450.0,
-   "chg": 9.12,
-   "eok": 208.8,
-   "vol": 2154129.0
-  },
-  {
-   "code": "064550",
-   "name": "바이오니아",
-   "market": "KOSDAQ",
-   "base": 7430.0,
-   "price": 7900.0,
-   "chg": 6.33,
-   "eok": 93.0,
-   "vol": 1146223.0
-  },
-  {
-   "code": "439090",
-   "name": "마녀공장",
-   "market": "KOSDAQ",
-   "base": 14750.0,
-   "price": 15430.0,
-   "chg": 4.61,
-   "eok": 94.2,
-   "vol": 600131.0
+   "price": 9520.0,
+   "chg": 9.93,
+   "eok": 212.3,
+   "vol": 2190993.0
   },
   {
    "code": "053800",
    "name": "안랩",
    "market": "KOSDAQ",
    "base": 87300.0,
-   "price": 91200.0,
+   "price": 91900.0,
+   "chg": 5.27,
+   "eok": 284.7,
+   "vol": 309602.0
+  },
+  {
+   "code": "064550",
+   "name": "바이오니아",
+   "market": "KOSDAQ",
+   "base": 7430.0,
+   "price": 7820.0,
+   "chg": 5.25,
+   "eok": 94.9,
+   "vol": 1171141.0
+  },
+  {
+   "code": "439090",
+   "name": "마녀공장",
+   "market": "KOSDAQ",
+   "base": 14750.0,
+   "price": 15410.0,
    "chg": 4.47,
-   "eok": 277.9,
-   "vol": 302148.0
-  },
-  {
-   "code": "101360",
-   "name": "에코앤드림",
-   "market": "KOSDAQ",
-   "base": 10340.0,
-   "price": 10800.0,
-   "chg": 4.45,
-   "eok": 135.0,
-   "vol": 1247205.0
-  },
-  {
-   "code": "304100",
-   "name": "솔트룩스",
-   "market": "KOSDAQ",
-   "base": 13380.0,
-   "price": 13840.0,
-   "chg": 3.44,
-   "eok": 66.8,
-   "vol": 472103.0
+   "eok": 95.4,
+   "vol": 607554.0
   },
   {
    "code": "017940",
@@ -98,7 +78,7 @@
    "price": 24500.0,
    "chg": 3.16,
    "eok": 0.0,
-   "vol": 46.0
+   "vol": 52.0
   }
  ],
  "down": [
@@ -117,90 +97,90 @@
    "name": "지아이이노베이션",
    "market": "KOSDAQ",
    "base": 8680.0,
-   "price": 7680.0,
-   "chg": -11.52,
-   "eok": 2.4,
-   "vol": 31539.0
+   "price": 7700.0,
+   "chg": -11.29,
+   "eok": 2.5,
+   "vol": 33088.0
   },
   {
    "code": "376900",
    "name": "로킷헬스케어",
    "market": "KOSDAQ",
    "base": 18010.0,
-   "price": 16530.0,
-   "chg": -8.22,
-   "eok": 25.0,
-   "vol": 148789.0
-  },
-  {
-   "code": "119850",
-   "name": "지엔씨에너지",
-   "market": "KOSDAQ",
-   "base": 42800.0,
-   "price": 39850.0,
-   "chg": -6.89,
-   "eok": 19.0,
-   "vol": 47500.0
+   "price": 16550.0,
+   "chg": -8.11,
+   "eok": 26.0,
+   "vol": 154669.0
   },
   {
    "code": "336260",
    "name": "두산퓨얼셀",
    "market": "KOSPI",
    "base": 33450.0,
-   "price": 31200.0,
-   "chg": -6.73,
-   "eok": 35.4,
-   "vol": 112700.0
+   "price": 31300.0,
+   "chg": -6.43,
+   "eok": 37.3,
+   "vol": 119046.0
+  },
+  {
+   "code": "119850",
+   "name": "지엔씨에너지",
+   "market": "KOSDAQ",
+   "base": 42800.0,
+   "price": 40100.0,
+   "chg": -6.31,
+   "eok": 19.3,
+   "vol": 48303.0
   },
   {
    "code": "382900",
    "name": "범한퓨얼셀",
    "market": "KOSDAQ",
    "base": 20100.0,
-   "price": 18860.0,
-   "chg": -6.17,
-   "eok": 7.7,
-   "vol": 40732.0
+   "price": 18840.0,
+   "chg": -6.27,
+   "eok": 7.8,
+   "vol": 41379.0
+  },
+  {
+   "code": "319660",
+   "name": "피에스케이",
+   "market": "KOSDAQ",
+   "base": 116800.0,
+   "price": 110000.0,
+   "chg": -5.82,
+   "eok": 23.5,
+   "vol": 21351.0
+  },
+  {
+   "code": "486990",
+   "name": "노타",
+   "market": "KOSDAQ",
+   "base": 16100.0,
+   "price": 15170.0,
+   "chg": -5.78,
+   "eok": 10.6,
+   "vol": 69215.0
+  },
+  {
+   "code": "009150",
+   "name": "삼성전기",
+   "market": "KOSPI",
+   "base": 1158000.0,
+   "price": 1092000.0,
+   "chg": -5.7,
+   "eok": 1469.8,
+   "vol": 134490.0
   },
   {
    "code": "030610",
    "name": "교보증권",
    "market": "KOSPI",
    "base": 8750.0,
-   "price": 8240.0,
-   "chg": -5.83,
-   "eok": 2.3,
-   "vol": 27728.0
-  },
-  {
-   "code": "420770",
-   "name": "기가비스",
-   "market": "KOSDAQ",
-   "base": 104500.0,
-   "price": 98500.0,
-   "chg": -5.74,
-   "eok": 10.3,
-   "vol": 10410.0
-  },
-  {
-   "code": "009900",
-   "name": "명신산업",
-   "market": "KOSPI",
-   "base": 9800.0,
-   "price": 9240.0,
-   "chg": -5.71,
-   "eok": 62.1,
-   "vol": 658987.0
-  },
-  {
-   "code": "031430",
-   "name": "신세계인터내셔날",
-   "market": "KOSPI",
-   "base": 11130.0,
-   "price": 10510.0,
-   "chg": -5.57,
-   "eok": 1.1,
-   "vol": 10715.0
+   "price": 8260.0,
+   "chg": -5.6,
+   "eok": 2.4,
+   "vol": 28256.0
   },
   {
    "code": "005710",
@@ -213,84 +193,44 @@
    "vol": 117.0
   },
   {
-   "code": "486990",
-   "name": "노타",
+   "code": "033640",
+   "name": "네패스",
    "market": "KOSDAQ",
-   "base": 16100.0,
-   "price": 15210.0,
-   "chg": -5.53,
-   "eok": 10.2,
-   "vol": 66509.0
-  },
-  {
-   "code": "089970",
-   "name": "브이엠",
-   "market": "KOSDAQ",
-   "base": 41750.0,
-   "price": 39450.0,
+   "base": 23600.0,
+   "price": 22300.0,
    "chg": -5.51,
-   "eok": 39.0,
-   "vol": 98948.0
-  },
-  {
-   "code": "079900",
-   "name": "전진건설로봇",
-   "market": "KOSPI",
-   "base": 38500.0,
-   "price": 36400.0,
-   "chg": -5.45,
-   "eok": 13.3,
-   "vol": 36076.0
-  },
-  {
-   "code": "095610",
-   "name": "테스",
-   "market": "KOSDAQ",
-   "base": 108900.0,
-   "price": 103000.0,
-   "chg": -5.42,
-   "eok": 24.4,
-   "vol": 23651.0
-  },
-  {
-   "code": "319660",
-   "name": "피에스케이",
-   "market": "KOSDAQ",
-   "base": 116800.0,
-   "price": 110500.0,
-   "chg": -5.39,
-   "eok": 22.0,
-   "vol": 19994.0
+   "eok": 7.4,
+   "vol": 33426.0
   },
   {
    "code": "270660",
    "name": "에브리봇",
    "market": "KOSDAQ",
    "base": 13960.0,
-   "price": 13210.0,
-   "chg": -5.37,
-   "eok": 10.2,
-   "vol": 75679.0
+   "price": 13200.0,
+   "chg": -5.44,
+   "eok": 10.4,
+   "vol": 77321.0
   },
   {
-   "code": "009150",
-   "name": "삼성전기",
+   "code": "031430",
+   "name": "신세계인터내셔날",
    "market": "KOSPI",
-   "base": 1158000.0,
-   "price": 1096000.0,
-   "chg": -5.35,
-   "eok": 1389.2,
-   "vol": 127103.0
+   "base": 11130.0,
+   "price": 10530.0,
+   "chg": -5.39,
+   "eok": 1.2,
+   "vol": 11042.0
   },
   {
-   "code": "124500",
-   "name": "아이티센글로벌",
+   "code": "089970",
+   "name": "브이엠",
    "market": "KOSDAQ",
-   "base": 21600.0,
-   "price": 20450.0,
-   "chg": -5.32,
-   "eok": 5.8,
-   "vol": 28453.0
+   "base": 41750.0,
+   "price": 39500.0,
+   "chg": -5.39,
+   "eok": 39.5,
+   "vol": 100158.0
   },
   {
    "code": "075580",
@@ -299,14 +239,54 @@
    "base": 7730.0,
    "price": 7320.0,
    "chg": -5.3,
-   "eok": 3.2,
-   "vol": 44272.0
+   "eok": 3.3,
+   "vol": 45066.0
+  },
+  {
+   "code": "161580",
+   "name": "필옵틱스",
+   "market": "KOSDAQ",
+   "base": 30400.0,
+   "price": 28800.0,
+   "chg": -5.26,
+   "eok": 14.4,
+   "vol": 49941.0
+  },
+  {
+   "code": "078350",
+   "name": "한양디지텍",
+   "market": "KOSDAQ",
+   "base": 31850.0,
+   "price": 30200.0,
+   "chg": -5.18,
+   "eok": 22.4,
+   "vol": 73937.0
+  },
+  {
+   "code": "222800",
+   "name": "심텍",
+   "market": "KOSDAQ",
+   "base": 119700.0,
+   "price": 113600.0,
+   "chg": -5.1,
+   "eok": 136.8,
+   "vol": 120811.0
+  },
+  {
+   "code": "124500",
+   "name": "아이티센글로벌",
+   "market": "KOSDAQ",
+   "base": 21600.0,
+   "price": 20500.0,
+   "chg": -5.09,
+   "eok": 6.1,
+   "vol": 29643.0
   }
  ],
  "sample": {
   "tradingSessionType": "PRE_MARKET",
   "overMarketStatus": "OPEN",
-  "overPrice": "56,300",
+  "overPrice": "56,500",
   "openPrice": "58,000",
   "highPrice": "58,000",
   "lowPrice": "55,800",
@@ -315,9 +295,9 @@
    "text": "하락",
    "name": "FALLING"
   },
-  "compareToPreviousClosePrice": "-2,200",
-  "fluctuationsRatio": "-3.76",
-  "localTradedAt": "2026-10-23T08:46:09.237769+09:00",
+  "compareToPreviousClosePrice": "-2,000",
+  "fluctuationsRatio": "-3.42",
+  "localTradedAt": "2026-10-23T08:50:00.000000+09:00",
   "tradeStopType": {
    "code": "1",
    "text": "운영.Trading",
@@ -326,10 +306,10 @@
   "tradableStatus": "tradable",
   "tradableStatusCode": "ok",
   "tradableStatusUpdatedAt": "2026-10-23T07:10:18.427+09:00",
-  "accumulatedTradingVolume": "38,502",
-  "accumulatedTradingValue": "21.7억",
-  "accumulatedTradingVolumeRaw": "38502",
-  "accumulatedTradingValueRaw": "2171000000"
+  "accumulatedTradingVolume": "40,456",
+  "accumulatedTradingValue": "22.8억",
+  "accumulatedTradingVolumeRaw": "40456",
+  "accumulatedTradingValueRaw": "2281000000"
  },
- "generatedAt": "2026-10-23T08:46:52+09:00"
+ "generatedAt": "2026-10-23T09:00:04+09:00"
 }
