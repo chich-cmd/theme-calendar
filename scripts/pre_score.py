@@ -330,7 +330,7 @@ def nxt_flow(docs, days, day):
     out = {}
     for t, d in vals.items():
         w = {n: max(e, 30) for n, (_, e) in d.items()}
-        if len(d) >= 2 or sum(e for _, e in d.values()) >= 1000:
+        if sum(e >= 30 for _, e in d.values()) >= 2 or sum(e for _, e in d.values()) >= 1000:  # 10/23 복기: 실제 거래(30억+) 2종목 이상만 — 안랩 1종목 넥장으로 보안 1위
             out[t] = round(sum(a * w[n] for n, (a, _) in d.items()) / sum(w.values()), 2)
     return out
 
