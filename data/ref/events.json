@@ -611,6 +611,49 @@
    "weight": 0.3,
    "src": "https://www.quiverquant.com/news/Lockheed+Martin+Rises+as+Investors+Reassess+Recent+Defense+Production+Wins",
    "catalyst": "defense_war"
+  },
+  {
+   "date": "2026-10-26",
+   "themes": [
+    "보안"
+   ],
+   "kind": "대형 사건",
+   "what": "PHP 심각 취약점으로 유럽 등 정부 웹사이트 장애·폐쇄 → 美 보안주 급등(크라우드스트라이크 +8.3%·팰로알토 +7.2%·지스케일러 +7.3%) (10/23)",
+   "weight": 0.6,
+   "src": "https://www.tradingkey.com/analysis/stocks/us-stocks/262236830-us-market-close-dow-drop-consumer-healthcare-chips-rebound-crowdstrike-tradingkey",
+   "catalyst": "cybersecurity"
+  },
+  {
+   "date": "2026-10-26",
+   "themes": [
+    "정유·화학"
+   ],
+   "kind": "대형 사건",
+   "what": "주말 후티 사우디 공격·이란 '비순응 선박' 통항 중단, 트럼프 '합의냐 끝장이냐' → 브렌트 $117 3월 이후 최고 (10/23~25)",
+   "weight": 0.6,
+   "src": "https://www.cbsnews.com/live-updates/iran-war-trump-us-oil-gas-prices-strait-of-hormuz-midterms/",
+   "catalyst": "oil_mideast"
+  },
+  {
+   "date": "2026-10-26",
+   "themes": [
+    "우주항공"
+   ],
+   "kind": "동종 기업",
+   "what": "스페이스X, 크라운캐슬 등 통신탑 8만곳 접근 협상(모바일 사업) 보도 → 로켓랩 +2.7%·AST +2.6% (10/23)",
+   "weight": 0.3,
+   "src": "https://www.tradingkey.com/analysis/stocks/us-stocks/262236830-us-market-close-dow-drop-consumer-healthcare-chips-rebound-crowdstrike-tradingkey",
+   "catalyst": "spacex"
+  },
+  {
+   "date": "2026-10-29",
+   "themes": [
+    "제약·바이오"
+   ],
+   "kind": "정책",
+   "what": "복지부·중기부 'K-제약바이오 프론티어기업 육성방안' 발표 예정(10/29)",
+   "weight": 0.3,
+   "src": "https://www.etoday.co.kr/news/view/2639700"
   }
  ]
 }
