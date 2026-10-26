@@ -654,6 +654,38 @@
    "what": "복지부·중기부 'K-제약바이오 프론티어기업 육성방안' 발표 예정(10/29)",
    "weight": 0.3,
    "src": "https://www.etoday.co.kr/news/view/2639700"
+  },
+  {
+   "date": "2026-10-27",
+   "themes": [
+    "엔터·미디어"
+   ],
+   "kind": "M&A",
+   "what": "日 투자사, JYP 지분 최대 50% 공개매수 선언(JYP '제안 받은 바 없다') → JYP 애프터마켓 +17% (10/26 장후)",
+   "weight": 0.6,
+   "src": "https://www.fnnews.com/news/202610261950181831"
+  },
+  {
+   "date": "2026-10-27",
+   "themes": [
+    "광통신"
+   ],
+   "kind": "동종 기업",
+   "what": "앤트로픽 IPO 신청 → AI 인프라 반등(루멘텀 +8.2%·코히런트 +5.8%·시에나 +4.9%, 美 반도체 +2.8%) (10/26)",
+   "weight": 0.3,
+   "src": "https://www.capitalbrief.com/newsletter/anthropic-files-for-ipo-in-trillion-dollar-race-with-spacex-openai-783b4eb5-3c31-4303-8236-8b50c24bacfe/",
+   "catalyst": "optical"
+  },
+  {
+   "date": "2026-10-27",
+   "themes": [
+    "방산"
+   ],
+   "kind": "동종 기업",
+   "what": "美 방산주 강세 — 록히드마틴 +5.1%·RTX +3.4%·항공방산 ETF +2.4% (10/26)",
+   "weight": 0.3,
+   "src": "https://finviz.com/news/404733/defense-stock-rises-on-earnings-beat-raised-forecast",
+   "catalyst": "defense_war"
   }
  ]
 }
