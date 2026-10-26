@@ -88,7 +88,9 @@ def main():
           "new": [n for n, v in themes if n not in preds and len(v) >= 3][:3]}
     # 08:45 수정 예측 (10/14 복기: 프리마켓 새 테마 주도 적중 67% vs 07시 예측 30%) — 07시 예측은 그대로 두고 따로 채점
     conf = [n for n in preds if n in groups and len(groups[n]) >= 2]
-    fresh = [n for n, v in themes if n not in preds and (len(v) >= 2 or any(x["chg"] >= 10 for x in v))]
+    # 10/26 복기: 단독 +10% 종목 테마(뷰노 +16%·의료AI)가 2종목 미만이라 빠졌다 → 30억 이상 거래된 +10% 단독 종목도 새 테마 후보
+    fresh = [n for n, v in sorted(groups.items(), key=lambda x: (-len(x[1]), -sum(s["eok"] for s in x[1])))
+             if n not in preds and (len(v) >= 2 or any(x["chg"] >= 10 and x["eok"] >= 30 for x in v))]
     # 10/16 복기: 확인 테마를 무조건 앞에 두면 2종목 확인 테마가 5종목 새 테마보다 앞선다 → 프리마켓 종목 수 순(같으면 07시 순위 우선)
     cand = conf + fresh
     rank = {n: i for i, n in enumerate(preds)}
