@@ -3,7 +3,7 @@
  "status": "open",
  "source": "naver-finance",
  "rule": "KRX 정규장 등락률 7.0% 이상(부족하면 상위 50개), ETF·ETN·스팩 제외",
- "strong_count": 60,
+ "strong_count": 61,
  "kospi": "-1.46%",
  "kosdaq": "-3.26%",
  "stocks": [
@@ -56,18 +56,9 @@
    "code": "451760",
    "name": "컨텍",
    "market": "KOSDAQ",
-   "chg": 27.06,
-   "price": 10330.0,
-   "amount_eok": 605,
-   "limit": false
-  },
-  {
-   "code": "238120",
-   "name": "얼라인드",
-   "market": "KOSDAQ",
-   "chg": 24.37,
-   "price": 3190.0,
-   "amount_eok": 0,
+   "chg": 27.92,
+   "price": 10400.0,
+   "amount_eok": 607,
    "limit": false
   },
   {
@@ -76,24 +67,15 @@
    "market": "KOSDAQ",
    "chg": 22.48,
    "price": 19340.0,
-   "amount_eok": 681,
-   "limit": false
-  },
-  {
-   "code": "050110",
-   "name": "캠시스",
-   "market": "KOSDAQ",
-   "chg": 21.71,
-   "price": 6840.0,
-   "amount_eok": 12,
+   "amount_eok": 686,
    "limit": false
   },
   {
    "code": "241690",
    "name": "유니테크노",
    "market": "KOSDAQ",
-   "chg": 20.65,
-   "price": 3330.0,
+   "chg": 20.29,
+   "price": 3320.0,
    "amount_eok": 290,
    "limit": false
   },
@@ -101,8 +83,8 @@
    "code": "009190",
    "name": "대양금속",
    "market": "KOSPI",
-   "chg": 18.48,
-   "price": 827.0,
+   "chg": 19.2,
+   "price": 832.0,
    "amount_eok": 113,
    "limit": false
   },
@@ -110,99 +92,108 @@
    "code": "458870",
    "name": "씨어스",
    "market": "KOSDAQ",
-   "chg": 18.35,
-   "price": 28050.0,
-   "amount_eok": 290,
+   "chg": 18.78,
+   "price": 28150.0,
+   "amount_eok": 292,
    "limit": false
   },
   {
    "code": "290660",
    "name": "다이나믹솔루션",
    "market": "KOSDAQ",
-   "chg": 17.57,
-   "price": 1338.0,
+   "chg": 18.37,
+   "price": 1347.0,
    "amount_eok": 51,
    "limit": false
   },
   {
-   "code": "054800",
-   "name": "아이디스홀딩스",
+   "code": "238120",
+   "name": "얼라인드",
    "market": "KOSDAQ",
-   "chg": 17.4,
-   "price": 15450.0,
+   "chg": 17.93,
+   "price": 3025.0,
    "amount_eok": 0,
    "limit": false
   },
   {
-   "code": "380550",
-   "name": "뉴로핏",
+   "code": "050110",
+   "name": "캠시스",
    "market": "KOSDAQ",
-   "chg": 16.49,
-   "price": 6570.0,
-   "amount_eok": 285,
+   "chg": 16.73,
+   "price": 6560.0,
+   "amount_eok": 14,
    "limit": false
   },
   {
    "code": "357880",
    "name": "SKAI",
    "market": "KOSDAQ",
-   "chg": 16.29,
-   "price": 1956.0,
+   "chg": 16.59,
+   "price": 1961.0,
    "amount_eok": 383,
    "limit": false
   },
   {
-   "code": "297570",
-   "name": "아틀라스링크",
+   "code": "380550",
+   "name": "뉴로핏",
    "market": "KOSDAQ",
-   "chg": 15.65,
-   "price": 4360.0,
-   "amount_eok": 0,
+   "chg": 16.13,
+   "price": 6550.0,
+   "amount_eok": 285,
    "limit": false
   },
   {
    "code": "448900",
    "name": "한국피아이엠",
    "market": "KOSDAQ",
-   "chg": 15.43,
-   "price": 46000.0,
+   "chg": 14.93,
+   "price": 45800.0,
    "amount_eok": 100,
-   "limit": false
-  },
-  {
-   "code": "190510",
-   "name": "나무가",
-   "market": "KOSDAQ",
-   "chg": 15.07,
-   "price": 15650.0,
-   "amount_eok": 44,
    "limit": false
   },
   {
    "code": "458350",
    "name": "에스팀",
    "market": "KOSDAQ",
-   "chg": 14.68,
-   "price": 4335.0,
+   "chg": 14.42,
+   "price": 4325.0,
    "amount_eok": 277,
+   "limit": false
+  },
+  {
+   "code": "044480",
+   "name": "빌리언스",
+   "market": "KOSDAQ",
+   "chg": 13.81,
+   "price": 3255.0,
+   "amount_eok": 0,
    "limit": false
   },
   {
    "code": "0155E0",
    "name": "해치텍",
    "market": "KOSDAQ",
-   "chg": 13.82,
-   "price": 9140.0,
-   "amount_eok": 220,
+   "chg": 13.7,
+   "price": 9130.0,
+   "amount_eok": 222,
    "limit": false
   },
   {
-   "code": "446840",
-   "name": "지슨",
+   "code": "297570",
+   "name": "아틀라스링크",
    "market": "KOSDAQ",
-   "chg": 13.29,
-   "price": 3580.0,
-   "amount_eok": 1,
+   "chg": 13.53,
+   "price": 4280.0,
+   "amount_eok": 0,
+   "limit": false
+  },
+  {
+   "code": "054800",
+   "name": "아이디스홀딩스",
+   "market": "KOSDAQ",
+   "chg": 13.22,
+   "price": 14900.0,
+   "amount_eok": 0,
    "limit": false
   },
   {
@@ -215,30 +206,12 @@
    "limit": false
   },
   {
-   "code": "119500",
-   "name": "포메탈",
+   "code": "446840",
+   "name": "지슨",
    "market": "KOSDAQ",
-   "chg": 12.7,
-   "price": 2840.0,
-   "amount_eok": 26,
-   "limit": false
-  },
-  {
-   "code": "238090",
-   "name": "앤디포스",
-   "market": "KOSDAQ",
-   "chg": 12.57,
-   "price": 1800.0,
-   "amount_eok": 0,
-   "limit": false
-  },
-  {
-   "code": "014990",
-   "name": "인디에프",
-   "market": "KOSPI",
-   "chg": 12.54,
-   "price": 3140.0,
-   "amount_eok": 60,
+   "chg": 12.82,
+   "price": 3565.0,
+   "amount_eok": 1,
    "limit": false
   },
   {
@@ -251,6 +224,15 @@
    "limit": false
   },
   {
+   "code": "405000",
+   "name": "플라즈맵",
+   "market": "KOSDAQ",
+   "chg": 12.11,
+   "price": 3980.0,
+   "amount_eok": 0,
+   "limit": false
+  },
+  {
    "code": "033340",
    "name": "좋은사람들",
    "market": "KOSDAQ",
@@ -260,21 +242,39 @@
    "limit": false
   },
   {
+   "code": "394800",
+   "name": "쓰리빌리언",
+   "market": "KOSDAQ",
+   "chg": 12.0,
+   "price": 5600.0,
+   "amount_eok": 79,
+   "limit": false
+  },
+  {
+   "code": "119500",
+   "name": "포메탈",
+   "market": "KOSDAQ",
+   "chg": 11.71,
+   "price": 2815.0,
+   "amount_eok": 26,
+   "limit": false
+  },
+  {
    "code": "040160",
    "name": "누리플렉스",
    "market": "KOSDAQ",
-   "chg": 11.91,
-   "price": 5310.0,
+   "chg": 11.7,
+   "price": 5300.0,
    "amount_eok": 0,
    "limit": false
   },
   {
-   "code": "394800",
-   "name": "쓰리빌리언",
-   "market": "KOSDAQ",
-   "chg": 11.8,
-   "price": 5590.0,
-   "amount_eok": 79,
+   "code": "014990",
+   "name": "인디에프",
+   "market": "KOSPI",
+   "chg": 11.65,
+   "price": 3115.0,
+   "amount_eok": 60,
    "limit": false
   },
   {
@@ -287,6 +287,24 @@
    "limit": false
   },
   {
+   "code": "200230",
+   "name": "텔콘RF제약",
+   "market": "KOSDAQ",
+   "chg": 11.48,
+   "price": 2330.0,
+   "amount_eok": 0,
+   "limit": false
+  },
+  {
+   "code": "365660",
+   "name": "레몬헬스케어",
+   "market": "KOSDAQ",
+   "chg": 11.42,
+   "price": 4000.0,
+   "amount_eok": 663,
+   "limit": false
+  },
+  {
    "code": "052860",
    "name": "아이앤씨",
    "market": "KOSDAQ",
@@ -296,21 +314,21 @@
    "limit": false
   },
   {
-   "code": "365660",
-   "name": "레몬헬스케어",
+   "code": "190510",
+   "name": "나무가",
    "market": "KOSDAQ",
-   "chg": 11.28,
-   "price": 3995.0,
-   "amount_eok": 663,
+   "chg": 11.1,
+   "price": 15110.0,
+   "amount_eok": 51,
    "limit": false
   },
   {
    "code": "0013Y0",
    "name": "엠에스바이오",
    "market": "KOSDAQ",
-   "chg": 10.94,
-   "price": 10750.0,
-   "amount_eok": 1698,
+   "chg": 10.42,
+   "price": 10700.0,
+   "amount_eok": 1700,
    "limit": false
   },
   {
@@ -335,9 +353,18 @@
    "code": "108490",
    "name": "로보티즈",
    "market": "KOSDAQ",
-   "chg": 9.56,
-   "price": 246500.0,
+   "chg": 9.78,
+   "price": 247000.0,
    "amount_eok": 1230,
+   "limit": false
+  },
+  {
+   "code": "238090",
+   "name": "앤디포스",
+   "market": "KOSDAQ",
+   "chg": 9.32,
+   "price": 1748.0,
+   "amount_eok": 0,
    "limit": false
   },
   {
@@ -350,21 +377,21 @@
    "limit": false
   },
   {
-   "code": "192410",
-   "name": "오늘이엔엠",
-   "market": "KOSDAQ",
-   "chg": 9.23,
-   "price": 3670.0,
-   "amount_eok": 5,
-   "limit": false
-  },
-  {
    "code": "175250",
    "name": "아이큐어",
    "market": "KOSDAQ",
    "chg": 9.21,
    "price": 1541.0,
    "amount_eok": 1,
+   "limit": false
+  },
+  {
+   "code": "007720",
+   "name": "소노스퀘어",
+   "market": "KOSDAQ",
+   "chg": 8.97,
+   "price": 1106.0,
+   "amount_eok": 0,
    "limit": false
   },
   {
@@ -377,12 +404,12 @@
    "limit": false
   },
   {
-   "code": "211270",
-   "name": "AP위성",
+   "code": "459550",
+   "name": "알트",
    "market": "KOSDAQ",
-   "chg": 8.78,
-   "price": 9040.0,
-   "amount_eok": 537,
+   "chg": 8.82,
+   "price": 1604.0,
+   "amount_eok": 104,
    "limit": false
   },
   {
@@ -422,12 +449,12 @@
    "limit": false
   },
   {
-   "code": "459550",
-   "name": "알트",
+   "code": "192410",
+   "name": "오늘이엔엠",
    "market": "KOSDAQ",
-   "chg": 8.55,
-   "price": 1600.0,
-   "amount_eok": 104,
+   "chg": 8.48,
+   "price": 3645.0,
+   "amount_eok": 5,
    "limit": false
   },
   {
@@ -440,12 +467,12 @@
    "limit": false
   },
   {
-   "code": "344860",
-   "name": "이노진",
+   "code": "211270",
+   "name": "AP위성",
    "market": "KOSDAQ",
-   "chg": 8.4,
-   "price": 1600.0,
-   "amount_eok": 0,
+   "chg": 8.42,
+   "price": 9010.0,
+   "amount_eok": 538,
    "limit": false
   },
   {
@@ -467,15 +494,6 @@
    "limit": false
   },
   {
-   "code": "468530",
-   "name": "프로티나",
-   "market": "KOSDAQ",
-   "chg": 8.17,
-   "price": 47000.0,
-   "amount_eok": 149,
-   "limit": false
-  },
-  {
    "code": "002390",
    "name": "한독",
    "market": "KOSPI",
@@ -485,12 +503,12 @@
    "limit": false
   },
   {
-   "code": "261520",
-   "name": "이지스",
+   "code": "900260",
+   "name": "로스웰",
    "market": "KOSDAQ",
-   "chg": 7.91,
-   "price": 5390.0,
-   "amount_eok": 1,
+   "chg": 7.71,
+   "price": 2095.0,
+   "amount_eok": 0,
    "limit": false
   },
   {
@@ -503,30 +521,12 @@
    "limit": false
   },
   {
-   "code": "064240",
-   "name": "홈캐스트",
+   "code": "468530",
+   "name": "프로티나",
    "market": "KOSDAQ",
-   "chg": 7.45,
-   "price": 1730.0,
-   "amount_eok": 1,
-   "limit": false
-  },
-  {
-   "code": "478340",
-   "name": "나라스페이스테크놀로지",
-   "market": "KOSDAQ",
-   "chg": 7.4,
-   "price": 10740.0,
-   "amount_eok": 34,
-   "limit": false
-  },
-  {
-   "code": "950260",
-   "name": "인제니아테라퓨틱스(Reg.S)",
-   "market": "KOSDAQ",
-   "chg": 7.39,
-   "price": 23250.0,
-   "amount_eok": 79,
+   "chg": 7.59,
+   "price": 46750.0,
+   "amount_eok": 149,
    "limit": false
   },
   {
@@ -546,7 +546,16 @@
    "price": 2890.0,
    "amount_eok": 0,
    "limit": false
+  },
+  {
+   "code": "080530",
+   "name": "코디",
+   "market": "KOSDAQ",
+   "chg": 7.0,
+   "price": 2445.0,
+   "amount_eok": 0,
+   "limit": false
   }
  ],
- "generatedAt": "2026-10-26T16:30:13+09:00"
+ "generatedAt": "2026-10-26T16:36:54+09:00"
 }
