@@ -686,6 +686,17 @@
    "weight": 0.3,
    "src": "https://finviz.com/news/404733/defense-stock-rises-on-earnings-beat-raised-forecast",
    "catalyst": "defense_war"
+  },
+  {
+   "date": "2026-10-28",
+   "themes": [
+    "우주항공"
+   ],
+   "kind": "계약",
+   "what": "앤트로픽, 스페이스X에 2029년까지 최대 1,205억달러 컴퓨팅 비용 지급 계약 → 로켓랩 +8.3%·AST +6.4% (10/27)",
+   "weight": 0.6,
+   "src": "https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-oct-27-2026",
+   "catalyst": "spacex"
   }
  ]
 }
