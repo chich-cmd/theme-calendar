@@ -697,6 +697,28 @@
    "weight": 0.6,
    "src": "https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-oct-27-2026",
    "catalyst": "spacex"
+  },
+  {
+   "date": "2026-10-29",
+   "themes": [
+    "전력기기·전선"
+   ],
+   "kind": "해외 실적 서프라이즈",
+   "what": "버티브 3분기 매출 +61%·연간 매출 전망 6.5억달러 상향 → +16.5% (10/28)",
+   "weight": 0.3,
+   "src": "https://www.stocktitan.net/articles/stock-market-today-live-october-28-2026",
+   "catalyst": "dc_power"
+  },
+  {
+   "date": "2026-10-29",
+   "themes": [
+    "반도체 소부장"
+   ],
+   "kind": "해외 실적 서프라이즈",
+   "what": "KLA 1분기 실적·가이던스 상회(첨단 패키징·공정 전환) 시간외 +3%, 마이크론 +5.9%·램리서치 +5.4% (10/28)",
+   "weight": 0.3,
+   "src": "https://ca.investing.com/news/stock-market-news/afterhours-movers-googl-msft-now-klac-cmg-cvna-tdoc-432SI-4911008",
+   "catalyst": "hbm_memory"
   }
  ]
 }
