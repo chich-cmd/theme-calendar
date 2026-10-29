@@ -99,10 +99,11 @@ def main():
     # 10/27 복기: 08:45 이후 늦게 돈 점검(08:55 등)이 수정 예측을 바꿔 맞던 테마가 빠졌다(10/26 의료AI, 10/27 2차전지)
     #   → 08:45 이전 점검 결과가 있으면 수정 예측은 그대로 두고, 늦은 결과는 late 로만 남긴다
     old = doc["pre"].get("pm") or {}
-    if (pm["time"] or "") > "08:45" and old.get("revised") and (old.get("time") or "99") <= "08:45":
+    old_rt = old.get("revised_time") or old.get("time") or "99"   # 10/29: 두 번째 늦은 점검이 고정을 풀었다 → 고정 시각 기준으로 비교
+    if (pm["time"] or "") > "08:45" and old.get("revised") and old_rt <= "08:45":
         pm["late"] = pm["revised"]
         pm["revised"] = old["revised"]
-        pm["revised_time"] = old.get("time")
+        pm["revised_time"] = old_rt
     doc["pre"]["pm"] = pm
     json.dump(doc, open(path, "w", encoding="utf-8"), ensure_ascii=False)
     print(json.dumps(pm, ensure_ascii=False))
