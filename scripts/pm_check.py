@@ -87,7 +87,8 @@ def main():
           "confirm": [p for p in preds if p in groups and len(groups[p]) >= 2],
           "new": [n for n, v in themes if n not in preds and len(v) >= 3][:3]}
     # 08:45 수정 예측 (10/14 복기: 프리마켓 새 테마 주도 적중 67% vs 07시 예측 30%) — 07시 예측은 그대로 두고 따로 채점
-    conf = [n for n in preds if n in groups and len(groups[n]) >= 2]
+    # 10/30: 예측 테마도 +10%·30억 이상 단독 종목이면 확인으로 본다(서울반도체 +20%·833억인데 광통신이 후보 밖으로 밀렸다)
+    conf = [n for n in preds if n in groups and (len(groups[n]) >= 2 or any(x["chg"] >= 10 and x["eok"] >= 30 for x in groups[n]))]
     # 10/26 복기: 단독 +10% 종목 테마(뷰노 +16%·의료AI)가 2종목 미만이라 빠졌다 → 30억 이상 거래된 +10% 단독 종목도 새 테마 후보
     fresh = [n for n, v in sorted(groups.items(), key=lambda x: (-len(x[1]), -sum(s["eok"] for s in x[1])))
              if n not in preds and (len(v) >= 2 or any(x["chg"] >= 10 and x["eok"] >= 30 for x in v))]
