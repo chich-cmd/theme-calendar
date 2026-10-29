@@ -719,6 +719,28 @@
    "weight": 0.3,
    "src": "https://ca.investing.com/news/stock-market-news/afterhours-movers-googl-msft-now-klac-cmg-cvna-tdoc-432SI-4911008",
    "catalyst": "hbm_memory"
+  },
+  {
+   "date": "2026-10-30",
+   "themes": [
+    "제약·바이오"
+   ],
+   "kind": "해외 실적 서프라이즈",
+   "what": "일라이릴리 3분기 매출 +39%(244억달러)·연간 전망 상향 → +6.6% (10/29)",
+   "weight": 0.3,
+   "src": "https://www.stocktitan.net/articles/stock-market-today-live-october-29-2026",
+   "catalyst": "obesity"
+  },
+  {
+   "date": "2026-10-30",
+   "themes": [
+    "광통신"
+   ],
+   "kind": "M&A",
+   "what": "마벨, 루멘텀 인수 막바지 협상 보도(미확인) (10/29)",
+   "weight": 0.6,
+   "src": "https://www.stocktitan.net/articles/stock-market-today-live-october-29-2026",
+   "catalyst": "optical"
   }
  ]
 }
