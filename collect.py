@@ -226,6 +226,11 @@ def run_pre():
     krx = load_json("data", prev[-1], "krx.json") if prev else {}
     if not krx:
         return save("pre", {"date": TODAY, "status": "error", "note": "기준 종가 없음", "stocks": []})
+    # 10/29 복기: 전 거래일 스냅샷에 빠진 종목(보합 등)이 프리마켓 점검에서 통째로 빠졌다(서울반도체 프리마켓 상한가)
+    #   → 최근 5거래일 스냅샷을 합쳐 종목 목록을 채운다(최신 날짜 값 우선; 빠진 날은 보합이므로 직전 종가 = 그 전날 종가)
+    for d0 in reversed(prev[-6:-1]):
+        for c, v in (load_json("data", d0, "krx.json") or {}).items():
+            krx.setdefault(c, v)
     codes = list(krx)
     moved, sessions, traded, sample = [], {}, 0, None
     for i in range(0, len(codes), 60):
