@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-30T07:01:36+09:00",
+ "updated": "2026-10-30T07:07:53+09:00",
  "gainers": [
   {
    "sym": "GKOS",
@@ -113,13 +113,13 @@
    "sym": "FLS",
    "name": "Flowserve Corporation",
    "chg": 11.89,
-   "cap_b": 10.3
+   "cap_b": 10.2
   },
   {
    "sym": "TXT",
    "name": "Textron Inc.",
    "chg": 11.67,
-   "cap_b": 15.2
+   "cap_b": 15.0
   },
   {
    "sym": "DRS",
@@ -427,6 +427,13 @@
    "group": "보안",
    "date": "2026-10-29",
    "chg": -3.53
+  },
+  {
+   "sym": "BTC-USD",
+   "name": "비트코인",
+   "group": "디지털자산",
+   "date": "2026-10-29",
+   "chg": -3.41
   },
   {
    "sym": "ITA",
