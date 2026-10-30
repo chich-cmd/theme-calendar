@@ -472,6 +472,7 @@ def main():
     app = appearances(data[0], data[1], day)
     out = {"day": day, "us_date": u, "us_signal": {k: round(v, 2) for k, v in sig.items()},
            "lead20": {t: int(m.group(1)) for _s, t, w in rows for m in [__import__("re").search(r"최근20일 주도 (\d+)회", w)] if m},
+           "weak_us": sorted({t for _s, t, w in rows if "(연관 약함)" in w}),
            "events": events(day), "nxt_flow": nxt_flow(data[0], data[1], day), "regime": regime(data[7], day),
            "baskets": {t: trend_basket(data[0], data[1], t, day) for t in
                        {x["name"] for d in [x for x in data[1] if x < day][-60:] for x in data[0][d]["main"]["themes"] if not ETC(x["name"])}},
@@ -544,7 +545,9 @@ def emit(path, day, out, sig, data):
     # 10/21 복기: 최근 20일 8회 이상 주도한 테마(반도체 소부장 등)는 美 약세에도 국내 순환으로 주도 → 조심에서 뺀다
     #   (10/7~10/21 반도체 소부장 조심 4번 중 2번 주도·1번 등장)
     l20 = out.get("lead20", {})
-    neg = sorted((v, t) for t, v in sig.items() if v <= -2 and l20.get(t, 0) < 8)
+    # 10/30 복기: 미국 짝 연관이 약한 테마(보안 등)는 조심에서 뺀다 — 보안을 조심으로 적은 날 금융권 해킹으로 1위
+    weak = set(out.get("weak_us", []))
+    neg = sorted((v, t) for t, v in sig.items() if v <= -2 and l20.get(t, 0) < 8 and t not in weak)
     warn = f"{neg[0][1]} — 미국 짝 종목 평균 {neg[0][0]:+.1f}%" if neg else ""
     pre = {"time": datetime.now(timezone(timedelta(hours=9))).strftime("%H:%M"), "market": market,
            "themes": themes, "warn": warn, "news": news, "method": "data-only v2026-10-06"}
