@@ -180,6 +180,7 @@ EVENT_W = float(os.environ.get('EVENT_W', '0.5'))  # 10/20: 1.0→0.5 (사용자
 MOM_W = float(os.environ.get('MOM_W', '0'))        # 테마별 이어짐 효과(근거 표시용, 점수엔 안 넣음: 2년 검증에서 효과 없음)
 BREADTH_W = float(os.environ.get('BREADTH_W', '0.2'))  # 전날 급등 종목 수 가점 — 최근 60일 이어짐 비율이 높을 때만
 REGIME_ON = float(os.environ.get('REGIME_ON', '0.28'))  # 2년 검증: 이 기준일 때 상위3 38.4%→39.5%, 앞·뒤 1년 모두 기준 이상
+APP_W = float(os.environ.get('APP_W', '0.2'))  # 10/30 복기: 주도는 아니어도 최근 5일 중 3일 이상 3종목+ 급등한 테마 가점 (보안 10/22~28 매일 등장했는데 점수 0) — 대입 상위3 17→19/51
 NXT_W = float(os.environ.get('NXT_W', '2.5'))  # 10/14 복기: 넥장 흐름 반영(±0.5 상한)
 
 
@@ -410,6 +411,9 @@ def score(day, data, loo=False):
         if t in yday:
             e = max(0, m["led"]) if m else 0
             s += MOM_W * e; reason.append(f"전날 주도 (2년 기록 이어짐 효과 {e * 100:+.0f}%p)" if m else "전날 주도")
+        app5 = sum(1 for d0 in hist[-5:] if long["P"].get(d0, {}).get(t, 0) >= 3)
+        if APP_W and app5 >= 3:
+            s += APP_W * app5 / 5; reason.append(f"최근 5일 중 {app5}일 3종목 이상 급등")
         if ypres.get(t, 0) and breadth_on:
             s += BREADTH_W * min(ypres[t], 8) / 8; reason.append(f"전날 {ypres[t]}종목 급등 (이어지는 장세 가점)")
         elif ypres.get(t, 0) >= 5 and t not in yday:
