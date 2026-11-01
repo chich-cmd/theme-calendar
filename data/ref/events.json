@@ -741,6 +741,80 @@
    "weight": 0.6,
    "src": "https://www.stocktitan.net/articles/stock-market-today-live-october-29-2026",
    "catalyst": "optical"
+  },
+  {
+   "date": "2026-11-02",
+   "themes": [
+    "보안"
+   ],
+   "kind": "정책",
+   "what": "금융위, 금융권 연쇄 해킹에 금융사 보안 개선계획 촉구·11/5 전 금융권 해킹 대책회의 예고(AI 공동 보안관제 검토) (11/1)",
+   "weight": 0.6,
+   "src": "https://www.fnnews.com/news/202611011400496077",
+   "catalyst": "cybersecurity"
+  },
+  {
+   "date": "2026-11-02",
+   "themes": [
+    "반도체"
+   ],
+   "kind": "기사 2곳 이상",
+   "what": "10월 수출 1,153억달러(역대 2위)·반도체 564억달러 두 달 연속 500억달러대 (11/1)",
+   "weight": 0.3,
+   "src": "https://www.fnnews.com/news/202611011817475807",
+   "catalyst": "hbm_memory"
+  },
+  {
+   "date": "2026-11-03",
+   "themes": [
+    "2차전지"
+   ],
+   "kind": "국내 실적 발표 당일",
+   "what": "LG에너지솔루션 3분기 실적 발표(11/3)",
+   "weight": 0.5,
+   "src": "https://zdnet.co.kr/view/?no=20261101115152"
+  },
+  {
+   "date": "2026-11-04",
+   "themes": [
+    "로봇"
+   ],
+   "kind": "정책",
+   "what": "로보월드 2026 개막(11/4~7, 킨텍스)",
+   "weight": 0.3,
+   "src": "https://zdnet.co.kr/view/?no=20261101115152",
+   "catalyst": "robot"
+  },
+  {
+   "date": "2026-11-04",
+   "themes": [
+    "수소"
+   ],
+   "kind": "정책",
+   "what": "월드 하이드로젠 엑스포 개막·수소 산업 공동선언(11/4)",
+   "weight": 0.3,
+   "src": "https://zdnet.co.kr/view/?no=20261101115152"
+  },
+  {
+   "date": "2026-11-05",
+   "themes": [
+    "2차전지"
+   ],
+   "kind": "국내 실적 발표 당일",
+   "what": "에코프로·에코프로비엠·엘앤에프·LG화학·롯데에너지머티리얼즈 3분기 실적(11/5)",
+   "weight": 0.5,
+   "src": "https://zdnet.co.kr/view/?no=20261101115152"
+  },
+  {
+   "date": "2026-11-05",
+   "themes": [
+    "보안"
+   ],
+   "kind": "정책",
+   "what": "금융위원장 주재 전 금융권 해킹 대책회의(11/5)",
+   "weight": 0.3,
+   "src": "https://www.fnnews.com/news/202611011400496077",
+   "catalyst": "cybersecurity"
   }
  ]
 }
