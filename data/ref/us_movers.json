@@ -1,11 +1,11 @@
 {
- "updated": "2026-11-03T07:02:02+09:00",
+ "updated": "2026-11-03T07:05:37+09:00",
  "gainers": [
   {
    "sym": "IDXX",
    "name": "IDEXX Laboratories, Inc.",
    "chg": 21.85,
-   "cap_b": 53.0
+   "cap_b": 52.9
   },
   {
    "sym": "NWL",
@@ -101,7 +101,7 @@
    "sym": "KVYO",
    "name": "Klaviyo, Inc. Series A",
    "chg": 8.24,
-   "cap_b": 6.2
+   "cap_b": 6.5
   },
   {
    "sym": "TRLV",
@@ -405,7 +405,7 @@
    "name": "WTI",
    "group": "정유·화학",
    "date": "2026-11-02",
-   "chg": -6.61
+   "chg": -6.54
   },
   {
    "sym": "ZS",
