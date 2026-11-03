@@ -268,4 +268,8 @@ def run_pre():
 
 if __name__ == "__main__":
     mode = sys.argv[1] if len(sys.argv) > 1 else "main"
+    # 11/4: GitHub 예약이 7시간 늦게(새벽 03:24) 돌아 '오늘=11/4' 넥장을 '휴장'으로 저장했다 → 시간대 밖 실행은 건너뛴다
+    h = now().hour
+    if (mode == "after" and not (19 <= h <= 23)) or (mode == "main" and not (15 <= h <= 23)) or (mode == "pre" and not (8 <= h <= 9)):
+        print(f"skip {mode}: out of window ({h}시)"); sys.exit(0)
     {"main": run_main, "after": run_after, "pre": run_pre}[mode]()
