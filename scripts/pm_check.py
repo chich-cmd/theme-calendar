@@ -90,8 +90,17 @@ def main():
     # 10/30: 예측 테마도 +10%·30억 이상 단독 종목이면 확인으로 본다(서울반도체 +20%·833억인데 광통신이 후보 밖으로 밀렸다)
     conf = [n for n in preds if n in groups and (len(groups[n]) >= 2 or any(x["chg"] >= 10 and x["eok"] >= 30 for x in groups[n]))]
     # 10/26 복기: 단독 +10% 종목 테마(뷰노 +16%·의료AI)가 2종목 미만이라 빠졌다 → 30억 이상 거래된 +10% 단독 종목도 새 테마 후보
+    # 11/3: 단독 종목 새 테마는 최근 20거래일에 그 테마가 '주도'한 적 있을 때만 (한진칼 지분 경쟁 → 여행·레저 1위 방지)
+    rows = []
+    for p in sorted(glob.glob(os.path.join(ROOT, "themes", "days", "*.json"))):
+        if os.path.basename(p)[:-5] >= day:
+            continue
+        ths = (json.load(open(p, encoding="utf-8")).get("main") or {}).get("themes") or []
+        if ths:
+            rows.append([t["name"] for t in ths if t.get("lead")])
+    led20 = {t for row in rows[-20:] for t in row}
     fresh = [n for n, v in sorted(groups.items(), key=lambda x: (-len(x[1]), -sum(s["eok"] for s in x[1])))
-             if n not in preds and (len(v) >= 2 or any(x["chg"] >= 10 and x["eok"] >= 30 for x in v))]
+             if n not in preds and (len(v) >= 2 or (n in led20 and any(x["chg"] >= 10 and x["eok"] >= 30 for x in v)))]
     # 10/16 복기: 확인 테마를 무조건 앞에 두면 2종목 확인 테마가 5종목 새 테마보다 앞선다 → 프리마켓 종목 수 순(같으면 07시 순위 우선)
     cand = conf + fresh
     rank = {n: i for i, n in enumerate(preds)}
