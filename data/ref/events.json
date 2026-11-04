@@ -815,6 +815,30 @@
    "weight": 0.3,
    "src": "https://www.fnnews.com/news/202611011400496077",
    "catalyst": "cybersecurity"
+  },
+  {
+   "date": "2026-11-05",
+   "themes": [
+    "태양광",
+    "2차전지",
+    "풍력"
+   ],
+   "kind": "대형 사건",
+   "what": "美 중간선거 민주당 상·하원 장악 확정 → 美 태양광·청정에너지 강세(IRA 유지 기대), 다우 +3.0%",
+   "weight": 0.6,
+   "src": "https://www.newspim.com/news/view/20261105000034",
+   "catalyst": "us_midterm"
+  },
+  {
+   "date": "2026-11-05",
+   "themes": [
+    "여행·레저"
+   ],
+   "kind": "해외 사건",
+   "what": "국제유가 급락(브렌트 -8.7% 94.6달러, 8/31 이후 최저) → 항공·여행 비용 부담 완화",
+   "weight": 0.3,
+   "src": "https://www.newspim.com/news/view/20261105000034",
+   "catalyst": "oil_down"
   }
  ]
 }
