@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-05T07:02:30+09:00",
+ "updated": "2026-11-05T10:36:08+09:00",
  "gainers": [
   {
    "sym": "KD",
@@ -206,12 +206,6 @@
    "cap_b": 4.8
   },
   {
-   "sym": "APP",
-   "name": "Applovin Corporation",
-   "chg": 10.69,
-   "cap_b": 90.9
-  },
-  {
    "sym": "MIRM",
    "name": "Mirum Pharmaceuticals, Inc.",
    "chg": 11.42,
@@ -240,6 +234,12 @@
    "name": "Academy Sports and Outdoors, In",
    "chg": 11.22,
    "cap_b": 4.2
+  },
+  {
+   "sym": "NXT",
+   "name": "Nextpower Inc.",
+   "chg": 11.12,
+   "cap_b": 16.4
   }
  ],
  "losers": [
@@ -394,18 +394,18 @@
    "chg": -9.3
   },
   {
+   "sym": "CL=F",
+   "name": "WTI",
+   "group": "정유·화학",
+   "date": "2026-11-04",
+   "chg": -9.29
+  },
+  {
    "sym": "CIEN",
    "name": "시에나",
    "group": "광통신",
    "date": "2026-11-04",
    "chg": -9.28
-  },
-  {
-   "sym": "CL=F",
-   "name": "WTI",
-   "group": "정유·화학",
-   "date": "2026-11-04",
-   "chg": -8.3
   },
   {
    "sym": "LITE",
@@ -546,13 +546,6 @@
    "group": "우주항공",
    "date": "2026-11-04",
    "chg": -3.78
-  },
-  {
-   "sym": "BTC-USD",
-   "name": "비트코인",
-   "group": "디지털자산",
-   "date": "2026-11-04",
-   "chg": 3.72
   },
   {
    "sym": "TSLA",
