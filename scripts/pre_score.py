@@ -175,6 +175,7 @@ def similar(days, seen, upto, window=60, min_together=4, min_lift=1.5):
 
 
 US_W = float(os.environ.get('US_W', '1.0'))
+US_HARD = float(os.environ.get('US_HARD', '0.2'))  # 미국 짝 -3% 이하 추가 감점
 FADE_W = float(os.environ.get('FADE_W', '0'))
 EVENT_W = float(os.environ.get('EVENT_W', '0.5'))  # 10/20: 1.0→0.5 (사용자 승인 — 10/7~10/20 백테스트 주도 11→14/45). 10/7엔 1.0
 MOM_W = float(os.environ.get('MOM_W', '0'))        # 테마별 이어짐 효과(근거 표시용, 점수엔 안 넣음: 2년 검증에서 효과 없음)
@@ -398,6 +399,8 @@ def score(day, data, loo=False):
                 s += US_W * (r["up"] - r["base"]); reason.append(f"미국 짝 {sig[t]:+.1f}% (과거 +2%↑ 주도율 {r['up']:.0%})")
             elif sig[t] <= -2:
                 s += US_W * (r["down"] - r["base"]); reason.append(f"미국 짝 {sig[t]:+.1f}% (과거 -2%↓ 주도율 {r['down']:.0%})")
+                if US_HARD and US_W and sig[t] <= -3:
+                    s -= US_HARD; reason.append(f"미국 짝 -3% 이하 급락 -{US_HARD}")
             else:
                 reason.append(f"미국 짝 {sig[t]:+.1f}%")
         for e in evt.get(t, []):

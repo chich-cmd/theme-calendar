@@ -839,6 +839,19 @@
    "weight": 0.3,
    "src": "https://www.newspim.com/news/view/20261105000034",
    "catalyst": "oil_down"
+  },
+  {
+   "date": "2026-11-04",
+   "themes": [
+    "태양광",
+    "2차전지",
+    "풍력"
+   ],
+   "kind": "대형 사건",
+   "what": "(소급) 美 중간선거 블루웨이브 기대 — 11/4 장중 태양광·2차전지 주도",
+   "weight": 0.0,
+   "src": "https://www.ajunews.com/view/20261104132200001",
+   "catalyst": "us_midterm"
   }
  ]
 }
