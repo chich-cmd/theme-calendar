@@ -852,6 +852,28 @@
    "weight": 0.0,
    "src": "https://www.ajunews.com/view/20261104132200001",
    "catalyst": "us_midterm"
+  },
+  {
+   "date": "2026-11-06",
+   "themes": [
+    "게임"
+   ],
+   "kind": "해외 실적 서프라이즈",
+   "what": "美 앱러빈 +31%·유니티 +15% 실적 서프라이즈(나스닥 -5.5% 속 역행) → 게임·광고 소프트웨어",
+   "weight": 0.3,
+   "src": "https://www.newspim.com/news/view/20261106000030",
+   "catalyst": "applovin"
+  },
+  {
+   "date": "2026-11-06",
+   "themes": [
+    "게임"
+   ],
+   "kind": "국내 실적 발표 당일",
+   "what": "웹젠 3분기 실적(11/6) · 다음 주 넥슨·크래프톤·엔씨·넷마블 실적 시즌",
+   "weight": 0.5,
+   "src": "https://news.mtn.co.kr/article/2026110211042336109",
+   "catalyst": "game_q3"
   }
  ]
 }
