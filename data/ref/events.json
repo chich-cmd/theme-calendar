@@ -874,6 +874,50 @@
    "weight": 0.5,
    "src": "https://news.mtn.co.kr/article/2026110211042336109",
    "catalyst": "game_q3"
+  },
+  {
+   "date": "2026-11-09",
+   "themes": [
+    "반도체 소부장"
+   ],
+   "kind": "해외 실적 서프라이즈",
+   "what": "美 램리서치 최대 250억달러 자사주 매입 +8%, 아이렌 AI 클라우드 매출 +182% 급등 → 반도체 장비·AI 인프라 반등(SOX +4.2%)",
+   "weight": 0.3,
+   "src": "https://www.ddaily.co.kr/page/view/2026110706341294675",
+   "catalyst": "lam_buyback"
+  },
+  {
+   "date": "2026-11-09",
+   "themes": [
+    "조선"
+   ],
+   "kind": "해외 사건",
+   "what": "美 해군·해병대 고위급 방한 후 한화오션 등 MRO·협력 기대",
+   "weight": 0.3,
+   "src": "https://cbci.co.kr/news/articleView.html?idxno=624509",
+   "catalyst": "us_navy_visit"
+  },
+  {
+   "date": "2026-11-10",
+   "themes": [
+    "게임"
+   ],
+   "kind": "국내 실적 발표 당일",
+   "what": "넥슨·크래프톤·시프트업·데브시스터즈·NHN 3분기 실적",
+   "weight": 0.5,
+   "src": "https://zdnet.co.kr/view/?no=20261102112027",
+   "catalyst": "game_q3_1110"
+  },
+  {
+   "date": "2026-11-11",
+   "themes": [
+    "게임"
+   ],
+   "kind": "국내 실적 발표 당일",
+   "what": "엔씨·위메이드·네오위즈 3분기 실적",
+   "weight": 0.5,
+   "src": "https://zdnet.co.kr/view/?no=20261102112027",
+   "catalyst": "game_q3_1111"
   }
  ]
 }
