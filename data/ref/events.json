@@ -918,6 +918,28 @@
    "weight": 0.5,
    "src": "https://zdnet.co.kr/view/?no=20261102112027",
    "catalyst": "game_q3_1111"
+  },
+  {
+   "date": "2026-11-10",
+   "themes": [
+    "원전·에너지"
+   ],
+   "kind": "해외 실적 서프라이즈",
+   "what": "美 콘스텔레이션 에너지 3분기 조정 이익 예상 상회 +10%",
+   "weight": 0.3,
+   "src": "https://www.newspim.com/news/view/20261110000007",
+   "catalyst": "ceg"
+  },
+  {
+   "date": "2026-11-10",
+   "themes": [
+    "여행·레저"
+   ],
+   "kind": "해외 사건",
+   "what": "국제유가 4%↓(트럼프 이란 추가 공격 가능성 낮게 평가)",
+   "weight": 0.3,
+   "src": "https://www.newspim.com/news/view/20261110000007",
+   "catalyst": "oil_down"
   }
  ]
 }
