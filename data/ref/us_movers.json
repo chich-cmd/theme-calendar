@@ -1,17 +1,11 @@
 {
- "updated": "2026-11-10T07:01:33+09:00",
+ "updated": "2026-11-10T12:41:53+09:00",
  "gainers": [
   {
    "sym": "FRVO",
    "name": "Fervo Energy Company",
    "chg": 26.09,
    "cap_b": 3.4
-  },
-  {
-   "sym": "CECO",
-   "name": "CECO Environmental Corp.",
-   "chg": 18.97,
-   "cap_b": 3.0
   },
   {
    "sym": "PRAX",
@@ -24,6 +18,12 @@
    "name": "QXO, Inc.",
    "chg": 19.2,
    "cap_b": 14.3
+  },
+  {
+   "sym": "CECO",
+   "name": "CECO Environmental Corp.",
+   "chg": 18.97,
+   "cap_b": 3.0
   },
   {
    "sym": "WRBY",
@@ -62,16 +62,16 @@
    "cap_b": 7.2
   },
   {
-   "sym": "TTD",
-   "name": "The Trade Desk, Inc.",
-   "chg": 15.47,
-   "cap_b": 7.1
-  },
-  {
    "sym": "UI",
    "name": "Ubiquiti Inc.",
    "chg": 15.66,
    "cap_b": 41.5
+  },
+  {
+   "sym": "TTD",
+   "name": "The Trade Desk, Inc.",
+   "chg": 15.47,
+   "cap_b": 7.1
   },
   {
    "sym": "LGN",
@@ -98,6 +98,12 @@
    "cap_b": 5.2
   },
   {
+   "sym": "ASTS",
+   "name": "AST SpaceMobile, Inc.",
+   "chg": 14.1,
+   "cap_b": 14.4
+  },
+  {
    "sym": "SGRY",
    "name": "Surgery Partners, Inc.",
    "chg": 14.01,
@@ -110,10 +116,10 @@
    "cap_b": 5.2
   },
   {
-   "sym": "ASTS",
-   "name": "AST SpaceMobile, Inc.",
-   "chg": 14.1,
-   "cap_b": 14.4
+   "sym": "DPC",
+   "name": "DPC Holdings PLC",
+   "chg": 13.72,
+   "cap_b": 4.9
   },
   {
    "sym": "ALAB",
@@ -132,12 +138,6 @@
    "name": "nLIGHT, Inc.",
    "chg": 13.65,
    "cap_b": 2.5
-  },
-  {
-   "sym": "DPC",
-   "name": "DPC Holdings PLC",
-   "chg": 13.72,
-   "cap_b": 4.9
   },
   {
    "sym": "ALMR",
@@ -176,6 +176,12 @@
    "cap_b": 10.9
   },
   {
+   "sym": "VIA",
+   "name": "Via Transportation, Inc.",
+   "chg": 12.8,
+   "cap_b": 3.6
+  },
+  {
    "sym": "COHU",
    "name": "Cohu, Inc.",
    "chg": 12.76,
@@ -186,12 +192,6 @@
    "name": "Teradyne, Inc.",
    "chg": 12.73,
    "cap_b": 38.4
-  },
-  {
-   "sym": "VIA",
-   "name": "Via Transportation, Inc.",
-   "chg": 12.8,
-   "cap_b": 3.6
   },
   {
    "sym": "AVAV",
@@ -506,13 +506,6 @@
    "chg": 6.18
   },
   {
-   "sym": "^N225",
-   "name": "닛케이225",
-   "group": "아시아",
-   "date": "2026-11-06",
-   "chg": -5.96
-  },
-  {
    "sym": "SPCX",
    "name": "스페이스X",
    "group": "우주항공",
@@ -555,18 +548,18 @@
    "chg": 5.38
   },
   {
+   "sym": "CL=F",
+   "name": "WTI",
+   "group": "정유·화학",
+   "date": "2026-11-09",
+   "chg": -5.36
+  },
+  {
    "sym": "ETN",
    "name": "이튼",
    "group": "전력기기·전선",
    "date": "2026-11-09",
    "chg": 5.14
-  },
-  {
-   "sym": "CL=F",
-   "name": "WTI",
-   "group": "정유·화학",
-   "date": "2026-11-09",
-   "chg": -4.8
   },
   {
    "sym": "LLY",
@@ -618,18 +611,18 @@
    "chg": 3.58
   },
   {
-   "sym": "NQ=F",
-   "name": "나스닥 선물",
-   "group": "아시아",
-   "date": "2026-11-09",
-   "chg": 3.52
-  },
-  {
    "sym": "TSM",
    "name": "TSMC ADR",
    "group": "아시아",
    "date": "2026-11-09",
    "chg": 3.51
+  },
+  {
+   "sym": "NQ=F",
+   "name": "나스닥 선물",
+   "group": "아시아",
+   "date": "2026-11-09",
+   "chg": 3.22
   },
   {
    "sym": "XBI",
