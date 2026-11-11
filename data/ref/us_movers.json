@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-11T07:01:43+09:00",
+ "updated": "2026-11-11T10:21:46+09:00",
  "gainers": [
   {
    "sym": "AAON",
@@ -41,7 +41,7 @@
    "sym": "ZETA",
    "name": "Zeta Global Holdings Corp.",
    "chg": 8.17,
-   "cap_b": 8.8
+   "cap_b": 8.7
   },
   {
    "sym": "LQDA",
@@ -137,7 +137,7 @@
    "sym": "VIA",
    "name": "Via Transportation, Inc.",
    "chg": 4.94,
-   "cap_b": 3.6
+   "cap_b": 3.8
   },
   {
    "sym": "CLF",
@@ -277,7 +277,7 @@
    "sym": "QLYS",
    "name": "Qualys, Inc.",
    "chg": -13.51,
-   "cap_b": 6.2
+   "cap_b": 6.1
   },
   {
    "sym": "LINE",
@@ -358,10 +358,10 @@
    "cap_b": 3.7
   },
   {
-   "sym": "IQMX",
-   "name": "IQM Quantum Computers Oyj",
-   "chg": -8.06,
-   "cap_b": 3.6
+   "sym": "IREN",
+   "name": "IREN LIMITED",
+   "chg": -7.85,
+   "cap_b": 8.4
   }
  ],
  "watch": [
