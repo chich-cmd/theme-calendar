@@ -1,0 +1,235 @@
+{
+ "date": "2026-11-12",
+ "status": "open",
+ "source": "naver-finance",
+ "time": "08:32",
+ "base_day": "2026-11-11",
+ "rule": "NXT 프리마켓 가격이 전 거래일 KRX 종가 대비 3.0% 이상",
+ "sessions": {
+  "PRE_MARKET": 603
+ },
+ "traded": 603,
+ "stocks": [
+  {
+   "code": "402030",
+   "name": "코난테크놀로지",
+   "market": "KOSDAQ",
+   "base": 10030.0,
+   "price": 12000.0,
+   "chg": 19.64,
+   "eok": 25.2,
+   "vol": 206149.0
+  },
+  {
+   "code": "108860",
+   "name": "셀바스AI",
+   "market": "KOSDAQ",
+   "base": 7110.0,
+   "price": 8140.0,
+   "chg": 14.49,
+   "eok": 132.3,
+   "vol": 1631160.0
+  },
+  {
+   "code": "304100",
+   "name": "솔트룩스",
+   "market": "KOSDAQ",
+   "base": 11550.0,
+   "price": 12800.0,
+   "chg": 10.82,
+   "eok": 70.6,
+   "vol": 548375.0
+  },
+  {
+   "code": "486990",
+   "name": "노타",
+   "market": "KOSDAQ",
+   "base": 12780.0,
+   "price": 14160.0,
+   "chg": 10.8,
+   "eok": 91.0,
+   "vol": 637215.0
+  },
+  {
+   "code": "035900",
+   "name": "JYP Ent.",
+   "market": "KOSDAQ",
+   "base": 41600.0,
+   "price": 43950.0,
+   "chg": 5.65,
+   "eok": 392.8,
+   "vol": 900862.0
+  },
+  {
+   "code": "192820",
+   "name": "코스맥스",
+   "market": "KOSPI",
+   "base": 262500.0,
+   "price": 277000.0,
+   "chg": 5.52,
+   "eok": 69.6,
+   "vol": 25475.0
+  },
+  {
+   "code": "356860",
+   "name": "티엘비",
+   "market": "KOSDAQ",
+   "base": 38250.0,
+   "price": 40200.0,
+   "chg": 5.1,
+   "eok": 310.5,
+   "vol": 769011.0
+  },
+  {
+   "code": "494120",
+   "name": "큐리오시스",
+   "market": "KOSDAQ",
+   "base": 13430.0,
+   "price": 14050.0,
+   "chg": 4.62,
+   "eok": 3.4,
+   "vol": 24479.0
+  },
+  {
+   "code": "300080",
+   "name": "플리토",
+   "market": "KOSDAQ",
+   "base": 7960.0,
+   "price": 8310.0,
+   "chg": 4.4,
+   "eok": 17.9,
+   "vol": 211142.0
+  },
+  {
+   "code": "122870",
+   "name": "와이지엔터테인먼트",
+   "market": "KOSDAQ",
+   "base": 41650.0,
+   "price": 43250.0,
+   "chg": 3.84,
+   "eok": 8.9,
+   "vol": 20673.0
+  },
+  {
+   "code": "067080",
+   "name": "대화제약",
+   "market": "KOSDAQ",
+   "base": 9450.0,
+   "price": 9810.0,
+   "chg": 3.81,
+   "eok": 19.7,
+   "vol": 195405.0
+  },
+  {
+   "code": "007660",
+   "name": "이수페타시스",
+   "market": "KOSPI",
+   "base": 83300.0,
+   "price": 86100.0,
+   "chg": 3.36,
+   "eok": 253.3,
+   "vol": 292567.0
+  },
+  {
+   "code": "053800",
+   "name": "안랩",
+   "market": "KOSDAQ",
+   "base": 116600.0,
+   "price": 120500.0,
+   "chg": 3.34,
+   "eok": 234.1,
+   "vol": 196317.0
+  },
+  {
+   "code": "001060",
+   "name": "JW중외제약",
+   "market": "KOSPI",
+   "base": 22800.0,
+   "price": 23550.0,
+   "chg": 3.29,
+   "eok": 0.1,
+   "vol": 321.0
+  }
+ ],
+ "down": [
+  {
+   "code": "002320",
+   "name": "한진",
+   "market": "KOSPI",
+   "base": 21050.0,
+   "price": 19950.0,
+   "chg": -5.23,
+   "eok": 44.4,
+   "vol": 217755.0
+  },
+  {
+   "code": "168360",
+   "name": "펨트론",
+   "market": "KOSDAQ",
+   "base": 8540.0,
+   "price": 8180.0,
+   "chg": -4.22,
+   "eok": 5.1,
+   "vol": 62207.0
+  },
+  {
+   "code": "394800",
+   "name": "쓰리빌리언",
+   "market": "KOSDAQ",
+   "base": 6570.0,
+   "price": 6310.0,
+   "chg": -3.96,
+   "eok": 10.3,
+   "vol": 159665.0
+  },
+  {
+   "code": "079900",
+   "name": "전진건설로봇",
+   "market": "KOSPI",
+   "base": 44450.0,
+   "price": 42850.0,
+   "chg": -3.6,
+   "eok": 46.7,
+   "vol": 108312.0
+  },
+  {
+   "code": "035420",
+   "name": "NAVER",
+   "market": "KOSPI",
+   "base": 195500.0,
+   "price": 188900.0,
+   "chg": -3.38,
+   "eok": 510.2,
+   "vol": 267957.0
+  }
+ ],
+ "sample": {
+  "tradingSessionType": "PRE_MARKET",
+  "overMarketStatus": "OPEN",
+  "overPrice": "88,300",
+  "openPrice": "90,900",
+  "highPrice": "90,900",
+  "lowPrice": "86,000",
+  "compareToPreviousPrice": {
+   "code": "2",
+   "text": "상승",
+   "name": "RISING"
+  },
+  "compareToPreviousClosePrice": "1,900",
+  "fluctuationsRatio": "2.20",
+  "localTradedAt": "2026-11-12T08:31:32.188030+09:00",
+  "tradeStopType": {
+   "code": "1",
+   "text": "운영.Trading",
+   "name": "TRADING"
+  },
+  "tradableStatus": "tradable",
+  "tradableStatusCode": "ok",
+  "tradableStatusUpdatedAt": "2026-11-12T07:10:14.122+09:00",
+  "accumulatedTradingVolume": "578,406",
+  "accumulatedTradingValue": "511억",
+  "accumulatedTradingValueRaw": "51108000000",
+  "accumulatedTradingVolumeRaw": "578406"
+ },
+ "generatedAt": "2026-11-12T08:32:18+09:00"
+}
