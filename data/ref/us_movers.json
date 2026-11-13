@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-13T07:01:30+09:00",
+ "updated": "2026-11-13T11:00:33+09:00",
  "gainers": [
   {
    "sym": "PLBL",
@@ -11,7 +11,7 @@
    "sym": "MBGL",
    "name": "Mobility Global Inc.",
    "chg": 16.11,
-   "cap_b": 7.4
+   "cap_b": 6.8
   },
   {
    "sym": "CHA",
@@ -247,7 +247,7 @@
    "sym": "NBIS",
    "name": "Nebius Group N.V.",
    "chg": -16.84,
-   "cap_b": 35.0
+   "cap_b": 32.7
   },
   {
    "sym": "CLBT",
@@ -415,13 +415,6 @@
    "group": "보안",
    "date": "2026-11-12",
    "chg": -3.53
-  },
-  {
-   "sym": "BTC-USD",
-   "name": "비트코인",
-   "group": "디지털자산",
-   "date": "2026-11-12",
-   "chg": -3.44
   },
   {
    "sym": "CCJ",
