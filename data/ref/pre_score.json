@@ -1,106 +1,150 @@
 {
- "day": "2026-11-16",
- "us_date": "2026-11-13",
+ "day": "2026-11-17",
+ "us_date": "2026-11-16",
  "us_signal": {
-  "반도체": -2.39,
-  "정유·화학": 0.66,
-  "반도체 소부장": -3.09,
-  "광통신": -5.04,
-  "2차전지": -1.21,
-  "원전·에너지": -1.42,
-  "전력기기·전선": -1.69,
-  "방산": -0.32,
-  "제약·바이오": 0.35,
-  "디지털자산": -0.67,
-  "스마트폰 부품": 0.39,
-  "보안": -1.79
+  "반도체": -5.02,
+  "정유·화학": -2.9,
+  "반도체 소부장": -5.88,
+  "광통신": -7.59,
+  "2차전지": -4.08,
+  "원전·에너지": -4.25,
+  "전력기기·전선": -5.37,
+  "우주항공": -5.44,
+  "방산": -1.75,
+  "제약·바이오": -1.96,
+  "로봇": -3.55,
+  "디지털자산": -3.07,
+  "스마트폰 부품": -0.98,
+  "보안": -1.85
  },
  "lead20": {
-  "제약·바이오": 9,
-  "보안": 5,
-  "건설": 4,
+  "제약·바이오": 10,
+  "보안": 6,
   "AI 소프트웨어": 4,
-  "의료AI·의료기기": 2,
-  "로봇": 5,
   "반도체 소부장": 8,
-  "2차전지": 4,
-  "전자부품": 4,
-  "우선주 급등": 1,
+  "의료AI·의료기기": 2,
+  "건설": 4,
+  "스마트폰 부품": 1,
+  "2차전지": 3,
+  "우주항공": 2,
   "한진그룹(경영권 분쟁)": 2,
   "엔터·미디어": 2,
-  "우주항공": 2,
-  "스마트폰 부품": 1,
   "원전·에너지": 1,
   "반도체": 1,
-  "철강·강관": 1,
+  "우선주 급등": 1,
   "조선": 1,
   "태양광": 1,
   "패션·의류": 1,
-  "정유·화학": 0,
   "방산": 0,
+  "정유·화학": 0,
   "디지털자산": 0,
   "전력기기·전선": 0,
-  "자동차 부품": 0,
+  "로봇": 5,
+  "전자부품": 4,
   "광통신": 1
  },
  "weak_us": [
   "2차전지",
   "디지털자산",
+  "로봇",
   "반도체",
   "방산",
   "보안",
   "스마트폰 부품",
+  "우주항공",
   "원전·에너지",
   "전력기기·전선",
   "정유·화학"
  ],
- "events": [],
+ "events": [
+  {
+   "date": "2026-11-17",
+   "themes": [
+    "보안",
+    "스마트폰 부품"
+   ],
+   "kind": "정책",
+   "what": "AI 부정행위 관계부처 합동 브리핑(17일)·수능(19일) 스마트기기 반납·공공 와이파이 차단 — 전파 차단은 철회",
+   "weight": 0.5,
+   "src": "https://m.go.seoul.co.kr/news/society/2026/11/17/20261117001004",
+   "catalyst": "ai_cheat"
+  }
+ ],
  "nxt_flow": {
-  "반도체 소부장": 0.32,
-  "반도체": 0.77,
-  "전자부품": 0.44,
-  "의료AI·의료기기": 0.68,
-  "AI 소프트웨어": 0.08,
-  "기타(개별)": -1.35,
-  "디지털자산": 0.33,
-  "제약·바이오": 0.16,
-  "전력기기·전선": 0.84,
-  "2차전지": 0.28,
-  "로봇": 0.69
+  "스마트폰 부품": -0.0,
+  "로봇": -1.29,
+  "반도체": -0.73,
+  "기타(개별)": -1.62,
+  "한진그룹(경영권 분쟁)": 0.23,
+  "전자부품": -1.36,
+  "반도체 소부장": -0.97,
+  "2차전지": -0.22
  },
  "regime": {
   "recent": 0.237,
   "long": 0.295
  },
  "baskets": {
-  "철강·강관": [
+  "우선주 급등": [
    {
-    "name": "화성밸브",
-    "ret60": 1.3,
-    "times": 4,
-    "primary": true
-   },
-   {
-    "name": "한선엔지니어링",
-    "ret60": -0.5,
+    "name": "한진칼우",
+    "ret60": 221.1,
     "times": 3,
     "primary": true
    },
    {
-    "name": "동일스틸럭스",
-    "ret60": -19.0,
-    "times": 4,
-    "primary": true
-   },
-   {
-    "name": "KBI동양철관",
-    "ret60": -6.4,
+    "name": "깨끗한나라우",
+    "ret60": 6.4,
     "times": 3,
     "primary": true
    },
    {
-    "name": "금강철강",
-    "ret60": -8.2,
+    "name": "금호건설우",
+    "ret60": -10.3,
+    "times": 3,
+    "primary": true
+   },
+   {
+    "name": "티와이홀딩스우",
+    "ret60": 19.3,
+    "times": 2,
+    "primary": true
+   },
+   {
+    "name": "대한항공우",
+    "ret60": 23.0,
+    "times": 2,
+    "primary": true
+   }
+  ],
+  "디지털자산": [
+   {
+    "name": "헥토파이낸셜",
+    "ret60": -17.9,
+    "times": 5,
+    "primary": true
+   },
+   {
+    "name": "우리기술투자",
+    "ret60": -4.4,
+    "times": 4,
+    "primary": true
+   },
+   {
+    "name": "쿠콘",
+    "ret60": -3.6,
+    "times": 4,
+    "primary": true
+   },
+   {
+    "name": "비트플래닛",
+    "ret60": 10.0,
+    "times": 4,
+    "primary": true
+   },
+   {
+    "name": "더즌",
+    "ret60": -5.0,
     "times": 4,
     "primary": true
    }
@@ -119,56 +163,68 @@
     "primary": false
    }
   ],
-  "자사주 소각": [
+  "의료AI·의료기기": [
    {
-    "name": "샘표식품",
-    "ret60": -3.7,
-    "times": 1,
-    "primary": false
-   },
-   {
-    "name": "샘표",
-    "ret60": 0.5,
-    "times": 1,
-    "primary": false
-   }
-  ],
-  "반도체 후공정": [
-   {
-    "name": "하나마이크론",
-    "ret60": -22.5,
-    "times": 2,
+    "name": "플라즈맵",
+    "ret60": -14.5,
+    "times": 6,
     "primary": true
    },
    {
-    "name": "한양디지텍",
-    "ret60": 21.4,
+    "name": "루닛",
+    "ret60": 51.2,
+    "times": 6,
+    "primary": true
+   },
+   {
+    "name": "디알텍",
+    "ret60": -30.1,
+    "times": 4,
+    "primary": true
+   },
+   {
+    "name": "큐리오시스",
+    "ret60": 10.3,
+    "times": 4,
+    "primary": true
+   },
+   {
+    "name": "씨어스",
+    "ret60": -40.7,
+    "times": 4,
+    "primary": true
+   }
+  ],
+  "탈모치료제": [
+   {
+    "name": "현대약품",
+    "ret60": -0.7,
     "times": 1,
     "primary": false
    },
    {
-    "name": "윈팩",
-    "ret60": -2.2,
+    "name": "삼익제약",
+    "ret60": 40.8,
     "times": 1,
     "primary": false
    },
    {
-    "name": "와이씨켐",
-    "ret60": -25.9,
-    "times": 1,
-    "primary": false
-   },
-   {
-    "name": "에이팩트",
-    "ret60": 23.1,
+    "name": "JW신약",
+    "ret60": -2.7,
     "times": 1,
     "primary": false
    }
   ],
   "스마트폰 부품": [
    {
+    "name": "캠시스",
+    "ret60": 23.6,
+    "times": 4,
+    "primary": true
+   },
+   {
     "name": "엑스플러스",
-    "ret60": 35.7,
+    "ret60": 33.9,
     "times": 5,
     "primary": true
    },
@@ -180,343 +236,351 @@
    },
    {
     "name": "앤디포스",
-    "ret60": -31.0,
+    "ret60": -32.0,
     "times": 4,
     "primary": true
    },
    {
-    "name": "캠시스",
-    "ret60": 14.0,
+    "name": "유티아이",
+    "ret60": -22.0,
+    "times": 5,
+    "primary": true
+   }
+  ],
+  "원전·에너지": [
+   {
+    "name": "지엔씨에너지",
+    "ret60": -36.1,
+    "times": 2,
+    "primary": true
+   },
+   {
+    "name": "원일티엔아이",
+    "ret60": -22.1,
     "times": 3,
     "primary": true
    },
    {
-    "name": "유티아이",
-    "ret60": -7.2,
-    "times": 6,
+    "name": "한전기술",
+    "ret60": -28.9,
+    "times": 4,
+    "primary": true
+   },
+   {
+    "name": "우진",
+    "ret60": -37.9,
+    "times": 3,
+    "primary": true
+   },
+   {
+    "name": "오르비텍",
+    "ret60": -37.6,
+    "times": 2,
     "primary": true
    }
   ],
   "광통신": [
    {
     "name": "머큐리",
-    "ret60": 3.1,
+    "ret60": 2.6,
     "times": 5,
     "primary": true
    },
    {
     "name": "RFHIC",
-    "ret60": 4.1,
+    "ret60": 6.1,
     "times": 4,
     "primary": true
    },
    {
     "name": "RF머트리얼즈",
-    "ret60": -11.5,
+    "ret60": -21.9,
     "times": 5,
     "primary": true
    },
    {
     "name": "대한광통신",
-    "ret60": 0.2,
+    "ret60": 0.0,
     "times": 7,
     "primary": true
    },
    {
     "name": "빛과전자",
-    "ret60": 22.1,
+    "ret60": 23.4,
     "times": 7,
     "primary": true
    }
   ],
-  "음식료": [
+  "조선": [
    {
-    "name": "네오크레마",
-    "ret60": -20.4,
-    "times": 2,
-    "primary": true
-   },
-   {
-    "name": "한울앤제주",
-    "ret60": -67.3,
-    "times": 3,
-    "primary": true
-   },
-   {
-    "name": "사조동아원",
-    "ret60": 2.1,
-    "times": 2,
-    "primary": true
-   },
-   {
-    "name": "애드바이오텍",
-    "ret60": -66.4,
-    "times": 2,
-    "primary": true
-   },
-   {
-    "name": "경남제약",
-    "ret60": -5.5,
-    "times": 2,
-    "primary": true
-   }
-  ],
-  "건설": [
-   {
-    "name": "에넥스",
-    "ret60": 18.4,
-    "times": 6,
-    "primary": true
-   },
-   {
-    "name": "상지건설",
-    "ret60": -18.4,
-    "times": 3,
-    "primary": true
-   },
-   {
-    "name": "조이웍스앤코",
-    "ret60": -18.9,
-    "times": 3,
-    "primary": true
-   },
-   {
-    "name": "동양고속",
-    "ret60": 5.1,
+    "name": "KS인더스트리",
+    "ret60": 12.5,
     "times": 4,
     "primary": true
    },
    {
-    "name": "삼성E&A",
-    "ret60": 39.4,
-    "times": 3,
-    "primary": true
-   }
-  ],
-  "AI 소프트웨어": [
-   {
-    "name": "바이브컴퍼니",
-    "ret60": 10.0,
-    "times": 5,
-    "primary": true
-   },
-   {
-    "name": "아시아나IDT",
-    "ret60": 34.2,
-    "times": 3,
-    "primary": true
-   },
-   {
-    "name": "아이크래프트",
-    "ret60": -25.9,
-    "times": 6,
-    "primary": true
-   },
-   {
-    "name": "엘리스",
-    "ret60": null,
-    "times": 3,
-    "primary": true
-   },
-   {
-    "name": "인티큐브",
-    "ret60": 42.0,
-    "times": 2,
-    "primary": true
-   }
-  ],
-  "탈모치료제": [
-   {
-    "name": "현대약품",
-    "ret60": 3.6,
+    "name": "현대힘스",
+    "ret60": -40.2,
     "times": 1,
     "primary": false
    },
    {
-    "name": "삼익제약",
-    "ret60": 55.9,
+    "name": "한화오션",
+    "ret60": -48.5,
     "times": 1,
     "primary": false
    },
    {
-    "name": "JW신약",
-    "ret60": 11.2,
-    "times": 1,
-    "primary": false
-   }
-  ],
-  "로봇": [
-   {
-    "name": "HT로보틱스",
-    "ret60": 39.3,
-    "times": 6,
-    "primary": true
-   },
-   {
-    "name": "피앤에스로보틱스",
-    "ret60": -13.1,
-    "times": 3,
-    "primary": true
-   },
-   {
-    "name": "빅웨이브로보틱스",
-    "ret60": -46.1,
-    "times": 4,
-    "primary": true
-   },
-   {
-    "name": "리브스메드",
-    "ret60": -25.2,
-    "times": 4,
-    "primary": true
-   },
-   {
-    "name": "원익홀딩스",
-    "ret60": 52.9,
-    "times": 4,
-    "primary": true
-   }
-  ],
-  "교육": [
-   {
-    "name": "멀티캠퍼스",
-    "ret60": 9.0,
+    "name": "한화엔진",
+    "ret60": -46.4,
     "times": 1,
     "primary": false
    },
    {
-    "name": "디지털대성",
-    "ret60": 18.6,
+    "name": "태광",
+    "ret60": 0.9,
     "times": 1,
     "primary": false
    }
   ],
-  "정치 테마(오세훈)": [
+  "한화 본주·우선주": [
    {
-    "name": "진양화학",
-    "ret60": 369.2,
-    "times": 3,
-    "primary": true
+    "name": "한화3우B",
+    "ret60": -19.5,
+    "times": 1,
+    "primary": false
    },
    {
-    "name": "진양폴리",
-    "ret60": 124.3,
-    "times": 3,
-    "primary": true
-   },
-   {
-    "name": "진양산업",
-    "ret60": 76.9,
-    "times": 2,
-    "primary": true
-   }
-  ],
-  "반도체 소부장": [
-   {
-    "name": "한양디지텍",
-    "ret60": 21.4,
-    "times": 10,
-    "primary": true
-   },
-   {
-    "name": "오킨스전자",
-    "ret60": 50.8,
-    "times": 8,
-    "primary": true
-   },
-   {
-    "name": "엑시콘",
-    "ret60": 194.8,
-    "times": 13,
-    "primary": true
-   },
-   {
-    "name": "아스플로",
-    "ret60": 69.1,
-    "times": 8,
-    "primary": true
-   },
-   {
-    "name": "티에프이",
-    "ret60": 146.1,
-    "times": 9,
-    "primary": true
+    "name": "한화",
+    "ret60": -26.9,
+    "times": 1,
+    "primary": false
    }
   ],
   "증권": [
    {
     "name": "상상인증권",
-    "ret60": -21.8,
+    "ret60": -18.9,
     "times": 1,
     "primary": false
    },
    {
     "name": "삼성증권",
-    "ret60": -19.9,
+    "ret60": -17.6,
     "times": 1,
     "primary": false
    },
    {
     "name": "SK증권우",
-    "ret60": -6.0,
+    "ret60": -9.1,
     "times": 1,
     "primary": false
    },
    {
     "name": "SK증권",
-    "ret60": -24.3,
+    "ret60": -23.7,
     "times": 1,
     "primary": false
    }
   ],
-  "호남 반도체 클러스터": [
+  "방산": [
    {
-    "name": "서산",
-    "ret60": 45.4,
+    "name": "포메탈",
+    "ret60": 37.8,
+    "times": 2,
+    "primary": true
+   },
+   {
+    "name": "스페코",
+    "ret60": -26.0,
+    "times": 2,
+    "primary": true
+   },
+   {
+    "name": "빅텍",
+    "ret60": -15.8,
+    "times": 2,
+    "primary": true
+   },
+   {
+    "name": "니어스랩",
+    "ret60": -63.1,
     "times": 4,
     "primary": true
    },
    {
-    "name": "금호전기",
-    "ret60": 27.1,
+    "name": "RF시스템즈",
+    "ret60": -15.4,
+    "times": 2,
+    "primary": true
+   }
+  ],
+  "양자컴퓨터": [
+   {
+    "name": "무림P&P",
+    "ret60": -7.2,
+    "times": 1,
+    "primary": false
+   },
+   {
+    "name": "MSDI",
+    "ret60": 58.0,
+    "times": 1,
+    "primary": false
+   },
+   {
+    "name": "엑스게이트",
+    "ret60": 3.5,
+    "times": 1,
+    "primary": false
+   },
+   {
+    "name": "에이엘티",
+    "ret60": -31.1,
+    "times": 1,
+    "primary": false
+   }
+  ],
+  "교육": [
+   {
+    "name": "멀티캠퍼스",
+    "ret60": 8.5,
+    "times": 1,
+    "primary": false
+   },
+   {
+    "name": "디지털대성",
+    "ret60": 19.3,
+    "times": 1,
+    "primary": false
+   }
+  ],
+  "태양광": [
+   {
+    "name": "OCI홀딩스",
+    "ret60": -31.5,
+    "times": 3,
+    "primary": true
+   },
+   {
+    "name": "한화솔루션우",
+    "ret60": -20.1,
+    "times": 2,
+    "primary": true
+   },
+   {
+    "name": "한화솔루션",
+    "ret60": -34.4,
+    "times": 2,
+    "primary": false
+   },
+   {
+    "name": "지앤비에스 에코",
+    "ret60": -24.2,
+    "times": 1,
+    "primary": false
+   },
+   {
+    "name": "대명에너지",
+    "ret60": -5.6,
+    "times": 1,
+    "primary": false
+   }
+  ],
+  "남북경협": [
+   {
+    "name": "양지사",
+    "ret60": 15.5,
+    "times": 2,
+    "primary": true
+   },
+   {
+    "name": "웹스",
+    "ret60": -34.3,
+    "times": 2,
+    "primary": true
+   },
+   {
+    "name": "하이드로리튬",
+    "ret60": -60.6,
+    "times": 1,
+    "primary": false
+   },
+   {
+    "name": "조비",
+    "ret60": -12.6,
+    "times": 1,
+    "primary": false
+   },
+   {
+    "name": "아난티",
+    "ret60": -14.0,
+    "times": 1,
+    "primary": false
+   }
+  ],
+  "자사주 소각": [
+   {
+    "name": "샘표식품",
+    "ret60": -3.7,
+    "times": 1,
+    "primary": false
+   },
+   {
+    "name": "샘표",
+    "ret60": 2.0,
+    "times": 1,
+    "primary": false
+   }
+  ],
+  "화장품": [
+   {
+    "name": "아우딘퓨쳐스",
+    "ret60": -37.1,
+    "times": 3,
+    "primary": true
+   },
+   {
+    "name": "오가닉티코스메틱",
+    "ret60": -12.4,
     "times": 5,
     "primary": true
    },
    {
-    "name": "강동씨앤엘",
-    "ret60": -0.2,
-    "times": 2,
+    "name": "한국화장품제조",
+    "ret60": 1.4,
+    "times": 6,
     "primary": true
    },
    {
-    "name": "HC보광산업",
-    "ret60": 3.3,
-    "times": 2,
-    "primary": true
-   },
-   {
-    "name": "금호건설",
-    "ret60": -16.3,
+    "name": "코스맥스",
+    "ret60": 18.8,
     "times": 3,
+    "primary": true
+   },
+   {
+    "name": "본느",
+    "ret60": -46.9,
+    "times": 4,
     "primary": true
    }
   ],
   "유리기판": [
    {
     "name": "필옵틱스",
-    "ret60": -11.1,
+    "ret60": -12.7,
     "times": 2,
     "primary": true
    },
    {
     "name": "태성",
-    "ret60": -8.5,
+    "ret60": -16.2,
     "times": 2,
     "primary": false
    },
    {
     "name": "나인테크",
-    "ret60": -25.6,
+    "ret60": -29.6,
     "times": 2,
     "primary": false
    },
@@ -528,7 +592,135 @@
    },
    {
     "name": "한빛레이저",
-    "ret60": 9.9,
+    "ret60": 6.3,
+    "times": 1,
+    "primary": false
+   }
+  ],
+  "LNG·가스": [
+   {
+    "name": "원일티엔아이",
+    "ret60": -22.1,
+    "times": 2,
+    "primary": false
+   },
+   {
+    "name": "디케이락",
+    "ret60": 38.7,
+    "times": 1,
+    "primary": false
+   },
+   {
+    "name": "SNT에너지",
+    "ret60": -2.0,
+    "times": 1,
+    "primary": false
+   },
+   {
+    "name": "KBI동양철관",
+    "ret60": -8.4,
+    "times": 1,
+    "primary": false
+   },
+   {
+    "name": "GS글로벌",
+    "ret60": -4.4,
+    "times": 1,
+    "primary": false
+   }
+  ],
+  "자동차 부품": [
+   {
+    "name": "풍강",
+    "ret60": -3.8,
+    "times": 3,
+    "primary": true
+   },
+   {
+    "name": "에코캡",
+    "ret60": -2.7,
+    "times": 3,
+    "primary": true
+   },
+   {
+    "name": "에이엔피",
+    "ret60": null,
+    "times": 6,
+    "primary": true
+   },
+   {
+    "name": "영화금속",
+    "ret60": -4.2,
+    "times": 2,
+    "primary": true
+   },
+   {
+    "name": "명신산업",
+    "ret60": -17.5,
+    "times": 4,
+    "primary": true
+   }
+  ],
+  "보험": [
+   {
+    "name": "미래에셋생명",
+    "ret60": -23.3,
+    "times": 1,
+    "primary": false
+   },
+   {
+    "name": "롯데손해보험",
+    "ret60": 13.8,
+    "times": 1,
+    "primary": false
+   },
+   {
+    "name": "한화손해보험",
+    "ret60": -10.0,
+    "times": 1,
+    "primary": false
+   },
+   {
+    "name": "한화생명",
+    "ret60": -31.5,
+    "times": 1,
+    "primary": false
+   },
+   {
+    "name": "삼성생명",
+    "ret60": -18.5,
+    "times": 1,
+    "primary": false
+   }
+  ],
+  "정유·화학": [
+   {
+    "name": "흥구석유",
+    "ret60": -13.2,
+    "times": 3,
+    "primary": true
+   },
+   {
+    "name": "SK이노베이션",
+    "ret60": -19.1,
+    "times": 1,
+    "primary": false
+   },
+   {
+    "name": "S-Oil우",
+    "ret60": -0.3,
+    "times": 1,
+    "primary": false
+   },
+   {
+    "name": "S-Oil",
+    "ret60": -30.9,
+    "times": 1,
+    "primary": false
+   },
+   {
+    "name": "한국석유",
+    "ret60": -9.8,
     "times": 1,
     "primary": false
    }
@@ -536,89 +728,513 @@
   "패션·의류": [
    {
     "name": "형지I&C",
-    "ret60": -31.1,
+    "ret60": -46.4,
     "times": 7,
     "primary": true
    },
    {
     "name": "형지글로벌",
     "ret60": null,
-    "times": 7,
+    "times": 6,
     "primary": true
    },
    {
     "name": "씨싸이트",
-    "ret60": 156.2,
+    "ret60": 136.9,
     "times": 6,
     "primary": true
    },
    {
     "name": "딥커머스",
-    "ret60": -23.6,
+    "ret60": -24.6,
     "times": 2,
     "primary": true
    },
    {
-    "name": "엑시온그룹",
-    "ret60": 144.9,
+    "name": "신라섬유",
+    "ret60": -23.8,
     "times": 3,
     "primary": true
    }
   ],
-  "전력기기·전선": [
+  "철강·강관": [
    {
-    "name": "효성중공업",
-    "ret60": -38.4,
+    "name": "화성밸브",
+    "ret60": 1.1,
     "times": 4,
     "primary": true
    },
    {
-    "name": "가온전선",
-    "ret60": 33.5,
+    "name": "한선엔지니어링",
+    "ret60": -5.2,
+    "times": 3,
+    "primary": true
+   },
+   {
+    "name": "동일스틸럭스",
+    "ret60": -12.4,
+    "times": 4,
+    "primary": true
+   },
+   {
+    "name": "KBI동양철관",
+    "ret60": -8.4,
+    "times": 3,
+    "primary": true
+   },
+   {
+    "name": "금강철강",
+    "ret60": -8.9,
+    "times": 4,
+    "primary": true
+   }
+  ],
+  "반도체 소부장": [
+   {
+    "name": "한양디지텍",
+    "ret60": 10.3,
+    "times": 10,
+    "primary": true
+   },
+   {
+    "name": "오킨스전자",
+    "ret60": 2.8,
+    "times": 8,
+    "primary": true
+   },
+   {
+    "name": "아스플로",
+    "ret60": 44.4,
+    "times": 8,
+    "primary": true
+   },
+   {
+    "name": "티에프이",
+    "ret60": 113.8,
+    "times": 9,
+    "primary": true
+   },
+   {
+    "name": "엑시콘",
+    "ret60": 145.5,
+    "times": 12,
+    "primary": true
+   }
+  ],
+  "풍력": [
+   {
+    "name": "씨에스베어링",
+    "ret60": 4.1,
+    "times": 1,
+    "primary": false
+   },
+   {
+    "name": "세아제강지주",
+    "ret60": 0.5,
+    "times": 1,
+    "primary": false
+   },
+   {
+    "name": "씨엔플러스",
+    "ret60": -28.8,
+    "times": 1,
+    "primary": false
+   },
+   {
+    "name": "니어스랩",
+    "ret60": -63.1,
+    "times": 1,
+    "primary": false
+   }
+  ],
+  "보안": [
+   {
+    "name": "지니언스",
+    "ret60": 128.1,
+    "times": 9,
+    "primary": true
+   },
+   {
+    "name": "한싹",
+    "ret60": 46.5,
     "times": 5,
     "primary": true
    },
    {
-    "name": "지투파워",
-    "ret60": -30.4,
-    "times": 2,
+    "name": "SGA솔루션즈",
+    "ret60": 31.7,
+    "times": 6,
     "primary": true
    },
    {
-    "name": "LS에코에너지",
-    "ret60": -10.2,
+    "name": "아이씨티케이",
+    "ret60": -14.0,
+    "times": 5,
+    "primary": true
+   },
+   {
+    "name": "안랩",
+    "ret60": 83.7,
+    "times": 5,
+    "primary": true
+   }
+  ],
+  "AI 소프트웨어": [
+   {
+    "name": "바이브컴퍼니",
+    "ret60": 34.6,
+    "times": 6,
+    "primary": true
+   },
+   {
+    "name": "인티큐브",
+    "ret60": 66.5,
     "times": 3,
     "primary": true
    },
    {
-    "name": "대한전선",
-    "ret60": -37.5,
+    "name": "아시아나IDT",
+    "ret60": 37.2,
+    "times": 3,
+    "primary": true
+   },
+   {
+    "name": "아이크래프트",
+    "ret60": -26.5,
+    "times": 6,
+    "primary": true
+   },
+   {
+    "name": "엘리스",
+    "ret60": -5.4,
     "times": 3,
     "primary": true
    }
   ],
-  "양자컴퓨터": [
+  "호남 반도체 클러스터": [
    {
-    "name": "무림P&P",
-    "ret60": -5.9,
+    "name": "서산",
+    "ret60": 33.7,
+    "times": 4,
+    "primary": true
+   },
+   {
+    "name": "금호전기",
+    "ret60": 17.8,
+    "times": 5,
+    "primary": true
+   },
+   {
+    "name": "강동씨앤엘",
+    "ret60": -4.7,
+    "times": 2,
+    "primary": true
+   },
+   {
+    "name": "HC보광산업",
+    "ret60": 0.9,
+    "times": 2,
+    "primary": true
+   },
+   {
+    "name": "금호건설",
+    "ret60": -22.7,
+    "times": 3,
+    "primary": true
+   }
+  ],
+  "여행·레저": [
+   {
+    "name": "제주항공",
+    "ret60": 75.0,
+    "times": 3,
+    "primary": true
+   },
+   {
+    "name": "AK홀딩스",
+    "ret60": 1.8,
+    "times": 2,
+    "primary": true
+   },
+   {
+    "name": "아시아나항공",
+    "ret60": 22.2,
+    "times": 2,
+    "primary": true
+   },
+   {
+    "name": "에어부산",
+    "ret60": 25.9,
     "times": 1,
     "primary": false
    },
    {
-    "name": "MSDI",
-    "ret60": 57.7,
+    "name": "노랑풍선",
+    "ret60": 9.0,
+    "times": 1,
+    "primary": false
+   }
+  ],
+  "정치 테마(오세훈)": [
+   {
+    "name": "진양화학",
+    "ret60": 375.8,
+    "times": 3,
+    "primary": true
+   },
+   {
+    "name": "진양폴리",
+    "ret60": 135.0,
+    "times": 3,
+    "primary": true
+   },
+   {
+    "name": "진양산업",
+    "ret60": 68.9,
+    "times": 2,
+    "primary": true
+   }
+  ],
+  "게임": [
+   {
+    "name": "위메이드맥스",
+    "ret60": -18.2,
+    "times": 2,
+    "primary": true
+   },
+   {
+    "name": "썸에이지",
+    "ret60": -8.2,
+    "times": 2,
+    "primary": true
+   },
+   {
+    "name": "크래프톤",
+    "ret60": -12.3,
     "times": 1,
     "primary": false
    },
    {
-    "name": "엑스게이트",
-    "ret60": 6.7,
+    "name": "모비릭스",
+    "ret60": 50.6,
     "times": 1,
     "primary": false
    },
    {
-    "name": "에이엘티",
+    "name": "NC",
+    "ret60": -21.2,
+    "times": 1,
+    "primary": false
+   }
+  ],
+  "디스플레이": [
+   {
+    "name": "예선테크",
+    "ret60": -20.2,
+    "times": 7,
+    "primary": true
+   },
+   {
+    "name": "비아트론",
+    "ret60": 32.2,
+    "times": 4,
+    "primary": true
+   },
+   {
+    "name": "넥사다이내믹스",
+    "ret60": 343.7,
+    "times": 5,
+    "primary": true
+   },
+   {
+    "name": "유티아이",
+    "ret60": -22.0,
+    "times": 2,
+    "primary": true
+   },
+   {
+    "name": "우리엔터프라이즈",
+    "ret60": 20.3,
+    "times": 2,
+    "primary": true
+   }
+  ],
+  "전자부품": [
+   {
+    "name": "심텍홀딩스",
+    "ret60": 36.2,
+    "times": 3,
+    "primary": true
+   },
+   {
+    "name": "이수페타시스",
+    "ret60": -20.6,
+    "times": 2,
+    "primary": true
+   },
+   {
+    "name": "타이거일렉",
+    "ret60": 33.0,
+    "times": 2,
+    "primary": true
+   },
+   {
+    "name": "아모텍",
+    "ret60": 4.6,
+    "times": 3,
+    "primary": true
+   },
+   {
+    "name": "아바텍",
+    "ret60": 4.4,
+    "times": 2,
+    "primary": true
+   }
+  ],
+  "환경": [
+   {
+    "name": "오텍",
     "ret60": -26.4,
+    "times": 1,
+    "primary": false
+   },
+   {
+    "name": "롯데하이마트",
+    "ret60": -18.0,
+    "times": 1,
+    "primary": false
+   },
+   {
+    "name": "뉴보텍",
+    "ret60": -51.9,
+    "times": 1,
+    "primary": false
+   }
+  ],
+  "로봇": [
+   {
+    "name": "피앤에스로보틱스",
+    "ret60": -4.7,
+    "times": 4,
+    "primary": true
+   },
+   {
+    "name": "HT로보틱스",
+    "ret60": 32.2,
+    "times": 6,
+    "primary": true
+   },
+   {
+    "name": "제닉스로보틱스",
+    "ret60": -12.0,
+    "times": 3,
+    "primary": true
+   },
+   {
+    "name": "빅웨이브로보틱스",
+    "ret60": -43.5,
+    "times": 4,
+    "primary": true
+   },
+   {
+    "name": "리브스메드",
+    "ret60": -18.1,
+    "times": 4,
+    "primary": true
+   }
+  ],
+  "수소": [
+   {
+    "name": "두산퓨얼셀",
+    "ret60": -28.5,
+    "times": 2,
+    "primary": true
+   },
+   {
+    "name": "두산퓨얼셀1우",
+    "ret60": -11.3,
+    "times": 1,
+    "primary": false
+   },
+   {
+    "name": "LS머트리얼즈",
+    "ret60": -19.9,
+    "times": 1,
+    "primary": false
+   },
+   {
+    "name": "일진하이솔루스",
+    "ret60": -12.6,
+    "times": 1,
+    "primary": false
+   },
+   {
+    "name": "범한퓨얼셀",
+    "ret60": -16.7,
+    "times": 1,
+    "primary": false
+   }
+  ],
+  "제약·바이오": [
+   {
+    "name": "지투지바이오",
+    "ret60": -17.8,
+    "times": 11,
+    "primary": true
+   },
+   {
+    "name": "HLB바이오스텝",
+    "ret60": 39.8,
+    "times": 9,
+    "primary": true
+   },
+   {
+    "name": "바이오인프라",
+    "ret60": -21.6,
+    "times": 7,
+    "primary": true
+   },
+   {
+    "name": "아리바이오랩",
+    "ret60": 162.2,
+    "times": 6,
+    "primary": true
+   },
+   {
+    "name": "제이투케이바이오",
+    "ret60": -11.2,
+    "times": 6,
+    "primary": true
+   }
+  ],
+  "한진그룹(경영권 분쟁)": [
+   {
+    "name": "한진",
+    "ret60": 21.0,
+    "times": 3,
+    "primary": true
+   },
+   {
+    "name": "한진칼",
+    "ret60": 83.8,
+    "times": 2,
+    "primary": true
+   },
+   {
+    "name": "진에어",
+    "ret60": 50.1,
+    "times": 1,
+    "primary": false
+   },
+   {
+    "name": "대한항공우",
+    "ret60": 23.0,
+    "times": 1,
+    "primary": false
+   },
+   {
+    "name": "대한항공",
+    "ret60": 25.1,
     "times": 1,
     "primary": false
    }
@@ -632,65 +1248,143 @@
    },
    {
     "name": "이노스페이스",
-    "ret60": -28.4,
+    "ret60": -28.9,
     "times": 1,
     "primary": false
    },
    {
     "name": "대동기어",
-    "ret60": 0.6,
+    "ret60": -1.1,
     "times": 1,
     "primary": false
    },
    {
     "name": "LIG아큐버",
-    "ret60": -5.4,
+    "ret60": -1.6,
     "times": 1,
     "primary": false
    },
    {
     "name": "LIG디펜스앤에어로스페이스",
-    "ret60": -56.1,
+    "ret60": -55.5,
     "times": 1,
     "primary": false
    }
   ],
-  "디스플레이": [
+  "우주항공": [
    {
-    "name": "예선테크",
-    "ret60": -25.0,
-    "times": 7,
-    "primary": true
-   },
-   {
-    "name": "비아트론",
-    "ret60": 40.0,
-    "times": 4,
-    "primary": true
-   },
-   {
-    "name": "넥사다이내믹스",
-    "ret60": 286.6,
+    "name": "컨텍",
+    "ret60": 36.3,
     "times": 5,
     "primary": true
    },
    {
-    "name": "유티아이",
-    "ret60": -7.2,
+    "name": "AP위성",
+    "ret60": 23.2,
+    "times": 4,
+    "primary": true
+   },
+   {
+    "name": "나라스페이스테크놀로지",
+    "ret60": -26.7,
+    "times": 5,
+    "primary": true
+   },
+   {
+    "name": "켄코아에어로스페이스",
+    "ret60": -21.3,
+    "times": 4,
+    "primary": true
+   },
+   {
+    "name": "와이제이링크",
+    "ret60": 0.0,
+    "times": 3,
+    "primary": true
+   }
+  ],
+  "비철금속": [
+   {
+    "name": "우성머티리얼스",
+    "ret60": -48.7,
     "times": 2,
     "primary": true
    },
    {
-    "name": "우리엔터프라이즈",
-    "ret60": 38.8,
+    "name": "국일신동",
+    "ret60": -15.2,
     "times": 2,
     "primary": true
+   },
+   {
+    "name": "알멕",
+    "ret60": -1.4,
+    "times": 1,
+    "primary": false
+   },
+   {
+    "name": "고려아연",
+    "ret60": -29.5,
+    "times": 1,
+    "primary": false
+   }
+  ],
+  "진양그룹주": [
+   {
+    "name": "진양화학",
+    "ret60": 375.8,
+    "times": 3,
+    "primary": true
+   },
+   {
+    "name": "진양폴리",
+    "ret60": 135.0,
+    "times": 3,
+    "primary": true
+   },
+   {
+    "name": "진양산업",
+    "ret60": 68.9,
+    "times": 1,
+    "primary": false
+   }
+  ],
+  "반도체 후공정": [
+   {
+    "name": "한양디지텍",
+    "ret60": 10.3,
+    "times": 1,
+    "primary": false
+   },
+   {
+    "name": "윈팩",
+    "ret60": -7.6,
+    "times": 1,
+    "primary": false
+   },
+   {
+    "name": "와이씨켐",
+    "ret60": -29.1,
+    "times": 1,
+    "primary": false
+   },
+   {
+    "name": "에이팩트",
+    "ret60": 7.2,
+    "times": 1,
+    "primary": false
+   },
+   {
+    "name": "MSDI",
+    "ret60": 58.0,
+    "times": 1,
+    "primary": false
    }
   ],
   "2차전지": [
    {
     "name": "더블유씨피",
-    "ret60": -24.0,
+    "ret60": -25.6,
     "times": 9,
     "primary": true
    },
@@ -702,321 +1396,245 @@
    },
    {
     "name": "롯데에너지머티리얼즈",
-    "ret60": 9.6,
+    "ret60": 10.7,
     "times": 8,
     "primary": true
    },
    {
     "name": "에코앤드림",
-    "ret60": 6.7,
+    "ret60": 4.1,
     "times": 6,
     "primary": true
    },
    {
     "name": "이지트로닉스",
-    "ret60": -20.0,
+    "ret60": -18.3,
     "times": 5,
     "primary": true
    }
   ],
-  "디지털자산": [
+  "건설": [
    {
-    "name": "헥토파이낸셜",
-    "ret60": -19.9,
+    "name": "에넥스",
+    "ret60": 2.2,
     "times": 5,
     "primary": true
    },
    {
-    "name": "우리기술투자",
-    "ret60": -6.3,
-    "times": 4,
-    "primary": true
-   },
-   {
-    "name": "쿠콘",
-    "ret60": 0.5,
-    "times": 4,
-    "primary": true
-   },
-   {
-    "name": "비트플래닛",
-    "ret60": 10.4,
-    "times": 4,
-    "primary": true
-   },
-   {
-    "name": "더즌",
-    "ret60": -6.8,
-    "times": 4,
-    "primary": true
-   }
-  ],
-  "보안": [
-   {
-    "name": "지니언스",
-    "ret60": 125.0,
-    "times": 9,
-    "primary": true
-   },
-   {
-    "name": "한싹",
-    "ret60": 46.5,
-    "times": 5,
-    "primary": true
-   },
-   {
-    "name": "SGA솔루션즈",
-    "ret60": 27.0,
-    "times": 6,
-    "primary": true
-   },
-   {
-    "name": "아이씨티케이",
-    "ret60": -9.8,
-    "times": 5,
-    "primary": true
-   },
-   {
-    "name": "안랩",
-    "ret60": 87.9,
-    "times": 5,
-    "primary": true
-   }
-  ],
-  "우주항공": [
-   {
-    "name": "컨텍",
-    "ret60": 35.2,
-    "times": 5,
-    "primary": true
-   },
-   {
-    "name": "AP위성",
-    "ret60": 19.4,
-    "times": 4,
-    "primary": true
-   },
-   {
-    "name": "나라스페이스테크놀로지",
-    "ret60": -33.2,
-    "times": 5,
-    "primary": true
-   },
-   {
-    "name": "켄코아에어로스페이스",
-    "ret60": -21.7,
-    "times": 4,
-    "primary": true
-   },
-   {
-    "name": "와이제이링크",
-    "ret60": 0.0,
-    "times": 3,
-    "primary": true
-   }
-  ],
-  "한진그룹(경영권 분쟁)": [
-   {
-    "name": "한진",
-    "ret60": 23.9,
+    "name": "상지건설",
+    "ret60": -19.7,
     "times": 3,
     "primary": true
    },
    {
-    "name": "한진칼",
-    "ret60": 66.7,
+    "name": "조이웍스앤코",
+    "ret60": -18.6,
+    "times": 3,
+    "primary": true
+   },
+   {
+    "name": "삼성E&A",
+    "ret60": 43.2,
+    "times": 3,
+    "primary": true
+   },
+   {
+    "name": "동양고속",
+    "ret60": 4.7,
+    "times": 4,
+    "primary": true
+   }
+  ],
+  "음식료": [
+   {
+    "name": "네오크레마",
+    "ret60": -28.0,
     "times": 2,
     "primary": true
    },
    {
-    "name": "진에어",
-    "ret60": 46.2,
+    "name": "한울앤제주",
+    "ret60": -67.3,
+    "times": 3,
+    "primary": true
+   },
+   {
+    "name": "비엘팜텍",
+    "ret60": -22.9,
+    "times": 3,
+    "primary": true
+   },
+   {
+    "name": "사조동아원",
+    "ret60": -0.2,
+    "times": 2,
+    "primary": true
+   },
+   {
+    "name": "경남제약",
+    "ret60": -13.2,
+    "times": 2,
+    "primary": true
+   }
+  ],
+  "삼성그룹": [
+   {
+    "name": "삼성화재",
+    "ret60": -13.7,
     "times": 1,
     "primary": false
    },
    {
-    "name": "대한항공우",
-    "ret60": 28.1,
+    "name": "삼성전자우",
+    "ret60": -13.7,
     "times": 1,
     "primary": false
    },
    {
-    "name": "대한항공",
-    "ret60": 20.2,
+    "name": "삼성생명",
+    "ret60": -18.5,
+    "times": 1,
+    "primary": false
+   },
+   {
+    "name": "삼성물산우B",
+    "ret60": -18.9,
     "times": 1,
     "primary": false
    }
   ],
-  "남북경협": [
+  "창투사": [
    {
-    "name": "양지사",
-    "ret60": 26.6,
-    "times": 2,
-    "primary": true
-   },
-   {
-    "name": "웹스",
-    "ret60": -40.2,
-    "times": 2,
-    "primary": true
-   },
-   {
-    "name": "대아티아이",
-    "ret60": -5.1,
-    "times": 2,
-    "primary": true
-   },
-   {
-    "name": "아난티",
-    "ret60": 4.1,
+    "name": "미래에셋벤처투자",
+    "ret60": -9.9,
     "times": 2,
     "primary": false
    },
    {
-    "name": "하이드로리튬",
-    "ret60": -60.6,
+    "name": "스톤브릿지벤처스",
+    "ret60": -7.8,
+    "times": 1,
+    "primary": false
+   },
+   {
+    "name": "TS인베스트먼트",
+    "ret60": -8.1,
+    "times": 1,
+    "primary": false
+   },
+   {
+    "name": "DSC인베스트먼트",
+    "ret60": -10.1,
     "times": 1,
     "primary": false
    }
   ],
-  "의료AI·의료기기": [
+  "통신장비": [
    {
-    "name": "플라즈맵",
-    "ret60": -19.5,
-    "times": 6,
+    "name": "쏘닉스",
+    "ret60": 35.6,
+    "times": 3,
     "primary": true
    },
    {
-    "name": "루닛",
-    "ret60": 44.4,
-    "times": 6,
+    "name": "에치에프알",
+    "ret60": -32.9,
+    "times": 2,
     "primary": true
    },
    {
-    "name": "디알텍",
-    "ret60": -31.7,
-    "times": 4,
+    "name": "이노인스트루먼트",
+    "ret60": -49.2,
+    "times": 2,
     "primary": true
    },
    {
-    "name": "큐리오시스",
-    "ret60": 3.7,
-    "times": 4,
+    "name": "에이스테크",
+    "ret60": -16.8,
+    "times": 2,
     "primary": true
    },
    {
-    "name": "씨어스",
-    "ret60": -40.5,
-    "times": 4,
+    "name": "오이솔루션",
+    "ret60": -3.1,
+    "times": 2,
     "primary": true
    }
   ],
   "반도체": [
    {
     "name": "에스티아이",
-    "ret60": 5.9,
+    "ret60": 1.8,
     "times": 4,
     "primary": true
    },
    {
     "name": "세미파이브",
-    "ret60": -29.6,
+    "ret60": -29.8,
     "times": 2,
     "primary": true
    },
    {
     "name": "알파칩스",
-    "ret60": 48.1,
+    "ret60": 36.3,
     "times": 2,
     "primary": true
    },
    {
     "name": "SFA반도체",
-    "ret60": 52.6,
+    "ret60": 37.9,
     "times": 2,
     "primary": true
    },
    {
     "name": "와이씨",
-    "ret60": 17.4,
+    "ret60": 24.2,
     "times": 2,
     "primary": true
    }
   ],
-  "화장품": [
+  "전력기기·전선": [
    {
-    "name": "아우딘퓨쳐스",
-    "ret60": -35.0,
-    "times": 3,
+    "name": "효성중공업",
+    "ret60": -41.5,
+    "times": 4,
     "primary": true
    },
    {
-    "name": "오가닉티코스메틱",
-    "ret60": -7.7,
+    "name": "가온전선",
+    "ret60": 33.5,
     "times": 5,
     "primary": true
    },
    {
-    "name": "한국화장품제조",
-    "ret60": 1.8,
-    "times": 6,
+    "name": "지투파워",
+    "ret60": -32.5,
+    "times": 2,
     "primary": true
    },
    {
-    "name": "코스맥스",
-    "ret60": 12.7,
+    "name": "LS에코에너지",
+    "ret60": -15.8,
     "times": 3,
     "primary": true
    },
    {
-    "name": "본느",
-    "ret60": -57.7,
-    "times": 4,
-    "primary": true
-   }
-  ],
-  "정유·화학": [
-   {
-    "name": "흥구석유",
-    "ret60": -4.1,
+    "name": "대한전선",
+    "ret60": -37.0,
     "times": 3,
     "primary": true
-   },
-   {
-    "name": "SK이노베이션",
-    "ret60": -15.0,
-    "times": 1,
-    "primary": false
-   },
-   {
-    "name": "S-Oil우",
-    "ret60": -1.1,
-    "times": 1,
-    "primary": false
-   },
-   {
-    "name": "S-Oil",
-    "ret60": -29.1,
-    "times": 1,
-    "primary": false
-   },
-   {
-    "name": "한국석유",
-    "ret60": -6.7,
-    "times": 1,
-    "primary": false
    }
   ],
   "엔터·미디어": [
    {
     "name": "에피소드컴퍼니",
-    "ret60": 2.7,
+    "ret60": 5.5,
     "times": 6,
     "primary": true
    },
    {
     "name": "티엔엔터테인먼트",
-    "ret60": 77.8,
+    "ret60": 90.9,
     "times": 6,
     "primary": true
    },
@@ -1028,648 +1646,14 @@
    },
    {
     "name": "차이커뮤니케이션",
-    "ret60": 12.0,
+    "ret60": -21.4,
     "times": 7,
     "primary": true
    },
    {
     "name": "아티스트스튜디오",
-    "ret60": 37.6,
+    "ret60": 36.0,
     "times": 6,
-    "primary": true
-   }
-  ],
-  "제약·바이오": [
-   {
-    "name": "지투지바이오",
-    "ret60": -20.0,
-    "times": 11,
-    "primary": true
-   },
-   {
-    "name": "HLB바이오스텝",
-    "ret60": 52.0,
-    "times": 9,
-    "primary": true
-   },
-   {
-    "name": "바이오인프라",
-    "ret60": -15.9,
-    "times": 7,
-    "primary": true
-   },
-   {
-    "name": "제이투케이바이오",
-    "ret60": -10.9,
-    "times": 6,
-    "primary": true
-   },
-   {
-    "name": "하이퍼코퍼레이션",
-    "ret60": -19.2,
-    "times": 6,
-    "primary": true
-   }
-  ],
-  "환경": [
-   {
-    "name": "오텍",
-    "ret60": -15.5,
-    "times": 1,
-    "primary": false
-   },
-   {
-    "name": "롯데하이마트",
-    "ret60": -17.5,
-    "times": 1,
-    "primary": false
-   },
-   {
-    "name": "뉴보텍",
-    "ret60": -50.7,
-    "times": 1,
-    "primary": false
-   }
-  ],
-  "해운": [
-   {
-    "name": "흥아해운",
-    "ret60": -8.6,
-    "times": 1,
-    "primary": false
-   },
-   {
-    "name": "STX그린로지스",
-    "ret60": -44.7,
-    "times": 1,
-    "primary": false
-   }
-  ],
-  "한화 본주·우선주": [
-   {
-    "name": "한화3우B",
-    "ret60": -17.1,
-    "times": 1,
-    "primary": false
-   },
-   {
-    "name": "한화",
-    "ret60": -24.6,
-    "times": 1,
-    "primary": false
-   }
-  ],
-  "전자부품": [
-   {
-    "name": "심텍홀딩스",
-    "ret60": 43.6,
-    "times": 3,
-    "primary": true
-   },
-   {
-    "name": "이수페타시스",
-    "ret60": -4.8,
-    "times": 2,
-    "primary": true
-   },
-   {
-    "name": "타이거일렉",
-    "ret60": 40.1,
-    "times": 2,
-    "primary": true
-   },
-   {
-    "name": "아모텍",
-    "ret60": 4.6,
-    "times": 3,
-    "primary": true
-   },
-   {
-    "name": "아바텍",
-    "ret60": 5.1,
-    "times": 2,
-    "primary": true
-   }
-  ],
-  "게임": [
-   {
-    "name": "위메이드맥스",
-    "ret60": -18.9,
-    "times": 2,
-    "primary": true
-   },
-   {
-    "name": "썸에이지",
-    "ret60": -5.5,
-    "times": 2,
-    "primary": true
-   },
-   {
-    "name": "크래프톤",
-    "ret60": -16.7,
-    "times": 1,
-    "primary": false
-   },
-   {
-    "name": "모비릭스",
-    "ret60": 49.0,
-    "times": 1,
-    "primary": false
-   },
-   {
-    "name": "NC",
-    "ret60": -27.5,
-    "times": 1,
-    "primary": false
-   }
-  ],
-  "보험": [
-   {
-    "name": "미래에셋생명",
-    "ret60": -19.4,
-    "times": 1,
-    "primary": false
-   },
-   {
-    "name": "롯데손해보험",
-    "ret60": 13.2,
-    "times": 1,
-    "primary": false
-   },
-   {
-    "name": "한화손해보험",
-    "ret60": -13.0,
-    "times": 1,
-    "primary": false
-   },
-   {
-    "name": "한화생명",
-    "ret60": -34.5,
-    "times": 1,
-    "primary": false
-   },
-   {
-    "name": "삼성생명",
-    "ret60": -15.8,
-    "times": 1,
-    "primary": false
-   }
-  ],
-  "풍력": [
-   {
-    "name": "씨에스베어링",
-    "ret60": 6.2,
-    "times": 1,
-    "primary": false
-   },
-   {
-    "name": "세아제강지주",
-    "ret60": -10.8,
-    "times": 1,
-    "primary": false
-   },
-   {
-    "name": "씨엔플러스",
-    "ret60": -22.3,
-    "times": 1,
-    "primary": false
-   },
-   {
-    "name": "니어스랩",
-    "ret60": -59.2,
-    "times": 1,
-    "primary": false
-   }
-  ],
-  "진양그룹주": [
-   {
-    "name": "진양화학",
-    "ret60": 369.2,
-    "times": 3,
-    "primary": true
-   },
-   {
-    "name": "진양폴리",
-    "ret60": 124.3,
-    "times": 3,
-    "primary": true
-   },
-   {
-    "name": "진양산업",
-    "ret60": 76.9,
-    "times": 1,
-    "primary": false
-   }
-  ],
-  "조선": [
-   {
-    "name": "KS인더스트리",
-    "ret60": -1.2,
-    "times": 4,
-    "primary": true
-   },
-   {
-    "name": "현대힘스",
-    "ret60": -38.8,
-    "times": 1,
-    "primary": false
-   },
-   {
-    "name": "한화오션",
-    "ret60": -49.0,
-    "times": 1,
-    "primary": false
-   },
-   {
-    "name": "한화엔진",
-    "ret60": -45.9,
-    "times": 1,
-    "primary": false
-   },
-   {
-    "name": "태광",
-    "ret60": 3.4,
-    "times": 1,
-    "primary": false
-   }
-  ],
-  "제지·포장": [
-   {
-    "name": "페이퍼코리아",
-    "ret60": -7.1,
-    "times": 1,
-    "primary": false
-   },
-   {
-    "name": "대영포장",
-    "ret60": -33.0,
-    "times": 1,
-    "primary": false
-   }
-  ],
-  "LNG·가스": [
-   {
-    "name": "원일티엔아이",
-    "ret60": -19.1,
-    "times": 2,
-    "primary": true
-   },
-   {
-    "name": "디케이락",
-    "ret60": 62.6,
-    "times": 1,
-    "primary": false
-   },
-   {
-    "name": "SNT에너지",
-    "ret60": -1.9,
-    "times": 1,
-    "primary": false
-   },
-   {
-    "name": "KBI동양철관",
-    "ret60": -6.4,
-    "times": 1,
-    "primary": false
-   },
-   {
-    "name": "GS글로벌",
-    "ret60": -5.2,
-    "times": 1,
-    "primary": false
-   }
-  ],
-  "자동차 부품": [
-   {
-    "name": "풍강",
-    "ret60": 12.7,
-    "times": 3,
-    "primary": true
-   },
-   {
-    "name": "에코캡",
-    "ret60": -5.1,
-    "times": 3,
-    "primary": true
-   },
-   {
-    "name": "에이엔피",
-    "ret60": null,
-    "times": 6,
-    "primary": true
-   },
-   {
-    "name": "영화금속",
-    "ret60": -0.9,
-    "times": 2,
-    "primary": true
-   },
-   {
-    "name": "명신산업",
-    "ret60": -11.7,
-    "times": 4,
-    "primary": true
-   }
-  ],
-  "원전·에너지": [
-   {
-    "name": "지엔씨에너지",
-    "ret60": -31.0,
-    "times": 2,
-    "primary": true
-   },
-   {
-    "name": "우진",
-    "ret60": -37.8,
-    "times": 3,
-    "primary": true
-   },
-   {
-    "name": "두산에너빌리티",
-    "ret60": -42.9,
-    "times": 2,
-    "primary": true
-   },
-   {
-    "name": "삼미금속",
-    "ret60": -15.5,
-    "times": 5,
-    "primary": false
-   },
-   {
-    "name": "강원에너지",
-    "ret60": -13.1,
-    "times": 2,
-    "primary": false
-   }
-  ],
-  "우선주 급등": [
-   {
-    "name": "한진칼우",
-    "ret60": 282.9,
-    "times": 3,
-    "primary": true
-   },
-   {
-    "name": "깨끗한나라우",
-    "ret60": 34.0,
-    "times": 3,
-    "primary": true
-   },
-   {
-    "name": "금호건설우",
-    "ret60": 3.1,
-    "times": 3,
-    "primary": true
-   },
-   {
-    "name": "티와이홀딩스우",
-    "ret60": 34.6,
-    "times": 2,
-    "primary": true
-   },
-   {
-    "name": "대한항공우",
-    "ret60": 28.1,
-    "times": 2,
-    "primary": true
-   }
-  ],
-  "비철금속": [
-   {
-    "name": "우성머티리얼스",
-    "ret60": -50.1,
-    "times": 2,
-    "primary": true
-   },
-   {
-    "name": "국일신동",
-    "ret60": -21.9,
-    "times": 2,
-    "primary": true
-   },
-   {
-    "name": "알멕",
-    "ret60": 4.9,
-    "times": 1,
-    "primary": false
-   },
-   {
-    "name": "고려아연",
-    "ret60": -26.8,
-    "times": 1,
-    "primary": false
-   }
-  ],
-  "태양광": [
-   {
-    "name": "OCI홀딩스",
-    "ret60": -30.0,
-    "times": 3,
-    "primary": true
-   },
-   {
-    "name": "한화솔루션우",
-    "ret60": -19.5,
-    "times": 2,
-    "primary": true
-   },
-   {
-    "name": "한화솔루션",
-    "ret60": -33.1,
-    "times": 2,
-    "primary": false
-   },
-   {
-    "name": "지앤비에스 에코",
-    "ret60": -17.8,
-    "times": 1,
-    "primary": false
-   },
-   {
-    "name": "대명에너지",
-    "ret60": -4.0,
-    "times": 1,
-    "primary": false
-   }
-  ],
-  "여행·레저": [
-   {
-    "name": "제주항공",
-    "ret60": 59.9,
-    "times": 3,
-    "primary": true
-   },
-   {
-    "name": "AK홀딩스",
-    "ret60": 1.0,
-    "times": 2,
-    "primary": true
-   },
-   {
-    "name": "아시아나항공",
-    "ret60": 16.8,
-    "times": 2,
-    "primary": true
-   },
-   {
-    "name": "에어부산",
-    "ret60": 20.4,
-    "times": 1,
-    "primary": false
-   },
-   {
-    "name": "노랑풍선",
-    "ret60": 14.7,
-    "times": 1,
-    "primary": false
-   }
-  ],
-  "창투사": [
-   {
-    "name": "스톤브릿지벤처스",
-    "ret60": -14.3,
-    "times": 1,
-    "primary": false
-   },
-   {
-    "name": "미래에셋벤처투자",
-    "ret60": -18.3,
-    "times": 1,
-    "primary": false
-   },
-   {
-    "name": "TS인베스트먼트",
-    "ret60": 1.6,
-    "times": 1,
-    "primary": false
-   },
-   {
-    "name": "DSC인베스트먼트",
-    "ret60": -4.6,
-    "times": 1,
-    "primary": false
-   }
-  ],
-  "수소": [
-   {
-    "name": "두산퓨얼셀",
-    "ret60": -24.8,
-    "times": 2,
-    "primary": true
-   },
-   {
-    "name": "두산퓨얼셀1우",
-    "ret60": -10.3,
-    "times": 1,
-    "primary": false
-   },
-   {
-    "name": "LS머트리얼즈",
-    "ret60": -18.2,
-    "times": 1,
-    "primary": false
-   },
-   {
-    "name": "일진하이솔루스",
-    "ret60": -13.0,
-    "times": 1,
-    "primary": false
-   },
-   {
-    "name": "범한퓨얼셀",
-    "ret60": -14.0,
-    "times": 1,
-    "primary": false
-   }
-  ],
-  "통신장비": [
-   {
-    "name": "쏘닉스",
-    "ret60": 35.4,
-    "times": 3,
-    "primary": true
-   },
-   {
-    "name": "에치에프알",
-    "ret60": -35.5,
-    "times": 2,
-    "primary": true
-   },
-   {
-    "name": "에이스테크",
-    "ret60": -20.2,
-    "times": 2,
-    "primary": true
-   },
-   {
-    "name": "오이솔루션",
-    "ret60": -3.4,
-    "times": 2,
-    "primary": true
-   },
-   {
-    "name": "코위버",
-    "ret60": -14.2,
-    "times": 2,
-    "primary": false
-   }
-  ],
-  "삼성그룹": [
-   {
-    "name": "삼성화재",
-    "ret60": -14.1,
-    "times": 1,
-    "primary": false
-   },
-   {
-    "name": "삼성전자우",
-    "ret60": -12.5,
-    "times": 1,
-    "primary": false
-   },
-   {
-    "name": "삼성생명",
-    "ret60": -15.8,
-    "times": 1,
-    "primary": false
-   },
-   {
-    "name": "삼성물산우B",
-    "ret60": -16.0,
-    "times": 1,
-    "primary": false
-   }
-  ],
-  "방산": [
-   {
-    "name": "포메탈",
-    "ret60": 14.5,
-    "times": 2,
-    "primary": true
-   },
-   {
-    "name": "스페코",
-    "ret60": -24.5,
-    "times": 2,
-    "primary": true
-   },
-   {
-    "name": "빅텍",
-    "ret60": -11.1,
-    "times": 2,
-    "primary": true
-   },
-   {
-    "name": "니어스랩",
-    "ret60": -59.2,
-    "times": 4,
-    "primary": true
-   },
-   {
-    "name": "RF시스템즈",
-    "ret60": -13.5,
-    "times": 2,
     "primary": true
    }
   ]
@@ -1677,44 +1661,44 @@
  "ranking": [
   {
    "theme": "제약·바이오",
-   "score": 0.57,
-   "why": "최근20일 주도 9회 · 미국 짝 +0.4% · 최근 5일 중 3일 3종목 이상 급등",
+   "score": 0.62,
+   "why": "최근20일 주도 10회 · 미국 짝 -2.0% · 전날 주도 (2년 기록 이어짐 효과 +13%p) · 최근 5일 중 3일 3종목 이상 급등",
    "similar": [],
    "basket": [
     "지투지바이오",
     "HLB바이오스텝",
     "바이오인프라",
-    "제이투케이바이오",
-    "하이퍼코퍼레이션"
+    "아리바이오랩",
+    "제이투케이바이오"
    ],
    "basket_detail": [
     {
      "name": "지투지바이오",
-     "ret60": -20.0,
+     "ret60": -17.8,
      "times": 11,
      "primary": true
     },
     {
      "name": "HLB바이오스텝",
-     "ret60": 52.0,
+     "ret60": 39.8,
      "times": 9,
      "primary": true
     },
     {
      "name": "바이오인프라",
-     "ret60": -15.9,
+     "ret60": -21.6,
      "times": 7,
      "primary": true
     },
     {
-     "name": "제이투케이바이오",
-     "ret60": -10.9,
+     "name": "아리바이오랩",
+     "ret60": 162.2,
      "times": 6,
      "primary": true
     },
     {
-     "name": "하이퍼코퍼레이션",
-     "ret60": -19.2,
+     "name": "제이투케이바이오",
+     "ret60": -11.2,
      "times": 6,
      "primary": true
     }
@@ -1723,8 +1707,8 @@
   },
   {
    "theme": "보안",
-   "score": 0.37,
-   "why": "최근20일 주도 5회 · 미국 짝 -1.8% (연관 약함) · 전날 주도 (2년 기록 이어짐 효과 +4%p) · 최근 5일 중 3일 3종목 이상 급등",
+   "score": 0.545,
+   "why": "최근20일 주도 6회 · 미국 짝 -1.9% (연관 약함) · 일정: AI 부정행위 관계부처 합동 브리핑(17일)·수능(19일) 스마트기기 반납·공공 와이파이 차단 — 전파 차단은 철회 (같은 재료 2일째 ×0.5) · 전날 주도 (2년 기록 이어짐 효과 +7%p) · 최근 5일 중 3일 3종목 이상 급등",
    "similar": [
     "우주항공",
     "전자부품"
@@ -1739,7 +1723,7 @@
    "basket_detail": [
     {
      "name": "지니언스",
-     "ret60": 125.0,
+     "ret60": 128.1,
      "times": 9,
      "primary": true
     },
@@ -1751,19 +1735,19 @@
     },
     {
      "name": "SGA솔루션즈",
-     "ret60": 27.0,
+     "ret60": 31.7,
      "times": 6,
      "primary": true
     },
     {
      "name": "아이씨티케이",
-     "ret60": -9.8,
+     "ret60": -14.0,
      "times": 5,
      "primary": true
     },
     {
      "name": "안랩",
-     "ret60": 87.9,
+     "ret60": 83.7,
      "times": 5,
      "primary": true
     }
@@ -1771,107 +1755,105 @@
    "leader_keep": 0.13
   },
   {
-   "theme": "건설",
-   "score": 0.32,
-   "why": "최근20일 주도 4회 · 전날 주도 (2년 기록 이어짐 효과 +0%p) · 최근 5일 중 3일 3종목 이상 급등",
-   "similar": [
-    "AI 소프트웨어"
-   ],
-   "basket": [
-    "에넥스",
-    "상지건설",
-    "조이웍스앤코",
-    "동양고속",
-    "삼성E&A"
-   ],
-   "basket_detail": [
-    {
-     "name": "에넥스",
-     "ret60": 18.4,
-     "times": 6,
-     "primary": true
-    },
-    {
-     "name": "상지건설",
-     "ret60": -18.4,
-     "times": 3,
-     "primary": true
-    },
-    {
-     "name": "조이웍스앤코",
-     "ret60": -18.9,
-     "times": 3,
-     "primary": true
-    },
-    {
-     "name": "동양고속",
-     "ret60": 5.1,
-     "times": 4,
-     "primary": true
-    },
-    {
-     "name": "삼성E&A",
-     "ret60": 39.4,
-     "times": 3,
-     "primary": true
-    }
-   ],
-   "leader_keep": 0.09
-  },
-  {
    "theme": "AI 소프트웨어",
    "score": 0.32,
-   "why": "최근20일 주도 4회 · 최근 5일 중 3일 3종목 이상 급등",
+   "why": "최근20일 주도 4회 · 최근 5일 중 3일 3종목 이상 급등 · 전날 5종목 급등",
    "similar": [
     "반도체",
     "전자부품",
-    "화장품"
+    "건설"
    ],
    "basket": [
     "바이브컴퍼니",
+    "인티큐브",
     "아시아나IDT",
     "아이크래프트",
-    "엘리스",
-    "인티큐브"
+    "엘리스"
    ],
    "basket_detail": [
     {
      "name": "바이브컴퍼니",
-     "ret60": 10.0,
-     "times": 5,
+     "ret60": 34.6,
+     "times": 6,
+     "primary": true
+    },
+    {
+     "name": "인티큐브",
+     "ret60": 66.5,
+     "times": 3,
      "primary": true
     },
     {
      "name": "아시아나IDT",
-     "ret60": 34.2,
+     "ret60": 37.2,
      "times": 3,
      "primary": true
     },
     {
      "name": "아이크래프트",
-     "ret60": -25.9,
+     "ret60": -26.5,
      "times": 6,
      "primary": true
     },
     {
      "name": "엘리스",
-     "ret60": null,
+     "ret60": -5.4,
      "times": 3,
-     "primary": true
-    },
-    {
-     "name": "인티큐브",
-     "ret60": 42.0,
-     "times": 2,
      "primary": true
     }
    ],
    "leader_keep": 0.05
   },
   {
+   "theme": "반도체 소부장",
+   "score": 0.225,
+   "why": "최근20일 주도 8회 · 미국 짝 -5.9% (과거 -2%↓ 주도율 24%) · 미국 짝 -3% 이하 급락 -0.2 · 최근 5일 중 4일 3종목 이상 급등",
+   "similar": [],
+   "basket": [
+    "한양디지텍",
+    "오킨스전자",
+    "아스플로",
+    "티에프이",
+    "엑시콘"
+   ],
+   "basket_detail": [
+    {
+     "name": "한양디지텍",
+     "ret60": 10.3,
+     "times": 10,
+     "primary": true
+    },
+    {
+     "name": "오킨스전자",
+     "ret60": 2.8,
+     "times": 8,
+     "primary": true
+    },
+    {
+     "name": "아스플로",
+     "ret60": 44.4,
+     "times": 8,
+     "primary": true
+    },
+    {
+     "name": "티에프이",
+     "ret60": 113.8,
+     "times": 9,
+     "primary": true
+    },
+    {
+     "name": "엑시콘",
+     "ret60": 145.5,
+     "times": 12,
+     "primary": true
+    }
+   ],
+   "leader_keep": 0.06
+  },
+  {
    "theme": "의료AI·의료기기",
-   "score": 0.26,
-   "why": "최근20일 주도 2회 · 최근 5일 중 4일 3종목 이상 급등 · 전날 5종목 급등",
+   "score": 0.22,
+   "why": "최근20일 주도 2회 · 최근 5일 중 3일 3종목 이상 급등",
    "similar": [
     "반도체"
    ],
@@ -1885,31 +1867,31 @@
    "basket_detail": [
     {
      "name": "플라즈맵",
-     "ret60": -19.5,
+     "ret60": -14.5,
      "times": 6,
      "primary": true
     },
     {
      "name": "루닛",
-     "ret60": 44.4,
+     "ret60": 51.2,
      "times": 6,
      "primary": true
     },
     {
      "name": "디알텍",
-     "ret60": -31.7,
+     "ret60": -30.1,
      "times": 4,
      "primary": true
     },
     {
      "name": "큐리오시스",
-     "ret60": 3.7,
+     "ret60": 10.3,
      "times": 4,
      "primary": true
     },
     {
      "name": "씨어스",
-     "ret60": -40.5,
+     "ret60": -40.7,
      "times": 4,
      "primary": true
     }
@@ -1917,101 +1899,106 @@
    "leader_keep": 0.1
   },
   {
-   "theme": "로봇",
-   "score": 0.25,
-   "why": "최근20일 주도 5회",
-   "similar": [],
+   "theme": "건설",
+   "score": 0.2,
+   "why": "최근20일 주도 4회",
+   "similar": [
+    "AI 소프트웨어"
+   ],
    "basket": [
-    "HT로보틱스",
-    "피앤에스로보틱스",
-    "빅웨이브로보틱스",
-    "리브스메드",
-    "원익홀딩스"
+    "에넥스",
+    "상지건설",
+    "조이웍스앤코",
+    "삼성E&A",
+    "동양고속"
    ],
    "basket_detail": [
     {
-     "name": "HT로보틱스",
-     "ret60": 39.3,
-     "times": 6,
+     "name": "에넥스",
+     "ret60": 2.2,
+     "times": 5,
      "primary": true
     },
     {
-     "name": "피앤에스로보틱스",
-     "ret60": -13.1,
+     "name": "상지건설",
+     "ret60": -19.7,
      "times": 3,
      "primary": true
     },
     {
-     "name": "빅웨이브로보틱스",
-     "ret60": -46.1,
-     "times": 4,
+     "name": "조이웍스앤코",
+     "ret60": -18.6,
+     "times": 3,
      "primary": true
     },
     {
-     "name": "리브스메드",
-     "ret60": -25.2,
-     "times": 4,
+     "name": "삼성E&A",
+     "ret60": 43.2,
+     "times": 3,
      "primary": true
     },
     {
-     "name": "원익홀딩스",
-     "ret60": 52.9,
+     "name": "동양고속",
+     "ret60": 4.7,
      "times": 4,
      "primary": true
     }
    ],
-   "leader_keep": 0.15
+   "leader_keep": 0.09
   },
   {
-   "theme": "반도체 소부장",
-   "score": 0.228,
-   "why": "최근20일 주도 8회 · 미국 짝 -3.1% (과거 -2%↓ 주도율 25%) · 미국 짝 -3% 이하 급락 -0.2 · 전날 주도 (2년 기록 이어짐 효과 +0%p) · 최근 5일 중 4일 3종목 이상 급등",
-   "similar": [],
+   "theme": "스마트폰 부품",
+   "score": 0.175,
+   "why": "최근20일 주도 1회 · 미국 짝 -1.0% (연관 약함) · 일정: AI 부정행위 관계부처 합동 브리핑(17일)·수능(19일) 스마트기기 반납·공공 와이파이 차단 — 전파 차단은 철회 (같은 재료 2일째 ×0.5) · 전날 주도 (2년 기록 이어짐 효과 +0%p)",
+   "similar": [
+    "전력기기·전선",
+    "화장품"
+   ],
    "basket": [
-    "한양디지텍",
-    "오킨스전자",
-    "엑시콘",
-    "아스플로",
-    "티에프이"
+    "캠시스",
+    "엑스플러스",
+    "피델릭스",
+    "앤디포스",
+    "유티아이"
    ],
    "basket_detail": [
     {
-     "name": "한양디지텍",
-     "ret60": 21.4,
-     "times": 10,
+     "name": "캠시스",
+     "ret60": 23.6,
+     "times": 4,
      "primary": true
     },
     {
-     "name": "오킨스전자",
-     "ret60": 50.8,
-     "times": 8,
+     "name": "엑스플러스",
+     "ret60": 33.9,
+     "times": 5,
      "primary": true
     },
     {
-     "name": "엑시콘",
-     "ret60": 194.8,
-     "times": 13,
+     "name": "피델릭스",
+     "ret60": null,
+     "times": 6,
      "primary": true
     },
     {
-     "name": "아스플로",
-     "ret60": 69.1,
-     "times": 8,
+     "name": "앤디포스",
+     "ret60": -32.0,
+     "times": 4,
      "primary": true
     },
     {
-     "name": "티에프이",
-     "ret60": 146.1,
-     "times": 9,
+     "name": "유티아이",
+     "ret60": -22.0,
+     "times": 5,
      "primary": true
     }
    ],
-   "leader_keep": 0.06
+   "leader_keep": 0.09
   },
   {
    "theme": "2차전지",
-   "score": 0.2,
-   "why": "최근20일 주도 4회 · 미국 짝 -1.2% (연관 약함)",
+   "score": 0.15,
+   "why": "최근20일 주도 3회 · 미국 짝 -4.1% (연관 약함)",
    "similar": [
     "철강·강관",
     "전력기기·전선"
@@ -2026,7 +2013,7 @@
    "basket_detail": [
     {
      "name": "더블유씨피",
-     "ret60": -24.0,
+     "ret60": -25.6,
      "times": 9,
      "primary": true
     },
@@ -2038,19 +2025,19 @@
     },
     {
      "name": "롯데에너지머티리얼즈",
-     "ret60": 9.6,
+     "ret60": 10.7,
      "times": 8,
      "primary": true
     },
     {
      "name": "에코앤드림",
-     "ret60": 6.7,
+     "ret60": 4.1,
      "times": 6,
      "primary": true
     },
     {
      "name": "이지트로닉스",
-     "ret60": -20.0,
+     "ret60": -18.3,
      "times": 5,
      "primary": true
     }
@@ -2058,96 +2045,96 @@
    "leader_keep": 0.03
   },
   {
-   "theme": "전자부품",
-   "score": 0.2,
-   "why": "최근20일 주도 4회",
+   "theme": "우주항공",
+   "score": 0.1,
+   "why": "최근20일 주도 2회 · 미국 짝 -5.4% (연관 약함)",
    "similar": [
-    "AI 소프트웨어",
-    "보안"
+    "보안",
+    "엔터·미디어"
    ],
    "basket": [
-    "심텍홀딩스",
-    "이수페타시스",
-    "타이거일렉",
-    "아모텍",
-    "아바텍"
+    "컨텍",
+    "AP위성",
+    "나라스페이스테크놀로지",
+    "켄코아에어로스페이스",
+    "와이제이링크"
    ],
    "basket_detail": [
     {
-     "name": "심텍홀딩스",
-     "ret60": 43.6,
+     "name": "컨텍",
+     "ret60": 36.3,
+     "times": 5,
+     "primary": true
+    },
+    {
+     "name": "AP위성",
+     "ret60": 23.2,
+     "times": 4,
+     "primary": true
+    },
+    {
+     "name": "나라스페이스테크놀로지",
+     "ret60": -26.7,
+     "times": 5,
+     "primary": true
+    },
+    {
+     "name": "켄코아에어로스페이스",
+     "ret60": -21.3,
+     "times": 4,
+     "primary": true
+    },
+    {
+     "name": "와이제이링크",
+     "ret60": 0.0,
      "times": 3,
-     "primary": true
-    },
-    {
-     "name": "이수페타시스",
-     "ret60": -4.8,
-     "times": 2,
-     "primary": true
-    },
-    {
-     "name": "타이거일렉",
-     "ret60": 40.1,
-     "times": 2,
-     "primary": true
-    },
-    {
-     "name": "아모텍",
-     "ret60": 4.6,
-     "times": 3,
-     "primary": true
-    },
-    {
-     "name": "아바텍",
-     "ret60": 5.1,
-     "times": 2,
      "primary": true
     }
    ],
-   "leader_keep": 0.25
+   "leader_keep": 0.18
   },
   {
-   "theme": "우선주 급등",
-   "score": 0.17,
-   "why": "최근20일 주도 1회 · 최근 5일 중 3일 3종목 이상 급등",
+   "theme": "한진그룹(경영권 분쟁)",
+   "score": 0.1,
+   "why": "최근20일 주도 2회",
    "similar": [],
    "basket": [
-    "한진칼우",
-    "깨끗한나라우",
-    "금호건설우",
-    "티와이홀딩스우",
-    "대한항공우"
+    "한진",
+    "한진칼",
+    "진에어",
+    "대한항공우",
+    "대한항공"
    ],
    "basket_detail": [
     {
-     "name": "한진칼우",
-     "ret60": 282.9,
+     "name": "한진",
+     "ret60": 21.0,
      "times": 3,
      "primary": true
     },
     {
-     "name": "깨끗한나라우",
-     "ret60": 34.0,
-     "times": 3,
-     "primary": true
-    },
-    {
-     "name": "금호건설우",
-     "ret60": 3.1,
-     "times": 3,
-     "primary": true
-    },
-    {
-     "name": "티와이홀딩스우",
-     "ret60": 34.6,
+     "name": "한진칼",
+     "ret60": 83.8,
      "times": 2,
      "primary": true
+    },
+    {
+     "name": "진에어",
+     "ret60": 50.1,
+     "times": 1,
+     "primary": false
     },
     {
      "name": "대한항공우",
-     "ret60": 28.1,
-     "times": 2,
-     "primary": true
+     "ret60": 23.0,
+     "times": 1,
+     "primary": false
+    },
+    {
+     "name": "대한항공",
+     "ret60": 25.1,
+     "times": 1,
+     "primary": false
     }
    ],
    "leader_keep": null

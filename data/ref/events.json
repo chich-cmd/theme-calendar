@@ -940,6 +940,30 @@
    "weight": 0.3,
    "src": "https://www.newspim.com/news/view/20261110000007",
    "catalyst": "oil_down"
+  },
+  {
+   "date": "2026-11-16",
+   "themes": [
+    "보안",
+    "스마트폰 부품"
+   ],
+   "kind": "대형 사건",
+   "what": "(소급) 세무사 시험 AI 기기 부정행위 자수 → 청와대 전수조사·수능 대응",
+   "weight": 0.0,
+   "src": "https://www.seoul.co.kr/news/economy/securities/2026/11/16/20261116500174",
+   "catalyst": "ai_cheat"
+  },
+  {
+   "date": "2026-11-17",
+   "themes": [
+    "보안",
+    "스마트폰 부품"
+   ],
+   "kind": "정책",
+   "what": "AI 부정행위 관계부처 합동 브리핑(17일)·수능(19일) 스마트기기 반납·공공 와이파이 차단 — 전파 차단은 철회",
+   "weight": 0.5,
+   "src": "https://m.go.seoul.co.kr/news/society/2026/11/17/20261117001004",
+   "catalyst": "ai_cheat"
   }
  ]
 }
