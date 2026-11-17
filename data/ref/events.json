@@ -964,6 +964,19 @@
    "weight": 0.5,
    "src": "https://m.go.seoul.co.kr/news/society/2026/11/17/20261117001004",
    "catalyst": "ai_cheat"
+  },
+  {
+   "date": "2026-11-18",
+   "themes": [
+    "반도체",
+    "반도체 소부장",
+    "전자부품"
+   ],
+   "kind": "해외 실적 서프라이즈",
+   "what": "엔비디아 3분기 매출 1,158억달러(예상 1,093억)·4분기 가이던스 1,300억달러(예상 1,250억) — 시간외 +2~3%",
+   "weight": 0.3,
+   "src": "https://www.mediapen.com/news/view/1138148",
+   "catalyst": "nvda_q3"
   }
  ]
 }
