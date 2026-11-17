@@ -1,574 +1,407 @@
 {
- "updated": "2026-11-17T13:04:02+09:00",
+ "updated": "2026-11-18T07:01:47+09:00",
  "gainers": [
   {
-   "sym": "CGON",
-   "name": "CG Oncology, Inc.",
-   "chg": 13.95,
-   "cap_b": 7.6
-  },
-  {
-   "sym": "TU",
-   "name": "Telus Corporation",
-   "chg": 12.19,
-   "cap_b": 15.2
-  },
-  {
-   "sym": "MOH",
-   "name": "Molina Healthcare Inc",
-   "chg": 11.27,
-   "cap_b": 12.2
-  },
-  {
-   "sym": "HTHT",
-   "name": "H World Group Limited",
-   "chg": 8.91,
-   "cap_b": 17.3
-  },
-  {
-   "sym": "TSN",
-   "name": "Tyson Foods, Inc.",
-   "chg": 8.72,
-   "cap_b": 22.5
-  },
-  {
-   "sym": "HUBS",
-   "name": "HubSpot, Inc.",
-   "chg": 6.78,
-   "cap_b": 11.3
-  },
-  {
-   "sym": "POWL",
-   "name": "Powell Industries, Inc.",
-   "chg": 5.94,
-   "cap_b": 5.5
+   "sym": "SLS",
+   "name": "SELLAS Life Sciences Group, Inc",
+   "chg": 156.36,
+   "cap_b": 3.9
   },
   {
    "sym": "BILL",
    "name": "BILL Holdings, Inc.",
-   "chg": 5.78,
-   "cap_b": 4.9
+   "chg": 12.58,
+   "cap_b": 5.6
   },
   {
-   "sym": "QLYS",
-   "name": "Qualys, Inc.",
-   "chg": 5.24,
-   "cap_b": 6.4
+   "sym": "ACM",
+   "name": "AECOM",
+   "chg": 11.08,
+   "cap_b": 10.4
   },
   {
-   "sym": "HNGE",
-   "name": "Hinge Health, Inc.",
-   "chg": 5.11,
-   "cap_b": 9.9
+   "sym": "RYTM",
+   "name": "Rhythm Pharmaceuticals, Inc.",
+   "chg": 8.49,
+   "cap_b": 8.1
   },
   {
-   "sym": "CNC",
-   "name": "Centene Corporation",
-   "chg": 4.91,
-   "cap_b": 37.0
+   "sym": "MNSO",
+   "name": "MINISO Group Holding Limited",
+   "chg": 8.36,
+   "cap_b": 3.6
   },
   {
-   "sym": "SEZL",
-   "name": "Sezzle Inc.",
-   "chg": 4.73,
-   "cap_b": 5.5
+   "sym": "SNAP",
+   "name": "Snap Inc.",
+   "chg": 8.06,
+   "cap_b": 9.5
   },
   {
-   "sym": "GXO",
-   "name": "GXO Logistics, Inc.",
-   "chg": 4.63,
-   "cap_b": 6.5
+   "sym": "UNFI",
+   "name": "United Natural Foods, Inc.",
+   "chg": 7.44,
+   "cap_b": 3.1
   },
   {
-   "sym": "MSGR",
-   "name": "MSG Rangers Corp.",
-   "chg": 4.62,
-   "cap_b": 2.5
-  },
-  {
-   "sym": "FRSH",
-   "name": "Freshworks Inc.",
-   "chg": 4.42,
-   "cap_b": 3.5
-  },
-  {
-   "sym": "TIGO",
-   "name": "Millicom International Cellular",
-   "chg": 4.37,
-   "cap_b": 13.9
-  },
-  {
-   "sym": "BEKE",
-   "name": "KE Holdings Inc",
-   "chg": 4.37,
-   "cap_b": 20.4
-  },
-  {
-   "sym": "ASO",
-   "name": "Academy Sports and Outdoors, In",
-   "chg": 4.29,
-   "cap_b": 4.3
-  },
-  {
-   "sym": "RCI",
-   "name": "Rogers Communication, Inc.",
-   "chg": 4.24,
-   "cap_b": 18.7
-  },
-  {
-   "sym": "TSCO",
-   "name": "Tractor Supply Company",
-   "chg": 4.12,
-   "cap_b": 19.7
-  },
-  {
-   "sym": "PBH",
-   "name": "Prestige Consumer Healthcare In",
-   "chg": 3.92,
-   "cap_b": 2.3
-  },
-  {
-   "sym": "ELV",
-   "name": "Elevance Health, Inc.",
-   "chg": 3.86,
-   "cap_b": 96.4
-  },
-  {
-   "sym": "WSE",
-   "name": "Wise Group plc",
-   "chg": 3.83,
-   "cap_b": 11.3
-  },
-  {
-   "sym": "IOND",
-   "name": "Ionic Digital Inc.",
-   "chg": 3.69,
+   "sym": "SA",
+   "name": "Seabridge Gold, Inc.",
+   "chg": 7.27,
    "cap_b": 2.8
   },
   {
-   "sym": "MMED",
-   "name": "MiniMed Group, Inc.",
-   "chg": 3.67,
-   "cap_b": 5.2
+   "sym": "TME",
+   "name": "Tencent Music Entertainment Gro",
+   "chg": 6.64,
+   "cap_b": 15.4
   },
   {
-   "sym": "STWD",
-   "name": "STARWOOD PROPERTY TRUST, INC. S",
-   "chg": 3.62,
-   "cap_b": 4.4
+   "sym": "TWST",
+   "name": "Twist Bioscience Corporation",
+   "chg": 6.63,
+   "cap_b": 7.4
   },
   {
-   "sym": "GHC",
-   "name": "Graham Holdings Company",
-   "chg": 3.6,
+   "sym": "ESLT",
+   "name": "Elbit Systems Ltd.",
+   "chg": 5.85,
+   "cap_b": 33.8
+  },
+  {
+   "sym": "CXW",
+   "name": "CoreCivic, Inc.",
+   "chg": 4.81,
+   "cap_b": 2.8
+  },
+  {
+   "sym": "GFF",
+   "name": "Griffon Corporation",
+   "chg": 4.79,
+   "cap_b": 4.7
+  },
+  {
+   "sym": "BELFB",
+   "name": "Bel Fuse Inc.",
+   "chg": 4.78,
+   "cap_b": 3.2
+  },
+  {
+   "sym": "ARM",
+   "name": "Arm Holdings plc",
+   "chg": 4.76,
+   "cap_b": 196.2
+  },
+  {
+   "sym": "KLAR",
+   "name": "Klarna Group plc",
+   "chg": 4.7,
    "cap_b": 5.4
   },
   {
-   "sym": "PPC",
-   "name": "Pilgrim's Pride Corporation",
-   "chg": 3.52,
-   "cap_b": 6.9
+   "sym": "IBRX",
+   "name": "ImmunityBio, Inc.",
+   "chg": 4.68,
+   "cap_b": 6.7
   },
   {
-   "sym": "PCTY",
-   "name": "Paylocity Holding Corporation",
-   "chg": 3.5,
-   "cap_b": 9.6
+   "sym": "VIV",
+   "name": "Telefonica Brasil S.A.",
+   "chg": 4.63,
+   "cap_b": 19.9
   },
   {
-   "sym": "KVYO",
-   "name": "Klaviyo, Inc. Series A",
-   "chg": 3.43,
-   "cap_b": 6.4
+   "sym": "ALAB",
+   "name": "Astera Labs, Inc.",
+   "chg": 4.58,
+   "cap_b": 37.0
   },
   {
-   "sym": "LUV",
-   "name": "Southwest Airlines Company",
-   "chg": 3.34,
-   "cap_b": 22.7
+   "sym": "VIK",
+   "name": "Viking Holdings Ltd",
+   "chg": 4.43,
+   "cap_b": 42.1
   },
   {
-   "sym": "BCE",
-   "name": "BCE, Inc.",
-   "chg": 3.27,
-   "cap_b": 20.6
+   "sym": "BELFA",
+   "name": "Bel Fuse Inc.",
+   "chg": 3.93,
+   "cap_b": 2.4
   },
   {
-   "sym": "MBGL",
-   "name": "Mobility Global Inc.",
-   "chg": 3.26,
-   "cap_b": 7.1
+   "sym": "AS",
+   "name": "Amer Sports, Inc.",
+   "chg": 3.92,
+   "cap_b": 17.6
   },
   {
-   "sym": "PCG",
-   "name": "Pacific Gas & Electric Co.",
-   "chg": 3.25,
-   "cap_b": 30.1
+   "sym": "FIX",
+   "name": "Comfort Systems USA, Inc.",
+   "chg": 3.91,
+   "cap_b": 38.5
   },
   {
-   "sym": "CIGI",
-   "name": "Colliers International Group In",
-   "chg": 3.21,
-   "cap_b": 4.7
+   "sym": "OMF",
+   "name": "OneMain Holdings, Inc.",
+   "chg": 3.76,
+   "cap_b": 6.5
+  },
+  {
+   "sym": "COHR",
+   "name": "Coherent Corp.",
+   "chg": 3.65,
+   "cap_b": 41.5
+  },
+  {
+   "sym": "FRVO",
+   "name": "Fervo Energy Company",
+   "chg": 3.64,
+   "cap_b": 3.4
+  },
+  {
+   "sym": "VIAV",
+   "name": "Viavi Solutions Inc.",
+   "chg": 3.62,
+   "cap_b": 7.3
+  },
+  {
+   "sym": "TIMB",
+   "name": "TIM S.A.",
+   "chg": 3.39,
+   "cap_b": 9.3
+  },
+  {
+   "sym": "BZ",
+   "name": "KANZHUN LIMITED - American Depo",
+   "chg": 3.31,
+   "cap_b": 5.7
   },
   {
    "sym": "XPEV",
    "name": "XPeng Inc.",
-   "chg": 3.2,
-   "cap_b": 9.3
+   "chg": 3.31,
+   "cap_b": 9.6
   },
   {
-   "sym": "SRRK",
-   "name": "Scholar Rock Holding Corporatio",
-   "chg": 3.09,
-   "cap_b": 5.4
+   "sym": "BSP",
+   "name": "Bending Spoons S.p.A.",
+   "chg": 3.29,
+   "cap_b": 27.8
   },
   {
-   "sym": "CPB",
-   "name": "The Campbell's Company",
-   "chg": 3.01,
-   "cap_b": 7.0
+   "sym": "ECG",
+   "name": "Everus Construction Group, Inc.",
+   "chg": 3.17,
+   "cap_b": 4.4
+  },
+  {
+   "sym": "SPCX",
+   "name": "Space Exploration Technologies ",
+   "chg": 3.16,
+   "cap_b": 1924.4
+  },
+  {
+   "sym": "CBRS",
+   "name": "Cerebras Systems Inc.",
+   "chg": 3.16,
+   "cap_b": 25.3
+  },
+  {
+   "sym": "MTSI",
+   "name": "MACOM Technology Solutions Hold",
+   "chg": 3.14,
+   "cap_b": 17.5
+  },
+  {
+   "sym": "GRND",
+   "name": "Grindr Inc.",
+   "chg": 3.11,
+   "cap_b": 2.5
+  },
+  {
+   "sym": "FPS",
+   "name": "Forgent Power Solutions, Inc.",
+   "chg": 3.06,
+   "cap_b": 6.5
   }
  ],
  "losers": [
   {
-   "sym": "SMMT",
-   "name": "Summit Therapeutics Inc.",
-   "chg": -16.47,
-   "cap_b": 9.5
+   "sym": "NXT",
+   "name": "Nextpower Inc.",
+   "chg": -12.13,
+   "cap_b": 12.0
   },
   {
-   "sym": "GDS",
-   "name": "GDS Holdings Limited",
-   "chg": -14.69,
-   "cap_b": 3.4
+   "sym": "IDYA",
+   "name": "IDEAYA Biosciences, Inc.",
+   "chg": -9.75,
+   "cap_b": 2.6
+  },
+  {
+   "sym": "SMMT",
+   "name": "Summit Therapeutics Inc.",
+   "chg": -9.73,
+   "cap_b": 8.5
+  },
+  {
+   "sym": "CRM",
+   "name": "Salesforce, Inc.",
+   "chg": -9.45,
+   "cap_b": 160.1
+  },
+  {
+   "sym": "FRHC",
+   "name": "Freedom Holding Corp.",
+   "chg": -8.6,
+   "cap_b": 9.3
+  },
+  {
+   "sym": "TNGX",
+   "name": "Tango Therapeutics, Inc.",
+   "chg": -8.52,
+   "cap_b": 3.7
+  },
+  {
+   "sym": "RH",
+   "name": "RH",
+   "chg": -8.37,
+   "cap_b": 2.2
+  },
+  {
+   "sym": "ERAS",
+   "name": "Erasca, Inc.",
+   "chg": -8.07,
+   "cap_b": 4.9
+  },
+  {
+   "sym": "WCN",
+   "name": "Waste Connections, Inc.",
+   "chg": -8.01,
+   "cap_b": 45.4
+  },
+  {
+   "sym": "LMND",
+   "name": "Lemonade, Inc.",
+   "chg": -7.76,
+   "cap_b": 3.2
+  },
+  {
+   "sym": "JD",
+   "name": "JD.com, Inc.",
+   "chg": -7.66,
+   "cap_b": 34.3
+  },
+  {
+   "sym": "ENPH",
+   "name": "Enphase Energy, Inc.",
+   "chg": -7.58,
+   "cap_b": 3.1
+  },
+  {
+   "sym": "QXO",
+   "name": "QXO, Inc.",
+   "chg": -7.49,
+   "cap_b": 11.6
+  },
+  {
+   "sym": "LFTO",
+   "name": "Liftoff Mobile, Inc.",
+   "chg": -7.28,
+   "cap_b": 3.8
+  },
+  {
+   "sym": "INTU",
+   "name": "Intuit Inc.",
+   "chg": -7.17,
+   "cap_b": 85.7
+  },
+  {
+   "sym": "SSL",
+   "name": "Sasol Ltd.",
+   "chg": -6.97,
+   "cap_b": 8.3
+  },
+  {
+   "sym": "BB",
+   "name": "BlackBerry Limited",
+   "chg": -6.96,
+   "cap_b": 4.8
   },
   {
    "sym": "USAR",
    "name": "USA Rare Earth, Inc.",
-   "chg": -12.62,
-   "cap_b": 2.7
+   "chg": -6.94,
+   "cap_b": 2.5
   },
   {
-   "sym": "ASTS",
-   "name": "AST SpaceMobile, Inc.",
-   "chg": -12.33,
-   "cap_b": 11.1
+   "sym": "MNDY",
+   "name": "monday.com Ltd.",
+   "chg": -6.93,
+   "cap_b": 3.1
   },
   {
-   "sym": "BLSH",
-   "name": "Bullish",
-   "chg": -12.18,
-   "cap_b": 3.0
-  },
-  {
-   "sym": "NVTS",
-   "name": "Navitas Semiconductor Corporati",
-   "chg": -11.96,
-   "cap_b": 2.1
-  },
-  {
-   "sym": "ASST",
-   "name": "Strive, Inc.",
-   "chg": -11.94,
-   "cap_b": 2.4
-  },
-  {
-   "sym": "RUM",
-   "name": "RUM Group Inc.",
-   "chg": -11.44,
-   "cap_b": 2.0
-  },
-  {
-   "sym": "FLY",
-   "name": "Firefly Aerospace Inc.",
-   "chg": -10.83,
-   "cap_b": 3.9
-  },
-  {
-   "sym": "GUNN",
-   "name": "Gunnison Copper Corp.",
-   "chg": -10.58,
-   "cap_b": 3.5
-  },
-  {
-   "sym": "PAYP",
-   "name": "PayPay Corporation - American D",
-   "chg": -10.52,
-   "cap_b": 8.7
-  },
-  {
-   "sym": "BBWI",
-   "name": "Bath & Body Works, Inc.",
-   "chg": -9.91,
-   "cap_b": 3.9
-  },
-  {
-   "sym": "IREN",
-   "name": "IREN LIMITED",
-   "chg": -9.8,
-   "cap_b": 7.0
-  },
-  {
-   "sym": "LUNR",
-   "name": "Intuitive Machines, Inc.",
-   "chg": -9.77,
-   "cap_b": 2.1
-  },
-  {
-   "sym": "NTRA",
-   "name": "Natera, Inc.",
-   "chg": -9.59,
-   "cap_b": 41.8
-  },
-  {
-   "sym": "TEM",
-   "name": "Tempus AI, Inc.",
-   "chg": -9.55,
-   "cap_b": 11.8
-  },
-  {
-   "sym": "AAOI",
-   "name": "Applied Optoelectronics, Inc.",
-   "chg": -9.48,
-   "cap_b": 4.1
-  },
-  {
-   "sym": "KOD",
-   "name": "Kodiak Sciences Inc",
-   "chg": -9.41,
-   "cap_b": 6.6
-  },
-  {
-   "sym": "QBTS",
-   "name": "D-Wave Quantum Inc.",
-   "chg": -9.31,
-   "cap_b": 3.3
-  },
-  {
-   "sym": "TSEM",
-   "name": "Tower Semiconductor Ltd.",
-   "chg": -9.17,
-   "cap_b": 15.1
+   "sym": "CGON",
+   "name": "CG Oncology, Inc.",
+   "chg": -6.89,
+   "cap_b": 7.1
   }
  ],
  "watch": [
   {
-   "sym": "ASTS",
-   "name": "AST스페이스모바일",
-   "group": "우주항공",
-   "date": "2026-11-16",
-   "chg": -12.33
-  },
-  {
-   "sym": "LITE",
-   "name": "루멘텀",
-   "group": "광통신",
-   "date": "2026-11-16",
-   "chg": -8.48
-  },
-  {
    "sym": "SMR",
    "name": "뉴스케일",
    "group": "원전·에너지",
-   "date": "2026-11-16",
-   "chg": -8.37
-  },
-  {
-   "sym": "CIEN",
-   "name": "시에나",
-   "group": "광통신",
-   "date": "2026-11-16",
-   "chg": -8.19
-  },
-  {
-   "sym": "MU",
-   "name": "마이크론",
-   "group": "반도체",
-   "date": "2026-11-16",
-   "chg": -7.62
-  },
-  {
-   "sym": "GLW",
-   "name": "코닝",
-   "group": "광통신",
-   "date": "2026-11-16",
-   "chg": -6.93
+   "date": "2026-11-17",
+   "chg": -4.22
   },
   {
    "sym": "RKLB",
    "name": "로켓랩",
    "group": "우주항공",
-   "date": "2026-11-16",
-   "chg": -6.76
-  },
-  {
-   "sym": "COHR",
-   "name": "코히런트",
-   "group": "광통신",
-   "date": "2026-11-16",
-   "chg": -6.75
-  },
-  {
-   "sym": "CCJ",
-   "name": "카메코",
-   "group": "원전·에너지",
-   "date": "2026-11-16",
-   "chg": -6.7
-  },
-  {
-   "sym": "LRCX",
-   "name": "램리서치",
-   "group": "반도체 소부장",
-   "date": "2026-11-16",
-   "chg": -6.68
-  },
-  {
-   "sym": "VRT",
-   "name": "버티브",
-   "group": "전력기기·전선",
-   "date": "2026-11-16",
-   "chg": -6.63
-  },
-  {
-   "sym": "TSM",
-   "name": "TSMC ADR",
-   "group": "아시아",
-   "date": "2026-11-16",
-   "chg": -6.34
+   "date": "2026-11-17",
+   "chg": -4.04
   },
   {
    "sym": "COIN",
    "name": "코인베이스",
    "group": "디지털자산",
-   "date": "2026-11-16",
-   "chg": -6.12
+   "date": "2026-11-17",
+   "chg": -4.02
   },
   {
-   "sym": "ALB",
-   "name": "앨버말",
-   "group": "2차전지",
-   "date": "2026-11-16",
-   "chg": -5.74
+   "sym": "TSM",
+   "name": "TSMC ADR",
+   "group": "아시아",
+   "date": "2026-11-17",
+   "chg": -3.68
   },
   {
-   "sym": "KLAC",
-   "name": "KLA",
-   "group": "반도체 소부장",
-   "date": "2026-11-16",
-   "chg": -5.49
+   "sym": "COHR",
+   "name": "코히런트",
+   "group": "광통신",
+   "date": "2026-11-17",
+   "chg": 3.65
   },
   {
-   "sym": "AMAT",
-   "name": "어플라이드머티리얼즈",
-   "group": "반도체 소부장",
-   "date": "2026-11-16",
-   "chg": -5.47
-  },
-  {
-   "sym": "^SOX",
-   "name": "필라델피아 반도체",
-   "group": "반도체",
-   "date": "2026-11-16",
-   "chg": -5.28
-  },
-  {
-   "sym": "GEV",
-   "name": "GE버노바",
-   "group": "전력기기·전선",
-   "date": "2026-11-16",
-   "chg": -4.93
-  },
-  {
-   "sym": "SQM",
-   "name": "SQM",
-   "group": "2차전지",
-   "date": "2026-11-16",
-   "chg": -4.63
-  },
-  {
-   "sym": "ETN",
-   "name": "이튼",
-   "group": "전력기기·전선",
-   "date": "2026-11-16",
-   "chg": -4.56
-  },
-  {
-   "sym": "URA",
-   "name": "우라늄 ETF",
+   "sym": "CEG",
+   "name": "콘스텔레이션",
    "group": "원전·에너지",
-   "date": "2026-11-16",
-   "chg": -4.4
+   "date": "2026-11-17",
+   "chg": -3.51
   },
   {
-   "sym": "NVDA",
-   "name": "엔비디아",
-   "group": "반도체",
-   "date": "2026-11-16",
-   "chg": -4.12
-  },
-  {
-   "sym": "CL=F",
-   "name": "WTI",
-   "group": "정유·화학",
-   "date": "2026-11-16",
-   "chg": -4.03
-  },
-  {
-   "sym": "ARKX",
-   "name": "우주탐사 ETF",
+   "sym": "ASTS",
+   "name": "AST스페이스모바일",
    "group": "우주항공",
-   "date": "2026-11-16",
-   "chg": -4.0
+   "date": "2026-11-17",
+   "chg": -3.46
   },
   {
-   "sym": "OKLO",
-   "name": "오클로",
-   "group": "원전·에너지",
-   "date": "2026-11-16",
-   "chg": -3.72
-  },
-  {
-   "sym": "NLR",
-   "name": "원전 ETF",
-   "group": "원전·에너지",
-   "date": "2026-11-16",
-   "chg": -3.6
-  },
-  {
-   "sym": "BOTZ",
-   "name": "로봇 ETF",
-   "group": "로봇",
-   "date": "2026-11-16",
-   "chg": -3.55
-  },
-  {
-   "sym": "LIT",
-   "name": "리튬 ETF",
-   "group": "2차전지",
-   "date": "2026-11-16",
-   "chg": -3.27
-  },
-  {
-   "sym": "XBI",
-   "name": "바이오 ETF",
-   "group": "제약·바이오",
-   "date": "2026-11-16",
-   "chg": -3.1
-  },
-  {
-   "sym": "FTNT",
-   "name": "포티넷",
-   "group": "보안",
-   "date": "2026-11-16",
-   "chg": -3.1
-  },
-  {
-   "sym": "SNPS",
-   "name": "시놉시스",
-   "group": "반도체",
-   "date": "2026-11-16",
-   "chg": -3.05
+   "sym": "SPCX",
+   "name": "스페이스X",
+   "group": "우주항공",
+   "date": "2026-11-17",
+   "chg": 3.16
   }
  ]
 }
