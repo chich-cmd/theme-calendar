@@ -977,6 +977,28 @@
    "weight": 0.3,
    "src": "https://www.mediapen.com/news/view/1138148",
    "catalyst": "nvda_q3"
+  },
+  {
+   "date": "2026-11-19",
+   "themes": [
+    "보안"
+   ],
+   "kind": "해외 사건",
+   "what": "美 사이버보안주 급등(옥타 +12%, 팔로알토 +9.9%, 크라우드스트라이크 +8%) — AI 사이버공격 경고·대형 네트워크 장애",
+   "weight": 0.3,
+   "src": "https://www.mediapen.com/news/view/1138444",
+   "catalyst": "us_cyber"
+  },
+  {
+   "date": "2026-11-19",
+   "themes": [
+    "AI 소프트웨어"
+   ],
+   "kind": "해외 사건",
+   "what": "앤트로픽 나스닥 상장(19일, 공모가 70~78달러·기업가치 최대 1.4조달러)",
+   "weight": 0.3,
+   "src": "https://news.mtn.co.kr/article/2026111101552940388",
+   "catalyst": "anthropic_ipo"
   }
  ]
 }
