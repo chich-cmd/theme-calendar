@@ -999,6 +999,19 @@
    "weight": 0.3,
    "src": "https://news.mtn.co.kr/article/2026111101552940388",
    "catalyst": "anthropic_ipo"
+  },
+  {
+   "date": "2026-11-24",
+   "themes": [
+    "반도체",
+    "반도체 소부장",
+    "전자부품"
+   ],
+   "kind": "대형 사건",
+   "what": "젠슨 황 엔비디아 CEO 복귀 → 엔비디아 +31.5%·AMD +31.4%·마이크론 +19%, 나스닥 +6.51%(작년 4월 이후 최대)",
+   "weight": 0.6,
+   "src": "https://www.ajunews.com/view/20261124063809643",
+   "catalyst": "jensen_return"
   }
  ]
 }
