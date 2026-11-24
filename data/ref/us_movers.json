@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-24T07:01:48+09:00",
+ "updated": "2026-11-24T14:24:38+09:00",
  "gainers": [
   {
    "sym": "NVDA",
@@ -10,7 +10,7 @@
   {
    "sym": "KYMR",
    "name": "Kymera Therapeutics, Inc.",
-   "chg": 30.4,
+   "chg": 30.41,
    "cap_b": 12.8
   },
   {
@@ -152,12 +152,6 @@
    "cap_b": 5.2
   },
   {
-   "sym": "HPE",
-   "name": "Hewlett Packard Enterprise Comp",
-   "chg": 17.38,
-   "cap_b": 63.7
-  },
-  {
    "sym": "ZS",
    "name": "Zscaler, Inc.",
    "chg": 17.67,
@@ -168,6 +162,12 @@
    "name": "Applied Optoelectronics, Inc.",
    "chg": 17.52,
    "cap_b": 3.5
+  },
+  {
+   "sym": "HPE",
+   "name": "Hewlett Packard Enterprise Comp",
+   "chg": 17.38,
+   "cap_b": 63.7
   },
   {
    "sym": "OUST",
@@ -520,13 +520,6 @@
    "chg": 7.48
   },
   {
-   "sym": "NQ=F",
-   "name": "나스닥 선물",
-   "group": "아시아",
-   "date": "2026-11-23",
-   "chg": 6.69
-  },
-  {
    "sym": "COIN",
    "name": "코인베이스",
    "group": "디지털자산",
@@ -590,25 +583,11 @@
    "chg": 5.06
   },
   {
-   "sym": "^N225",
-   "name": "닛케이225",
-   "group": "아시아",
-   "date": "2026-11-20",
-   "chg": -5.06
-  },
-  {
    "sym": "XBI",
    "name": "바이오 ETF",
    "group": "제약·바이오",
    "date": "2026-11-23",
    "chg": 4.98
-  },
-  {
-   "sym": "ES=F",
-   "name": "S&P500 선물",
-   "group": "아시아",
-   "date": "2026-11-23",
-   "chg": 4.75
   },
   {
    "sym": "^GSPC",
@@ -646,11 +625,11 @@
    "chg": 4.35
   },
   {
-   "sym": "CL=F",
-   "name": "WTI",
-   "group": "정유·화학",
-   "date": "2026-11-23",
-   "chg": -4.31
+   "sym": "^N225",
+   "name": "닛케이225",
+   "group": "아시아",
+   "date": "2026-11-24",
+   "chg": 4.04
   },
   {
    "sym": "CIBR",
