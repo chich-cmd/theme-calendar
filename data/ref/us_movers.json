@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-25T07:02:02+09:00",
+ "updated": "2026-11-25T13:26:19+09:00",
  "gainers": [
   {
    "sym": "AMTM",
@@ -328,12 +328,6 @@
    "cap_b": 3.3
   },
   {
-   "sym": "DELL",
-   "name": "Dell Technologies Inc.",
-   "chg": -11.83,
-   "cap_b": 187.7
-  },
-  {
    "sym": "SIMO",
    "name": "Silicon Motion Technology Corpo",
    "chg": -12.0,
@@ -350,6 +344,12 @@
    "name": "CoreWeave, Inc.",
    "chg": -11.85,
    "cap_b": 23.7
+  },
+  {
+   "sym": "DELL",
+   "name": "Dell Technologies Inc.",
+   "chg": -11.83,
+   "cap_b": 187.7
   },
   {
    "sym": "VICR",
@@ -475,7 +475,7 @@
    "name": "코인베이스",
    "group": "디지털자산",
    "date": "2026-11-24",
-   "chg": -5.92
+   "chg": -5.91
   },
   {
    "sym": "NVDA",
@@ -504,13 +504,6 @@
    "group": "전력기기·전선",
    "date": "2026-11-24",
    "chg": -4.77
-  },
-  {
-   "sym": "^N225",
-   "name": "닛케이225",
-   "group": "아시아",
-   "date": "2026-11-24",
-   "chg": 4.04
   },
   {
    "sym": "TSM",
