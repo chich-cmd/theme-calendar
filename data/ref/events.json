@@ -1012,6 +1012,17 @@
    "weight": 0.6,
    "src": "https://www.ajunews.com/view/20261124063809643",
    "catalyst": "jensen_return"
+  },
+  {
+   "date": "2026-11-26",
+   "themes": [
+    "우주항공"
+   ],
+   "kind": "해외 사건",
+   "what": "(사후 기록) 美 FCC, 스페이스X 'Starmind' 궤도 AI 데이터센터 위성 100만기 발사 승인(현지 25일) + 中 선저우24호 발사 → 우주항공 16종목 주도",
+   "weight": 0,
+   "src": "https://www.newspim.com/news/view/20261126000288",
+   "catalyst": "spacex_fcc"
   }
  ]
 }
