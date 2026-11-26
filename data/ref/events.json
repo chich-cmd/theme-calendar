@@ -1023,6 +1023,50 @@
    "weight": 0,
    "src": "https://www.newspim.com/news/view/20261126000288",
    "catalyst": "spacex_fcc"
+  },
+  {
+   "date": "2026-11-27",
+   "themes": [
+    "보안"
+   ],
+   "kind": "대형 사건",
+   "what": "CJ올리브영 해킹 개인정보 유출(26일 공시)·전북은행 AI에이전트 해킹 467건 유출 + 美 CIA 해킹 피해 연속 보도",
+   "weight": 0.3,
+   "src": "https://www.seoul.co.kr/news/economy/2026/11/26/20261126500344",
+   "catalyst": "hacking"
+  },
+  {
+   "date": "2026-11-27",
+   "themes": [
+    "양자컴퓨터"
+   ],
+   "kind": "정책",
+   "what": "정부, 국민성장펀드 30→40조 확대·양자 산업 지원 대상 추가 검토(연말·내년 초 결정)",
+   "weight": 0.3,
+   "src": "https://www.newspim.com/news/view/20261126001048",
+   "catalyst": "quantum_fund"
+  },
+  {
+   "date": "2026-11-27",
+   "themes": [
+    "반도체"
+   ],
+   "kind": "해외 사건",
+   "what": "(국내) SK하이닉스 올해 주주환원 약 100조원 계획·연말 배당 전 35조 집행 예정, 신용등급 상향",
+   "weight": 0.3,
+   "src": "https://www.newspim.com/news/view/20261126001048",
+   "catalyst": "hynix_return"
+  },
+  {
+   "date": "2026-11-27",
+   "themes": [
+    "우주항공"
+   ],
+   "kind": "해외 사건",
+   "what": "스페이스X FCC 위성 100만기 승인 연속 + 머스크, 美 아동에게 스페이스X 주식(약 180억달러) 지급 계획",
+   "weight": 0.3,
+   "src": "https://www.newspim.com/news/view/20261126000288",
+   "catalyst": "spacex_fcc"
   }
  ]
 }
