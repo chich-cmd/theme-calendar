@@ -1,5 +1,5 @@
 {
- "updated": "2026-11-26T07:01:54+09:00",
+ "updated": "2026-11-26T12:41:58+09:00",
  "gainers": [
   {
    "sym": "BZ",
@@ -316,6 +316,12 @@
    "cap_b": 3.3
   },
   {
+   "sym": "MU",
+   "name": "Micron Technology, Inc.",
+   "chg": -4.57,
+   "cap_b": 680.3
+  },
+  {
    "sym": "BRKR",
    "name": "Bruker Corporation",
    "chg": -4.47,
@@ -350,12 +356,6 @@
    "name": "Delek US Holdings, Inc.",
    "chg": -4.22,
    "cap_b": 3.2
-  },
-  {
-   "sym": "MU",
-   "name": "Micron Technology, Inc.",
-   "chg": -4.57,
-   "cap_b": 680.3
   },
   {
    "sym": "PWR",
